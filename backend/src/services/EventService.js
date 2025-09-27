@@ -10,6 +10,11 @@ class EventService {
     // 활성 연결 관리
     this.activeConnections = new Map(); // userId -> connection info
     this.eventQueue = new Map(); // userId -> events array
+    this.userConnectionCount = new Map(); // userId -> connection count
+
+    // 연결 수 제한
+    this.maxConnectionsPerUser = 3; // 사용자당 최대 연결 수
+    this.maxTotalConnections = 100; // 전체 최대 연결 수
 
     // 이벤트 ID 생성을 위한 카운터
     this.eventIdCounter = 0;
@@ -35,6 +40,25 @@ class EventService {
     const { lastEventId, teamIds = [] } = options;
 
     try {
+      // 전체 연결 수 제한 확인
+      if (this.activeConnections.size >= this.maxTotalConnections) {
+        logger.warn(`전체 연결 수 한도 초과: ${this.activeConnections.size}`);
+        return res.status(503).json({
+          error: 'CONNECTION_LIMIT_EXCEEDED',
+          message: '서버가 과부하 상태입니다. 잠시 후 다시 시도해주세요.'
+        });
+      }
+
+      // 사용자별 연결 수 제한 확인
+      const userConnections = this.userConnectionCount.get(userId) || 0;
+      if (userConnections >= this.maxConnectionsPerUser) {
+        logger.warn(`사용자 ${userId} 연결 수 한도 초과: ${userConnections}`);
+        return res.status(429).json({
+          error: 'USER_CONNECTION_LIMIT_EXCEEDED',
+          message: '사용자당 최대 연결 수를 초과했습니다.'
+        });
+      }
+
       // 기존 연결이 있으면 종료
       this.closeConnection(userId);
 
@@ -51,6 +75,9 @@ class EventService {
 
       // 연결 등록
       this.activeConnections.set(userId, connection);
+
+      // 사용자별 연결 수 증가
+      this.userConnectionCount.set(userId, userConnections + 1);
 
       // 대기 중인 이벤트가 있는지 확인
       const pendingEvents = this.getPendingEvents(userId, lastEventId);
@@ -175,6 +202,14 @@ class EventService {
       }
 
       this.activeConnections.delete(userId);
+
+      // 사용자별 연결 수 감소
+      const currentCount = this.userConnectionCount.get(userId) || 0;
+      if (currentCount > 1) {
+        this.userConnectionCount.set(userId, currentCount - 1);
+      } else {
+        this.userConnectionCount.delete(userId);
+      }
 
       logger.info('Long Polling 연결 종료:', {
         userId,
@@ -371,10 +406,22 @@ class EventService {
    * @returns {Object} 연결 상태 정보
    */
   getConnectionStats() {
+    const memoryUsage = process.memoryUsage();
     const stats = {
       activeConnections: this.activeConnections.size,
+      maxConnections: this.maxTotalConnections,
+      connectionUtilization: (this.activeConnections.size / this.maxTotalConnections * 100).toFixed(2) + '%',
+      userConnectionCounts: Object.fromEntries(this.userConnectionCount),
       totalQueuedEvents: 0,
       userQueueSizes: {},
+      memoryUsage: {
+        rss: `${(memoryUsage.rss / 1024 / 1024).toFixed(2)}MB`,
+        heapTotal: `${(memoryUsage.heapTotal / 1024 / 1024).toFixed(2)}MB`,
+        heapUsed: `${(memoryUsage.heapUsed / 1024 / 1024).toFixed(2)}MB`,
+        external: `${(memoryUsage.external / 1024 / 1024).toFixed(2)}MB`
+      },
+      memoryAlert: memoryUsage.heapUsed > 512 * 1024 * 1024, // 512MB 초과 시 알림
+      timestamp: new Date().toISOString()
     };
 
     for (const [userId, events] of this.eventQueue.entries()) {
