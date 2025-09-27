@@ -20,6 +20,9 @@ const {
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const teamRoutes = require('./routes/teams');
+const scheduleRoutes = require('./routes/schedules');
+const chatRoutes = require('./routes/chat');
+const pollRoutes = require('./routes/poll');
 
 /**
  * Express 애플리케이션 생성 및 설정
@@ -84,18 +87,24 @@ const createApp = async () => {
       apiVersion: config.api.version,
       documentation: config.api.documentation.enabled ? config.api.documentation.path : null,
       endpoints: {
-        auth: '/api/v1/auth',
-        users: '/api/v1/users',
-        teams: '/api/v1/teams',
+        auth: '/api/auth',
+        users: '/api/users',
+        teams: '/api/teams',
+        schedules: '/api/schedules',
+        chat: '/api/chat',
+        poll: '/api/poll',
         health: '/health',
       },
     });
   });
 
   // API 라우터 등록
-  app.use('/api/v1/auth', authRoutes);
-  app.use('/api/v1/users', userRoutes);
-  app.use('/api/v1/teams', teamRoutes);
+  app.use('/api/auth', authRoutes);
+  app.use('/api/users', userRoutes);
+  app.use('/api/teams', teamRoutes);
+  app.use('/api/schedules', scheduleRoutes);
+  app.use('/api/chat', chatRoutes);
+  app.use('/api/poll', pollRoutes);
 
   // 404 처리
   app.use('*', (req, res) => {

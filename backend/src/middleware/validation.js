@@ -207,7 +207,7 @@ const validateScheduleCreation = [
     .withMessage('팀 ID는 양의 정수여야 합니다')
     .toInt(),
 
-  body('participants')
+  body('participantIds')
     .optional()
     .isArray()
     .withMessage('참가자는 배열 형태여야 합니다')
@@ -217,6 +217,16 @@ const validateScheduleCreation = [
       }
       return true;
     }),
+
+  body('category')
+    .optional()
+    .isIn(['meeting', 'deadline', 'personal', 'other'])
+    .withMessage('올바르지 않은 카테고리입니다'),
+
+  body('priority')
+    .optional()
+    .isIn(['high', 'medium', 'low'])
+    .withMessage('올바르지 않은 우선순위입니다'),
 
   handleValidationErrors,
 ];
@@ -230,10 +240,21 @@ const validateMessageCreation = [
     .isLength({ min: 1, max: config.business.maxMessageLength })
     .withMessage(`메시지 내용은 1-${config.business.maxMessageLength}자여야 합니다`),
 
-  body('messageDate')
+  body('targetDate')
     .isISO8601()
     .withMessage('올바른 날짜 형식이 아닙니다')
     .toDate(),
+
+  body('relatedScheduleId')
+    .optional()
+    .isInt({ min: 1 })
+    .withMessage('관련 일정 ID는 양의 정수여야 합니다')
+    .toInt(),
+
+  body('messageType')
+    .optional()
+    .isIn(['normal', 'schedule_request', 'schedule_notification', 'system'])
+    .withMessage('올바르지 않은 메시지 유형입니다'),
 
   handleValidationErrors,
 ];
