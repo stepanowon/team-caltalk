@@ -1,0 +1,419 @@
+2025-09-27 21:17:18.366 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/health",
+  "method": "GET"
+}
+2025-09-27 21:17:26.389 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api",
+  "method": "GET"
+}
+2025-09-27 21:17:34.765 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/register",
+  "method": "POST"
+}
+2025-09-27 21:17:34.768 [WARN]: 입력 검증 오류: {
+  "path": "/register",
+  "method": "POST",
+  "errors": [
+    {
+      "field": "name",
+      "message": "이름에는 한글, 영문, 숫자, 공백만 사용할 수 있습니다",
+      "value": "�׽�Ʈ �����"
+    }
+  ]
+}
+2025-09-27 21:17:34.769 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/v1/auth/register",
+  "status": 400,
+  "duration": "4ms",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "userId": "anonymous"
+}
+2025-09-27 21:17:43.501 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/register",
+  "method": "POST"
+}
+2025-09-27 21:17:43.533 [ERROR]: 쿼리 실행 오류: {
+  "error": "users 테이블에 대한 접근 권한 없음",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test@example.com",
+    1
+  ]
+}
+2025-09-27 21:17:43.533 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test@example.com"
+  },
+  "error": "users 테이블에 대한 접근 권한 없음"
+}
+2025-09-27 21:17:43.533 [ERROR]: User.findByEmail 오류: {
+  "email": "test@example.com",
+  "error": "users 테이블에 대한 접근 권한 없음"
+}
+2025-09-27 21:17:43.533 [ERROR]: User.createUser 오류: {
+  "email": "test@example.com",
+  "error": "users 테이블에 대한 접근 권한 없음"
+}
+2025-09-27 21:17:43.533 [ERROR]: AuthService.register 오류: {
+  "email": "test@example.com",
+  "error": "users 테이블에 대한 접근 권한 없음"
+}
+2025-09-27 21:17:43.533 [ERROR]: 회원가입 오류: {
+  "error": "users 테이블에 대한 접근 권한 없음",
+  "email": "test@example.com"
+}
+2025-09-27 21:17:43.534 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/v1/auth/register",
+  "status": 400,
+  "duration": "33ms",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "userId": "anonymous"
+}
+2025-09-27 21:20:49.051 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/health",
+  "method": "GET"
+}
+2025-09-27 21:20:51.384 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/register",
+  "method": "POST"
+}
+2025-09-27 21:20:51.385 [WARN]: 입력 검증 오류: {
+  "path": "/register",
+  "method": "POST",
+  "errors": [
+    {
+      "field": "name",
+      "message": "이름에는 한글, 영문, 숫자, 공백만 사용할 수 있습니다",
+      "value": "�׽�Ʈ�����"
+    }
+  ]
+}
+2025-09-27 21:20:51.385 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/v1/auth/register",
+  "status": 400,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "userId": "anonymous"
+}
+2025-09-27 21:21:01.981 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/register",
+  "method": "POST"
+}
+2025-09-27 21:21:02.224 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "101",
+  "data": {
+    "email": "test@example.com",
+    "name": "Test User",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-09-27 21:21:02.224 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "101",
+  "email": "test@example.com",
+  "name": "Test User"
+}
+2025-09-27 21:21:02.227 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "101",
+  "email": "test@example.com"
+}
+2025-09-27 21:21:04.548 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-09-27 21:21:04.731 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "101",
+  "email": "test@example.com"
+}
+2025-09-27 21:21:04.731 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "101",
+  "email": "test@example.com"
+}
+2025-09-27 21:21:19.846 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/me",
+  "method": "GET"
+}
+2025-09-27 21:21:22.209 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/teams",
+  "method": "POST"
+}
+2025-09-27 21:21:22.236 [WARN]: AUDIT {
+  "action": "TEAM_CREATED",
+  "teamId": "51",
+  "teamName": "My Test Team",
+  "creatorId": "101",
+  "inviteCode": "XX5BSLF3YS"
+}
+2025-09-27 21:21:38.185 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/teams",
+  "method": "GET"
+}
+2025-09-27 21:21:40.581 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/teams/51",
+  "method": "GET"
+}
+2025-09-27 21:21:42.931 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/teams/51/members",
+  "method": "GET"
+}
+2025-09-27 21:21:53.480 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/health",
+  "method": "GET"
+}
+2025-09-27 21:21:56.198 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-09-27 21:21:56.199 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "invalid@email.com",
+  "reason": "user_not_found"
+}
+2025-09-27 21:21:56.199 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.199 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
+2025-09-27 21:21:56.199 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "userId": "anonymous"
+}
+2025-09-27 21:21:56.199 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/login",
+  "method": "POST"
+}
+2025-09-27 21:21:56.264 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-09-27 21:21:56.265 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "invalid@email.com",
+  "reason": "user_not_found"
+}
+2025-09-27 21:21:56.265 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.265 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
+2025-09-27 21:21:56.266 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "userId": "anonymous"
+}
+2025-09-27 21:21:56.266 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/login",
+  "method": "POST"
+}
+2025-09-27 21:21:56.330 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-09-27 21:21:56.331 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "invalid@email.com",
+  "reason": "user_not_found"
+}
+2025-09-27 21:21:56.331 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.331 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
+2025-09-27 21:21:56.332 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "userId": "anonymous"
+}
+2025-09-27 21:21:56.332 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/login",
+  "method": "POST"
+}
+2025-09-27 21:21:56.415 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-09-27 21:21:56.416 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "invalid@email.com",
+  "reason": "user_not_found"
+}
+2025-09-27 21:21:56.416 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.416 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
+2025-09-27 21:21:56.416 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "userId": "anonymous"
+}
+2025-09-27 21:21:56.416 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/login",
+  "method": "POST"
+}
+2025-09-27 21:21:56.479 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/api/v1/auth/login",
+  "method": "POST"
+}
+2025-09-27 21:21:56.480 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "invalid@email.com",
+  "reason": "user_not_found"
+}
+2025-09-27 21:21:56.480 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.480 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
+2025-09-27 21:21:56.480 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/v1/auth/login",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "userId": "anonymous"
+}
+2025-09-27 21:21:56.480 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/login",
+  "method": "POST"
+}

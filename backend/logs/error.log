@@ -1,0 +1,70 @@
+2025-09-27 21:17:43.533 [ERROR]: 쿼리 실행 오류: {
+  "error": "users 테이블에 대한 접근 권한 없음",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test@example.com",
+    1
+  ]
+}
+2025-09-27 21:17:43.533 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test@example.com"
+  },
+  "error": "users 테이블에 대한 접근 권한 없음"
+}
+2025-09-27 21:17:43.533 [ERROR]: User.findByEmail 오류: {
+  "email": "test@example.com",
+  "error": "users 테이블에 대한 접근 권한 없음"
+}
+2025-09-27 21:17:43.533 [ERROR]: User.createUser 오류: {
+  "email": "test@example.com",
+  "error": "users 테이블에 대한 접근 권한 없음"
+}
+2025-09-27 21:17:43.533 [ERROR]: AuthService.register 오류: {
+  "email": "test@example.com",
+  "error": "users 테이블에 대한 접근 권한 없음"
+}
+2025-09-27 21:17:43.533 [ERROR]: 회원가입 오류: {
+  "error": "users 테이블에 대한 접근 권한 없음",
+  "email": "test@example.com"
+}
+2025-09-27 21:21:56.199 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.199 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
+2025-09-27 21:21:56.265 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.265 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
+2025-09-27 21:21:56.331 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.331 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
+2025-09-27 21:21:56.416 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.416 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
+2025-09-27 21:21:56.480 [ERROR]: AuthService.login 오류: {
+  "email": "invalid@email.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-27 21:21:56.480 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "invalid@email.com"
+}
