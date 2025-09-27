@@ -1,0 +1,7 @@
+*.local.json
+.env
+.env.local
+node_modules/
+dist/
+build/
+.mcp.json

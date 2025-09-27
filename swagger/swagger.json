@@ -1,0 +1,2104 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Team CalTalk API",
+    "description": "팀 중심의 일정 관리와 실시간 커뮤니케이션을 통합한 협업 플랫폼 API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Team CalTalk",
+      "email": "support@teamcaltalk.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "로컬 개발 서버"
+    },
+    {
+      "url": "https://api.teamcaltalk.com",
+      "description": "프로덕션 서버"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/auth/signup": {
+      "post": {
+        "tags": ["인증"],
+        "summary": "회원가입",
+        "description": "새로운 사용자 계정을 생성합니다",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "회원가입 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "입력 데이터 오류",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 존재하는 이메일",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": ["인증"],
+        "summary": "로그인",
+        "description": "사용자 인증을 통해 JWT 토큰을 발급받습니다",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "로그인 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "인증 실패",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "로그인 시도 횟수 초과",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/refresh": {
+      "post": {
+        "tags": ["인증"],
+        "summary": "토큰 갱신",
+        "description": "만료된 JWT 토큰을 갱신합니다",
+        "responses": {
+          "200": {
+            "description": "토큰 갱신 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "유효하지 않은 토큰",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "tags": ["인증"],
+        "summary": "로그아웃",
+        "description": "현재 JWT 토큰을 무효화합니다",
+        "responses": {
+          "200": {
+            "description": "로그아웃 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "로그아웃되었습니다"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/me": {
+      "get": {
+        "tags": ["사용자"],
+        "summary": "현재 사용자 정보 조회",
+        "description": "로그인된 사용자의 프로필 정보를 조회합니다",
+        "responses": {
+          "200": {
+            "description": "사용자 정보 조회 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "put": {
+        "tags": ["사용자"],
+        "summary": "현재 사용자 정보 수정",
+        "description": "로그인된 사용자의 프로필 정보를 수정합니다",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUserRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "사용자 정보 수정 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    },
+    "/api/teams": {
+      "post": {
+        "tags": ["팀"],
+        "summary": "팀 생성",
+        "description": "새로운 팀을 생성하고 생성자가 팀장 권한을 받습니다",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTeamRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "팀 생성 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "tags": ["팀"],
+        "summary": "사용자 소속 팀 목록 조회",
+        "description": "현재 사용자가 소속된 모든 팀 목록을 조회합니다",
+        "responses": {
+          "200": {
+            "description": "팀 목록 조회 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TeamWithRole"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    },
+    "/api/teams/join": {
+      "post": {
+        "tags": ["팀"],
+        "summary": "팀 참여",
+        "description": "초대 코드를 통해 기존 팀에 참여합니다",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JoinTeamRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "팀 참여 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamWithRole"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "description": "유효하지 않은 초대 코드",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "이미 팀에 속해있음",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/teams/{teamId}": {
+      "get": {
+        "tags": ["팀"],
+        "summary": "팀 정보 조회",
+        "description": "특정 팀의 상세 정보를 조회합니다",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "팀 ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "팀 정보 조회 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "put": {
+        "tags": ["팀"],
+        "summary": "팀 정보 수정",
+        "description": "팀 정보를 수정합니다 (팀장 권한 필요)",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "팀 ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTeamRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "팀 정보 수정 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/api/teams/{teamId}/members": {
+      "get": {
+        "tags": ["팀"],
+        "summary": "팀 멤버 목록 조회",
+        "description": "팀의 모든 멤버 목록을 조회합니다",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "팀 ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "팀 멤버 목록 조회 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TeamMember"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/api/teams/{teamId}/leave": {
+      "post": {
+        "tags": ["팀"],
+        "summary": "팀 탈퇴",
+        "description": "현재 팀에서 탈퇴합니다",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "팀 ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "팀 탈퇴 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "팀에서 탈퇴했습니다"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/api/teams/{teamId}/members/{userId}": {
+      "delete": {
+        "tags": ["팀"],
+        "summary": "팀원 제거",
+        "description": "팀에서 특정 멤버를 제거합니다 (팀장 권한 필요)",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "팀 ID"
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "제거할 사용자 ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "팀원 제거 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "팀원이 제거되었습니다"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/api/teams/{teamId}/invite-code/regenerate": {
+      "post": {
+        "tags": ["팀"],
+        "summary": "초대 코드 재생성",
+        "description": "팀의 초대 코드를 새로 생성합니다 (팀장 권한 필요)",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "팀 ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "초대 코드 재생성 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "inviteCode": {
+                      "type": "string",
+                      "pattern": "^[A-Z0-9]{6}$",
+                      "example": "XYZ789"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/api/schedules": {
+      "post": {
+        "tags": ["일정"],
+        "summary": "일정 생성",
+        "description": "새로운 개인 또는 팀 일정을 생성합니다",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateScheduleRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "일정 생성 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "409": {
+            "description": "일정 충돌 발생",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["일정"],
+        "summary": "일정 목록 조회",
+        "description": "사용자의 개인 일정과 소속 팀의 일정을 조회합니다",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "조회 시작 날짜 (YYYY-MM-DD)"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "조회 종료 날짜 (YYYY-MM-DD)"
+          },
+          {
+            "name": "teamId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "특정 팀의 일정만 조회"
+          },
+          {
+            "name": "scheduleType",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["personal", "team"]
+            },
+            "description": "일정 유형 필터"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "일정 목록 조회 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Schedule"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    },
+    "/api/schedules/{scheduleId}": {
+      "get": {
+        "tags": ["일정"],
+        "summary": "일정 상세 정보 조회",
+        "description": "특정 일정의 상세 정보를 조회합니다",
+        "parameters": [
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "일정 ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "일정 상세 정보 조회 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScheduleDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "put": {
+        "tags": ["일정"],
+        "summary": "일정 수정",
+        "description": "일정 정보를 수정합니다 (작성자 또는 팀장 권한 필요)",
+        "parameters": [
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "일정 ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateScheduleRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "일정 수정 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Schedule"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "409": {
+            "description": "일정 충돌 발생",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["일정"],
+        "summary": "일정 삭제",
+        "description": "일정을 삭제합니다 (작성자 또는 팀장 권한 필요)",
+        "parameters": [
+          {
+            "name": "scheduleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "일정 ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "일정 삭제 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "일정이 삭제되었습니다"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/api/schedules/check-conflict": {
+      "post": {
+        "tags": ["일정"],
+        "summary": "일정 충돌 확인",
+        "description": "새로운 일정이 기존 일정과 충돌하는지 미리 확인합니다",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckConflictRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "충돌 확인 완료",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConflictCheckResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    },
+    "/api/chat/teams/{teamId}/messages": {
+      "post": {
+        "tags": ["채팅"],
+        "summary": "메시지 전송",
+        "description": "팀 채팅방에 메시지를 전송합니다",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "팀 ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "메시지 전송 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Message"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "get": {
+        "tags": ["채팅"],
+        "summary": "메시지 목록 조회",
+        "description": "팀 채팅방의 메시지 목록을 조회합니다",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "팀 ID"
+          },
+          {
+            "name": "targetDate",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            },
+            "description": "특정 날짜의 메시지만 조회 (YYYY-MM-DD)"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            },
+            "description": "페이지 번호"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 50
+            },
+            "description": "페이지당 메시지 수"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "메시지 목록 조회 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageList"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/api/chat/messages/{messageId}": {
+      "delete": {
+        "tags": ["채팅"],
+        "summary": "메시지 삭제",
+        "description": "메시지를 삭제합니다 (작성자만 가능)",
+        "parameters": [
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "메시지 ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "메시지 삭제 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "메시지가 삭제되었습니다"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "403": {
+            "$ref": "#/components/responses/ForbiddenError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/api/chat/teams/{teamId}/messages/{messageId}/read": {
+      "post": {
+        "tags": ["채팅"],
+        "summary": "메시지 읽음 처리",
+        "description": "특정 메시지를 읽음으로 표시합니다",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "팀 ID"
+          },
+          {
+            "name": "messageId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "메시지 ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "읽음 처리 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "메시지를 읽음으로 표시했습니다"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      }
+    },
+    "/api/users/online-status": {
+      "put": {
+        "tags": ["사용자"],
+        "summary": "온라인 상태 업데이트",
+        "description": "사용자의 온라인 상태를 업데이트합니다",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["status"],
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": ["online", "away", "offline"],
+                    "example": "online"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "온라인 상태 업데이트 성공",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "online"
+                    },
+                    "lastActiveAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-09-23T10:30:00Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    },
+    "/api/poll": {
+      "get": {
+        "tags": ["실시간"],
+        "summary": "Long Polling 연결",
+        "description": "실시간 알림을 위한 Long Polling 연결을 시작합니다",
+        "parameters": [
+          {
+            "name": "lastEventId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "마지막으로 받은 이벤트 ID (재연결 시 사용)"
+          },
+          {
+            "name": "teamIds",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "구독할 팀 ID 목록 (쉼표로 구분)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "이벤트 발생 - 새로운 데이터 전달",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PollingEvent"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "타임아웃 - 변경사항 없음"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "responses": {
+      "BadRequestError": {
+        "description": "잘못된 요청",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "UnauthorizedError": {
+        "description": "인증 필요",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "ForbiddenError": {
+        "description": "접근 권한 없음",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NotFoundError": {
+        "description": "리소스를 찾을 수 없음",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "SignupRequest": {
+        "type": "object",
+        "required": ["email", "password", "name"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 255,
+            "example": "user@example.com"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 100,
+            "pattern": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d@$!%*#?&]{8,}$",
+            "example": "Password123!"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 30,
+            "example": "김개발"
+          }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "user@example.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "Password123!"
+          }
+        }
+      },
+      "AuthResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "expiresIn": {
+            "type": "integer",
+            "description": "토큰 만료 시간 (초)",
+            "example": 3600
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "user@example.com"
+          },
+          "name": {
+            "type": "string",
+            "example": "김개발"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          }
+        }
+      },
+      "UpdateUserRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 30,
+            "example": "김개발자"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 100,
+            "pattern": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d@$!%*#?&]{8,}$",
+            "example": "NewPassword123!"
+          }
+        }
+      },
+      "CreateTeamRequest": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 30,
+            "example": "백엔드 개발팀"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "example": "Node.js 백엔드 API 개발팀"
+          }
+        }
+      },
+      "JoinTeamRequest": {
+        "type": "object",
+        "required": ["inviteCode"],
+        "properties": {
+          "inviteCode": {
+            "type": "string",
+            "pattern": "^[A-Z0-9]{6}$",
+            "example": "ABC123"
+          }
+        }
+      },
+      "UpdateTeamRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 30,
+            "example": "프론트엔드 개발팀"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "example": "React 프론트엔드 개발팀"
+          }
+        }
+      },
+      "Team": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "백엔드 개발팀"
+          },
+          "description": {
+            "type": "string",
+            "example": "Node.js 백엔드 API 개발팀"
+          },
+          "inviteCode": {
+            "type": "string",
+            "example": "ABC123"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          }
+        }
+      },
+      "TeamWithRole": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Team"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "role": {
+                "type": "string",
+                "enum": ["leader", "member"],
+                "example": "leader"
+              },
+              "joinedAt": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2025-09-23T10:30:00Z"
+              }
+            }
+          }
+        ]
+      },
+      "TeamDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TeamWithRole"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "creator": {
+                "$ref": "#/components/schemas/User"
+              },
+              "memberCount": {
+                "type": "integer",
+                "example": 5
+              }
+            }
+          }
+        ]
+      },
+      "TeamMember": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "김개발"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "user@example.com"
+          },
+          "role": {
+            "type": "string",
+            "enum": ["leader", "member"],
+            "example": "leader"
+          },
+          "joinedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          }
+        }
+      },
+      "CreateScheduleRequest": {
+        "type": "object",
+        "required": ["title", "startDatetime", "endDatetime", "scheduleType"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100,
+            "example": "팀 미팅"
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 1000,
+            "example": "주간 스프린트 계획 회의"
+          },
+          "startDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-24T14:00:00Z"
+          },
+          "endDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-24T16:00:00Z"
+          },
+          "scheduleType": {
+            "type": "string",
+            "enum": ["personal", "team"],
+            "example": "team"
+          },
+          "teamId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "팀 일정인 경우 필수",
+            "example": 1
+          },
+          "participantIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "참가자 사용자 ID 목록",
+            "example": [1, 2, 3]
+          },
+          "category": {
+            "type": "string",
+            "enum": ["meeting", "deadline", "personal", "other"],
+            "description": "일정 카테고리",
+            "example": "meeting"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["high", "medium", "low"],
+            "description": "일정 우선순위",
+            "example": "medium"
+          },
+          "recurrence": {
+            "type": "object",
+            "description": "반복 일정 설정",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["daily", "weekly", "monthly"]
+              },
+              "interval": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "endDate": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        }
+      },
+      "UpdateScheduleRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100,
+            "example": "팀 미팅 (수정됨)"
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 1000,
+            "example": "주간 스프린트 계획 회의 - 업데이트된 안건"
+          },
+          "startDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-24T15:00:00Z"
+          },
+          "endDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-24T17:00:00Z"
+          },
+          "participantIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "참가자 사용자 ID 목록",
+            "example": [1, 2, 3, 4]
+          }
+        }
+      },
+      "CheckConflictRequest": {
+        "type": "object",
+        "required": ["startDatetime", "endDatetime", "participantIds"],
+        "properties": {
+          "startDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-24T14:00:00Z"
+          },
+          "endDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-24T16:00:00Z"
+          },
+          "participantIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "참가자 사용자 ID 목록",
+            "example": [1, 2, 3]
+          },
+          "excludeScheduleId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "수정 시 제외할 일정 ID",
+            "example": 5
+          }
+        }
+      },
+      "Schedule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "example": "팀 미팅"
+          },
+          "content": {
+            "type": "string",
+            "example": "주간 스프린트 계획 회의"
+          },
+          "startDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-24T14:00:00Z"
+          },
+          "endDatetime": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-24T16:00:00Z"
+          },
+          "scheduleType": {
+            "type": "string",
+            "enum": ["personal", "team"],
+            "example": "team"
+          },
+          "creatorId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "teamId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "category": {
+            "type": "string",
+            "enum": ["meeting", "deadline", "personal", "other"],
+            "example": "meeting"
+          },
+          "priority": {
+            "type": "string",
+            "enum": ["high", "medium", "low"],
+            "example": "medium"
+          },
+          "recurrence": {
+            "type": "object",
+            "description": "반복 일정 정보",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["daily", "weekly", "monthly"]
+              },
+              "interval": {
+                "type": "integer"
+              },
+              "endDate": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          }
+        }
+      },
+      "ScheduleDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Schedule"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "creator": {
+                "$ref": "#/components/schemas/User"
+              },
+              "team": {
+                "$ref": "#/components/schemas/Team"
+              },
+              "participants": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ScheduleParticipant"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "ScheduleParticipant": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "example": "김개발"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "user@example.com"
+          },
+          "participationStatus": {
+            "type": "string",
+            "enum": ["confirmed", "pending", "declined"],
+            "example": "confirmed"
+          }
+        }
+      },
+      "ConflictCheckResult": {
+        "type": "object",
+        "properties": {
+          "hasConflict": {
+            "type": "boolean",
+            "example": true
+          },
+          "conflicts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConflictInfo"
+            }
+          }
+        }
+      },
+      "ConflictInfo": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 2
+          },
+          "userName": {
+            "type": "string",
+            "example": "이코더"
+          },
+          "conflictingSchedule": {
+            "$ref": "#/components/schemas/Schedule"
+          },
+          "overlapMinutes": {
+            "type": "integer",
+            "description": "겹치는 시간(분)",
+            "example": 60
+          }
+        }
+      },
+      "ConflictError": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "SCHEDULE_CONFLICT"
+          },
+          "message": {
+            "type": "string",
+            "example": "일정 충돌이 발생했습니다"
+          },
+          "conflicts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ConflictInfo"
+            }
+          }
+        }
+      },
+      "SendMessageRequest": {
+        "type": "object",
+        "required": ["content", "targetDate"],
+        "properties": {
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "example": "안녕하세요! 내일 미팅 준비 잘 되고 있나요?"
+          },
+          "targetDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2025-09-24"
+          },
+          "relatedScheduleId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "관련 일정 ID (선택사항)",
+            "example": 1
+          },
+          "messageType": {
+            "type": "string",
+            "enum": ["normal", "schedule_request"],
+            "default": "normal",
+            "example": "normal"
+          }
+        }
+      },
+      "Message": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "teamId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "senderId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "senderName": {
+            "type": "string",
+            "example": "김개발"
+          },
+          "content": {
+            "type": "string",
+            "example": "안녕하세요! 내일 미팅 준비 잘 되고 있나요?"
+          },
+          "targetDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2025-09-24"
+          },
+          "relatedScheduleId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "messageType": {
+            "type": "string",
+            "enum": ["normal", "schedule_request", "schedule_notification", "system"],
+            "example": "normal"
+          },
+          "isRead": {
+            "type": "boolean",
+            "description": "현재 사용자의 읽음 여부",
+            "example": false
+          },
+          "readCount": {
+            "type": "integer",
+            "description": "메시지를 읽은 사용자 수",
+            "example": 2
+          },
+          "sentAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          }
+        }
+      },
+      "MessageList": {
+        "type": "object",
+        "properties": {
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Message"
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "page": {
+                "type": "integer",
+                "example": 1
+              },
+              "limit": {
+                "type": "integer",
+                "example": 50
+              },
+              "total": {
+                "type": "integer",
+                "example": 123
+              },
+              "totalPages": {
+                "type": "integer",
+                "example": 3
+              },
+              "hasNext": {
+                "type": "boolean",
+                "example": true
+              },
+              "hasPrev": {
+                "type": "boolean",
+                "example": false
+              }
+            }
+          }
+        }
+      },
+      "PollingEvent": {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "example": "evt_1695456789_schedule_1"
+          },
+          "eventType": {
+            "type": "string",
+            "enum": ["schedule_created", "schedule_updated", "schedule_deleted", "schedule_conflict_detected", "message_sent", "message_read", "team_member_joined", "team_member_left", "user_status_changed"],
+            "example": "schedule_created"
+          },
+          "teamId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          },
+          "data": {
+            "type": "object",
+            "description": "이벤트 타입에 따른 실제 데이터",
+            "example": {
+              "schedule": {
+                "id": 1,
+                "title": "새로운 팀 미팅",
+                "startDatetime": "2025-09-24T14:00:00Z"
+              }
+            }
+          },
+          "affectedUserIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "description": "이벤트의 영향을 받는 사용자 ID 목록",
+            "example": [1, 2, 3]
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "VALIDATION_ERROR"
+          },
+          "message": {
+            "type": "string",
+            "example": "입력 데이터가 유효하지 않습니다"
+          },
+          "details": {
+            "type": "object",
+            "description": "에러 상세 정보",
+            "example": {
+              "field": "email",
+              "code": "INVALID_FORMAT"
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-09-23T10:30:00Z"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "인증",
+      "description": "사용자 인증 및 토큰 관리"
+    },
+    {
+      "name": "사용자",
+      "description": "사용자 정보 관리"
+    },
+    {
+      "name": "팀",
+      "description": "팀 생성, 참여, 관리"
+    },
+    {
+      "name": "일정",
+      "description": "개인 및 팀 일정 관리"
+    },
+    {
+      "name": "채팅",
+      "description": "팀 내 실시간 메시징"
+    },
+    {
+      "name": "실시간",
+      "description": "Long Polling 기반 실시간 알림"
+    }
+  ]
+}
