@@ -1,0 +1,120 @@
+{
+  "name": "team-caltalk-backend",
+  "version": "1.0.0",
+  "description": "Team CalTalk 백엔드 서버 - 팀 기반 일정 관리 및 실시간 커뮤니케이션 플랫폼",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "NODE_ENV=test jest",
+    "test:watch": "NODE_ENV=test jest --watch",
+    "test:coverage": "NODE_ENV=test jest --coverage",
+    "test:unit": "NODE_ENV=test jest tests/unit",
+    "test:integration": "NODE_ENV=test jest tests/integration",
+    "test:security": "NODE_ENV=test jest tests/security",
+    "test:performance": "NODE_ENV=test jest tests/performance",
+    "test:ci": "NODE_ENV=test jest --ci --coverage --watchAll=false",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix",
+    "db:migrate": "node scripts/migrate.js",
+    "db:seed": "node scripts/seed.js",
+    "db:reset": "node scripts/reset-db.js"
+  },
+  "keywords": [
+    "team",
+    "calendar",
+    "chat",
+    "collaboration",
+    "schedule",
+    "real-time"
+  ],
+  "author": "Team CalTalk",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "compression": "^1.7.4",
+    "express-rate-limit": "^7.1.5",
+    "jsonwebtoken": "^9.0.2",
+    "bcrypt": "^5.1.1",
+    "pg": "^8.11.3",
+    "joi": "^17.11.0",
+    "winston": "^3.11.0",
+    "dotenv": "^16.3.1",
+    "express-validator": "^7.0.1",
+    "express-async-errors": "^3.1.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "nodemon": "^3.0.2",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.1.1",
+    "jest-html-reporters": "^3.1.5",
+    "@types/jest": "^29.5.8"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": ["<rootDir>/tests/test-setup.js"],
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.js",
+      "<rootDir>/tests/**/*.spec.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js",
+      "!src/config/*.js",
+      "!**/node_modules/**",
+      "!**/tests/**"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["text", "lcov", "html"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "verbose": true,
+    "testTimeout": 10000
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "es2021": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-unused-vars": "error",
+      "prefer-const": "error",
+      "no-var": "error"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "arrowParens": "avoid"
+  }
+}
