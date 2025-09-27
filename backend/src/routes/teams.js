@@ -18,7 +18,7 @@ router.use(authenticateToken);
 router.use(generalRateLimit);
 
 /**
- * @route   POST /api/v1/teams
+ * @route   POST /api/teams
  * @desc    새 팀 생성
  * @access  Private
  */
@@ -55,7 +55,7 @@ router.post('/', validateTeamCreation, async (req, res) => {
 });
 
 /**
- * @route   GET /api/v1/teams
+ * @route   GET /api/teams
  * @desc    사용자가 속한 팀 목록 조회
  * @access  Private
  */
@@ -121,7 +121,7 @@ router.get('/', validatePagination, async (req, res) => {
 });
 
 /**
- * @route   GET /api/v1/teams/:id
+ * @route   GET /api/teams/:id
  * @desc    특정 팀 정보 조회
  * @access  Private (팀 멤버만)
  */
@@ -158,7 +158,7 @@ router.get('/:id', validateId('id'), requireTeamMembership('id'), async (req, re
 });
 
 /**
- * @route   PUT /api/v1/teams/:id
+ * @route   PUT /api/teams/:id
  * @desc    팀 정보 업데이트
  * @access  Private (팀 리더만)
  */
@@ -205,7 +205,7 @@ router.put('/:id', validateId('id'), requireTeamLeadership('id'), validateTeamUp
 });
 
 /**
- * @route   DELETE /api/v1/teams/:id
+ * @route   DELETE /api/teams/:id
  * @desc    팀 삭제
  * @access  Private (팀 생성자만)
  */
@@ -253,7 +253,7 @@ router.delete('/:id', validateId('id'), async (req, res) => {
 });
 
 /**
- * @route   POST /api/v1/teams/join
+ * @route   POST /api/teams/join
  * @desc    초대 코드로 팀 가입
  * @access  Private
  */
@@ -305,7 +305,7 @@ router.post('/join', validateInviteCode, async (req, res) => {
 });
 
 /**
- * @route   POST /api/v1/teams/:id/leave
+ * @route   POST /api/teams/:id/leave
  * @desc    팀 탈퇴
  * @access  Private (팀 멤버만, 생성자 제외)
  */
@@ -335,7 +335,7 @@ router.post('/:id/leave', validateId('id'), requireTeamMembership('id'), async (
 });
 
 /**
- * @route   GET /api/v1/teams/:id/members
+ * @route   GET /api/teams/:id/members
  * @desc    팀 멤버 목록 조회
  * @access  Private (팀 멤버만)
  */
@@ -368,7 +368,7 @@ router.get('/:id/members', validateId('id'), requireTeamMembership('id'), async 
 });
 
 /**
- * @route   DELETE /api/v1/teams/:id/members/:userId
+ * @route   DELETE /api/teams/:id/members/:userId
  * @desc    팀 멤버 제거
  * @access  Private (팀 리더만)
  */
@@ -409,7 +409,7 @@ router.delete('/:id/members/:userId', validateId('id'), validateId('userId'), re
 });
 
 /**
- * @route   POST /api/v1/teams/:id/regenerate-code
+ * @route   POST /api/teams/:id/regenerate-code
  * @desc    팀 초대 코드 재생성
  * @access  Private (팀 리더만)
  */

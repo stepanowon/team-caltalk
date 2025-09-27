@@ -100,7 +100,7 @@ const config = {
     minUserNameLength: 2,
     maxTeamNameLength: 30,
     minTeamNameLength: 2,
-    inviteCodeLength: 10,
+    inviteCodeLength: 6,
     scheduleReminderMinutes: [5, 15, 30, 60], // 알림 시간 옵션
   },
 
@@ -124,7 +124,9 @@ const config = {
   // API 버전 설정
   api: {
     version: 'v1',
-    prefix: '/api/v1',
+    prefix: '/api',
+    longPollingTimeout: parseInt(process.env.LONG_POLLING_TIMEOUT) || 30000, // 30초
+    maxEventQueueSize: parseInt(process.env.MAX_EVENT_QUEUE_SIZE) || 100,
     documentation: {
       enabled: process.env.NODE_ENV !== 'production',
       path: '/api/docs',
