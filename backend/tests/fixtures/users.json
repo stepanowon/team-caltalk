@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "email": "john.doe@example.com",
+    "name": "John Doe",
+    "password": "password123",
+    "password_hash": "$2b$10$example.hash.for.testing.purposes"
+  },
+  {
+    "id": 2,
+    "email": "jane.smith@example.com",
+    "name": "Jane Smith",
+    "password": "securepassword",
+    "password_hash": "$2b$10$another.example.hash.for.testing"
+  },
+  {
+    "id": 3,
+    "email": "bob.wilson@example.com",
+    "name": "Bob Wilson",
+    "password": "mypassword",
+    "password_hash": "$2b$10$third.example.hash.for.testing"
+  },
+  {
+    "id": 4,
+    "email": "alice.brown@example.com",
+    "name": "Alice Brown",
+    "password": "strongpassword",
+    "password_hash": "$2b$10$fourth.example.hash.for.testing"
+  },
+  {
+    "id": 5,
+    "email": "charlie.davis@example.com",
+    "name": "Charlie Davis",
+    "password": "testpassword",
+    "password_hash": "$2b$10$fifth.example.hash.for.testing"
+  }
+]
