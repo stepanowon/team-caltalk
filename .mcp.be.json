@@ -1,13 +1,5 @@
 {
   "mcpServers": {
-    "shadcn": {
-      "command": "cmd",
-      "args": ["/c", "npx", "-y", "shadcn@latest", "mcp"]
-    },
-    "kubernetes": {
-      "command": "cmd",
-      "args": ["/c", "npx", "-y", "mcp-server-kubernetes"]
-    },
     "context7": {
       "command": "cmd",
       "args": ["/c", "npx", "-y", "@upstash/context7-mcp"]
@@ -15,10 +7,6 @@
     "sequential-thinking": {
       "command": "cmd",
       "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-sequential-thinking"]
-    },
-    "playwright": {
-      "command": "cmd",
-      "args": ["/c", "npx", "-y", "@playwright/mcp@latest"]
     },
     "postgresql-mcp": {
       "command": "cmd",

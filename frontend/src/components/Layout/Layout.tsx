@@ -3,9 +3,15 @@ import { Header } from './Header'
 
 export const Layout = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div style={{
+      position: 'relative',
+      display: 'flex',
+      minHeight: '100vh',
+      flexDirection: 'column',
+      backgroundColor: '#f9fafb'
+    }}>
       <Header />
-      <main className="container mx-auto px-4 py-8">
+      <main style={{ flex: 1 }}>
         <Outlet />
       </main>
     </div>
