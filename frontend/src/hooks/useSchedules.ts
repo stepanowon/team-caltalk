@@ -86,10 +86,10 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const data = await apiCall<ScheduleWithParticipants[]>(
+      const response = await apiCall<{ success: boolean; data: { schedules: ScheduleWithParticipants[] } }>(
         `/schedules?teamId=${currentTeam.id}`
       )
-      setSchedules(data)
+      setSchedules(response.data?.schedules || [])
     } catch (err) {
       setError(err instanceof Error ? err.message : '일정을 불러오는데 실패했습니다.')
       setSchedules([])
@@ -108,7 +108,7 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const newSchedule = await apiCall<ScheduleWithParticipants>(
+      const response = await apiCall<{ success: boolean; data: { schedule: ScheduleWithParticipants } }>(
         `/schedules`,
         {
           method: 'POST',
@@ -119,7 +119,10 @@ export function useSchedules(): UseSchedulesReturn {
         }
       )
 
-      setSchedules(prev => [...prev, newSchedule])
+      const newSchedule = response.data?.schedule
+      if (newSchedule) {
+        setSchedules(prev => [...prev, newSchedule])
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : '일정 생성에 실패했습니다.')
       throw err
@@ -138,7 +141,7 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const updatedSchedule = await apiCall<ScheduleWithParticipants>(
+      const response = await apiCall<{ success: boolean; data: { schedule: ScheduleWithParticipants } }>(
         `/schedules/${data.id}`,
         {
           method: 'PUT',
@@ -146,9 +149,11 @@ export function useSchedules(): UseSchedulesReturn {
         }
       )
 
-      setSchedules(prev =>
-        prev.map(schedule =>
-          schedule.id === data.id ? updatedSchedule : schedule
+      const updatedSchedule = response.data?.schedule
+      if (updatedSchedule) {
+        setSchedules(prev =>
+          prev.map(schedule =>
+            schedule.id === data.id ? updatedSchedule : schedule
         )
       )
     } catch (err) {

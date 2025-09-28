@@ -122,7 +122,7 @@ export function Calendar() {
           onTodayClick={handleTodayClick}
           onCreateSchedule={canEditSchedules ? handleCreateSchedule : undefined}
           onRefresh={refetch}
-          scheduleCount={schedules.length}
+          scheduleCount={Array.isArray(schedules) ? schedules.length : 0}
           loading={loading}
           canCreateSchedule={canEditSchedules}
         />
@@ -235,24 +235,24 @@ export function Calendar() {
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">전체 일정</span>
-                <Badge variant="outline">{schedules.length}개</Badge>
+                <Badge variant="outline">{Array.isArray(schedules) ? schedules.length : 0}개</Badge>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">내가 참여하는 일정</span>
                 <Badge variant="outline">
-                  {schedules.filter(s =>
-                    s.participants.some(p => p.user_id === user?.id)
-                  ).length}개
+                  {Array.isArray(schedules) ? schedules.filter(s =>
+                    s.participants?.some(p => p.user_id === user?.id)
+                  ).length : 0}개
                 </Badge>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">대기 중인 일정</span>
                 <Badge variant="outline">
-                  {schedules.filter(s =>
-                    s.participants.some(p =>
+                  {Array.isArray(schedules) ? schedules.filter(s =>
+                    s.participants?.some(p =>
                       p.user_id === user?.id && p.status === 'pending'
                     )
-                  ).length}개
+                  ).length : 0}개
                 </Badge>
               </div>
             </div>
