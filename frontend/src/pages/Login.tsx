@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/stores/authStore'
+import { AuthService } from '@/services/auth-service'
 import { ROUTES } from '@/utils/constants'
 
 export const Login = () => {
@@ -18,24 +19,17 @@ export const Login = () => {
     setError('')
 
     try {
-      // TODO: 실제 API 호출로 대체
-      console.log('Login attempt:', { email, password })
+      const result = await AuthService.login({ email, password })
 
-      // Mock response
-      const mockUser = {
-        id: 1,
-        username: 'testuser',
-        email,
-        full_name: '테스트 사용자',
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+      if (result.success && result.data) {
+        setAuth(result.data.user, result.data.token)
+        navigate(ROUTES.DASHBOARD)
+      } else {
+        setError(result.error || '로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.')
       }
-      const mockToken = 'mock-jwt-token'
-
-      setAuth(mockUser, mockToken)
-      navigate(ROUTES.DASHBOARD)
     } catch (err) {
-      setError('로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.')
+      setError('네트워크 오류가 발생했습니다.')
+      console.error('Login error:', err)
     } finally {
       setIsLoading(false)
     }

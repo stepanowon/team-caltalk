@@ -31,9 +31,9 @@ const mockTeamMembers = [
     joined_at: '2024-01-01T00:00:00Z',
     user: {
       id: 1,
+      username: 'testuser',
       email: 'test@example.com',
-      name: '테스트 사용자',
-      phone: '010-1234-5678',
+      full_name: '테스트 사용자',
     },
   },
   {
@@ -44,12 +44,23 @@ const mockTeamMembers = [
     joined_at: '2024-01-02T00:00:00Z',
     user: {
       id: 2,
+      username: 'member',
       email: 'member@example.com',
-      name: '팀원',
-      phone: '010-2345-6789',
+      full_name: '팀원',
     },
   },
 ]
+
+// 토큰에서 사용자 ID 추출
+function getUserIdFromToken(token: string): number {
+  const tokenUserMap: Record<string, number> = {
+    'mock-jwt-token': 1,
+    'mock-jwt-token-member': 2,
+    'mock-jwt-token-new': 3,
+    'mock-jwt-token-registered': 100,
+  }
+  return tokenUserMap[token] || 1
+}
 
 export const teamHandlers = [
   // 팀 목록 조회
@@ -185,7 +196,7 @@ export const teamHandlers = [
     })
   }),
 
-  // 팀 참여 (초대 코드로)
+  // 팀 참여 (초대 코드로) - 즉시 응답
   http.post(`${API_BASE_URL}/teams/join`, async ({ request }) => {
     const authorization = request.headers.get('Authorization')
 
@@ -213,9 +224,12 @@ export const teamHandlers = [
       )
     }
 
+    const token = authorization.slice(7)
+    const userId = getUserIdFromToken(token)
+
     // 이미 팀에 가입되어 있는지 체크
     const existingMember = mockTeamMembers.find(
-      (member) => member.team_id === team.id && member.user_id === 1
+      (member) => member.team_id === team.id && member.user_id === userId
     )
 
     if (existingMember) {
@@ -231,19 +245,20 @@ export const teamHandlers = [
     const newMember = {
       id: mockTeamMembers.length + 1,
       team_id: team.id,
-      user_id: 1,
+      user_id: userId,
       role: 'member' as const,
       joined_at: new Date().toISOString(),
       user: {
-        id: 1,
-        email: 'test@example.com',
-        name: '테스트 사용자',
-        phone: '010-1234-5678',
+        id: userId,
+        username: userId === 2 ? 'member' : userId === 3 ? 'newuser' : 'user',
+        email: userId === 2 ? 'member@example.com' : userId === 3 ? 'newuser@example.com' : 'user@example.com',
+        full_name: userId === 2 ? '팀원' : userId === 3 ? '새 사용자' : '사용자',
       },
     }
 
     mockTeamMembers.push(newMember)
 
+    // 즉시 응답 (지연 없음)
     return HttpResponse.json({
       success: true,
       data: {

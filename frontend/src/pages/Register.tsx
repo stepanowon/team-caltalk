@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { AuthService } from '@/services/auth-service'
 import { ROUTES } from '@/utils/constants'
 
 export const Register = () => {
@@ -35,12 +36,21 @@ export const Register = () => {
     }
 
     try {
-      // TODO: 실제 API 호출로 대체
-      console.log('Register attempt:', formData)
+      const result = await AuthService.register({
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        full_name: formData.fullName,
+      })
 
-      navigate(ROUTES.LOGIN)
+      if (result.success) {
+        navigate(ROUTES.LOGIN)
+      } else {
+        setError(result.error || '회원가입에 실패했습니다. 다시 시도해주세요.')
+      }
     } catch (err) {
-      setError('회원가입에 실패했습니다. 다시 시도해주세요.')
+      setError('네트워크 오류가 발생했습니다.')
+      console.error('Register error:', err)
     } finally {
       setIsLoading(false)
     }

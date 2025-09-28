@@ -10,19 +10,57 @@ export const authHandlers = [
       password: string
     }
 
-    if (email === 'test@example.com' && password === 'password123') {
+    // 테스트용 사용자 데이터
+    const users = [
+      {
+        email: 'test@example.com',
+        password: 'password123',
+        user: {
+          id: 1,
+          username: 'testuser',
+          email: 'test@example.com',
+          full_name: '테스트 사용자',
+          created_at: '2024-01-01T00:00:00Z',
+          updated_at: '2024-01-01T00:00:00Z',
+        },
+        token: 'mock-jwt-token',
+      },
+      {
+        email: 'member@example.com',
+        password: 'password123',
+        user: {
+          id: 2,
+          username: 'member',
+          email: 'member@example.com',
+          full_name: '팀원',
+          created_at: '2024-01-01T00:00:00Z',
+          updated_at: '2024-01-01T00:00:00Z',
+        },
+        token: 'mock-jwt-token-member',
+      },
+      {
+        email: 'newuser@example.com',
+        password: 'password123',
+        user: {
+          id: 3,
+          username: 'newuser',
+          email: 'newuser@example.com',
+          full_name: '새 사용자',
+          created_at: '2024-01-01T00:00:00Z',
+          updated_at: '2024-01-01T00:00:00Z',
+        },
+        token: 'mock-jwt-token-new',
+      },
+    ]
+
+    const matchedUser = users.find((u) => u.email === email && u.password === password)
+
+    if (matchedUser) {
       return HttpResponse.json({
         success: true,
         data: {
-          user: {
-            id: 1,
-            email: 'test@example.com',
-            name: '테스트 사용자',
-            phone: '010-1234-5678',
-            created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z',
-          },
-          token: 'mock-jwt-token',
+          user: matchedUser.user,
+          token: matchedUser.token,
         },
       })
     }
@@ -38,11 +76,11 @@ export const authHandlers = [
 
   // 회원가입 성공
   http.post(`${API_BASE_URL}/auth/register`, async ({ request }) => {
-    const { email, password, name, phone } = (await request.json()) as {
+    const { email, password, username, full_name } = (await request.json()) as {
       email: string
       password: string
-      name: string
-      phone: string
+      username: string
+      full_name: string
     }
 
     // 이미 존재하는 이메일
@@ -60,14 +98,14 @@ export const authHandlers = [
       success: true,
       data: {
         user: {
-          id: 2,
+          id: 100,
+          username,
           email,
-          name,
-          phone,
+          full_name,
           created_at: '2024-01-01T00:00:00Z',
           updated_at: '2024-01-01T00:00:00Z',
         },
-        token: 'mock-jwt-token-new',
+        token: 'mock-jwt-token-registered',
       },
     })
   }),
@@ -96,19 +134,58 @@ export const authHandlers = [
 
     const token = authorization.slice(7)
 
-    if (token === 'mock-jwt-token' || token === 'mock-jwt-token-new') {
+    // 만료된 토큰 처리
+    if (token === 'expired-token') {
+      return HttpResponse.json(
+        {
+          success: false,
+          error: '토큰이 만료되었습니다.',
+        },
+        { status: 401 }
+      )
+    }
+
+    const tokenUsers = {
+      'mock-jwt-token': {
+        id: 1,
+        username: 'testuser',
+        email: 'test@example.com',
+        full_name: '테스트 사용자',
+        created_at: '2024-01-01T00:00:00Z',
+        updated_at: '2024-01-01T00:00:00Z',
+      },
+      'mock-jwt-token-member': {
+        id: 2,
+        username: 'member',
+        email: 'member@example.com',
+        full_name: '팀원',
+        created_at: '2024-01-01T00:00:00Z',
+        updated_at: '2024-01-01T00:00:00Z',
+      },
+      'mock-jwt-token-new': {
+        id: 3,
+        username: 'newuser',
+        email: 'newuser@example.com',
+        full_name: '새 사용자',
+        created_at: '2024-01-01T00:00:00Z',
+        updated_at: '2024-01-01T00:00:00Z',
+      },
+      'mock-jwt-token-registered': {
+        id: 100,
+        username: 'registered',
+        email: 'registered@example.com',
+        full_name: '등록된 사용자',
+        created_at: '2024-01-01T00:00:00Z',
+        updated_at: '2024-01-01T00:00:00Z',
+      },
+    }
+
+    const user = tokenUsers[token as keyof typeof tokenUsers]
+
+    if (user) {
       return HttpResponse.json({
         success: true,
-        data: {
-          user: {
-            id: 1,
-            email: 'test@example.com',
-            name: '테스트 사용자',
-            phone: '010-1234-5678',
-            created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z',
-          },
-        },
+        data: { user },
       })
     }
 
@@ -140,22 +217,6 @@ export const authHandlers = [
         error: '토큰 갱신에 실패했습니다.',
       },
       { status: 401 }
-    )
-  }),
-
-  // 네트워크 오류 시뮬레이션
-  http.post(`${API_BASE_URL}/auth/network-error`, () => {
-    return HttpResponse.error()
-  }),
-
-  // 서버 오류 시뮬레이션
-  http.post(`${API_BASE_URL}/auth/server-error`, () => {
-    return HttpResponse.json(
-      {
-        success: false,
-        error: '서버 내부 오류',
-      },
-      { status: 500 }
     )
   }),
 ]

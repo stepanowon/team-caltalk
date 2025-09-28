@@ -2,6 +2,7 @@ import React from 'react'
 import { render, RenderOptions } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { vi } from 'vitest'
 
 // 테스트용 QueryClient 생성
 const createTestQueryClient = () =>
