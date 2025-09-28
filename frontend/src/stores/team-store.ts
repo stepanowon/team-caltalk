@@ -51,7 +51,7 @@ interface TeamState {
   setError: (error: string | null) => void
 }
 
-export const useTeamStore = create<TeamState>((set, get) => ({
+export const useTeamStore = create<TeamState>((set) => ({
   teams: [],
   currentTeam: null,
   teamMembers: [],

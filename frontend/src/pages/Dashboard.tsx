@@ -232,21 +232,56 @@ export const Dashboard = () => {
   }
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">대시보드</h1>
-        <div className="flex space-x-3">
+    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* 헤더 섹션 */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '2rem'
+      }}>
+        <h1 style={{
+          fontSize: '2rem',
+          fontWeight: 'bold',
+          color: '#1f2937',
+          margin: 0
+        }}>
+          대시보드
+        </h1>
+        <div style={{ display: 'flex', gap: '0.75rem' }}>
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
             disabled={isLoading}
+            style={{
+              padding: '0.5rem 1rem',
+              backgroundColor: '#2563eb',
+              color: 'white',
+              border: 'none',
+              borderRadius: '0.375rem',
+              cursor: 'pointer',
+              fontWeight: '500',
+              transition: 'background-color 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#1d4ed8'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = '#2563eb'}
           >
             팀 생성
           </button>
           <button
             onClick={() => setIsJoinModalOpen(true)}
-            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
             disabled={isLoading}
+            style={{
+              padding: '0.5rem 1rem',
+              backgroundColor: '#059669',
+              color: 'white',
+              border: 'none',
+              borderRadius: '0.375rem',
+              cursor: 'pointer',
+              fontWeight: '500',
+              transition: 'background-color 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = '#047857'}
+            onMouseLeave={(e) => e.target.style.backgroundColor = '#059669'}
           >
             팀 참여
           </button>
@@ -255,47 +290,209 @@ export const Dashboard = () => {
 
       {/* 성공 메시지 */}
       {successMessage && (
-        <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
+        <div style={{
+          marginBottom: '1rem',
+          padding: '1rem',
+          backgroundColor: '#dcfce7',
+          border: '1px solid #22c55e',
+          borderRadius: '0.375rem',
+          color: '#15803d'
+        }}>
           {successMessage}
         </div>
       )}
 
       {/* 에러 메시지 */}
       {error && (
-        <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+        <div style={{
+          marginBottom: '1rem',
+          padding: '1rem',
+          backgroundColor: '#fef2f2',
+          border: '1px solid #ef4444',
+          borderRadius: '0.375rem',
+          color: '#dc2626'
+        }}>
           {error}
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div className="card">
-          <h2 className="text-xl font-semibold mb-4">내 팀</h2>
+      {/* 카드 그리드 */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+        gap: '1.5rem',
+        marginTop: '1rem'
+      }}>
+        {/* 내 팀 카드 */}
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '0.75rem',
+          padding: '1.5rem',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+          border: '1px solid #e5e7eb',
+          minHeight: '300px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginBottom: '1rem',
+            gap: '0.5rem'
+          }}>
+            <span style={{ fontSize: '1.5rem' }}>👥</span>
+            <h2 style={{
+              fontSize: '1.25rem',
+              fontWeight: '600',
+              color: '#1f2937',
+              margin: 0
+            }}>
+              내 팀
+            </h2>
+          </div>
+
           {isLoading ? (
-            <p className="text-gray-600">로딩 중...</p>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '200px',
+              color: '#6b7280'
+            }}>
+              로딩 중...
+            </div>
           ) : teams.length > 0 ? (
-            <div className="space-y-2">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {teams.map((team) => (
                 <div
                   key={team.id}
-                  className="p-3 bg-gray-50 rounded-md hover:bg-gray-100 cursor-pointer"
+                  style={{
+                    padding: '0.75rem',
+                    backgroundColor: '#f9fafb',
+                    borderRadius: '0.5rem',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.2s',
+                    border: '1px solid #e5e7eb'
+                  }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = '#f3f4f6'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = '#f9fafb'}
                   onClick={() => {/* TODO: 팀 상세 페이지로 이동 */}}
                 >
-                  <h3 className="font-medium">{team.name}</h3>
-                  <p className="text-sm text-gray-600">{team.description}</p>
+                  <h3 style={{
+                    fontWeight: '500',
+                    color: '#1f2937',
+                    margin: '0 0 0.25rem 0'
+                  }}>
+                    {team.name}
+                  </h3>
+                  <p style={{
+                    fontSize: '0.875rem',
+                    color: '#6b7280',
+                    margin: 0
+                  }}>
+                    {team.description}
+                  </p>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-gray-600">가입한 팀이 없습니다.</p>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '200px',
+              color: '#6b7280',
+              textAlign: 'center'
+            }}>
+              <p style={{ margin: '0 0 1rem 0' }}>가입한 팀이 없습니다.</p>
+              <p style={{ fontSize: '0.875rem', margin: 0 }}>
+                팀을 생성하거나 초대 코드로 참여해보세요.
+              </p>
+            </div>
           )}
         </div>
-        <div className="card">
-          <h2 className="text-xl font-semibold mb-4">오늘 일정</h2>
-          <p className="text-gray-600">오늘 예정된 일정을 확인하세요.</p>
+
+        {/* 오늘 일정 카드 */}
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '0.75rem',
+          padding: '1.5rem',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+          border: '1px solid #e5e7eb',
+          minHeight: '300px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginBottom: '1rem',
+            gap: '0.5rem'
+          }}>
+            <span style={{ fontSize: '1.5rem' }}>📅</span>
+            <h2 style={{
+              fontSize: '1.25rem',
+              fontWeight: '600',
+              color: '#1f2937',
+              margin: 0
+            }}>
+              오늘 일정
+            </h2>
+          </div>
+
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '200px',
+            color: '#6b7280',
+            textAlign: 'center'
+          }}>
+            <p style={{ margin: '0 0 0.5rem 0' }}>오늘 예정된 일정을 확인하세요.</p>
+            <p style={{ fontSize: '0.875rem', margin: 0 }}>
+              팀에 참여하면 일정을 관리할 수 있습니다.
+            </p>
+          </div>
         </div>
-        <div className="card">
-          <h2 className="text-xl font-semibold mb-4">최근 메시지</h2>
-          <p className="text-gray-600">팀 채팅의 최근 메시지를 확인하세요.</p>
+
+        {/* 최근 메시지 카드 */}
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '0.75rem',
+          padding: '1.5rem',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+          border: '1px solid #e5e7eb',
+          minHeight: '300px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginBottom: '1rem',
+            gap: '0.5rem'
+          }}>
+            <span style={{ fontSize: '1.5rem' }}>💬</span>
+            <h2 style={{
+              fontSize: '1.25rem',
+              fontWeight: '600',
+              color: '#1f2937',
+              margin: 0
+            }}>
+              최근 메시지
+            </h2>
+          </div>
+
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '200px',
+            color: '#6b7280',
+            textAlign: 'center'
+          }}>
+            <p style={{ margin: '0 0 0.5rem 0' }}>팀 채팅의 최근 메시지를 확인하세요.</p>
+            <p style={{ fontSize: '0.875rem', margin: 0 }}>
+              팀에 참여하면 실시간 소통이 가능합니다.
+            </p>
+          </div>
         </div>
       </div>
 
