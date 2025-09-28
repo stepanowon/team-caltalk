@@ -6,7 +6,14 @@ import { ROUTES } from '@/utils/constants'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
 export const Login = () => {
   const [email, setEmail] = useState('')
@@ -25,11 +32,20 @@ export const Login = () => {
     try {
       const result = await AuthService.login({ email, password })
 
-      if (result.success && result.data) {
-        setAuth(result.data.user, result.data.token)
+      console.log('로그인 API 응답:', result)
+      if (result.success && result.data && result.data.tokens) {
+        console.log('토큰 데이터:', {
+          user: result.data.user?.email,
+          accessToken: result.data.tokens.accessToken ? `${result.data.tokens.accessToken.substring(0, 20)}...` : 'null',
+          refreshToken: result.data.tokens.refreshToken ? `${result.data.tokens.refreshToken.substring(0, 20)}...` : 'null'
+        })
+        setAuth(result.data.user, result.data.tokens.accessToken, result.data.tokens.refreshToken)
         navigate(ROUTES.DASHBOARD)
       } else {
-        setError(result.error || '로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.')
+        setError(
+          result.error ||
+            '로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.'
+        )
       }
     } catch (err) {
       setError('네트워크 오류가 발생했습니다.')
@@ -43,9 +59,7 @@ export const Login = () => {
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            로그인
-          </h1>
+          <h1 className="text-2xl font-semibold tracking-tight">로그인</h1>
           <p className="text-sm text-muted-foreground">
             이메일과 비밀번호를 입력하여 로그인하세요
           </p>
@@ -88,11 +102,7 @@ export const Login = () => {
                   disabled={isLoading}
                 />
               </div>
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isLoading}
-              >
+              <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? '로그인 중...' : '로그인'}
               </Button>
             </form>

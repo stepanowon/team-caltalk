@@ -251,8 +251,14 @@ export const teamHandlers = [
       user: {
         id: userId,
         username: userId === 2 ? 'member' : userId === 3 ? 'newuser' : 'user',
-        email: userId === 2 ? 'member@example.com' : userId === 3 ? 'newuser@example.com' : 'user@example.com',
-        full_name: userId === 2 ? '팀원' : userId === 3 ? '새 사용자' : '사용자',
+        email:
+          userId === 2
+            ? 'member@example.com'
+            : userId === 3
+              ? 'newuser@example.com'
+              : 'user@example.com',
+        full_name:
+          userId === 2 ? '팀원' : userId === 3 ? '새 사용자' : '사용자',
       },
     }
 

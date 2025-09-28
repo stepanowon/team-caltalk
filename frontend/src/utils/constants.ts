@@ -47,7 +47,10 @@ export const ROUTES = {
   REGISTER: '/register',
   DASHBOARD: '/dashboard',
   TEAMS: '/teams',
+  TEAMS_CREATE: '/teams/create',
+  TEAMS_JOIN: '/teams/join',
   TEAM_DETAIL: (id: number) => `/teams/${id}`,
+  CALENDAR: '/calendar',
   SCHEDULES: '/schedules',
   MESSAGES: '/messages',
 } as const

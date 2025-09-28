@@ -18,7 +18,7 @@ vi.mock('@/services/team-service', () => ({
     updateTeamMember: vi.fn(),
     removeTeamMember: vi.fn(),
     deleteTeam: vi.fn(),
-  }
+  },
 }))
 
 // 테스트용 QueryClient 생성
@@ -38,9 +38,7 @@ const createTestQueryClient = () =>
 // 래퍼 컴포넌트
 const createWrapper = (queryClient = createTestQueryClient()) => {
   return ({ children }: { children: React.ReactNode }) => (
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   )
 }
 
@@ -66,7 +64,7 @@ describe('useTeams', () => {
               description: '개발 업무를 담당하는 팀',
               invite_code: 'DEV001',
               created_at: '2024-01-01T00:00:00Z',
-              updated_at: '2024-01-01T00:00:00Z'
+              updated_at: '2024-01-01T00:00:00Z',
             },
             {
               id: 2,
@@ -74,10 +72,10 @@ describe('useTeams', () => {
               description: '마케팅 업무를 담당하는 팀',
               invite_code: 'MKT001',
               created_at: '2024-01-01T00:00:00Z',
-              updated_at: '2024-01-01T00:00:00Z'
-            }
-          ]
-        }
+              updated_at: '2024-01-01T00:00:00Z',
+            },
+          ],
+        },
       }
 
       vi.mocked(TeamService.getTeams).mockResolvedValue(mockTeamsResponse)
@@ -86,7 +84,7 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await waitFor(() => {
@@ -99,7 +97,7 @@ describe('useTeams', () => {
 
     it('토큰이 없으면 팀 목록을 조회하지 않아야 한다', () => {
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       // 토큰이 없으므로 쿼리가 비활성화되어야 함
@@ -110,7 +108,7 @@ describe('useTeams', () => {
     it('팀 목록 조회 실패 시 에러를 처리해야 한다', async () => {
       const mockErrorResponse = {
         success: false,
-        error: '팀 목록을 불러올 수 없습니다.'
+        error: '팀 목록을 불러올 수 없습니다.',
       }
 
       vi.mocked(TeamService.getTeams).mockResolvedValue(mockErrorResponse)
@@ -119,7 +117,7 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await waitFor(() => {
@@ -139,9 +137,9 @@ describe('useTeams', () => {
             description: '새로 생성된 팀',
             invite_code: 'NEW001',
             created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
-          }
-        }
+            updated_at: '2024-01-01T00:00:00Z',
+          },
+        },
       }
 
       vi.mocked(TeamService.createTeam).mockResolvedValue(mockCreateResponse)
@@ -150,12 +148,12 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       const teamData = {
         name: '새 팀',
-        description: '새로 생성된 팀'
+        description: '새로 생성된 팀',
       }
 
       await act(async () => {
@@ -163,13 +161,16 @@ describe('useTeams', () => {
       })
 
       expect(result.current.createTeam.isSuccess).toBe(true)
-      expect(TeamService.createTeam).toHaveBeenCalledWith(teamData, 'mock-jwt-token')
+      expect(TeamService.createTeam).toHaveBeenCalledWith(
+        teamData,
+        'mock-jwt-token'
+      )
     })
 
     it('팀 생성 실패 시 에러를 처리해야 한다', async () => {
       const mockErrorResponse = {
         success: false,
-        error: '이미 존재하는 팀명입니다.'
+        error: '이미 존재하는 팀명입니다.',
       }
 
       vi.mocked(TeamService.createTeam).mockResolvedValue(mockErrorResponse)
@@ -178,12 +179,12 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       const teamData = {
         name: '개발팀', // 중복된 팀명
-        description: '중복된 팀'
+        description: '중복된 팀',
       }
 
       await act(async () => {
@@ -199,12 +200,12 @@ describe('useTeams', () => {
 
     it('토큰이 없으면 팀 생성이 실패해야 한다', async () => {
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       const teamData = {
         name: '새 팀',
-        description: '새로 생성된 팀'
+        description: '새로 생성된 팀',
       }
 
       await act(async () => {
@@ -230,9 +231,9 @@ describe('useTeams', () => {
             description: '개발 업무를 담당하는 팀',
             invite_code: 'DEV001',
             created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
-          }
-        }
+            updated_at: '2024-01-01T00:00:00Z',
+          },
+        },
       }
 
       vi.mocked(TeamService.getTeam).mockResolvedValue(mockTeamResponse)
@@ -241,21 +242,23 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(1), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await waitFor(() => {
         expect(result.current.currentTeam.isSuccess).toBe(true)
       })
 
-      expect(result.current.currentTeam.data?.team).toEqual(mockTeamResponse.data.team)
+      expect(result.current.currentTeam.data?.team).toEqual(
+        mockTeamResponse.data.team
+      )
       expect(TeamService.getTeam).toHaveBeenCalledWith(1, 'mock-jwt-token')
     })
 
     it('존재하지 않는 팀 조회 시 에러를 처리해야 한다', async () => {
       const mockErrorResponse = {
         success: false,
-        error: '팀을 찾을 수 없습니다.'
+        error: '팀을 찾을 수 없습니다.',
       }
 
       vi.mocked(TeamService.getTeam).mockResolvedValue(mockErrorResponse)
@@ -264,7 +267,7 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(999), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await waitFor(() => {
@@ -289,8 +292,8 @@ describe('useTeams', () => {
                 id: 1,
                 email: 'leader@example.com',
                 name: '팀장',
-                phone: '010-1111-1111'
-              }
+                phone: '010-1111-1111',
+              },
             },
             {
               id: 2,
@@ -302,20 +305,22 @@ describe('useTeams', () => {
                 id: 2,
                 email: 'member@example.com',
                 name: '팀원',
-                phone: '010-2222-2222'
-              }
-            }
-          ]
-        }
+                phone: '010-2222-2222',
+              },
+            },
+          ],
+        },
       }
 
-      vi.mocked(TeamService.getTeamMembers).mockResolvedValue(mockMembersResponse)
+      vi.mocked(TeamService.getTeamMembers).mockResolvedValue(
+        mockMembersResponse
+      )
 
       // 토큰 설정
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(1), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await waitFor(() => {
@@ -323,7 +328,10 @@ describe('useTeams', () => {
       })
 
       expect(result.current.teamMembers.data?.members).toHaveLength(2)
-      expect(TeamService.getTeamMembers).toHaveBeenCalledWith(1, 'mock-jwt-token')
+      expect(TeamService.getTeamMembers).toHaveBeenCalledWith(
+        1,
+        'mock-jwt-token'
+      )
     })
   })
 
@@ -338,7 +346,7 @@ describe('useTeams', () => {
             description: '마케팅 업무를 담당하는 팀',
             invite_code: 'MKT001',
             created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
+            updated_at: '2024-01-01T00:00:00Z',
           },
           member: {
             id: 3,
@@ -350,10 +358,10 @@ describe('useTeams', () => {
               id: 1,
               email: 'test@example.com',
               name: '테스트 사용자',
-              phone: '010-1234-5678'
-            }
-          }
-        }
+              phone: '010-1234-5678',
+            },
+          },
+        },
       }
 
       vi.mocked(TeamService.joinTeam).mockResolvedValue(mockJoinResponse)
@@ -362,7 +370,7 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
@@ -370,13 +378,16 @@ describe('useTeams', () => {
       })
 
       expect(result.current.joinTeam.isSuccess).toBe(true)
-      expect(TeamService.joinTeam).toHaveBeenCalledWith('MKT001', 'mock-jwt-token')
+      expect(TeamService.joinTeam).toHaveBeenCalledWith(
+        'MKT001',
+        'mock-jwt-token'
+      )
     })
 
     it('유효하지 않은 초대 코드로 참여 시 에러를 처리해야 한다', async () => {
       const mockErrorResponse = {
         success: false,
-        error: '유효하지 않은 초대 코드입니다.'
+        error: '유효하지 않은 초대 코드입니다.',
       }
 
       vi.mocked(TeamService.joinTeam).mockResolvedValue(mockErrorResponse)
@@ -385,7 +396,7 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
@@ -415,25 +426,27 @@ describe('useTeams', () => {
               id: 2,
               email: 'member@example.com',
               name: '팀원',
-              phone: '010-2222-2222'
-            }
-          }
-        }
+              phone: '010-2222-2222',
+            },
+          },
+        },
       }
 
-      vi.mocked(TeamService.updateTeamMember).mockResolvedValue(mockUpdateResponse)
+      vi.mocked(TeamService.updateTeamMember).mockResolvedValue(
+        mockUpdateResponse
+      )
 
       // 토큰 설정
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(1), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
         await result.current.updateMemberRole.mutateAsync({
           memberId: 2,
-          role: 'leader'
+          role: 'leader',
         })
       })
 
@@ -449,16 +462,18 @@ describe('useTeams', () => {
     it('팀 멤버를 제거해야 한다', async () => {
       const mockRemoveResponse = {
         success: true,
-        message: '팀 멤버가 제거되었습니다.'
+        message: '팀 멤버가 제거되었습니다.',
       }
 
-      vi.mocked(TeamService.removeTeamMember).mockResolvedValue(mockRemoveResponse)
+      vi.mocked(TeamService.removeTeamMember).mockResolvedValue(
+        mockRemoveResponse
+      )
 
       // 토큰 설정
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(1), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
@@ -466,7 +481,11 @@ describe('useTeams', () => {
       })
 
       expect(result.current.removeMember.isSuccess).toBe(true)
-      expect(TeamService.removeTeamMember).toHaveBeenCalledWith(1, 2, 'mock-jwt-token')
+      expect(TeamService.removeTeamMember).toHaveBeenCalledWith(
+        1,
+        2,
+        'mock-jwt-token'
+      )
     })
   })
 
@@ -474,7 +493,7 @@ describe('useTeams', () => {
     it('팀을 성공적으로 삭제해야 한다', async () => {
       const mockDeleteResponse = {
         success: true,
-        message: '팀이 삭제되었습니다.'
+        message: '팀이 삭제되었습니다.',
       }
 
       vi.mocked(TeamService.deleteTeam).mockResolvedValue(mockDeleteResponse)
@@ -483,7 +502,7 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(1), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
@@ -497,7 +516,7 @@ describe('useTeams', () => {
     it('권한이 없는 사용자가 팀 삭제 시 에러를 처리해야 한다', async () => {
       const mockErrorResponse = {
         success: false,
-        error: '팀장만 팀을 삭제할 수 있습니다.'
+        error: '팀장만 팀을 삭제할 수 있습니다.',
       }
 
       vi.mocked(TeamService.deleteTeam).mockResolvedValue(mockErrorResponse)
@@ -506,7 +525,7 @@ describe('useTeams', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(1), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
@@ -532,9 +551,9 @@ describe('useTeams', () => {
             description: '새로 생성된 팀',
             invite_code: 'NEW001',
             created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
-          }
-        }
+            updated_at: '2024-01-01T00:00:00Z',
+          },
+        },
       }
 
       vi.mocked(TeamService.createTeam).mockResolvedValue(mockCreateResponse)
@@ -546,12 +565,12 @@ describe('useTeams', () => {
       const invalidateQueriesSpy = vi.spyOn(queryClient, 'invalidateQueries')
 
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper(queryClient)
+        wrapper: createWrapper(queryClient),
       })
 
       const teamData = {
         name: '새 팀',
-        description: '새로 생성된 팀'
+        description: '새로 생성된 팀',
       }
 
       await act(async () => {
@@ -559,7 +578,7 @@ describe('useTeams', () => {
       })
 
       expect(invalidateQueriesSpy).toHaveBeenCalledWith({
-        queryKey: ['teams']
+        queryKey: ['teams'],
       })
     })
 
@@ -577,13 +596,15 @@ describe('useTeams', () => {
               id: 2,
               email: 'member@example.com',
               name: '팀원',
-              phone: '010-2222-2222'
-            }
-          }
-        }
+              phone: '010-2222-2222',
+            },
+          },
+        },
       }
 
-      vi.mocked(TeamService.updateTeamMember).mockResolvedValue(mockUpdateResponse)
+      vi.mocked(TeamService.updateTeamMember).mockResolvedValue(
+        mockUpdateResponse
+      )
 
       // 토큰 설정
       useAuthStore.getState().setToken('mock-jwt-token')
@@ -592,18 +613,18 @@ describe('useTeams', () => {
       const invalidateQueriesSpy = vi.spyOn(queryClient, 'invalidateQueries')
 
       const { result } = renderHook(() => useTeams(1), {
-        wrapper: createWrapper(queryClient)
+        wrapper: createWrapper(queryClient),
       })
 
       await act(async () => {
         await result.current.updateMemberRole.mutateAsync({
           memberId: 2,
-          role: 'leader'
+          role: 'leader',
         })
       })
 
       expect(invalidateQueriesSpy).toHaveBeenCalledWith({
-        queryKey: ['team', 1, 'members']
+        queryKey: ['team', 1, 'members'],
       })
     })
   })
@@ -619,25 +640,28 @@ describe('useTeams', () => {
             description: '새로 생성된 팀',
             invite_code: 'NEW001',
             created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
-          }
-        }
+            updated_at: '2024-01-01T00:00:00Z',
+          },
+        },
       }
 
       vi.mocked(TeamService.createTeam).mockImplementation(
-        () => new Promise(resolve => setTimeout(() => resolve(mockCreateResponse), 100))
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => resolve(mockCreateResponse), 100)
+          )
       )
 
       // 토큰 설정
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useTeams(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       const teamData = {
         name: '새 팀',
-        description: '새로 생성된 팀'
+        description: '새로 생성된 팀',
       }
 
       act(() => {

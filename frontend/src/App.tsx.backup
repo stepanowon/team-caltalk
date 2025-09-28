@@ -12,10 +12,6 @@ import { Home } from '@/pages/Home'
 import { Login } from '@/pages/Login'
 import { Register } from '@/pages/Register'
 import { Dashboard } from '@/pages/Dashboard'
-import { Teams } from '@/pages/Teams'
-import { CreateTeam } from '@/pages/CreateTeam'
-import { JoinTeam } from '@/pages/JoinTeam'
-import { Calendar } from '@/pages/Calendar'
 import { ROUTES } from '@/utils/constants'
 import '@/styles/globals.css'
 
@@ -67,38 +63,6 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path={ROUTES.TEAMS}
-              element={
-                <ProtectedRoute>
-                  <Teams />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path={ROUTES.TEAMS_CREATE}
-              element={
-                <ProtectedRoute>
-                  <CreateTeam />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path={ROUTES.TEAMS_JOIN}
-              element={
-                <ProtectedRoute>
-                  <JoinTeam />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path={ROUTES.CALENDAR}
-              element={
-                <ProtectedRoute>
-                  <Calendar />
                 </ProtectedRoute>
               }
             />

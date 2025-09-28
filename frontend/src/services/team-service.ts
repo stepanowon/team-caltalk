@@ -29,7 +29,7 @@ export const TeamService = {
 
     try {
       const response = await api.get(API_ENDPOINTS.TEAMS.LIST, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       })
       return response.data
     } catch (error: any) {
@@ -43,14 +43,17 @@ export const TeamService = {
   /**
    * 팀 상세 조회
    */
-  async getTeam(teamId: number, token?: string): Promise<ApiResponse<{ team: Team }>> {
+  async getTeam(
+    teamId: number,
+    token?: string
+  ): Promise<ApiResponse<{ team: Team }>> {
     if (!token) {
       return { success: false, error: '인증이 필요합니다.' }
     }
 
     try {
       const response = await api.get(API_ENDPOINTS.TEAMS.DETAIL(teamId), {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       })
       return response.data
     } catch (error: any) {
@@ -64,14 +67,17 @@ export const TeamService = {
   /**
    * 팀 생성
    */
-  async createTeam(data: CreateTeamData, token?: string): Promise<ApiResponse<{ team: Team }>> {
+  async createTeam(
+    data: CreateTeamData,
+    token?: string
+  ): Promise<ApiResponse<{ team: Team }>> {
     if (!token) {
       return { success: false, error: '인증이 필요합니다.' }
     }
 
     try {
       const response = await api.post(API_ENDPOINTS.TEAMS.CREATE, data, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       })
       return response.data
     } catch (error: any) {
@@ -85,14 +91,17 @@ export const TeamService = {
   /**
    * 팀 멤버 목록 조회
    */
-  async getTeamMembers(teamId: number, token?: string): Promise<ApiResponse<{ members: TeamMember[] }>> {
+  async getTeamMembers(
+    teamId: number,
+    token?: string
+  ): Promise<ApiResponse<{ members: TeamMember[] }>> {
     if (!token) {
       return { success: false, error: '인증이 필요합니다.' }
     }
 
     try {
       const response = await api.get(API_ENDPOINTS.TEAMS.MEMBERS(teamId), {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       })
       return response.data
     } catch (error: any) {
@@ -106,15 +115,22 @@ export const TeamService = {
   /**
    * 초대 코드로 팀 참여
    */
-  async joinTeam(inviteCode: string, token?: string): Promise<ApiResponse<{ team: Team; member: TeamMember }>> {
+  async joinTeam(
+    inviteCode: string,
+    token?: string
+  ): Promise<ApiResponse<{ team: Team; member: TeamMember }>> {
     if (!token) {
       return { success: false, error: '인증이 필요합니다.' }
     }
 
     try {
-      const response = await api.post(API_ENDPOINTS.TEAMS.JOIN, { invite_code: inviteCode }, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      const response = await api.post(
+        API_ENDPOINTS.TEAMS.JOIN,
+        { inviteCode: inviteCode },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       return response.data
     } catch (error: any) {
       if (error.response?.data) {
@@ -138,9 +154,13 @@ export const TeamService = {
     }
 
     try {
-      const response = await api.patch(`${API_ENDPOINTS.TEAMS.MEMBERS(teamId)}/${memberId}`, data, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      const response = await api.patch(
+        `${API_ENDPOINTS.TEAMS.MEMBERS(teamId)}/${memberId}`,
+        data,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       return response.data
     } catch (error: any) {
       if (error.response?.data) {
@@ -163,9 +183,12 @@ export const TeamService = {
     }
 
     try {
-      const response = await api.delete(`${API_ENDPOINTS.TEAMS.MEMBERS(teamId)}/${memberId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
+      const response = await api.delete(
+        `${API_ENDPOINTS.TEAMS.MEMBERS(teamId)}/${memberId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       return response.data
     } catch (error: any) {
       if (error.response?.data) {
@@ -185,7 +208,7 @@ export const TeamService = {
 
     try {
       const response = await api.delete(API_ENDPOINTS.TEAMS.DETAIL(teamId), {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       })
       return response.data
     } catch (error: any) {

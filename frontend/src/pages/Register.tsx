@@ -5,7 +5,14 @@ import { ROUTES } from '@/utils/constants'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -64,9 +71,7 @@ export const Register = () => {
     <div className="container flex h-screen w-screen flex-col items-center justify-center">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">
         <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            회원가입
-          </h1>
+          <h1 className="text-2xl font-semibold tracking-tight">회원가입</h1>
           <p className="text-sm text-muted-foreground">
             Team CalTalk에 가입하여 팀 협업을 시작하세요
           </p>
@@ -151,11 +156,7 @@ export const Register = () => {
                   disabled={isLoading}
                 />
               </div>
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isLoading}
-              >
+              <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? '가입 중...' : '회원가입'}
               </Button>
             </form>

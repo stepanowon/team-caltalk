@@ -6,7 +6,7 @@ interface AuthState {
   user: User | null
   token: string | null
   isAuthenticated: boolean
-  setAuth: (user: User, token: string) => void
+  setAuth: (user: User, accessToken: string, refreshToken?: string) => void
   logout: () => void
 }
 
@@ -16,18 +16,28 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       isAuthenticated: false,
-      setAuth: (user, token) =>
+      setAuth: (user, accessToken, refreshToken) => {
+        // localStorage에도 토큰 직접 저장
+        localStorage.setItem('access_token', accessToken)
+        localStorage.setItem('refresh_token', refreshToken || accessToken)
+
         set({
           user,
-          token,
+          token: accessToken,
           isAuthenticated: true,
-        }),
-      logout: () =>
+        })
+      },
+      logout: () => {
+        // localStorage에서도 토큰 제거
+        localStorage.removeItem('access_token')
+        localStorage.removeItem('refresh_token')
+
         set({
           user: null,
           token: null,
           isAuthenticated: false,
-        }),
+        })
+      },
     }),
     {
       name: 'auth-storage',

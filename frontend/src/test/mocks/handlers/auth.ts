@@ -53,7 +53,9 @@ export const authHandlers = [
       },
     ]
 
-    const matchedUser = users.find((u) => u.email === email && u.password === password)
+    const matchedUser = users.find(
+      (u) => u.email === email && u.password === password
+    )
 
     if (matchedUser) {
       return HttpResponse.json({

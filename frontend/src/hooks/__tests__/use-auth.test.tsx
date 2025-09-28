@@ -16,7 +16,7 @@ vi.mock('@/services/auth-service', () => ({
     logout: vi.fn(),
     getCurrentUser: vi.fn(),
     refreshToken: vi.fn(),
-  }
+  },
 }))
 
 const API_BASE_URL = 'http://localhost:3000/api'
@@ -38,9 +38,7 @@ const createTestQueryClient = () =>
 // 래퍼 컴포넌트
 const createWrapper = (queryClient = createTestQueryClient()) => {
   return ({ children }: { children: React.ReactNode }) => (
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   )
 }
 
@@ -62,21 +60,21 @@ describe('useAuth', () => {
             name: '테스트 사용자',
             phone: '010-1234-5678',
             created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
+            updated_at: '2024-01-01T00:00:00Z',
           },
-          token: 'mock-jwt-token'
-        }
+          token: 'mock-jwt-token',
+        },
       }
 
       vi.mocked(AuthService.login).mockResolvedValue(mockLoginResponse)
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       const loginData = {
         email: 'test@example.com',
-        password: 'password123'
+        password: 'password123',
       }
 
       await act(async () => {
@@ -96,18 +94,18 @@ describe('useAuth', () => {
     it('로그인 실패 시 에러를 처리해야 한다', async () => {
       const mockErrorResponse = {
         success: false,
-        error: '이메일 또는 비밀번호가 올바르지 않습니다.'
+        error: '이메일 또는 비밀번호가 올바르지 않습니다.',
       }
 
       vi.mocked(AuthService.login).mockResolvedValue(mockErrorResponse)
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       const loginData = {
         email: 'wrong@example.com',
-        password: 'wrongpassword'
+        password: 'wrongpassword',
       }
 
       await act(async () => {
@@ -135,23 +133,26 @@ describe('useAuth', () => {
             name: '테스트 사용자',
             phone: '010-1234-5678',
             created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
+            updated_at: '2024-01-01T00:00:00Z',
           },
-          token: 'mock-jwt-token'
-        }
+          token: 'mock-jwt-token',
+        },
       }
 
       vi.mocked(AuthService.login).mockImplementation(
-        () => new Promise(resolve => setTimeout(() => resolve(mockLoginResponse), 100))
+        () =>
+          new Promise((resolve) =>
+            setTimeout(() => resolve(mockLoginResponse), 100)
+          )
       )
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       const loginData = {
         email: 'test@example.com',
-        password: 'password123'
+        password: 'password123',
       }
 
       act(() => {
@@ -180,23 +181,23 @@ describe('useAuth', () => {
             name: '새 사용자',
             phone: '010-9999-9999',
             created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
+            updated_at: '2024-01-01T00:00:00Z',
           },
-          token: 'mock-jwt-token-new'
-        }
+          token: 'mock-jwt-token-new',
+        },
       }
 
       vi.mocked(AuthService.register).mockResolvedValue(mockRegisterResponse)
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       const registerData = {
         email: 'new@example.com',
         password: 'password123',
         name: '새 사용자',
-        phone: '010-9999-9999'
+        phone: '010-9999-9999',
       }
 
       await act(async () => {
@@ -216,20 +217,20 @@ describe('useAuth', () => {
     it('이미 존재하는 이메일로 회원가입 시 에러를 처리해야 한다', async () => {
       const mockErrorResponse = {
         success: false,
-        error: '이미 사용 중인 이메일입니다.'
+        error: '이미 사용 중인 이메일입니다.',
       }
 
       vi.mocked(AuthService.register).mockResolvedValue(mockErrorResponse)
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       const registerData = {
         email: 'existing@example.com',
         password: 'password123',
         name: '기존 사용자',
-        phone: '010-8888-8888'
+        phone: '010-8888-8888',
       }
 
       await act(async () => {
@@ -252,7 +253,7 @@ describe('useAuth', () => {
     it('로그아웃이 스토어를 초기화해야 한다', async () => {
       const mockLogoutResponse = {
         success: true,
-        message: '로그아웃되었습니다.'
+        message: '로그아웃되었습니다.',
       }
 
       vi.mocked(AuthService.logout).mockResolvedValue(mockLogoutResponse)
@@ -264,12 +265,12 @@ describe('useAuth', () => {
         name: '테스트 사용자',
         phone: '010-1234-5678',
         created_at: '2024-01-01T00:00:00Z',
-        updated_at: '2024-01-01T00:00:00Z'
+        updated_at: '2024-01-01T00:00:00Z',
       })
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
@@ -287,7 +288,9 @@ describe('useAuth', () => {
     })
 
     it('로그아웃 실패 시에도 스토어를 초기화해야 한다', async () => {
-      vi.mocked(AuthService.logout).mockRejectedValue(new Error('로그아웃 실패'))
+      vi.mocked(AuthService.logout).mockRejectedValue(
+        new Error('로그아웃 실패')
+      )
 
       // 먼저 로그인된 상태로 설정
       useAuthStore.getState().setUser({
@@ -296,12 +299,12 @@ describe('useAuth', () => {
         name: '테스트 사용자',
         phone: '010-1234-5678',
         created_at: '2024-01-01T00:00:00Z',
-        updated_at: '2024-01-01T00:00:00Z'
+        updated_at: '2024-01-01T00:00:00Z',
       })
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
@@ -331,9 +334,9 @@ describe('useAuth', () => {
             name: '테스트 사용자',
             phone: '010-1234-5678',
             created_at: '2024-01-01T00:00:00Z',
-            updated_at: '2024-01-01T00:00:00Z'
-          }
-        }
+            updated_at: '2024-01-01T00:00:00Z',
+          },
+        },
       }
 
       vi.mocked(AuthService.getCurrentUser).mockResolvedValue(mockUserResponse)
@@ -342,25 +345,27 @@ describe('useAuth', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await waitFor(() => {
         expect(result.current.currentUser.isSuccess).toBe(true)
       })
 
-      expect(result.current.currentUser.data?.user).toEqual(mockUserResponse.data.user)
+      expect(result.current.currentUser.data?.user).toEqual(
+        mockUserResponse.data.user
+      )
       expect(AuthService.getCurrentUser).toHaveBeenCalledWith('mock-jwt-token')
     })
 
     it('토큰이 없으면 사용자 조회를 하지 않아야 한다', async () => {
       vi.mocked(AuthService.getCurrentUser).mockResolvedValue({
         success: false,
-        error: '인증이 필요합니다.'
+        error: '인증이 필요합니다.',
       })
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       // 토큰이 없으므로 쿼리가 비활성화되어야 함
@@ -371,7 +376,7 @@ describe('useAuth', () => {
     it('유효하지 않은 토큰 시 에러를 처리해야 한다', async () => {
       const mockErrorResponse = {
         success: false,
-        error: '유효하지 않은 토큰입니다.'
+        error: '유효하지 않은 토큰입니다.',
       }
 
       vi.mocked(AuthService.getCurrentUser).mockResolvedValue(mockErrorResponse)
@@ -380,7 +385,7 @@ describe('useAuth', () => {
       useAuthStore.getState().setToken('invalid-token')
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await waitFor(() => {
@@ -396,8 +401,8 @@ describe('useAuth', () => {
       const mockRefreshResponse = {
         success: true,
         data: {
-          token: 'mock-refreshed-jwt-token'
-        }
+          token: 'mock-refreshed-jwt-token',
+        },
       }
 
       vi.mocked(AuthService.refreshToken).mockResolvedValue(mockRefreshResponse)
@@ -406,7 +411,7 @@ describe('useAuth', () => {
       useAuthStore.getState().setToken('mock-jwt-token')
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
@@ -424,7 +429,7 @@ describe('useAuth', () => {
     it('토큰 갱신 실패 시 로그아웃을 수행해야 한다', async () => {
       const mockErrorResponse = {
         success: false,
-        error: '토큰 갱신에 실패했습니다.'
+        error: '토큰 갱신에 실패했습니다.',
       }
 
       vi.mocked(AuthService.refreshToken).mockResolvedValue(mockErrorResponse)
@@ -437,11 +442,11 @@ describe('useAuth', () => {
         name: '테스트 사용자',
         phone: '010-1234-5678',
         created_at: '2024-01-01T00:00:00Z',
-        updated_at: '2024-01-01T00:00:00Z'
+        updated_at: '2024-01-01T00:00:00Z',
       })
 
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       await act(async () => {
@@ -463,7 +468,7 @@ describe('useAuth', () => {
   describe('인증 상태 관리', () => {
     it('스토어의 인증 상태를 올바르게 반영해야 한다', () => {
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       // 초기 상태
@@ -478,7 +483,7 @@ describe('useAuth', () => {
           name: '테스트 사용자',
           phone: '010-1234-5678',
           created_at: '2024-01-01T00:00:00Z',
-          updated_at: '2024-01-01T00:00:00Z'
+          updated_at: '2024-01-01T00:00:00Z',
         })
         useAuthStore.getState().setToken('mock-jwt-token')
       })
@@ -489,7 +494,7 @@ describe('useAuth', () => {
 
     it('에러 상태를 올바르게 관리해야 한다', () => {
       const { result } = renderHook(() => useAuth(), {
-        wrapper: createWrapper()
+        wrapper: createWrapper(),
       })
 
       // 에러 설정
