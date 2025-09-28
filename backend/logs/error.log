@@ -80,3 +80,11 @@ Error: listen EADDRINUSE: address already in use ::1:3000
     at listenInCluster (node:net:1997:12)
     at GetAddrInfoReqWrap.callback (node:net:2206:7)
     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-28 16:56:39.367 [ERROR]: AuthService.login 오류: {
+  "email": "stepanowon@hotmail.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-28 16:56:39.368 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "stepanowon@hotmail.com"
+}
