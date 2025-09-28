@@ -7,6 +7,7 @@ require('express-async-errors');
 const config = require('./config/environment');
 const logger = require('./config/logger');
 const db = require('./config/database');
+const { specs, swaggerUi, swaggerUiOptions } = require('./config/swagger');
 
 const {
   securityHeaders,
@@ -78,6 +79,19 @@ const createApp = async () => {
     res.json(healthStatus);
   });
 
+  // Swagger API 문서 엔드포인트
+  if (config.api.documentation.enabled) {
+    app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs, swaggerUiOptions));
+
+    // Swagger JSON 스펙 제공
+    app.get('/api/docs.json', (req, res) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.send(specs);
+    });
+
+    logger.info(`Swagger UI 문서가 활성화되었습니다: http://${config.app.host}:${config.app.port}/api/docs`);
+  }
+
   // API 정보 엔드포인트
   app.get('/api', (req, res) => {
     res.json({
@@ -85,7 +99,10 @@ const createApp = async () => {
       version: config.app.version,
       environment: config.app.env,
       apiVersion: config.api.version,
-      documentation: config.api.documentation.enabled ? config.api.documentation.path : null,
+      documentation: config.api.documentation.enabled ? {
+        swagger: '/api/docs',
+        json: '/api/docs.json'
+      } : null,
       endpoints: {
         auth: '/api/auth',
         users: '/api/users',

@@ -13,9 +13,112 @@ const logger = require('../config/logger');
 const router = express.Router();
 
 /**
- * @route   POST /api/v1/auth/register
- * @desc    사용자 회원가입
- * @access  Public
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
+ *           format: int64
+ *           example: 1
+ *         email:
+ *           type: string
+ *           format: email
+ *           example: user@example.com
+ *         name:
+ *           type: string
+ *           example: 김개발
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           example: 2025-09-23T10:30:00Z
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *           example: 2025-09-23T10:30:00Z
+ *     AuthTokens:
+ *       type: object
+ *       properties:
+ *         accessToken:
+ *           type: string
+ *           example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+ *           description: JWT 액세스 토큰
+ *         refreshToken:
+ *           type: string
+ *           example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+ *           description: JWT 리프레시 토큰
+ *         expiresIn:
+ *           type: integer
+ *           example: 86400
+ *           description: 액세스 토큰 만료 시간 (초)
+ */
+
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     tags: [인증]
+ *     summary: 사용자 회원가입
+ *     description: 새로운 사용자 계정을 생성합니다
+ *     security: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [email, name, password]
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: user@example.com
+ *                 description: 사용자 이메일 주소
+ *               name:
+ *                 type: string
+ *                 minLength: 2
+ *                 maxLength: 30
+ *                 example: 김개발
+ *                 description: 사용자 이름
+ *               password:
+ *                 type: string
+ *                 minLength: 8
+ *                 pattern: '^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d@$!%*#?&]{8,}$'
+ *                 example: Password123!
+ *                 description: 비밀번호 (영문, 숫자 포함 8자 이상)
+ *     responses:
+ *       201:
+ *         description: 회원가입 성공
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: 회원가입이 완료되었습니다
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     user:
+ *                       $ref: '#/components/schemas/User'
+ *                     tokens:
+ *                       $ref: '#/components/schemas/AuthTokens'
+ *       400:
+ *         $ref: '#/components/responses/BadRequest'
+ *       409:
+ *         description: 이미 존재하는 이메일
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       429:
+ *         $ref: '#/components/responses/TooManyRequests'
  */
 router.post('/register', authRateLimit, validateUserRegistration, async (req, res) => {
   try {
@@ -46,8 +149,59 @@ router.post('/register', authRateLimit, validateUserRegistration, async (req, re
 });
 
 /**
- * @route   POST /api/v1/auth/login
- * @desc    사용자 로그인
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     tags: [인증]
+ *     summary: 사용자 로그인
+ *     description: 이메일과 비밀번호로 로그인하여 JWT 토큰을 발급받습니다
+ *     security: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [email, password]
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: user@example.com
+ *               password:
+ *                 type: string
+ *                 example: Password123!
+ *     responses:
+ *       200:
+ *         description: 로그인 성공
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: 로그인되었습니다
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     user:
+ *                       $ref: '#/components/schemas/User'
+ *                     tokens:
+ *                       $ref: '#/components/schemas/AuthTokens'
+ *       400:
+ *         $ref: '#/components/responses/BadRequest'
+ *       401:
+ *         description: 인증 실패
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *       429:
+ *         $ref: '#/components/responses/TooManyRequests'
  * @access  Public
  */
 router.post('/login', authRateLimit, validateUserLogin, async (req, res) => {

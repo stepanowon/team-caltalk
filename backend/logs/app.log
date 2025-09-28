@@ -722,3 +722,261 @@ Error: listen EADDRINUSE: address already in use ::1:3000
     at listenInCluster (node:net:1997:12)
     at GetAddrInfoReqWrap.callback (node:net:2206:7)
     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-28 09:57:58.507 [INFO]: EventService 초기화 완료
+2025-09-28 09:57:58.549 [INFO]: 서버 시작 중... {
+  "name": "Team CalTalk Backend",
+  "version": "1.0.0",
+  "environment": "development",
+  "port": 3000,
+  "host": "localhost"
+}
+2025-09-28 09:57:58.607 [INFO]: 새로운 PostgreSQL 클라이언트 연결됨
+2025-09-28 09:57:58.610 [INFO]: 데이터베이스 연결 테스트 성공: {
+  "time": "2025-09-28T00:57:58.609Z",
+  "version": "PostgreSQL 17.6"
+}
+2025-09-28 09:57:58.611 [INFO]: PostgreSQL 연결 풀 초기화 완료 {
+  "min": 2,
+  "max": 20,
+  "database": "team_caltalk"
+}
+2025-09-28 09:57:58.611 [INFO]: 데이터베이스 연결 완료
+2025-09-28 09:57:58.612 [INFO]: Express 애플리케이션 초기화 완료
+2025-09-28 09:57:58.615 [INFO]: 서버가 성공적으로 시작되었습니다 {
+  "url": "http://localhost:3000",
+  "environment": "development",
+  "processId": 10580,
+  "nodeVersion": "v24.7.0"
+}
+2025-09-28 09:58:13.920 [INFO]: SIGINT 신호 수신, 애플리케이션 종료 시작
+2025-09-28 10:02:30.542 [INFO]: EventService 초기화 완료
+2025-09-28 10:02:30.546 [INFO]: 서버 시작 중... {
+  "name": "Team CalTalk Backend",
+  "version": "1.0.0",
+  "environment": "development",
+  "port": 3000,
+  "host": "localhost"
+}
+2025-09-28 10:02:30.603 [INFO]: 새로운 PostgreSQL 클라이언트 연결됨
+2025-09-28 10:02:30.605 [INFO]: 데이터베이스 연결 테스트 성공: {
+  "time": "2025-09-28T01:02:30.608Z",
+  "version": "PostgreSQL 17.6"
+}
+2025-09-28 10:02:30.605 [INFO]: PostgreSQL 연결 풀 초기화 완료 {
+  "min": 2,
+  "max": 20,
+  "database": "team_caltalk"
+}
+2025-09-28 10:02:30.605 [INFO]: 데이터베이스 연결 완료
+2025-09-28 10:02:30.607 [INFO]: Swagger UI 문서가 활성화되었습니다: http://localhost:3000/api/docs
+2025-09-28 10:02:30.607 [INFO]: Express 애플리케이션 초기화 완료
+2025-09-28 10:02:30.609 [INFO]: 서버가 성공적으로 시작되었습니다 {
+  "url": "http://localhost:3000",
+  "environment": "development",
+  "processId": 22004,
+  "nodeVersion": "v24.7.0"
+}
+2025-09-28 10:02:38.263 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs",
+  "status": 301,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:38.277 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/",
+  "status": 200,
+  "duration": "10ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:38.297 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-init.js",
+  "status": 200,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:38.325 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui.css",
+  "status": 200,
+  "duration": "34ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:38.352 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-bundle.js",
+  "status": 200,
+  "duration": "61ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:38.390 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-standalone-preset.js",
+  "status": 200,
+  "duration": "95ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:38.651 [WARN]: 404 요청: {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-28 10:02:38.653 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "status": 404,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:43.343 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/",
+  "status": 304,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:43.350 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui.css",
+  "status": 304,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:43.351 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-bundle.js",
+  "status": 304,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:43.354 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-init.js",
+  "status": 304,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:02:43.355 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-standalone-preset.js",
+  "status": 304,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:06.619 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/",
+  "status": 304,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:06.626 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui.css",
+  "status": 304,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:06.627 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-bundle.js",
+  "status": 304,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:06.628 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-init.js",
+  "status": 304,
+  "duration": "0ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:06.629 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-standalone-preset.js",
+  "status": 304,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:07.379 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/",
+  "status": 304,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:07.386 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-init.js",
+  "status": 304,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:07.387 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui.css",
+  "status": 304,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:07.387 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-bundle.js",
+  "status": 304,
+  "duration": "4ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 10:03:07.387 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-standalone-preset.js",
+  "status": 304,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}

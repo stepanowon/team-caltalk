@@ -429,3 +429,18 @@ Error: listen EADDRINUSE: address already in use ::1:3000
     at listenInCluster (node:net:1997:12)
     at GetAddrInfoReqWrap.callback (node:net:2206:7)
     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-28 10:02:38.652 [WARN]: 404 요청: {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-09-28 10:02:38.653 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "status": 404,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
