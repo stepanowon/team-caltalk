@@ -1,0 +1,82 @@
+2025-09-27 22:20:14.930 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Sat Sep 27 2025 22:20:14 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 36120,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 84463616,
+      "heapTotal": 33800192,
+      "heapUsed": 21946320,
+      "external": 2429827,
+      "arrayBuffers": 19906
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 274827.578
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)

@@ -417,3 +417,15 @@
   "path": "/login",
   "method": "POST"
 }
+2025-09-27 22:20:14.930 [ERROR]: 처리되지 않은 예외: listen EADDRINUSE: address already in use ::1:3000 {
+  "code": "EADDRINUSE",
+  "errno": -4091,
+  "syscall": "listen",
+  "address": "::1",
+  "port": 3000
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)

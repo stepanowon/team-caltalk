@@ -678,3 +678,47 @@
   "path": "/login",
   "method": "POST"
 }
+2025-09-27 22:17:43.456 [INFO]: EventService 초기화 완료
+2025-09-27 22:17:44.062 [INFO]: 새로운 PostgreSQL 클라이언트 연결됨
+2025-09-27 22:17:44.065 [INFO]: 데이터베이스 연결 테스트 성공: {
+  "time": "2025-09-27T13:17:44.075Z",
+  "version": "PostgreSQL 17.6"
+}
+2025-09-27 22:17:44.065 [INFO]: PostgreSQL 연결 풀 초기화 완료 {
+  "min": 2,
+  "max": 20,
+  "database": "team_caltalk"
+}
+2025-09-27 22:17:47.542 [INFO]: 데이터베이스 연결 풀 종료됨
+2025-09-27 22:20:14.862 [INFO]: EventService 초기화 완료
+2025-09-27 22:20:14.865 [INFO]: 서버 시작 중... {
+  "name": "Team CalTalk Backend",
+  "version": "1.0.0",
+  "environment": "development",
+  "port": 3000,
+  "host": "localhost"
+}
+2025-09-27 22:20:14.924 [INFO]: 새로운 PostgreSQL 클라이언트 연결됨
+2025-09-27 22:20:14.926 [INFO]: 데이터베이스 연결 테스트 성공: {
+  "time": "2025-09-27T13:20:14.936Z",
+  "version": "PostgreSQL 17.6"
+}
+2025-09-27 22:20:14.927 [INFO]: PostgreSQL 연결 풀 초기화 완료 {
+  "min": 2,
+  "max": 20,
+  "database": "team_caltalk"
+}
+2025-09-27 22:20:14.927 [INFO]: 데이터베이스 연결 완료
+2025-09-27 22:20:14.928 [INFO]: Express 애플리케이션 초기화 완료
+2025-09-27 22:20:14.930 [ERROR]: 처리되지 않은 예외: listen EADDRINUSE: address already in use ::1:3000 {
+  "code": "EADDRINUSE",
+  "errno": -4091,
+  "syscall": "listen",
+  "address": "::1",
+  "port": 3000
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
