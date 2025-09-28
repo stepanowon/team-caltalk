@@ -87,7 +87,7 @@ export function useSchedules(): UseSchedulesReturn {
 
     try {
       const data = await apiCall<ScheduleWithParticipants[]>(
-        `/teams/${currentTeam.id}/schedules`
+        `/schedules?teamId=${currentTeam.id}`
       )
       setSchedules(data)
     } catch (err) {
@@ -109,12 +109,12 @@ export function useSchedules(): UseSchedulesReturn {
 
     try {
       const newSchedule = await apiCall<ScheduleWithParticipants>(
-        `/teams/${currentTeam.id}/schedules`,
+        `/schedules`,
         {
           method: 'POST',
           body: JSON.stringify({
             ...data,
-            team_id: currentTeam.id,
+            teamId: currentTeam.id,
           }),
         }
       )
@@ -139,7 +139,7 @@ export function useSchedules(): UseSchedulesReturn {
 
     try {
       const updatedSchedule = await apiCall<ScheduleWithParticipants>(
-        `/teams/${currentTeam.id}/schedules/${data.id}`,
+        `/schedules/${data.id}`,
         {
           method: 'PUT',
           body: JSON.stringify(data),
@@ -169,7 +169,7 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      await apiCall(`/teams/${currentTeam.id}/schedules/${scheduleId}`, {
+      await apiCall(`/schedules/${scheduleId}`, {
         method: 'DELETE',
       })
 
