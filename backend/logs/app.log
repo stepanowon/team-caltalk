@@ -980,3 +980,278 @@ Error: listen EADDRINUSE: address already in use ::1:3000
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
   "userId": "anonymous"
 }
+2025-09-28 16:13:11.927 [INFO]: EventService 초기화 완료
+2025-09-28 16:13:11.931 [INFO]: 서버 시작 중... {
+  "name": "Team CalTalk Backend",
+  "version": "1.0.0",
+  "environment": "development",
+  "port": 3000,
+  "host": "localhost"
+}
+2025-09-28 16:13:11.989 [INFO]: 새로운 PostgreSQL 클라이언트 연결됨
+2025-09-28 16:13:11.991 [INFO]: 데이터베이스 연결 테스트 성공: {
+  "time": "2025-09-28T07:13:12.002Z",
+  "version": "PostgreSQL 17.6"
+}
+2025-09-28 16:13:11.992 [INFO]: PostgreSQL 연결 풀 초기화 완료 {
+  "min": 2,
+  "max": 20,
+  "database": "team_caltalk"
+}
+2025-09-28 16:13:11.992 [INFO]: 데이터베이스 연결 완료
+2025-09-28 16:13:11.994 [INFO]: Swagger UI 문서가 활성화되었습니다: http://localhost:3000/api/docs
+2025-09-28 16:13:11.994 [INFO]: Express 애플리케이션 초기화 완료
+2025-09-28 16:13:11.997 [INFO]: 서버가 성공적으로 시작되었습니다 {
+  "url": "http://localhost:3000",
+  "environment": "development",
+  "processId": 26376,
+  "nodeVersion": "v24.7.0"
+}
+2025-09-28 16:32:26.545 [WARN]: 입력 검증 오류: {
+  "path": "/register",
+  "method": "POST",
+  "errors": [
+    {
+      "field": "name",
+      "message": "이름은 2-30자여야 합니다",
+      "value": ""
+    },
+    {
+      "field": "name",
+      "message": "이름에는 한글, 영문, 숫자, 공백만 사용할 수 있습니다",
+      "value": ""
+    }
+  ]
+}
+2025-09-28 16:32:26.548 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 16:32:58.122 [WARN]: 입력 검증 오류: {
+  "path": "/register",
+  "method": "POST",
+  "errors": [
+    {
+      "field": "name",
+      "message": "이름은 2-30자여야 합니다",
+      "value": ""
+    },
+    {
+      "field": "name",
+      "message": "이름에는 한글, 영문, 숫자, 공백만 사용할 수 있습니다",
+      "value": ""
+    }
+  ]
+}
+2025-09-28 16:32:58.123 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 16:35:50.459 [INFO]: PERFORMANCE {
+  "operation": "users.findWhere",
+  "duration": "4ms",
+  "conditions": {
+    "email": "stepanowon@hotmail.com"
+  },
+  "rowCount": 0,
+  "limit": 1,
+  "offset": 0
+}
+2025-09-28 16:35:50.460 [INFO]: PERFORMANCE {
+  "operation": "User.findByEmail",
+  "duration": "6ms",
+  "email": "stepanowon@hotmail.com",
+  "found": false
+}
+2025-09-28 16:35:50.649 [INFO]: PERFORMANCE {
+  "operation": "users.create",
+  "duration": "6ms",
+  "id": "102"
+}
+2025-09-28 16:35:50.649 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "102",
+  "data": {
+    "email": "stepanowon@hotmail.com",
+    "name": "원형섭",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-09-28 16:35:50.649 [INFO]: PERFORMANCE {
+  "operation": "User.createUser",
+  "duration": "195ms",
+  "userId": "102"
+}
+2025-09-28 16:35:50.650 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com",
+  "name": "원형섭"
+}
+2025-09-28 16:35:50.652 [INFO]: PERFORMANCE {
+  "operation": "AuthService.register",
+  "duration": "198ms",
+  "userId": "102"
+}
+2025-09-28 16:35:50.652 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:35:50.653 [INFO]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 201,
+  "duration": "198ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 16:36:07.186 [INFO]: PERFORMANCE {
+  "operation": "User.verifyPassword",
+  "duration": "193ms"
+}
+2025-09-28 16:36:07.187 [INFO]: PERFORMANCE {
+  "operation": "User.authenticate",
+  "duration": "195ms",
+  "userId": "102",
+  "success": true
+}
+2025-09-28 16:36:07.187 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:36:07.188 [INFO]: PERFORMANCE {
+  "operation": "AuthService.login",
+  "duration": "197ms",
+  "userId": "102"
+}
+2025-09-28 16:36:07.188 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:36:07.190 [INFO]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 200,
+  "duration": "198ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 16:50:45.709 [INFO]: PERFORMANCE {
+  "operation": "User.verifyPassword",
+  "duration": "195ms"
+}
+2025-09-28 16:50:45.709 [INFO]: PERFORMANCE {
+  "operation": "User.authenticate",
+  "duration": "197ms",
+  "userId": "102",
+  "success": true
+}
+2025-09-28 16:50:45.710 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:50:45.711 [INFO]: PERFORMANCE {
+  "operation": "AuthService.login",
+  "duration": "199ms",
+  "userId": "102"
+}
+2025-09-28 16:50:45.711 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:50:45.712 [INFO]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 200,
+  "duration": "200ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 16:56:39.366 [INFO]: PERFORMANCE {
+  "operation": "User.verifyPassword",
+  "duration": "273ms"
+}
+2025-09-28 16:56:39.367 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com",
+  "reason": "invalid_password"
+}
+2025-09-28 16:56:39.367 [ERROR]: AuthService.login 오류: {
+  "email": "stepanowon@hotmail.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-28 16:56:39.368 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:56:39.369 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "277ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 16:56:39.370 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-09-28 16:56:50.657 [INFO]: PERFORMANCE {
+  "operation": "User.verifyPassword",
+  "duration": "269ms"
+}
+2025-09-28 16:56:50.657 [INFO]: PERFORMANCE {
+  "operation": "User.authenticate",
+  "duration": "271ms",
+  "userId": "102",
+  "success": true
+}
+2025-09-28 16:56:50.658 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:56:50.658 [INFO]: PERFORMANCE {
+  "operation": "AuthService.login",
+  "duration": "272ms",
+  "userId": "102"
+}
+2025-09-28 16:56:50.659 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:56:50.660 [INFO]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 200,
+  "duration": "273ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}

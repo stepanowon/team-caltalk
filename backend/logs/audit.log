@@ -444,3 +444,135 @@ Error: listen EADDRINUSE: address already in use ::1:3000
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
   "userId": "anonymous"
 }
+2025-09-28 16:32:26.546 [WARN]: 입력 검증 오류: {
+  "path": "/register",
+  "method": "POST",
+  "errors": [
+    {
+      "field": "name",
+      "message": "이름은 2-30자여야 합니다",
+      "value": ""
+    },
+    {
+      "field": "name",
+      "message": "이름에는 한글, 영문, 숫자, 공백만 사용할 수 있습니다",
+      "value": ""
+    }
+  ]
+}
+2025-09-28 16:32:26.549 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 16:32:58.122 [WARN]: 입력 검증 오류: {
+  "path": "/register",
+  "method": "POST",
+  "errors": [
+    {
+      "field": "name",
+      "message": "이름은 2-30자여야 합니다",
+      "value": ""
+    },
+    {
+      "field": "name",
+      "message": "이름에는 한글, 영문, 숫자, 공백만 사용할 수 있습니다",
+      "value": ""
+    }
+  ]
+}
+2025-09-28 16:32:58.123 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 16:35:50.649 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "102",
+  "data": {
+    "email": "stepanowon@hotmail.com",
+    "name": "원형섭",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-09-28 16:35:50.650 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com",
+  "name": "원형섭"
+}
+2025-09-28 16:35:50.652 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:36:07.187 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:36:07.188 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:50:45.710 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:50:45.711 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:56:39.367 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com",
+  "reason": "invalid_password"
+}
+2025-09-28 16:56:39.367 [ERROR]: AuthService.login 오류: {
+  "email": "stepanowon@hotmail.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-09-28 16:56:39.368 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:56:39.369 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "277ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-09-28 16:56:39.370 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-09-28 16:56:50.658 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-09-28 16:56:50.659 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
