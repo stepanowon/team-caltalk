@@ -14,6 +14,118 @@ const logger = require('../config/logger');
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Schedule:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
+ *           format: int64
+ *           example: 1
+ *         title:
+ *           type: string
+ *           example: 주간 회의
+ *         content:
+ *           type: string
+ *           example: 주간 업무 진행 상황 및 계획 논의
+ *         startDatetime:
+ *           type: string
+ *           format: date-time
+ *           example: 2025-09-25T14:00:00Z
+ *         endDatetime:
+ *           type: string
+ *           format: date-time
+ *           example: 2025-09-25T15:00:00Z
+ *         scheduleType:
+ *           type: string
+ *           enum: [personal, team]
+ *           example: team
+ *         category:
+ *           type: string
+ *           enum: [meeting, deadline, personal, other]
+ *           example: meeting
+ *         priority:
+ *           type: string
+ *           enum: [high, medium, low]
+ *           example: medium
+ *         creatorId:
+ *           type: integer
+ *           format: int64
+ *           example: 1
+ *         teamId:
+ *           type: integer
+ *           format: int64
+ *           example: 1
+ *           nullable: true
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           example: 2025-09-23T10:30:00Z
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *           example: 2025-09-23T10:30:00Z
+ *     ScheduleParticipant:
+ *       type: object
+ *       properties:
+ *         userId:
+ *           type: integer
+ *           format: int64
+ *           example: 1
+ *         name:
+ *           type: string
+ *           example: 김개발
+ *         email:
+ *           type: string
+ *           format: email
+ *           example: user@example.com
+ *         response:
+ *           type: string
+ *           enum: [pending, accepted, declined]
+ *           example: accepted
+ *     ScheduleWithParticipants:
+ *       allOf:
+ *         - $ref: '#/components/schemas/Schedule'
+ *         - type: object
+ *           properties:
+ *             participants:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/ScheduleParticipant'
+ *     ScheduleConflict:
+ *       type: object
+ *       properties:
+ *         scheduleId:
+ *           type: integer
+ *           format: int64
+ *           example: 5
+ *         title:
+ *           type: string
+ *           example: 기존 회의
+ *         startDatetime:
+ *           type: string
+ *           format: date-time
+ *           example: 2025-09-25T14:30:00Z
+ *         endDatetime:
+ *           type: string
+ *           format: date-time
+ *           example: 2025-09-25T15:30:00Z
+ *         conflictingParticipants:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: integer
+ *                 example: 1
+ *               name:
+ *                 type: string
+ *                 example: 김개발
+ */
+
 // 모든 일정 라우트에 인증 및 Rate Limiting 적용
 router.use(authenticateToken);
 router.use(generalRateLimit);
@@ -150,9 +262,135 @@ const validateConflictCheck = [
 ];
 
 /**
- * @route   POST /api/schedules
- * @desc    새 일정 생성
- * @access  Private
+ * @swagger
+ * /api/schedules:
+ *   post:
+ *     tags: [일정]
+ *     summary: 새 일정 생성
+ *     description: 개인 또는 팀 일정을 생성합니다. 팀 일정의 경우 팀장만 생성 가능합니다
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [title, startDatetime, endDatetime, scheduleType]
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 minLength: 2
+ *                 maxLength: 100
+ *                 example: 주간 회의
+ *                 description: 일정 제목
+ *               content:
+ *                 type: string
+ *                 maxLength: 1000
+ *                 example: 주간 업무 진행 상황 및 계획 논의
+ *                 description: 일정 내용 (선택사항)
+ *               startDatetime:
+ *                 type: string
+ *                 format: date-time
+ *                 example: 2025-09-25T14:00:00Z
+ *                 description: 일정 시작 시간
+ *               endDatetime:
+ *                 type: string
+ *                 format: date-time
+ *                 example: 2025-09-25T15:00:00Z
+ *                 description: 일정 종료 시간
+ *               scheduleType:
+ *                 type: string
+ *                 enum: [personal, team]
+ *                 example: team
+ *                 description: 일정 유형
+ *               teamId:
+ *                 type: integer
+ *                 format: int64
+ *                 example: 1
+ *                 description: 팀 ID (팀 일정인 경우 필수)
+ *               participantIds:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *                   format: int64
+ *                 example: [1, 2, 3]
+ *                 description: 참가자 ID 목록
+ *               category:
+ *                 type: string
+ *                 enum: [meeting, deadline, personal, other]
+ *                 default: other
+ *                 example: meeting
+ *                 description: 일정 카테고리
+ *               priority:
+ *                 type: string
+ *                 enum: [high, medium, low]
+ *                 default: medium
+ *                 example: medium
+ *                 description: 일정 우선순위
+ *               recurrence:
+ *                 type: object
+ *                 description: 반복 설정 (선택사항)
+ *     responses:
+ *       201:
+ *         description: 일정 생성 성공
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: 일정이 생성되었습니다
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     schedule:
+ *                       $ref: '#/components/schemas/ScheduleWithParticipants'
+ *       400:
+ *         $ref: '#/components/responses/BadRequest'
+ *       401:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       403:
+ *         description: 권한 없음 (팀 멤버가 아니거나 팀장이 아님)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             examples:
+ *               not_team_member:
+ *                 summary: 팀 멤버가 아닌 경우
+ *                 value:
+ *                   success: false
+ *                   error: 팀의 멤버만 팀 일정을 생성할 수 있습니다
+ *                   code: NOT_TEAM_MEMBER
+ *               not_team_leader:
+ *                 summary: 팀장이 아닌 경우
+ *                 value:
+ *                   success: false
+ *                   error: 팀장만 팀 일정을 생성할 수 있습니다
+ *                   code: NOT_TEAM_LEADER
+ *       409:
+ *         description: 일정 충돌 발생
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 error:
+ *                   type: string
+ *                   example: 일정 충돌이 발생했습니다
+ *                 code:
+ *                   type: string
+ *                   example: SCHEDULE_CONFLICT
+ *                 conflicts:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/ScheduleConflict'
  */
 router.post('/', validateScheduleCreation, async (req, res) => {
   try {
@@ -246,9 +484,63 @@ router.post('/', validateScheduleCreation, async (req, res) => {
 });
 
 /**
- * @route   GET /api/schedules
- * @desc    일정 목록 조회
- * @access  Private
+ * @swagger
+ * /api/schedules:
+ *   get:
+ *     tags: [일정]
+ *     summary: 일정 목록 조회
+ *     description: 사용자의 개인 및 팀 일정 목록을 조회합니다. 다양한 필터 옵션을 지원합니다
+ *     parameters:
+ *       - $ref: '#/components/parameters/startDate'
+ *       - $ref: '#/components/parameters/endDate'
+ *       - name: teamId
+ *         in: query
+ *         schema:
+ *           type: integer
+ *           format: int64
+ *         description: 특정 팀의 일정만 필터링
+ *         example: 1
+ *       - name: scheduleType
+ *         in: query
+ *         schema:
+ *           type: string
+ *           enum: [personal, team]
+ *         description: 일정 유형으로 필터링
+ *         example: team
+ *     responses:
+ *       200:
+ *         description: 일정 목록 조회 성공
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     schedules:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/ScheduleWithParticipants'
+ *                     total:
+ *                       type: integer
+ *                       example: 15
+ *                       description: 전체 일정 수
+ *       401:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       403:
+ *         description: 팀 일정 조회 권한 없음
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               success: false
+ *               error: 팀의 멤버만 해당 팀 일정을 조회할 수 있습니다
+ *               code: NOT_TEAM_MEMBER
  */
 router.get('/', validateDateRange, async (req, res) => {
   try {
@@ -296,9 +588,44 @@ router.get('/', validateDateRange, async (req, res) => {
 });
 
 /**
- * @route   GET /api/schedules/:id
- * @desc    일정 상세 정보 조회
- * @access  Private
+ * @swagger
+ * /api/schedules/{scheduleId}:
+ *   get:
+ *     tags: [일정]
+ *     summary: 일정 상세 정보 조회
+ *     description: 특정 일정의 상세 정보와 참가자 목록을 조회합니다
+ *     parameters:
+ *       - $ref: '#/components/parameters/scheduleId'
+ *     responses:
+ *       200:
+ *         description: 일정 상세 조회 성공
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     schedule:
+ *                       $ref: '#/components/schemas/ScheduleWithParticipants'
+ *       401:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       403:
+ *         description: 일정 접근 권한 없음
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               success: false
+ *               error: 일정에 접근할 권한이 없습니다
+ *               code: NO_SCHEDULE_ACCESS
+ *       404:
+ *         $ref: '#/components/responses/NotFound'
  */
 router.get('/:id', validateId('id'), async (req, res) => {
   try {
@@ -345,9 +672,129 @@ router.get('/:id', validateId('id'), async (req, res) => {
 });
 
 /**
- * @route   PUT /api/schedules/:id
- * @desc    일정 수정
- * @access  Private
+ * @swagger
+ * /api/schedules/{scheduleId}:
+ *   put:
+ *     tags: [일정]
+ *     summary: 일정 수정
+ *     description: 일정 생성자나 팀장만 일정을 수정할 수 있습니다
+ *     parameters:
+ *       - $ref: '#/components/parameters/scheduleId'
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 minLength: 2
+ *                 maxLength: 100
+ *                 example: 수정된 주간 회의
+ *                 description: 새로운 일정 제목
+ *               content:
+ *                 type: string
+ *                 maxLength: 1000
+ *                 example: 수정된 주간 업무 논의 내용
+ *                 description: 새로운 일정 내용
+ *               startDatetime:
+ *                 type: string
+ *                 format: date-time
+ *                 example: 2025-09-25T15:00:00Z
+ *                 description: 새로운 시작 시간
+ *               endDatetime:
+ *                 type: string
+ *                 format: date-time
+ *                 example: 2025-09-25T16:00:00Z
+ *                 description: 새로운 종료 시간
+ *               participantIds:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *                   format: int64
+ *                 example: [1, 2, 4]
+ *                 description: 수정된 참가자 ID 목록
+ *               category:
+ *                 type: string
+ *                 enum: [meeting, deadline, personal, other]
+ *                 example: deadline
+ *                 description: 새로운 카테고리
+ *               priority:
+ *                 type: string
+ *                 enum: [high, medium, low]
+ *                 example: high
+ *                 description: 새로운 우선순위
+ *     responses:
+ *       200:
+ *         description: 일정 수정 성공
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: 일정이 수정되었습니다
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     schedule:
+ *                       $ref: '#/components/schemas/ScheduleWithParticipants'
+ *       400:
+ *         description: 잘못된 요청 데이터
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             examples:
+ *               invalid_time_range:
+ *                 summary: 잘못된 시간 범위
+ *                 value:
+ *                   success: false
+ *                   error: 종료 시간은 시작 시간보다 늦어야 합니다
+ *                   code: INVALID_TIME_RANGE
+ *               no_update_data:
+ *                 summary: 업데이트할 데이터 없음
+ *                 value:
+ *                   success: false
+ *                   error: 업데이트할 데이터가 없습니다
+ *                   code: NO_UPDATE_DATA
+ *       401:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       403:
+ *         description: 일정 수정 권한 없음
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               success: false
+ *               error: 일정을 수정할 권한이 없습니다
+ *               code: NO_EDIT_PERMISSION
+ *       409:
+ *         description: 일정 충돌 발생
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: false
+ *                 error:
+ *                   type: string
+ *                   example: 일정 충돌이 발생했습니다
+ *                 code:
+ *                   type: string
+ *                   example: SCHEDULE_CONFLICT
+ *                 conflicts:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/ScheduleConflict'
  */
 router.put('/:id', validateId('id'), validateScheduleUpdate, async (req, res) => {
   try {
@@ -432,9 +879,44 @@ router.put('/:id', validateId('id'), validateScheduleUpdate, async (req, res) =>
 });
 
 /**
- * @route   DELETE /api/schedules/:id
- * @desc    일정 삭제
- * @access  Private
+ * @swagger
+ * /api/schedules/{scheduleId}:
+ *   delete:
+ *     tags: [일정]
+ *     summary: 일정 삭제
+ *     description: 일정 생성자나 팀장만 일정을 삭제할 수 있습니다
+ *     parameters:
+ *       - $ref: '#/components/parameters/scheduleId'
+ *     responses:
+ *       200:
+ *         description: 일정 삭제 성공
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: 일정이 삭제되었습니다
+ *       401:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       403:
+ *         description: 일정 삭제 권한 없음
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               success: false
+ *               error: 일정을 삭제할 권한이 없습니다
+ *               code: NO_DELETE_PERMISSION
+ *       404:
+ *         $ref: '#/components/responses/NotFound'
+ *       500:
+ *         $ref: '#/components/responses/InternalServerError'
  */
 router.delete('/:id', validateId('id'), async (req, res) => {
   try {
@@ -479,9 +961,80 @@ router.delete('/:id', validateId('id'), async (req, res) => {
 });
 
 /**
- * @route   POST /api/schedules/check-conflict
- * @desc    일정 충돌 확인
- * @access  Private
+ * @swagger
+ * /api/schedules/check-conflict:
+ *   post:
+ *     tags: [일정]
+ *     summary: 일정 충돌 확인
+ *     description: 새로운 일정이나 기존 일정 수정 시 충돌 여부를 확인합니다
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [startDatetime, endDatetime, participantIds]
+ *             properties:
+ *               startDatetime:
+ *                 type: string
+ *                 format: date-time
+ *                 example: 2025-09-25T14:00:00Z
+ *                 description: 확인할 시작 시간
+ *               endDatetime:
+ *                 type: string
+ *                 format: date-time
+ *                 example: 2025-09-25T15:00:00Z
+ *                 description: 확인할 종료 시간
+ *               participantIds:
+ *                 type: array
+ *                 items:
+ *                   type: integer
+ *                   format: int64
+ *                 minItems: 1
+ *                 example: [1, 2, 3]
+ *                 description: 충돌 확인할 참가자 ID 목록
+ *               excludeScheduleId:
+ *                 type: integer
+ *                 format: int64
+ *                 example: 5
+ *                 description: 충돌 검사에서 제외할 일정 ID (수정 시 사용)
+ *     responses:
+ *       200:
+ *         description: 충돌 확인 결과
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                   example: true
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     hasConflict:
+ *                       type: boolean
+ *                       example: true
+ *                       description: 충돌 여부
+ *                     conflicts:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/ScheduleConflict'
+ *                       description: 충돌되는 일정 목록
+ *       400:
+ *         description: 잘못된 요청 데이터
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error'
+ *             example:
+ *               success: false
+ *               error: 참가자 목록에 본인이 포함되어야 합니다
+ *               code: SELF_NOT_INCLUDED
+ *       401:
+ *         $ref: '#/components/responses/Unauthorized'
+ *       500:
+ *         $ref: '#/components/responses/InternalServerError'
  */
 router.post('/check-conflict', validateConflictCheck, async (req, res) => {
   try {

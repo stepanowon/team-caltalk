@@ -327,15 +327,31 @@ const swaggerDefinition = {
   ],
 };
 
+const path = require('path');
+
 const options = {
   definition: swaggerDefinition,
   apis: [
-    './src/routes/*.js', // 라우터 파일들
-    './src/models/*.js', // 모델 파일들 (스키마 정의용)
+    path.join(__dirname, '../routes/auth.js'),
+    path.join(__dirname, '../routes/teams.js'),
+    path.join(__dirname, '../routes/schedules.js'),
+    path.join(__dirname, '../routes/chat.js'),
+    path.join(__dirname, '../routes/poll.js'),
+    path.join(__dirname, '../routes/users.js'),
   ],
 };
 
+// 디버깅을 위한 로그
+console.log('Swagger 파일 경로들:', options.apis);
+options.apis.forEach(api => {
+  console.log('파일 존재 확인:', api, require('fs').existsSync(api));
+});
+
 const specs = swaggerJSDoc(options);
+
+// 생성된 스펙 확인
+console.log('생성된 paths 개수:', Object.keys(specs.paths || {}).length);
+console.log('생성된 paths:', Object.keys(specs.paths || {}));
 
 /**
  * Swagger UI 옵션
