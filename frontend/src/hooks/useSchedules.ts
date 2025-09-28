@@ -154,8 +154,9 @@ export function useSchedules(): UseSchedulesReturn {
         setSchedules(prev =>
           prev.map(schedule =>
             schedule.id === data.id ? updatedSchedule : schedule
+          )
         )
-      )
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : '일정 수정에 실패했습니다.')
       throw err
