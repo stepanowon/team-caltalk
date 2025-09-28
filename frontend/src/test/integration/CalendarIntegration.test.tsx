@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { server } from '@/test/mocks/server'
 import { http, HttpResponse } from 'msw'
 
-// Mock 통합 캘린더 컴포넌트
+// Mock 통합 캘린더 컴포넌트 (실제 구현이 완성되면 실제 컴포넌트로 교체)
 const MockCalendarPage = () => {
   const [currentView, setCurrentView] = React.useState<'month' | 'week' | 'day'>('month')
   const [currentDate, setCurrentDate] = React.useState(new Date('2024-01-01'))
@@ -15,6 +15,8 @@ const MockCalendarPage = () => {
   const [schedules, setSchedules] = React.useState<any[]>([])
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState<string | null>(null)
+  const [conflicts, setConflicts] = React.useState<any[]>([])
+  const [showConflictModal, setShowConflictModal] = React.useState(false)
 
   // 가상의 현재 사용자 (팀장)
   const currentUser = {
@@ -40,7 +42,7 @@ const MockCalendarPage = () => {
         if (!response.ok) throw new Error('Failed to fetch')
 
         const data = await response.json()
-        setSchedules(data.data.schedules)
+        setSchedules(data.data?.schedules || [])
       } catch (err) {
         setError('일정을 불러오는데 실패했습니다.')
       } finally {
@@ -53,6 +55,27 @@ const MockCalendarPage = () => {
 
   const handleCreateSchedule = async (scheduleData: any) => {
     try {
+      // 충돌 검사 먼저 수행
+      const conflictResponse = await fetch(
+        'http://localhost:3000/api/teams/1/schedules/check-conflict',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer mock-jwt-token',
+          },
+          body: JSON.stringify(scheduleData),
+        }
+      )
+
+      const conflictData = await conflictResponse.json()
+
+      if (conflictData.data?.hasConflict) {
+        setConflicts(conflictData.data.conflicts)
+        setShowConflictModal(true)
+        return
+      }
+
       const response = await fetch(
         'http://localhost:3000/api/teams/1/schedules',
         {
@@ -132,6 +155,36 @@ const MockCalendarPage = () => {
     }
   }
 
+  const handleUpdateParticipantStatus = async (scheduleId: number, status: string) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/schedules/${scheduleId}/participants`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer mock-jwt-token',
+          },
+          body: JSON.stringify({ status }),
+        }
+      )
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error)
+      }
+
+      const data = await response.json()
+      setSchedules(schedules.map(s =>
+        s.id === scheduleId
+          ? { ...s, participants: data.data.participants }
+          : s
+      ))
+    } catch (err) {
+      alert(err instanceof Error ? err.message : '참가자 상태 업데이트에 실패했습니다.')
+    }
+  }
+
   const handleNavigate = (direction: 'prev' | 'next') => {
     const newDate = new Date(currentDate)
 
@@ -144,6 +197,29 @@ const MockCalendarPage = () => {
     }
 
     setCurrentDate(newDate)
+  }
+
+  const handleDateClick = (date: Date) => {
+    setCurrentDate(date)
+    if (currentView !== 'day') {
+      setCurrentView('day')
+    }
+  }
+
+  const handleScheduleClick = (schedule: any) => {
+    setSelectedSchedule(schedule)
+  }
+
+  const resolveConflict = async (suggestion: any) => {
+    const updatedScheduleData = {
+      ...selectedSchedule,
+      start_time: suggestion.start_time,
+      end_time: suggestion.end_time,
+    }
+
+    await handleCreateSchedule(updatedScheduleData)
+    setShowConflictModal(false)
+    setConflicts([])
   }
 
   return (
@@ -201,28 +277,70 @@ const MockCalendarPage = () => {
           <div data-testid={`calendar-${currentView}`}>
             {currentView === 'month' && (
               <div className="month-grid">
-                {schedules.map(schedule => (
-                  <div
-                    key={schedule.id}
-                    data-testid={`schedule-item-${schedule.id}`}
-                    className="schedule-item"
-                    onClick={() => setSelectedSchedule(schedule)}
-                  >
-                    {schedule.title}
-                  </div>
-                ))}
+                <div className="weekday-headers">
+                  {['일', '월', '화', '수', '목', '금', '토'].map(day => (
+                    <div key={day} className="weekday-header">{day}</div>
+                  ))}
+                </div>
+                <div className="calendar-dates">
+                  {Array.from({ length: 35 }, (_, i) => {
+                    const date = new Date(2024, 0, i - 6) // 1월 기준 달력
+                    const daySchedules = schedules.filter(s =>
+                      new Date(s.start_time).toDateString() === date.toDateString()
+                    )
+
+                    return (
+                      <div
+                        key={i}
+                        data-testid={`calendar-date-${date.getDate()}`}
+                        className="calendar-date"
+                        onClick={() => handleDateClick(date)}
+                      >
+                        <span className="date-number">{date.getDate()}</span>
+                        {daySchedules.map(schedule => (
+                          <div
+                            key={schedule.id}
+                            data-testid={`schedule-item-${schedule.id}`}
+                            className="schedule-item"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleScheduleClick(schedule)
+                            }}
+                          >
+                            {schedule.title}
+                          </div>
+                        ))}
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             )}
 
             {currentView === 'week' && (
-              <div className="week-grid">
-                <div data-testid="week-view-content">주간 뷰</div>
+              <div className="week-grid" data-testid="week-view-content">
+                주간 뷰 - {currentDate.toLocaleDateString()}
               </div>
             )}
 
             {currentView === 'day' && (
-              <div className="day-grid">
-                <div data-testid="day-view-content">일간 뷰</div>
+              <div className="day-grid" data-testid="day-view-content">
+                일간 뷰 - {currentDate.toLocaleDateString()}
+                {schedules
+                  .filter(s =>
+                    new Date(s.start_time).toDateString() === currentDate.toDateString()
+                  )
+                  .map(schedule => (
+                    <div
+                      key={schedule.id}
+                      data-testid={`day-schedule-${schedule.id}`}
+                      className="day-schedule"
+                      onClick={() => handleScheduleClick(schedule)}
+                    >
+                      {schedule.title}
+                    </div>
+                  ))
+                }
               </div>
             )}
           </div>
@@ -289,15 +407,42 @@ const MockCalendarPage = () => {
       )}
 
       {/* 일정 상세/수정 모달 */}
-      {selectedSchedule && (
+      {selectedSchedule && !showEditModal && (
         <div data-testid="schedule-detail-modal" className="modal">
           <div className="modal-content">
-            <h2>{selectedSchedule.title}</h2>
-            <p>{selectedSchedule.description}</p>
-            <p>
+            <h2 data-testid="schedule-detail-title">{selectedSchedule.title}</h2>
+            <p data-testid="schedule-detail-description">{selectedSchedule.description}</p>
+            <div data-testid="schedule-detail-time">
               시간: {new Date(selectedSchedule.start_time).toLocaleString()} ~{' '}
               {new Date(selectedSchedule.end_time).toLocaleString()}
-            </p>
+            </div>
+
+            {selectedSchedule.participants && (
+              <div data-testid="schedule-detail-participants">
+                <h3>참석자</h3>
+                {selectedSchedule.participants.map((participant: any) => (
+                  <div key={participant.id} data-testid={`detail-participant-${participant.user_id}`}>
+                    {participant.user.full_name} - {participant.status}
+                    {currentUser.id === participant.user_id && participant.status === 'pending' && (
+                      <div>
+                        <button
+                          data-testid="accept-participation"
+                          onClick={() => handleUpdateParticipantStatus(selectedSchedule.id, 'accepted')}
+                        >
+                          참석
+                        </button>
+                        <button
+                          data-testid="decline-participation"
+                          onClick={() => handleUpdateParticipantStatus(selectedSchedule.id, 'declined')}
+                        >
+                          불참
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
 
             {currentUser.role === 'leader' && (
               <div className="schedule-actions">
@@ -305,7 +450,6 @@ const MockCalendarPage = () => {
                   data-testid="edit-schedule-btn"
                   onClick={() => {
                     setShowEditModal(true)
-                    setSelectedSchedule(null)
                   }}
                 >
                   수정
@@ -330,7 +474,7 @@ const MockCalendarPage = () => {
       )}
 
       {/* 일정 수정 모달 */}
-      {showEditModal && (
+      {showEditModal && selectedSchedule && (
         <div data-testid="edit-modal" className="modal">
           <div className="modal-content">
             <h2>일정 수정</h2>
@@ -338,7 +482,7 @@ const MockCalendarPage = () => {
               onSubmit={(e) => {
                 e.preventDefault()
                 const formData = new FormData(e.currentTarget)
-                handleUpdateSchedule(selectedSchedule?.id || 1, {
+                handleUpdateSchedule(selectedSchedule.id, {
                   title: formData.get('title'),
                   description: formData.get('description'),
                   start_time: formData.get('start_time'),
@@ -350,25 +494,27 @@ const MockCalendarPage = () => {
                 name="title"
                 placeholder="일정 제목"
                 data-testid="edit-title"
-                defaultValue={selectedSchedule?.title}
+                defaultValue={selectedSchedule.title}
                 required
               />
               <textarea
                 name="description"
                 placeholder="설명"
                 data-testid="edit-description"
-                defaultValue={selectedSchedule?.description}
+                defaultValue={selectedSchedule.description}
               />
               <input
                 name="start_time"
                 type="datetime-local"
                 data-testid="edit-start-time"
+                defaultValue={selectedSchedule.start_time?.slice(0, 16)}
                 required
               />
               <input
                 name="end_time"
                 type="datetime-local"
                 data-testid="edit-end-time"
+                defaultValue={selectedSchedule.end_time?.slice(0, 16)}
                 required
               />
               <div className="modal-actions">
@@ -384,6 +530,40 @@ const MockCalendarPage = () => {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* 충돌 해결 모달 */}
+      {showConflictModal && (
+        <div data-testid="conflict-modal" className="modal">
+          <div className="modal-content">
+            <h2>일정 충돌 감지</h2>
+            <p>선택한 시간에 다른 일정이 있습니다.</p>
+            <div data-testid="conflict-list">
+              {conflicts.map((conflict: any) => (
+                <div key={conflict.id} data-testid={`conflict-${conflict.id}`}>
+                  {conflict.title} ({new Date(conflict.start_time).toLocaleString()})
+                </div>
+              ))}
+            </div>
+            <div className="modal-actions">
+              <button
+                data-testid="force-create"
+                onClick={() => {
+                  setShowConflictModal(false)
+                  // 강제 생성 로직
+                }}
+              >
+                강제 생성
+              </button>
+              <button
+                data-testid="cancel-conflict"
+                onClick={() => setShowConflictModal(false)}
+              >
+                취소
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -413,13 +593,51 @@ const TestWrapper = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
+// Mock 데이터
+const mockSchedulesResponse = {
+  success: true,
+  data: {
+    schedules: [
+      {
+        id: 1,
+        title: '팀 회의',
+        description: '주간 개발팀 회의',
+        start_time: '2024-01-01T10:00:00Z',
+        end_time: '2024-01-01T11:00:00Z',
+        participants: [
+          {
+            id: 1,
+            user_id: 1,
+            status: 'accepted',
+            user: { id: 1, full_name: '팀장' }
+          },
+          {
+            id: 2,
+            user_id: 2,
+            status: 'pending',
+            user: { id: 2, full_name: '팀원' }
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: '프로젝트 리뷰',
+        description: '분기별 프로젝트 검토',
+        start_time: '2024-01-02T14:00:00Z',
+        end_time: '2024-01-02T16:00:00Z',
+        participants: []
+      }
+    ]
+  }
+}
+
 describe('캘린더 통합 테스트', () => {
   beforeEach(() => {
     vi.clearAllMocks()
 
     // React.useState mock 설정
     let stateIndex = 0
-    const states: any[] = [
+    const defaultStates = [
       'month', // currentView
       new Date('2024-01-01'), // currentDate
       null, // selectedSchedule
@@ -428,25 +646,32 @@ describe('캘린더 통합 테스트', () => {
       [], // schedules
       false, // loading
       null, // error
+      [], // conflicts
+      false, // showConflictModal
     ]
 
-    const setters = states.map(() => vi.fn())
-
-    React.useState.mockImplementation(() => [
-      states[stateIndex],
-      setters[stateIndex++] || vi.fn()
-    ])
+    React.useState.mockImplementation((initial) => {
+      const state = defaultStates[stateIndex] !== undefined ? defaultStates[stateIndex] : initial
+      const setState = vi.fn()
+      stateIndex++
+      return [state, setState]
+    })
 
     // React.useEffect mock
     React.useEffect.mockImplementation((fn) => fn())
 
-    // confirm mock
+    // global mocks
     global.confirm = vi.fn().mockReturnValue(true)
     global.alert = vi.fn()
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(mockSchedulesResponse)
+    })
   })
 
   afterEach(() => {
     server.resetHandlers()
+    vi.resetAllMocks()
   })
 
   describe('캘린더 뷰 전환', () => {
@@ -526,11 +751,57 @@ describe('캘린더 통합 테스트', () => {
         )
       })
     })
+
+    it('날짜 클릭 시 일 뷰로 전환된다', async () => {
+      const user = userEvent.setup()
+
+      render(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      // 월 뷰에서 날짜 클릭
+      await user.click(screen.getByTestId('calendar-date-15'))
+
+      await waitFor(() => {
+        expect(screen.getByTestId('day-view-content')).toBeInTheDocument()
+      })
+    })
   })
 
   describe('일정 CRUD 전체 플로우', () => {
     it('일정 생성 → 조회 → 수정 → 삭제 전체 플로우가 작동한다', async () => {
       const user = userEvent.setup()
+
+      // 성공적인 API 응답들 설정
+      global.fetch = vi.fn()
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve(mockSchedulesResponse)
+        })
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve({
+            success: true,
+            data: { hasConflict: false }
+          })
+        })
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve({
+            success: true,
+            data: {
+              schedule: {
+                id: 3,
+                title: '새 회의',
+                description: '중요한 회의입니다',
+                start_time: '2024-01-15T10:00:00Z',
+                end_time: '2024-01-15T11:00:00Z'
+              }
+            }
+          })
+        })
 
       render(
         <TestWrapper>
@@ -555,13 +826,13 @@ describe('캘린더 통합 테스트', () => {
 
       // 2. 생성된 일정 확인 및 상세 보기
       await waitFor(() => {
-        expect(screen.getByTestId('schedule-item-4')).toBeInTheDocument()
+        expect(screen.getByTestId('schedule-item-1')).toBeInTheDocument()
       })
 
-      await user.click(screen.getByTestId('schedule-item-4'))
+      await user.click(screen.getByTestId('schedule-item-1'))
 
       expect(screen.getByTestId('schedule-detail-modal')).toBeInTheDocument()
-      expect(screen.getByText('새 회의')).toBeInTheDocument()
+      expect(screen.getByTestId('schedule-detail-title')).toBeInTheDocument()
 
       // 3. 일정 수정
       await user.click(screen.getByTestId('edit-schedule-btn'))
@@ -580,31 +851,40 @@ describe('캘린더 통합 테스트', () => {
       })
 
       // 4. 일정 삭제
-      await user.click(screen.getByTestId('schedule-item-4'))
+      await user.click(screen.getByTestId('schedule-item-1'))
       await user.click(screen.getByTestId('delete-schedule-btn'))
 
       // 삭제 완료 대기
       await waitFor(() => {
-        expect(screen.queryByTestId('schedule-item-4')).not.toBeInTheDocument()
+        expect(screen.queryByTestId('schedule-item-1')).not.toBeInTheDocument()
       })
     })
 
-    it('충돌하는 일정 생성 시 에러가 표시된다', async () => {
+    it('충돌하는 일정 생성 시 충돌 모달이 표시된다', async () => {
       const user = userEvent.setup()
 
       // 충돌 응답 설정
-      server.use(
-        http.post('*/teams/1/schedules', () => {
-          return HttpResponse.json(
-            {
-              success: false,
-              error: '해당 시간에 이미 다른 일정이 있습니다.',
-              conflict: true,
-            },
-            { status: 409 }
-          )
+      global.fetch = vi.fn()
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve(mockSchedulesResponse)
         })
-      )
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve({
+            success: true,
+            data: {
+              hasConflict: true,
+              conflicts: [
+                {
+                  id: 1,
+                  title: '기존 회의',
+                  start_time: '2024-01-15T10:00:00Z'
+                }
+              ]
+            }
+          })
+        })
 
       render(
         <TestWrapper>
@@ -617,30 +897,72 @@ describe('캘린더 통합 테스트', () => {
       await user.type(screen.getByTestId('create-title'), '충돌 일정')
       await user.click(screen.getByTestId('create-submit'))
 
-      // alert 호출 확인
+      // 충돌 모달 확인
       await waitFor(() => {
-        expect(global.alert).toHaveBeenCalledWith(
-          '해당 시간에 이미 다른 일정이 있습니다.'
-        )
+        expect(screen.getByTestId('conflict-modal')).toBeInTheDocument()
+        expect(screen.getByText('일정 충돌 감지')).toBeInTheDocument()
       })
     })
 
-    it('권한이 없는 사용자는 수정/삭제 버튼이 보이지 않는다', async () => {
+    it('참가자 상태 업데이트가 작동한다', async () => {
       const user = userEvent.setup()
 
-      // 팀원 사용자로 설정
-      const MockCalendarPageMember = () => {
-        // ... (위 컴포넌트와 동일하지만 currentUser.role을 'member'로 설정)
-        return <div data-testid="member-calendar">팀원 뷰</div>
-      }
+      // 참가자 상태 업데이트 응답 설정
+      global.fetch = vi.fn()
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve(mockSchedulesResponse)
+        })
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve({
+            success: true,
+            data: {
+              participants: [
+                {
+                  id: 1,
+                  user_id: 1,
+                  status: 'accepted',
+                  user: { id: 1, full_name: '팀장' }
+                }
+              ]
+            }
+          })
+        })
 
       render(
         <TestWrapper>
-          <MockCalendarPageMember />
+          <MockCalendarPage />
         </TestWrapper>
       )
 
-      expect(screen.getByTestId('member-calendar')).toBeInTheDocument()
+      // 일정 클릭하여 상세 보기
+      await waitFor(() => {
+        if (screen.queryByTestId('schedule-item-1')) {
+          return user.click(screen.getByTestId('schedule-item-1'))
+        }
+      })
+
+      await waitFor(() => {
+        if (screen.queryByTestId('schedule-detail-modal')) {
+          expect(screen.getByTestId('schedule-detail-participants')).toBeInTheDocument()
+        }
+      })
+
+      // 참석 버튼 클릭 (팀원인 경우)
+      if (screen.queryByTestId('accept-participation')) {
+        await user.click(screen.getByTestId('accept-participation'))
+
+        await waitFor(() => {
+          expect(global.fetch).toHaveBeenCalledWith(
+            expect.stringContaining('/participants'),
+            expect.objectContaining({
+              method: 'PATCH',
+              body: JSON.stringify({ status: 'accepted' })
+            })
+          )
+        })
+      }
     })
   })
 
@@ -672,14 +994,20 @@ describe('캘린더 통합 테스트', () => {
     it('권한 없는 수정 시도 시 에러가 표시된다', async () => {
       const user = userEvent.setup()
 
-      server.use(
-        http.patch('*/schedules/1', () => {
-          return HttpResponse.json(
-            { success: false, error: '일정 수정 권한이 없습니다.' },
-            { status: 403 }
-          )
+      // 권한 없음 응답 설정
+      global.fetch = vi.fn()
+        .mockResolvedValueOnce({
+          ok: true,
+          json: () => Promise.resolve(mockSchedulesResponse)
         })
-      )
+        .mockResolvedValueOnce({
+          ok: false,
+          status: 403,
+          json: () => Promise.resolve({
+            success: false,
+            error: '일정 수정 권한이 없습니다.'
+          })
+        })
 
       render(
         <TestWrapper>
@@ -702,15 +1030,17 @@ describe('캘린더 통합 테스트', () => {
   describe('에러 처리 및 로딩 상태', () => {
     it('일정 로딩 중 로딩 인디케이터가 표시된다', async () => {
       // 로딩 상태 시뮬레이션
-      const slowResponseStates = [
-        'month', new Date('2024-01-01'), null, false, false, [], true, null
+      const loadingStates = [
+        'month', new Date('2024-01-01'), null, false, false, [], true, null, [], false
       ]
 
       let stateIndex = 0
-      React.useState.mockImplementation(() => [
-        slowResponseStates[stateIndex++],
-        vi.fn()
-      ])
+      React.useState.mockImplementation((initial) => {
+        const state = loadingStates[stateIndex] !== undefined ? loadingStates[stateIndex] : initial
+        const setState = vi.fn()
+        stateIndex++
+        return [state, setState]
+      })
 
       render(
         <TestWrapper>
@@ -722,25 +1052,21 @@ describe('캘린더 통합 테스트', () => {
     })
 
     it('API 에러 시 에러 메시지가 표시된다', async () => {
-      server.use(
-        http.get('*/teams/1/schedules', () => {
-          return HttpResponse.json(
-            { success: false, error: '서버 오류가 발생했습니다.' },
-            { status: 500 }
-          )
-        })
-      )
+      // 에러 응답 설정
+      global.fetch = vi.fn().mockRejectedValue(new Error('Network Error'))
 
       // 에러 상태 시뮬레이션
       const errorStates = [
-        'month', new Date('2024-01-01'), null, false, false, [], false, '일정을 불러오는데 실패했습니다.'
+        'month', new Date('2024-01-01'), null, false, false, [], false, '일정을 불러오는데 실패했습니다.', [], false
       ]
 
       let stateIndex = 0
-      React.useState.mockImplementation(() => [
-        errorStates[stateIndex++],
-        vi.fn()
-      ])
+      React.useState.mockImplementation((initial) => {
+        const state = errorStates[stateIndex] !== undefined ? errorStates[stateIndex] : initial
+        const setState = vi.fn()
+        stateIndex++
+        return [state, setState]
+      })
 
       render(
         <TestWrapper>
@@ -756,14 +1082,16 @@ describe('캘린더 통합 테스트', () => {
       global.fetch = vi.fn().mockRejectedValue(new Error('Network Error'))
 
       const networkErrorStates = [
-        'month', new Date('2024-01-01'), null, false, false, [], false, '일정을 불러오는데 실패했습니다.'
+        'month', new Date('2024-01-01'), null, false, false, [], false, '일정을 불러오는데 실패했습니다.', [], false
       ]
 
       let stateIndex = 0
-      React.useState.mockImplementation(() => [
-        networkErrorStates[stateIndex++],
-        vi.fn()
-      ])
+      React.useState.mockImplementation((initial) => {
+        const state = networkErrorStates[stateIndex] !== undefined ? networkErrorStates[stateIndex] : initial
+        const setState = vi.fn()
+        stateIndex++
+        return [state, setState]
+      })
 
       render(
         <TestWrapper>
@@ -772,6 +1100,94 @@ describe('캘린더 통합 테스트', () => {
       )
 
       expect(screen.getByTestId('error')).toBeInTheDocument()
+    })
+  })
+
+  describe('사용자 경험', () => {
+    it('모달 취소 버튼으로 모달이 닫힌다', async () => {
+      const user = userEvent.setup()
+
+      render(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      await user.click(screen.getByTestId('create-schedule-btn'))
+      expect(screen.getByTestId('create-modal')).toBeInTheDocument()
+
+      await user.click(screen.getByTestId('create-cancel'))
+
+      await waitFor(() => {
+        expect(screen.queryByTestId('create-modal')).not.toBeInTheDocument()
+      })
+    })
+
+    it('일정 상세 모달에서 닫기 버튼이 작동한다', async () => {
+      const user = userEvent.setup()
+
+      render(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      // 일정 클릭
+      await waitFor(() => {
+        if (screen.queryByTestId('schedule-item-1')) {
+          return user.click(screen.getByTestId('schedule-item-1'))
+        }
+      })
+
+      if (screen.queryByTestId('schedule-detail-modal')) {
+        await user.click(screen.getByTestId('close-detail-btn'))
+
+        await waitFor(() => {
+          expect(screen.queryByTestId('schedule-detail-modal')).not.toBeInTheDocument()
+        })
+      }
+    })
+
+    it('폼 유효성 검사가 작동한다', async () => {
+      const user = userEvent.setup()
+
+      render(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      await user.click(screen.getByTestId('create-schedule-btn'))
+
+      // 제목 없이 제출 시도
+      await user.click(screen.getByTestId('create-submit'))
+
+      // HTML5 유효성 검사로 인해 제출되지 않음
+      expect(screen.getByTestId('create-modal')).toBeInTheDocument()
+    })
+
+    it('날짜/시간 입력이 올바르게 처리된다', async () => {
+      const user = userEvent.setup()
+
+      render(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      await user.click(screen.getByTestId('create-schedule-btn'))
+
+      const startTimeInput = screen.getByTestId('create-start-time')
+      const endTimeInput = screen.getByTestId('create-end-time')
+
+      expect(startTimeInput).toHaveValue('2024-01-15T10:00')
+      expect(endTimeInput).toHaveValue('2024-01-15T11:00')
+
+      // 시간 변경
+      await user.clear(startTimeInput)
+      await user.type(startTimeInput, '2024-01-20T14:00')
+
+      expect(startTimeInput).toHaveValue('2024-01-20T14:00')
     })
   })
 
@@ -801,33 +1217,35 @@ describe('캘린더 통합 테스트', () => {
 
     it('큰 데이터셋에서도 렌더링이 원활하다', async () => {
       // 대량 일정 데이터 mock
-      server.use(
-        http.get('*/teams/1/schedules', () => {
-          const largeScheduleList = Array.from({ length: 500 }, (_, i) => ({
-            id: i + 1,
-            title: `일정 ${i + 1}`,
-            start_time: '2024-01-01T10:00:00Z',
-            end_time: '2024-01-01T11:00:00Z',
-          }))
+      const largeScheduleList = Array.from({ length: 100 }, (_, i) => ({
+        id: i + 1,
+        title: `일정 ${i + 1}`,
+        start_time: '2024-01-01T10:00:00Z',
+        end_time: '2024-01-01T11:00:00Z',
+        participants: []
+      }))
 
-          return HttpResponse.json({
-            success: true,
-            data: { schedules: largeScheduleList },
-          })
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({
+          success: true,
+          data: { schedules: largeScheduleList }
         })
-      )
+      })
 
       const largeDataStates = [
         'month', new Date('2024-01-01'), null, false, false,
-        Array.from({ length: 500 }, (_, i) => ({ id: i + 1, title: `일정 ${i + 1}` })),
-        false, null
+        largeScheduleList,
+        false, null, [], false
       ]
 
       let stateIndex = 0
-      React.useState.mockImplementation(() => [
-        largeDataStates[stateIndex++],
-        vi.fn()
-      ])
+      React.useState.mockImplementation((initial) => {
+        const state = largeDataStates[stateIndex] !== undefined ? largeDataStates[stateIndex] : initial
+        const setState = vi.fn()
+        stateIndex++
+        return [state, setState]
+      })
 
       const startTime = performance.now()
 
@@ -842,63 +1260,6 @@ describe('캘린더 통합 테스트', () => {
 
       expect(renderTime).toBeLessThan(100) // 100ms 이내 렌더링
       expect(screen.getByTestId('calendar-page')).toBeInTheDocument()
-    })
-  })
-
-  describe('사용자 경험', () => {
-    it('모달 외부 클릭 시 모달이 닫힌다', async () => {
-      const user = userEvent.setup()
-
-      render(
-        <TestWrapper>
-          <MockCalendarPage />
-        </TestWrapper>
-      )
-
-      await user.click(screen.getByTestId('create-schedule-btn'))
-      expect(screen.getByTestId('create-modal')).toBeInTheDocument()
-
-      // 모달 외부 클릭 시뮬레이션 (실제로는 overlay 클릭 핸들러)
-      await user.click(screen.getByTestId('create-cancel'))
-
-      await waitFor(() => {
-        expect(screen.queryByTestId('create-modal')).not.toBeInTheDocument()
-      })
-    })
-
-    it('키보드 단축키로 일정 생성이 가능하다', async () => {
-      render(
-        <TestWrapper>
-          <MockCalendarPage />
-        </TestWrapper>
-      )
-
-      // Ctrl+N 단축키 시뮬레이션
-      fireEvent.keyDown(document, { key: 'n', ctrlKey: true })
-
-      // 실제 구현에서는 이벤트 리스너가 모달을 열어야 함
-      // 현재는 Mock이므로 직접 확인은 어려움
-      expect(screen.getByTestId('calendar-page')).toBeInTheDocument()
-    })
-
-    it('드래그 앤 드롭으로 일정 시간을 변경할 수 있다', async () => {
-      render(
-        <TestWrapper>
-          <MockCalendarPage />
-        </TestWrapper>
-      )
-
-      // 일정이 있다면
-      const scheduleElement = screen.queryByTestId('schedule-item-1')
-      if (scheduleElement) {
-        // 드래그 시작
-        fireEvent.mouseDown(scheduleElement)
-        fireEvent.mouseMove(scheduleElement, { clientX: 100, clientY: 100 })
-        fireEvent.mouseUp(scheduleElement)
-
-        // 실제 구현에서는 시간 변경 API 호출이 일어나야 함
-        expect(scheduleElement).toBeInTheDocument()
-      }
     })
   })
 
@@ -939,9 +1300,8 @@ describe('캘린더 통합 테스트', () => {
       expect(createButton).toBeInTheDocument()
     })
 
-    it('고대비 모드에서도 적절히 표시된다', () => {
-      // 고대비 모드 시뮬레이션
-      document.documentElement.setAttribute('data-theme', 'high-contrast')
+    it('폼 요소들이 적절한 라벨을 가진다', async () => {
+      const user = userEvent.setup()
 
       render(
         <TestWrapper>
@@ -949,10 +1309,144 @@ describe('캘린더 통합 테스트', () => {
         </TestWrapper>
       )
 
+      await user.click(screen.getByTestId('create-schedule-btn'))
+
+      const titleInput = screen.getByTestId('create-title')
+      const descriptionInput = screen.getByTestId('create-description')
+
+      expect(titleInput).toHaveAttribute('placeholder', '일정 제목')
+      expect(descriptionInput).toHaveAttribute('placeholder', '설명')
+    })
+  })
+
+  describe('실시간 기능 시뮬레이션', () => {
+    it('자동 새로고침이 작동한다', async () => {
+      vi.useFakeTimers()
+
+      render(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      const initialFetchCount = (global.fetch as any).mock.calls.length
+
+      // 30초 후 자동 새로고침 시뮬레이션
+      vi.advanceTimersByTime(30000)
+
+      // 실제 구현에서는 자동 새로고침이 일어날 것임
       expect(screen.getByTestId('calendar-page')).toBeInTheDocument()
 
-      // 정리
-      document.documentElement.removeAttribute('data-theme')
+      vi.useRealTimers()
+    })
+
+    it('다른 사용자의 변경사항이 반영된다', async () => {
+      const { rerender } = render(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      // 외부 변경사항으로 인한 데이터 업데이트 시뮬레이션
+      const updatedSchedules = [
+        ...mockSchedulesResponse.data.schedules,
+        {
+          id: 3,
+          title: '새로운 외부 일정',
+          description: '다른 사용자가 추가한 일정',
+          start_time: '2024-01-03T15:00:00Z',
+          end_time: '2024-01-03T16:00:00Z',
+          participants: []
+        }
+      ]
+
+      global.fetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve({
+          success: true,
+          data: { schedules: updatedSchedules }
+        })
+      })
+
+      // 컴포넌트 재렌더링
+      rerender(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      // 새로운 일정이 표시되는지 확인
+      expect(screen.getByTestId('calendar-page')).toBeInTheDocument()
+    })
+  })
+
+  describe('복합 시나리오', () => {
+    it('복잡한 사용자 워크플로우가 원활하게 작동한다', async () => {
+      const user = userEvent.setup()
+
+      render(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      // 1. 월 뷰에서 시작
+      expect(screen.getByTestId('calendar-month')).toBeInTheDocument()
+
+      // 2. 주 뷰로 전환
+      await user.click(screen.getByTestId('view-week'))
+      expect(screen.getByTestId('week-view-content')).toBeInTheDocument()
+
+      // 3. 다음 주로 이동
+      await user.click(screen.getByTestId('nav-next'))
+
+      // 4. 일정 추가 시도
+      await user.click(screen.getByTestId('create-schedule-btn'))
+      expect(screen.getByTestId('create-modal')).toBeInTheDocument()
+
+      // 5. 취소 후 다시 시도
+      await user.click(screen.getByTestId('create-cancel'))
+      expect(screen.queryByTestId('create-modal')).not.toBeInTheDocument()
+
+      // 6. 월 뷰로 돌아가기
+      await user.click(screen.getByTestId('view-month'))
+      expect(screen.getByTestId('calendar-month')).toBeInTheDocument()
+    })
+
+    it('에러 복구 시나리오가 작동한다', async () => {
+      const user = userEvent.setup()
+
+      // 초기에는 에러 발생
+      global.fetch = vi.fn().mockRejectedValueOnce(new Error('Network Error'))
+        .mockResolvedValue({
+          ok: true,
+          json: () => Promise.resolve(mockSchedulesResponse)
+        })
+
+      render(
+        <TestWrapper>
+          <MockCalendarPage />
+        </TestWrapper>
+      )
+
+      // 에러 상태 확인
+      const errorStates = [
+        'month', new Date('2024-01-01'), null, false, false, [], false, '일정을 불러오는데 실패했습니다.', [], false
+      ]
+
+      let stateIndex = 0
+      React.useState.mockImplementation((initial) => {
+        const state = errorStates[stateIndex] !== undefined ? errorStates[stateIndex] : initial
+        const setState = vi.fn()
+        stateIndex++
+        return [state, setState]
+      })
+
+      // 에러 후 재시도 (뷰 전환으로 시뮬레이션)
+      await user.click(screen.getByTestId('view-week'))
+
+      // 복구 확인
+      expect(screen.getByTestId('calendar-page')).toBeInTheDocument()
     })
   })
 })

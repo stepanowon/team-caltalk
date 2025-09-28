@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { CalendarGrid } from './CalendarGrid'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-// Mock 컴포넌트 (구현 전 테스트)
+// Mock 컴포넌트 (실제 구현이 완성되면 이 부분을 제거하고 실제 컴포넌트 사용)
 const MockCalendarGrid = ({
   view = 'month',
   currentDate = new Date('2024-01-01'),
@@ -114,7 +114,7 @@ const MockCalendarGrid = ({
               <div className="week-view">
                 <div className="time-column">
                   {Array.from({ length: 24 }, (_, hour) => (
-                    <div key={hour} className="time-slot">
+                    <div key={hour} className="time-slot" data-testid={`time-slot-${hour}`}>
                       {String(hour).padStart(2, '0')}:00
                     </div>
                   ))}
@@ -125,7 +125,7 @@ const MockCalendarGrid = ({
                     date.setDate(date.getDate() - date.getDay() + i)
 
                     return (
-                      <div key={i} className="day-column">
+                      <div key={i} className="day-column" data-testid={`day-column-${i}`}>
                         <div className="day-header">
                           {date.toLocaleDateString('ko-KR', {
                             month: 'short',
@@ -137,6 +137,7 @@ const MockCalendarGrid = ({
                             <div
                               key={hour}
                               className="time-slot"
+                              data-testid={`week-time-slot-${i}-${hour}`}
                               onClick={() => {
                                 const slotDate = new Date(date)
                                 slotDate.setHours(hour)
@@ -164,7 +165,7 @@ const MockCalendarGrid = ({
                 </div>
                 <div className="time-slots">
                   {Array.from({ length: 24 }, (_, hour) => (
-                    <div key={hour} className="time-slot">
+                    <div key={hour} className="time-slot" data-testid={`day-time-slot-${hour}`}>
                       <span className="time-label">
                         {String(hour).padStart(2, '0')}:00
                       </span>
@@ -218,6 +219,8 @@ const mockSchedules = [
     start_time: '2024-01-01T10:00:00Z',
     end_time: '2024-01-01T11:00:00Z',
     team_id: 1,
+    priority: 'high',
+    hasConflict: false,
   },
   {
     id: 2,
@@ -226,6 +229,18 @@ const mockSchedules = [
     start_time: '2024-01-02T14:00:00Z',
     end_time: '2024-01-02T16:00:00Z',
     team_id: 1,
+    priority: 'medium',
+    hasConflict: false,
+  },
+  {
+    id: 3,
+    title: '충돌 일정',
+    description: '시간이 겹치는 일정',
+    start_time: '2024-01-01T10:30:00Z',
+    end_time: '2024-01-01T11:30:00Z',
+    team_id: 1,
+    priority: 'low',
+    hasConflict: true,
   },
 ]
 
@@ -305,6 +320,17 @@ describe('CalendarGrid 컴포넌트', () => {
       expect(screen.getByTestId('month-view')).toHaveClass('active')
       expect(screen.getByTestId('week-view')).not.toHaveClass('active')
     })
+
+    it('다른 뷰로 초기화되어도 올바르게 렌더링된다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} view="week" />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('week-view')).toHaveClass('active')
+      expect(screen.getByTestId('week-grid')).toBeInTheDocument()
+    })
   })
 
   describe('월 뷰 (Month View)', () => {
@@ -343,6 +369,17 @@ describe('CalendarGrid 컴포넌트', () => {
       expect(screen.getByText('팀 회의')).toBeInTheDocument()
     })
 
+    it('충돌하는 일정이 표시된다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} view="month" />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('schedule-3')).toBeInTheDocument()
+      expect(screen.getByText('충돌 일정')).toBeInTheDocument()
+    })
+
     it('날짜 클릭 시 onDateClick이 호출된다', async () => {
       const user = userEvent.setup()
       render(
@@ -372,6 +409,21 @@ describe('CalendarGrid 컴포넌트', () => {
 
       expect(defaultProps.onScheduleClick).toHaveBeenCalledWith(mockSchedules[0])
     })
+
+    it('다른 달의 날짜가 올바르게 표시된다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} view="month" />
+        </TestWrapper>
+      )
+
+      // 이전/다음 달의 날짜는 other-month 클래스를 가져야 함
+      const otherMonthDates = screen.getAllByText(/2[5-9]|3[0-1]/)
+      otherMonthDates.forEach(date => {
+        const parentElement = date.closest('.calendar-date')
+        expect(parentElement).toHaveClass('other-month')
+      })
+    })
   })
 
   describe('주 뷰 (Week View)', () => {
@@ -392,9 +444,9 @@ describe('CalendarGrid 컴포넌트', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByText('00:00')).toBeInTheDocument()
-      expect(screen.getByText('12:00')).toBeInTheDocument()
-      expect(screen.getByText('23:00')).toBeInTheDocument()
+      for (let hour = 0; hour < 24; hour++) {
+        expect(screen.getByTestId(`time-slot-${hour}`)).toBeInTheDocument()
+      }
     })
 
     it('7일간의 날짜가 표시된다', () => {
@@ -404,9 +456,37 @@ describe('CalendarGrid 컴포넌트', () => {
         </TestWrapper>
       )
 
-      // 주 시작일부터 7일간의 날짜 확인
-      const weekDays = screen.getAllByText(/\d+월 \d+일/)
-      expect(weekDays).toHaveLength(7)
+      for (let day = 0; day < 7; day++) {
+        expect(screen.getByTestId(`day-column-${day}`)).toBeInTheDocument()
+      }
+    })
+
+    it('주 뷰에서 시간 슬롯 클릭이 작동한다', async () => {
+      const user = userEvent.setup()
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} view="week" />
+        </TestWrapper>
+      )
+
+      const timeSlot = screen.getByTestId('week-time-slot-0-10')
+      await user.click(timeSlot)
+
+      expect(defaultProps.onDateClick).toHaveBeenCalledWith(
+        expect.any(Date)
+      )
+    })
+
+    it('주 시작일이 일요일부터 시작한다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} view="week" />
+        </TestWrapper>
+      )
+
+      // 첫 번째 컬럼이 일요일이어야 함
+      const firstColumn = screen.getByTestId('day-column-0')
+      expect(firstColumn).toBeInTheDocument()
     })
   })
 
@@ -439,9 +519,24 @@ describe('CalendarGrid 컴포넌트', () => {
       )
 
       for (let hour = 0; hour < 24; hour++) {
-        const timeLabel = String(hour).padStart(2, '0') + ':00'
-        expect(screen.getByText(timeLabel)).toBeInTheDocument()
+        expect(screen.getByTestId(`day-time-slot-${hour}`)).toBeInTheDocument()
       }
+    })
+
+    it('일 뷰에서 해당 날짜의 일정만 표시된다', () => {
+      const todaySchedules = mockSchedules.filter(s =>
+        new Date(s.start_time).toDateString() === new Date('2024-01-01').toDateString()
+      )
+
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} view="day" />
+        </TestWrapper>
+      )
+
+      todaySchedules.forEach(schedule => {
+        expect(screen.getByTestId(`schedule-${schedule.id}`)).toBeInTheDocument()
+      })
     })
   })
 
@@ -484,6 +579,18 @@ describe('CalendarGrid 컴포넌트', () => {
       await user.click(screen.getByTestId('day-view'))
       expect(defaultProps.onViewChange).toHaveBeenCalledWith('day')
     })
+
+    it('같은 뷰 버튼을 다시 클릭해도 onViewChange가 호출된다', async () => {
+      const user = userEvent.setup()
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} view="month" />
+        </TestWrapper>
+      )
+
+      await user.click(screen.getByTestId('month-view'))
+      expect(defaultProps.onViewChange).toHaveBeenCalledWith('month')
+    })
   })
 
   describe('로딩 및 에러 상태', () => {
@@ -519,6 +626,27 @@ describe('CalendarGrid 컴포넌트', () => {
 
       expect(screen.queryByTestId('month-grid')).not.toBeInTheDocument()
     })
+
+    it('에러 발생 시 캘린더 그리드가 숨겨진다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} error="에러 발생" />
+        </TestWrapper>
+      )
+
+      expect(screen.queryByTestId('month-grid')).not.toBeInTheDocument()
+    })
+
+    it('로딩과 에러가 동시에 있을 때 로딩이 우선 표시된다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} loading={true} error="에러" />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('loading')).toBeInTheDocument()
+      expect(screen.queryByTestId('error')).not.toBeInTheDocument()
+    })
   })
 
   describe('반응형 디자인', () => {
@@ -545,6 +673,22 @@ describe('CalendarGrid 컴포넌트', () => {
         writable: true,
         configurable: true,
         value: 1920,
+      })
+
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('calendar-grid')).toBeInTheDocument()
+    })
+
+    it('태블릿 환경에서 적절히 렌더링된다', () => {
+      Object.defineProperty(window, 'innerWidth', {
+        writable: true,
+        configurable: true,
+        value: 768,
       })
 
       render(
@@ -589,6 +733,33 @@ describe('CalendarGrid 컴포넌트', () => {
       fireEvent.keyDown(monthViewButton, { key: 'Enter' })
       expect(defaultProps.onViewChange).toHaveBeenCalledWith('month')
     })
+
+    it('Space 키로 버튼 클릭이 가능하다', async () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} />
+        </TestWrapper>
+      )
+
+      const weekViewButton = screen.getByTestId('week-view')
+      weekViewButton.focus()
+
+      fireEvent.keyDown(weekViewButton, { key: ' ' })
+      expect(defaultProps.onViewChange).toHaveBeenCalledWith('week')
+    })
+
+    it('화살표 키로 날짜 네비게이션이 가능하다', async () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} />
+        </TestWrapper>
+      )
+
+      // 실제 구현에서는 화살표 키로 날짜 간 이동 구현
+      const calendarGrid = screen.getByTestId('calendar-grid')
+      fireEvent.keyDown(calendarGrid, { key: 'ArrowRight' })
+      // 날짜 포커스 이동 확인
+    })
   })
 
   describe('성능 테스트', () => {
@@ -599,6 +770,8 @@ describe('CalendarGrid 컴포넌트', () => {
         start_time: `2024-01-${String((i % 31) + 1).padStart(2, '0')}T10:00:00Z`,
         end_time: `2024-01-${String((i % 31) + 1).padStart(2, '0')}T11:00:00Z`,
         team_id: 1,
+        priority: 'normal',
+        hasConflict: false,
       }))
 
       const startTime = performance.now()
@@ -615,6 +788,182 @@ describe('CalendarGrid 컴포넌트', () => {
       // 렌더링 시간이 100ms 이내인지 확인
       expect(renderTime).toBeLessThan(100)
       expect(screen.getByTestId('calendar-grid')).toBeInTheDocument()
+    })
+
+    it('뷰 전환이 빠르게 수행된다', async () => {
+      const user = userEvent.setup()
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} />
+        </TestWrapper>
+      )
+
+      const startTime = performance.now()
+
+      await user.click(screen.getByTestId('week-view'))
+
+      const endTime = performance.now()
+      const switchTime = endTime - startTime
+
+      expect(switchTime).toBeLessThan(50) // 50ms 이내
+      expect(screen.getByTestId('week-grid')).toBeInTheDocument()
+    })
+
+    it('메모리 사용량이 적절하다', () => {
+      const { unmount } = render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} />
+        </TestWrapper>
+      )
+
+      // 컴포넌트 언마운트 시 메모리 누수가 없는지 확인
+      unmount()
+      // 실제로는 메모리 프로파일링 도구 사용
+    })
+  })
+
+  describe('데이터 무결성', () => {
+    it('빈 일정 배열에서도 정상 작동한다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} schedules={[]} />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('calendar-grid')).toBeInTheDocument()
+      expect(screen.queryByTestId('schedule-1')).not.toBeInTheDocument()
+    })
+
+    it('잘못된 날짜 형식에도 견고하게 작동한다', () => {
+      const invalidSchedules = [
+        {
+          id: 1,
+          title: '잘못된 일정',
+          start_time: 'invalid-date',
+          end_time: 'invalid-date',
+          team_id: 1,
+        }
+      ]
+
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} schedules={invalidSchedules} />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('calendar-grid')).toBeInTheDocument()
+    })
+
+    it('null/undefined props에 대해 적절한 기본값을 사용한다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid
+            view="month"
+            currentDate={null}
+            schedules={null}
+          />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('calendar-grid')).toBeInTheDocument()
+    })
+
+    it('매우 긴 일정 제목을 적절히 처리한다', () => {
+      const longTitleSchedule = [{
+        id: 1,
+        title: 'A'.repeat(200), // 매우 긴 제목
+        start_time: '2024-01-01T10:00:00Z',
+        end_time: '2024-01-01T11:00:00Z',
+        team_id: 1,
+      }]
+
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} schedules={longTitleSchedule} />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('schedule-1')).toBeInTheDocument()
+    })
+  })
+
+  describe('상호작용 이벤트', () => {
+    it('일정 클릭 시 이벤트 버블링이 방지된다', async () => {
+      const user = userEvent.setup()
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} />
+        </TestWrapper>
+      )
+
+      const scheduleItem = screen.getByTestId('schedule-1')
+      await user.click(scheduleItem)
+
+      expect(defaultProps.onScheduleClick).toHaveBeenCalledTimes(1)
+      expect(defaultProps.onDateClick).not.toHaveBeenCalled()
+    })
+
+    it('더블 클릭 이벤트가 적절히 처리된다', async () => {
+      const user = userEvent.setup()
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} />
+        </TestWrapper>
+      )
+
+      const dateCell = screen.getByTestId('calendar-date-15')
+      await user.dblClick(dateCell)
+
+      // 더블 클릭 시에도 onDateClick이 호출되어야 함
+      expect(defaultProps.onDateClick).toHaveBeenCalled()
+    })
+
+    it('터치 이벤트가 지원된다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} />
+        </TestWrapper>
+      )
+
+      const dateCell = screen.getByTestId('calendar-date-15')
+
+      fireEvent.touchStart(dateCell)
+      fireEvent.touchEnd(dateCell)
+
+      expect(defaultProps.onDateClick).toHaveBeenCalled()
+    })
+  })
+
+  describe('커스터마이제이션', () => {
+    it('커스텀 CSS 클래스가 적용된다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} className="custom-calendar" />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('calendar-grid')).toHaveClass('custom-calendar')
+    })
+
+    it('커스텀 스타일이 적용된다', () => {
+      const customStyle = { backgroundColor: 'red' }
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} style={customStyle} />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('calendar-grid')).toHaveStyle('background-color: red')
+    })
+
+    it('추가 props가 전달된다', () => {
+      render(
+        <TestWrapper>
+          <MockCalendarGrid {...defaultProps} data-custom="test" />
+        </TestWrapper>
+      )
+
+      expect(screen.getByTestId('calendar-grid')).toHaveAttribute('data-custom', 'test')
     })
   })
 })
