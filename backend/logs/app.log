@@ -1255,3 +1255,30 @@ Error: listen EADDRINUSE: address already in use ::1:3000
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
   "userId": "anonymous"
 }
+2025-09-29 08:33:07.329 [INFO]: EventService 초기화 완료
+2025-09-29 08:33:07.353 [INFO]: 서버 시작 중... {
+  "name": "Team CalTalk Backend",
+  "version": "1.0.0",
+  "environment": "development",
+  "port": 3000,
+  "host": "localhost"
+}
+2025-09-29 08:33:07.524 [INFO]: 새로운 PostgreSQL 클라이언트 연결됨
+2025-09-29 08:33:07.534 [INFO]: 데이터베이스 연결 테스트 성공: {
+  "time": "2025-09-28T23:33:07.530Z",
+  "version": "PostgreSQL 17.6"
+}
+2025-09-29 08:33:07.535 [INFO]: PostgreSQL 연결 풀 초기화 완료 {
+  "min": 2,
+  "max": 20,
+  "database": "team_caltalk"
+}
+2025-09-29 08:33:07.535 [INFO]: 데이터베이스 연결 완료
+2025-09-29 08:33:07.538 [INFO]: Swagger UI 문서가 활성화되었습니다: http://localhost:3000/api/docs
+2025-09-29 08:33:07.538 [INFO]: Express 애플리케이션 초기화 완료
+2025-09-29 08:33:07.541 [INFO]: 서버가 성공적으로 시작되었습니다 {
+  "url": "http://localhost:3000",
+  "environment": "development",
+  "processId": 11472,
+  "nodeVersion": "v24.7.0"
+}
