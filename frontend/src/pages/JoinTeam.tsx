@@ -66,9 +66,6 @@ export function JoinTeam() {
   const watchedInviteCode = watch('inviteCode')
 
   const onSubmit = async (data: JoinTeamFormData) => {
-    console.log('폼 제출 데이터:', data)
-    console.log('초대 코드 길이:', data.inviteCode.length)
-    console.log('초대 코드 패턴 테스트:', /^[A-Z0-9]{6}$/.test(data.inviteCode))
 
     if (!token) {
       setError('로그인이 필요합니다.')
@@ -80,18 +77,7 @@ export function JoinTeam() {
     setSuccess(null)
 
     try {
-      console.log('API 요청 데이터:', {
-        inviteCode: data.inviteCode,
-        token: token ? `${token.substring(0, 10)}...` : null
-      })
-
       const response = await TeamService.joinTeam(data.inviteCode, token)
-      console.log('API 응답:', response)
-
-      // 오류 상세 정보 출력
-      if (!response.success && response.details) {
-        console.log('검증 오류 상세:', response.details)
-      }
 
       if (response.success && response.data && response.data.team) {
         // 스토어에 새 팀 추가
@@ -130,14 +116,12 @@ export function JoinTeam() {
   const formatInviteCode = (value: string) => {
     const cleaned = value.replace(/[^A-Z0-9]/g, '').toUpperCase()
     const result = cleaned.substring(0, 6) // 6자리로 제한
-    console.log('포맷팅 함수:', value, '->', result)
     return result
   }
 
   const handleInviteCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const original = e.target.value
     const formatted = formatInviteCode(original)
-    console.log('입력값:', original, '포맷팅 후:', formatted)
     setValue('inviteCode', formatted)
   }
 

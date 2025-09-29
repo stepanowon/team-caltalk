@@ -5,11 +5,12 @@ import { useSchedules } from '@/hooks/useSchedules'
 import CalendarHeader from '@/components/calendar/CalendarHeader'
 import CalendarGrid from '@/components/calendar/CalendarGrid'
 import ScheduleCard from '@/components/calendar/ScheduleCard'
+import ChatRoom from '@/components/chat/ChatRoom'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { AlertCircle, Calendar as CalendarIcon, Users } from 'lucide-react'
+import { AlertCircle, Calendar as CalendarIcon, Users, MessageSquare } from 'lucide-react'
 
 interface Schedule {
   id: number
@@ -67,7 +68,6 @@ export function Calendar() {
 
   const handleScheduleEdit = (schedule: Schedule) => {
     // TODO: Open schedule edit modal
-    console.log('Edit schedule:', schedule)
   }
 
   const handleScheduleDelete = async (scheduleId: number) => {
@@ -83,7 +83,6 @@ export function Calendar() {
 
   const handleCreateSchedule = () => {
     // TODO: Open schedule create modal
-    console.log('Create schedule for date:', selectedDate || currentDate)
   }
 
   const selectedDateSchedules = selectedDate ? getSchedulesForDate(selectedDate.toISOString()) : []
@@ -113,151 +112,127 @@ export function Calendar() {
   }
 
   return (
-    <div className="flex h-full bg-gray-50">
-      {/* Main Calendar Area */}
-      <div className="flex-1 flex flex-col">
-        <CalendarHeader
-          currentDate={currentDate}
-          onDateChange={setCurrentDate}
-          onTodayClick={handleTodayClick}
-          onCreateSchedule={canEditSchedules ? handleCreateSchedule : undefined}
-          onRefresh={refetch}
-          scheduleCount={Array.isArray(schedules) ? schedules.length : 0}
-          loading={loading}
-          canCreateSchedule={canEditSchedules}
-        />
-
-        {error && (
-          <Alert className="m-4 border-red-200 bg-red-50">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription className="text-red-800">
-              {error}
-            </AlertDescription>
-          </Alert>
-        )}
-
-        <div className="flex-1 p-4">
-          <CalendarGrid
-            currentDate={currentDate}
-            schedules={schedules}
-            onDateClick={handleDateClick}
-            onScheduleClick={handleScheduleClick}
-            onScheduleEdit={canEditSchedules ? handleScheduleEdit : undefined}
-            onScheduleDelete={canEditSchedules ? handleScheduleDelete : undefined}
-            canEditSchedules={canEditSchedules}
-          />
+    <div className="h-[94vh] flex flex-col bg-gray-50">
+      {/* Top Header */}
+      <div className="bg-white border-b border-gray-200 px-4 py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <h1 className="text-xl font-bold">Team CalTalk</h1>
+            <div className="flex items-center gap-2">
+              <span className="text-gray-500">|</span>
+              <h2 className="font-semibold">{currentTeam.name}</h2>
+              <Badge variant="secondary" className="flex items-center gap-1">
+                <Users className="w-3 h-3" />
+                {teamMembers.length}
+              </Badge>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="sm" onClick={handleTodayClick}>
+              오늘로 이동
+            </Button>
+            {canEditSchedules && (
+              <Button size="sm" onClick={handleCreateSchedule}>
+                + 새 일정
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Right Sidebar */}
-      <div className="w-80 bg-white border-l border-gray-200 flex flex-col">
-        {/* Team Info */}
-        <div className="p-4 border-b border-gray-200">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-lg">{currentTeam.name}</h3>
-            <Badge variant="secondary" className="flex items-center gap-1">
-              <Users className="w-3 h-3" />
-              {teamMembers.length}
-            </Badge>
-          </div>
-          {currentTeam.description && (
-            <p className="text-sm text-gray-600">{currentTeam.description}</p>
+      {/* Main Content Area - 70:30 Split */}
+      <div className="flex-1 flex overflow-hidden pb-12">
+        {/* Left Side - Calendar Area (70%) */}
+        <div className="flex-[7] flex flex-col bg-white">
+          <CalendarHeader
+            currentDate={currentDate}
+            onDateChange={setCurrentDate}
+            onTodayClick={handleTodayClick}
+            onCreateSchedule={canEditSchedules ? handleCreateSchedule : undefined}
+            onRefresh={refetch}
+            scheduleCount={Array.isArray(schedules) ? schedules.length : 0}
+            loading={loading}
+            canCreateSchedule={canEditSchedules}
+          />
+
+          {error && (
+            <Alert className="m-4 border-red-200 bg-red-50">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription className="text-red-800">
+                {error}
+              </AlertDescription>
+            </Alert>
           )}
-        </div>
 
-        {/* Selected Date Info */}
-        {selectedDate && (
-          <div className="p-4 border-b border-gray-200">
-            <h4 className="font-medium mb-3">
-              {selectedDate.toLocaleDateString('ko-KR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                weekday: 'long',
-              })}
-            </h4>
-
-            {selectedDateSchedules.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                <CalendarIcon className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                <p className="text-sm">이 날짜에 일정이 없습니다</p>
-                {canEditSchedules && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="mt-2"
-                    onClick={handleCreateSchedule}
-                  >
-                    일정 추가
-                  </Button>
-                )}
-              </div>
-            ) : (
-              <div className="space-y-2">
-                {selectedDateSchedules.map(schedule => (
-                  <ScheduleCard
-                    key={schedule.id}
-                    schedule={schedule}
-                    variant="compact"
-                    onClick={handleScheduleClick}
-                    onEdit={canEditSchedules ? handleScheduleEdit : undefined}
-                    onDelete={canEditSchedules ? handleScheduleDelete : undefined}
-                    canEdit={canEditSchedules}
-                    className={
-                      selectedSchedule?.id === schedule.id
-                        ? 'ring-2 ring-blue-500'
-                        : ''
-                    }
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Selected Schedule Detail */}
-        {selectedSchedule && (
-          <div className="flex-1 p-4">
-            <h4 className="font-medium mb-3">일정 상세</h4>
-            <ScheduleCard
-              schedule={selectedSchedule}
-              onEdit={canEditSchedules ? handleScheduleEdit : undefined}
-              onDelete={canEditSchedules ? handleScheduleDelete : undefined}
-              canEdit={canEditSchedules}
+          <div className="flex-1 p-4 overflow-auto">
+            <CalendarGrid
+              currentDate={currentDate}
+              schedules={schedules}
+              onDateClick={handleDateClick}
+              onScheduleClick={handleScheduleClick}
+              onScheduleEdit={canEditSchedules ? handleScheduleEdit : undefined}
+              onScheduleDelete={canEditSchedules ? handleScheduleDelete : undefined}
+              canEditSchedules={canEditSchedules}
             />
           </div>
-        )}
+        </div>
 
-        {/* Quick Stats */}
-        {!selectedDate && !selectedSchedule && (
-          <div className="flex-1 p-4">
-            <h4 className="font-medium mb-3">이번 달 통계</h4>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">전체 일정</span>
-                <Badge variant="outline">{Array.isArray(schedules) ? schedules.length : 0}개</Badge>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">내가 참여하는 일정</span>
-                <Badge variant="outline">
-                  {Array.isArray(schedules) ? schedules.filter(s =>
-                    s.participants?.some(p => p.user_id === user?.id)
-                  ).length : 0}개
-                </Badge>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">대기 중인 일정</span>
-                <Badge variant="outline">
-                  {Array.isArray(schedules) ? schedules.filter(s =>
-                    s.participants?.some(p =>
-                      p.user_id === user?.id && p.status === 'pending'
-                    )
-                  ).length : 0}개
-                </Badge>
-              </div>
+        {/* Right Side - Chat Area (30%) */}
+        <div className="flex-[3] flex flex-col bg-white border-l border-gray-200">
+          {/* Chat Header */}
+          <div className="flex items-center justify-between p-3 border-b border-gray-200">
+            <div className="flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-blue-600" />
+              <h3 className="font-semibold">팀 채팅</h3>
+              {selectedDate && (
+                <span className="text-sm text-gray-500">
+                  - {selectedDate.toLocaleDateString('ko-KR', {
+                    month: 'long',
+                    day: 'numeric',
+                    weekday: 'short'
+                  })}
+                </span>
+              )}
+            </div>
+            <div className="flex items-center gap-1 text-sm text-gray-500">
+              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>온라인 {teamMembers.length}명</span>
             </div>
           </div>
-        )}
+
+          {/* Chat Content */}
+          <div className="flex-1 flex flex-col min-h-0">
+            <ChatRoom
+              teamId={currentTeam.id}
+              selectedDate={(selectedDate || currentDate).toISOString().split('T')[0]}
+              className="flex-1 border-0 shadow-none rounded-none"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Status Bar - Fixed at bottom */}
+      <div className="fixed bottom-0 left-0 right-0 bg-blue-50 border-t border-blue-200 px-4 py-2 z-10">
+        <div className="flex items-center justify-between text-sm">
+          <div className="flex items-center gap-4">
+            <span className="text-blue-700">
+              📋 이번 달 일정: {Array.isArray(schedules) ? schedules.length : 0}개
+            </span>
+            {selectedDate && (
+              <span className="text-blue-600">
+                📅 선택된 날짜: {selectedDate.toLocaleDateString('ko-KR')}
+              </span>
+            )}
+          </div>
+          <div className="text-blue-600">
+            {new Date().toLocaleDateString('ko-KR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              weekday: 'long'
+            })}
+          </div>
+        </div>
       </div>
     </div>
   )

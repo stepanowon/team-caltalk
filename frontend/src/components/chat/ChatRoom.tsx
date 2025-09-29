@@ -9,14 +9,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Calendar, MessageCircle, Users } from 'lucide-react'
 
 interface ChatRoomProps {
+  teamId: number
+  selectedDate: string
   className?: string
 }
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
 
-export default function ChatRoom({ className }: ChatRoomProps) {
+export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomProps) {
+
   const {
-    currentDate,
+    messages,
     connectionStatus,
     isLoading,
     error,
@@ -30,10 +33,22 @@ export default function ChatRoom({ className }: ChatRoomProps) {
     setError,
     setPollingInterval,
     setLastMessageId,
+    setCurrentDate,
     reset,
   } = useChatStore()
 
-  const { currentTeam } = useTeamStore()
+  const { teams } = useTeamStore()
+  const teamIdNum = typeof teamId === 'string' ? parseInt(teamId) : teamId
+
+  // 팀 찾기 로직을 여러 방법으로 시도
+  const currentTeamById = teams.find(team => team.id === teamIdNum)
+  const currentTeamByString = teams.find(team => team.id == teamId) // == 비교
+  const currentTeamByStringStrict = teams.find(team => String(team.id) === String(teamId))
+
+  // 최종 선택
+  const currentTeam = currentTeamById || currentTeamByString || currentTeamByStringStrict
+
+
   const abortControllerRef = useRef<AbortController | null>(null)
 
   // API 호출 헬퍼
@@ -48,30 +63,39 @@ export default function ChatRoom({ className }: ChatRoomProps) {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
         ...options.headers,
       },
-      signal: abortControllerRef.current?.signal,
+      cache: 'no-store',
+      // AbortController 임시 비활성화
+      // signal: abortControllerRef.current?.signal,
     })
+
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}))
       throw new Error(errorData.message || `HTTP error! status: ${response.status}`)
     }
 
-    return response.json()
+    const data = await response.json()
+    return data
   }, [])
 
   // 메시지 가져오기
   const fetchMessages = useCallback(async () => {
-    if (!currentTeam) {
+
+    // currentTeam이 없어도 teamId가 있으면 메시지 조회 시도
+    if (!teamId) {
       setMessages([])
+      setConnected(false)
       return
     }
-
     setLoading(true)
     setError(null)
 
     try {
+
       const response = await apiCall<{
         success: boolean
         data: {
@@ -90,162 +114,159 @@ export default function ChatRoom({ className }: ChatRoomProps) {
             }
           }>
         }
-      }>(`/messages?teamId=${currentTeam.id}&date=${currentDate}`)
+      }>(`/chat/teams/${teamId}/messages?date=${selectedDate}`)
+
 
       if (response.success && response.data?.messages) {
-        setMessages(response.data.messages)
+        // 시간순 정렬된 메시지로 처리 (폴링과 동일한 로직)
+        const sortedMessages = response.data.messages.sort((a, b) =>
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        )
 
-        // 최신 메시지 ID 업데이트
-        const latestMessage = response.data.messages[response.data.messages.length - 1]
+        // Zustand store에 메시지 설정
+        setMessages(sortedMessages)
+
+        // 최신 메시지 ID 업데이트 (정렬된 메시지에서)
+        const latestMessage = sortedMessages[sortedMessages.length - 1]
         if (latestMessage) {
           setLastMessageId(latestMessage.id)
         }
+      } else {
+        // response.data에 직접 messages가 있는지 확인
+        if (response.success && response.data && Array.isArray(response.data.messages)) {
+          const sortedMessages = response.data.messages.sort((a, b) =>
+            new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+          )
+          setMessages(sortedMessages)
 
-        setConnected(true)
+          const latestMessage = sortedMessages[sortedMessages.length - 1]
+          if (latestMessage) {
+            setLastMessageId(latestMessage.id)
+          }
+        } else {
+          setMessages([])
+        }
       }
+
+      // 응답을 받으면 항상 연결됨으로 설정
+      setConnected(true)
     } catch (err) {
-      if (err instanceof Error && err.name !== 'AbortError') {
-        setError(err.message || '메시지를 불러오는데 실패했습니다.')
-        setConnected(false)
+      if (err instanceof Error) {
+        if (err.name !== 'AbortError') {
+          setError(err.message || '메시지를 불러오는데 실패했습니다.')
+          setConnected(false)
+        }
       }
     } finally {
       setLoading(false)
     }
-  }, [currentTeam, currentDate, apiCall, setMessages, setLastMessageId, setConnected, setLoading, setError])
+  }, [currentTeam, selectedDate, apiCall, setMessages, setLastMessageId, setConnected, setLoading, setError])
 
-  // Long Polling으로 새 메시지 확인
-  const pollNewMessages = useCallback(async () => {
-    if (!currentTeam || !lastMessageId) return
-
-    try {
-      setReconnecting(true)
-
-      const response = await apiCall<{
-        success: boolean
-        data: {
-          messages: Array<{
-            id: number
-            team_id: number
-            user_id: number
-            content: string
-            message_date: string
-            created_at: string
-            updated_at: string
-            user: {
-              id: number
-              username: string
-              full_name: string
-            }
-          }>
-        }
-      }>(`/messages/poll?teamId=${currentTeam.id}&date=${currentDate}&after=${lastMessageId}`)
-
-      if (response.success && response.data?.messages) {
-        response.data.messages.forEach(message => {
-          addMessage(message)
-        })
-
-        // 최신 메시지 ID 업데이트
-        if (response.data.messages.length > 0) {
-          const latestMessage = response.data.messages[response.data.messages.length - 1]
-          setLastMessageId(latestMessage.id)
-        }
-      }
-
-      setConnected(true)
-    } catch (err) {
-      if (err instanceof Error && err.name !== 'AbortError') {
-        console.warn('Polling error:', err.message)
-        setConnected(false)
-      }
-    } finally {
-      setReconnecting(false)
-    }
-  }, [currentTeam, currentDate, lastMessageId, apiCall, addMessage, setLastMessageId, setConnected, setReconnecting])
 
   // 메시지 전송
   const sendMessage = useCallback(async (content: string) => {
-    if (!currentTeam || !content.trim()) return
+    // currentTeam이 없어도 teamId가 있으면 메시지 전송 시도
+    if (!teamId || !content.trim()) {
+      return
+    }
 
     setError(null)
 
     try {
-      const response = await apiCall<{
-        success: boolean
-        data: {
-          message: {
-            id: number
-            team_id: number
-            user_id: number
-            content: string
-            message_date: string
-            created_at: string
-            updated_at: string
-            user: {
-              id: number
-              username: string
-              full_name: string
-            }
-          }
-        }
-      }>('/messages', {
+      const token = localStorage.getItem('access_token')
+      const requestUrl = `${API_BASE_URL}/chat/teams/${teamId}/messages`
+      const requestBody = {
+        content: content.trim(),
+        targetDate: selectedDate,
+      }
+
+
+      // 메시지 전송용 별도 fetch 호출 (AbortController 없이)
+      const response = await fetch(requestUrl, {
         method: 'POST',
-        body: JSON.stringify({
-          teamId: currentTeam.id,
-          content: content.trim(),
-          messageDate: currentDate,
-        }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(requestBody),
       })
 
-      if (response.success && response.data?.message) {
-        addMessage(response.data.message)
-        setLastMessageId(response.data.message.id)
+
+      if (!response.ok) {
+        const errorText = await response.text()
+
+        let errorData
+        try {
+          errorData = JSON.parse(errorText)
+        } catch {
+          errorData = { message: errorText }
+        }
+
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`)
+      }
+
+      const result = await response.json()
+
+      if (result.success && result.data?.message) {
+        addMessage(result.data.message)
+        setLastMessageId(result.data.message.id)
+
+        // 메시지 전송 후 즉시 새로고침으로 다른 클라이언트 업데이트 트리거
+        setTimeout(() => {
+          fetchMessages()
+        }, 100)
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : '메시지 전송에 실패했습니다.')
-      throw err
+      if (err instanceof Error && err.name !== 'AbortError') {
+        setError(err.message || '메시지 전송에 실패했습니다.')
+        throw err
+      }
+      // AbortError는 무시 (컴포넌트 언마운트 시 정상적인 동작)
     }
-  }, [currentTeam, currentDate, apiCall, addMessage, setLastMessageId, setError])
+  }, [currentTeam, selectedDate, teamId, addMessage, setLastMessageId, setError, fetchMessages])
 
-  // 컴포넌트 마운트 시 초기 데이터 로드
+
+  // 컴포넌트 마운트 시 초기 데이터 로드 - 단순화
   useEffect(() => {
-    if (currentTeam) {
+    if (teamId && selectedDate) {
       // 새 AbortController 생성
       abortControllerRef.current = new AbortController()
 
+      // 초기 메시지 로드 - 단순 호출
       fetchMessages()
 
       return () => {
-        // 컴포넌트 언마운트 시 요청 취소
         abortControllerRef.current?.abort()
       }
     } else {
       reset()
     }
-  }, [currentTeam, fetchMessages, reset])
+  }, [teamId, selectedDate])
 
-  // Long Polling 설정
+  // 30초 간격 폴링 설정 (초기 로드와 별도)
   useEffect(() => {
-    if (!currentTeam || !connectionStatus.isConnected) return
+    if (!teamId) {
+      return
+    }
 
-    const interval = setInterval(() => {
-      pollNewMessages()
-    }, 3000) // 3초마다 폴링
+    // 30초마다 메시지 새로고침하는 interval 시작
+    const intervalId = setInterval(async () => {
+      try {
+        await fetchMessages()
+        setConnected(true)
+      } catch (err) {
+        setConnected(false)
+      }
+    }, 30000) // 30초 간격
 
-    setPollingInterval(interval)
+    // Store에 interval ID 저장
+    setPollingInterval(intervalId)
 
     return () => {
-      clearInterval(interval)
+      clearInterval(intervalId)
       setPollingInterval(null)
     }
-  }, [currentTeam, connectionStatus.isConnected, pollNewMessages, setPollingInterval])
-
-  // 날짜 변경 시 메시지 새로고침
-  useEffect(() => {
-    if (currentTeam) {
-      fetchMessages()
-    }
-  }, [currentDate, fetchMessages])
+  }, [teamId, fetchMessages, setConnected, setPollingInterval])
 
   // 컴포넌트 언마운트 시 정리
   useEffect(() => {
@@ -264,8 +285,8 @@ export default function ChatRoom({ className }: ChatRoomProps) {
       <Card className={cn('h-full flex items-center justify-center', className)}>
         <CardContent className="text-center py-8">
           <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">팀을 선택해주세요</h3>
-          <p className="text-gray-500">채팅을 시작하려면 먼저 팀을 선택해야 합니다.</p>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">팀을 찾을 수 없습니다</h3>
+          <p className="text-gray-500">선택된 팀 정보를 확인할 수 없습니다.</p>
         </CardContent>
       </Card>
     )
@@ -281,7 +302,7 @@ export default function ChatRoom({ className }: ChatRoomProps) {
           </CardTitle>
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <Calendar className="h-4 w-4" />
-            {new Date(currentDate).toLocaleDateString('ko-KR', {
+            {new Date(selectedDate).toLocaleDateString('ko-KR', {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
@@ -299,7 +320,13 @@ export default function ChatRoom({ className }: ChatRoomProps) {
 
         {/* 메시지 입력 */}
         <div className="flex-shrink-0 border-t p-4">
-          <MessageInput onSendMessage={sendMessage} disabled={!connectionStatus.isConnected} />
+          <MessageInput onSendMessage={sendMessage} disabled={false} />
+          {/* 디버깅: 연결 상태 표시 */}
+          <div className="text-xs text-gray-500 mt-1">
+            연결 상태: {connectionStatus.isConnected ? '연결됨' : '연결 안됨'} |
+            팀: {currentTeam?.name || '없음'} |
+            날짜: {selectedDate}
+          </div>
         </div>
       </CardContent>
 
