@@ -294,22 +294,22 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
 
   return (
     <Card className={cn('h-full flex flex-col', className)}>
-      <CardHeader className="flex-shrink-0 border-b">
+      <CardHeader className="flex-shrink-0 border-b py-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <MessageCircle className="h-5 w-5" />
-            {currentTeam.name} 채팅
-          </CardTitle>
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <Calendar className="h-4 w-4" />
-            {new Date(selectedDate).toLocaleDateString('ko-KR', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
+            <span className="text-sm text-gray-500">
+              {new Date(selectedDate).toLocaleDateString('ko-KR', {
+                month: 'long',
+                day: 'numeric',
+                weekday: 'short'
+              })}
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <ConnectionStatus />
           </div>
         </div>
-        <ConnectionStatus />
       </CardHeader>
 
       <CardContent className="flex-1 flex flex-col p-0 min-h-0">

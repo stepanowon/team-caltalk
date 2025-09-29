@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTeamStore } from '@/stores/team-store'
 import { useAuthStore } from '@/stores/authStore'
 import { useSchedules } from '@/hooks/useSchedules'
@@ -11,6 +11,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { AlertCircle, Calendar as CalendarIcon, Users, MessageSquare } from 'lucide-react'
+import { TeamService } from '@/services/team-service'
 
 interface Schedule {
   id: number
@@ -30,9 +31,10 @@ export function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null)
+  const [isChatOpen, setIsChatOpen] = useState(false)
 
-  const { user } = useAuthStore()
-  const { currentTeam, teamMembers } = useTeamStore()
+  const { user, token } = useAuthStore()
+  const { currentTeam, teamMembers, setTeamMembers } = useTeamStore()
   const {
     schedules,
     loading,
@@ -43,6 +45,24 @@ export function Calendar() {
     getSchedulesForDate,
     refetch,
   } = useSchedules()
+
+  // Load team members when currentTeam changes
+  useEffect(() => {
+    const loadTeamMembers = async () => {
+      if (!currentTeam || !token) return
+
+      try {
+        const response = await TeamService.getTeamMembers(currentTeam.id, token)
+        if (response.success && response.data?.members) {
+          setTeamMembers(response.data.members)
+        }
+      } catch (error) {
+        console.error('Failed to load team members:', error)
+      }
+    }
+
+    loadTeamMembers()
+  }, [currentTeam, token, setTeamMembers])
 
   // Check if current user can edit schedules (team leader)
   const canEditSchedules = React.useMemo(() => {
@@ -136,14 +156,26 @@ export function Calendar() {
                 + 새 일정
               </Button>
             )}
+            {/* 모바일 채팅 토글 버튼 */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsChatOpen(!isChatOpen)}
+              className="md:hidden"
+            >
+              <MessageSquare className="h-4 w-4" />
+              채팅
+            </Button>
           </div>
         </div>
       </div>
 
-      {/* Main Content Area - 70:30 Split */}
-      <div className="flex-1 flex overflow-hidden pb-12">
-        {/* Left Side - Calendar Area (70%) */}
-        <div className="flex-[7] flex flex-col bg-white">
+      {/* Main Content Area - Responsive Layout */}
+      <div className="flex-1 flex overflow-hidden pb-12 relative">
+        {/* Left Side - Calendar Area */}
+        <div className={`flex flex-col bg-white transition-all duration-300 ${
+          isChatOpen ? 'hidden md:flex md:flex-[7]' : 'flex-1 md:flex-[7]'
+        }`}>
           <CalendarHeader
             currentDate={currentDate}
             onDateChange={setCurrentDate}
@@ -177,8 +209,12 @@ export function Calendar() {
           </div>
         </div>
 
-        {/* Right Side - Chat Area (30%) */}
-        <div className="flex-[3] flex flex-col bg-white border-l border-gray-200">
+        {/* Right Side - Chat Area */}
+        <div className={`flex flex-col bg-white transition-all duration-300 ${
+          isChatOpen
+            ? 'absolute inset-0 z-20 md:relative md:flex-[3] md:border-l md:border-gray-200'
+            : 'hidden md:flex md:flex-[3] md:border-l md:border-gray-200'
+        }`}>
           {/* Chat Header */}
           <div className="flex items-center justify-between p-3 border-b border-gray-200">
             <div className="flex items-center gap-2">
@@ -194,9 +230,20 @@ export function Calendar() {
                 </span>
               )}
             </div>
-            <div className="flex items-center gap-1 text-sm text-gray-500">
-              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-              <span>온라인 {teamMembers.length}명</span>
+            <div className="flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-1 text-sm text-gray-500">
+                <Users className="w-4 h-4" />
+                <span>팀원 {teamMembers.length}명</span>
+              </div>
+              {/* 모바일 닫기 버튼 */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsChatOpen(false)}
+                className="md:hidden"
+              >
+                ✕
+              </Button>
             </div>
           </div>
 
@@ -209,6 +256,14 @@ export function Calendar() {
             />
           </div>
         </div>
+
+        {/* 모바일 오버레이 */}
+        {isChatOpen && (
+          <div
+            className="absolute inset-0 bg-black bg-opacity-50 z-10 md:hidden"
+            onClick={() => setIsChatOpen(false)}
+          />
+        )}
       </div>
 
       {/* Bottom Status Bar - Fixed at bottom */}
