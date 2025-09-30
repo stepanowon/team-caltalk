@@ -72,13 +72,25 @@ export function CalendarGrid({
     const grouped: { [key: string]: Schedule[] } = {}
 
     schedules.forEach(schedule => {
-      const scheduleDate = new Date(schedule.start_time)
-      const dateKey = scheduleDate.toDateString()
+      const startDate = new Date(schedule.start_time)
+      const endDate = new Date(schedule.end_time)
 
-      if (!grouped[dateKey]) {
-        grouped[dateKey] = []
+      // Reset time to start of day for accurate date comparison
+      startDate.setHours(0, 0, 0, 0)
+      endDate.setHours(0, 0, 0, 0)
+
+      // Add schedule to all dates it spans
+      const current = new Date(startDate)
+      while (current <= endDate) {
+        const dateKey = current.toDateString()
+
+        if (!grouped[dateKey]) {
+          grouped[dateKey] = []
+        }
+        grouped[dateKey].push(schedule)
+
+        current.setDate(current.getDate() + 1)
       }
-      grouped[dateKey].push(schedule)
     })
 
     // Sort schedules by start time for each date

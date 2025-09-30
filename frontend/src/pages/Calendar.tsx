@@ -6,11 +6,18 @@ import CalendarHeader from '@/components/calendar/CalendarHeader'
 import CalendarGrid from '@/components/calendar/CalendarGrid'
 import ScheduleCard from '@/components/calendar/ScheduleCard'
 import ChatRoom from '@/components/chat/ChatRoom'
+import { ScheduleModal } from '@/components/calendar/ScheduleModal'
+import { ScheduleDetailModal } from '@/components/calendar/ScheduleDetailModal'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { AlertCircle, Calendar as CalendarIcon, Users, MessageSquare } from 'lucide-react'
+import {
+  AlertCircle,
+  Calendar as CalendarIcon,
+  Users,
+  MessageSquare,
+} from 'lucide-react'
 import { TeamService } from '@/services/team-service'
 import { getKoreanDateISO } from '@/utils/dateUtils'
 
@@ -31,8 +38,13 @@ interface Schedule {
 export function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-  const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null)
+  const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(
+    null
+  )
   const [isChatOpen, setIsChatOpen] = useState(false)
+  const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false)
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
+  const [editingSchedule, setEditingSchedule] = useState<Schedule | null>(null)
 
   const { user, token } = useAuthStore()
   const { currentTeam, teamMembers, setTeamMembers } = useTeamStore()
@@ -54,7 +66,9 @@ export function Calendar() {
 
       try {
         const response = await TeamService.getTeamMembers(currentTeam.id, token)
+        console.log('Calendar - Team Members Response:', response)
         if (response.success && response.data?.members) {
+          console.log('Calendar - Team Members Data:', response.data.members)
           setTeamMembers(response.data.members)
         }
       } catch (error) {
@@ -65,10 +79,23 @@ export function Calendar() {
     loadTeamMembers()
   }, [currentTeam, token, setTeamMembers])
 
+  // Auto-refresh schedules every 30 seconds
+  useEffect(() => {
+    if (!currentTeam) return
+
+    const interval = setInterval(() => {
+      refetch()
+    }, 30000) // 30초마다 새로고침
+
+    return () => clearInterval(interval)
+  }, [currentTeam, refetch])
+
   // Check if current user can edit schedules (team leader)
   const canEditSchedules = React.useMemo(() => {
     if (!user || !currentTeam) return false
-    const currentMember = teamMembers.find(member => member.user_id === user.id)
+    const currentMember = teamMembers.find(
+      (member) => member.user_id === user.id
+    )
     return currentMember?.role === 'leader'
   }, [user, currentTeam, teamMembers])
 
@@ -84,29 +111,62 @@ export function Calendar() {
 
   const handleScheduleClick = (schedule: Schedule) => {
     setSelectedSchedule(schedule)
-    setSelectedDate(new Date(schedule.start_time))
+    setIsDetailModalOpen(true)
   }
 
-  const handleScheduleEdit = (schedule: Schedule) => {
-    // TODO: Open schedule edit modal
+  const handleScheduleEdit = (schedule?: Schedule) => {
+    const scheduleToEdit = schedule || selectedSchedule
+    if (scheduleToEdit) {
+      setEditingSchedule(scheduleToEdit)
+      setIsScheduleModalOpen(true)
+      setIsDetailModalOpen(false)
+    }
   }
 
-  const handleScheduleDelete = async (scheduleId: number) => {
+  const handleScheduleDelete = async (scheduleId?: number) => {
+    const idToDelete = scheduleId || selectedSchedule?.id
+    if (!idToDelete) return
+
     try {
-      await deleteSchedule(scheduleId)
-      if (selectedSchedule?.id === scheduleId) {
+      await deleteSchedule(idToDelete)
+      if (selectedSchedule?.id === idToDelete) {
         setSelectedSchedule(null)
       }
+      setIsDetailModalOpen(false)
     } catch (error) {
       console.error('Delete schedule failed:', error)
     }
   }
 
   const handleCreateSchedule = () => {
-    // TODO: Open schedule create modal
+    setEditingSchedule(null)
+    setIsScheduleModalOpen(true)
   }
 
-  const selectedDateSchedules = selectedDate ? getSchedulesForDate(selectedDate.toISOString()) : []
+  const handleScheduleModalClose = () => {
+    setIsScheduleModalOpen(false)
+    setEditingSchedule(null)
+  }
+
+  const handleScheduleSubmit = async (data: {
+    title: string
+    content?: string
+    startDatetime: string
+    endDatetime: string
+    scheduleType: 'personal' | 'team'
+    participantIds?: number[]
+  }) => {
+    if (editingSchedule) {
+      await updateSchedule({ ...data, id: editingSchedule.id })
+    } else {
+      await createSchedule(data)
+    }
+    await refetch()
+  }
+
+  const selectedDateSchedules = selectedDate
+    ? getSchedulesForDate(selectedDate.toISOString())
+    : []
 
   // Show team selection message if no team is selected
   if (!currentTeam) {
@@ -122,7 +182,10 @@ export function Calendar() {
               캘린더를 사용하려면 먼저 팀을 선택해야 합니다.
             </p>
             <div className="text-center">
-              <Button variant="outline" onClick={() => window.location.href = '/teams'}>
+              <Button
+                variant="outline"
+                onClick={() => (window.location.href = '/teams')}
+              >
                 팀 관리로 이동
               </Button>
             </div>
@@ -138,7 +201,6 @@ export function Calendar() {
       <div className="bg-white border-b border-gray-200 px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <h1 className="text-xl font-bold">Team CalTalk</h1>
             <div className="flex items-center gap-2">
               <span className="text-gray-500">|</span>
               <h2 className="font-semibold">{currentTeam.name}</h2>
@@ -174,14 +236,18 @@ export function Calendar() {
       {/* Main Content Area - Responsive Layout */}
       <div className="flex-1 flex overflow-hidden pb-12 relative">
         {/* Left Side - Calendar Area */}
-        <div className={`flex flex-col bg-white transition-all duration-300 ${
-          isChatOpen ? 'hidden md:flex md:flex-[7]' : 'flex-1 md:flex-[7]'
-        }`}>
+        <div
+          className={`flex flex-col bg-white transition-all duration-300 ${
+            isChatOpen ? 'hidden md:flex md:flex-[7]' : 'flex-1 md:flex-[7]'
+          }`}
+        >
           <CalendarHeader
             currentDate={currentDate}
             onDateChange={setCurrentDate}
             onTodayClick={handleTodayClick}
-            onCreateSchedule={canEditSchedules ? handleCreateSchedule : undefined}
+            onCreateSchedule={
+              canEditSchedules ? handleCreateSchedule : undefined
+            }
             onRefresh={refetch}
             scheduleCount={Array.isArray(schedules) ? schedules.length : 0}
             loading={loading}
@@ -204,18 +270,22 @@ export function Calendar() {
               onDateClick={handleDateClick}
               onScheduleClick={handleScheduleClick}
               onScheduleEdit={canEditSchedules ? handleScheduleEdit : undefined}
-              onScheduleDelete={canEditSchedules ? handleScheduleDelete : undefined}
+              onScheduleDelete={
+                canEditSchedules ? handleScheduleDelete : undefined
+              }
               canEditSchedules={canEditSchedules}
             />
           </div>
         </div>
 
         {/* Right Side - Chat Area */}
-        <div className={`flex flex-col bg-white transition-all duration-300 ${
-          isChatOpen
-            ? 'absolute inset-0 z-20 md:relative md:flex-[3] md:border-l md:border-gray-200'
-            : 'hidden md:flex md:flex-[3] md:border-l md:border-gray-200'
-        }`}>
+        <div
+          className={`flex flex-col bg-white transition-all duration-300 ${
+            isChatOpen
+              ? 'absolute inset-0 z-20 md:relative md:flex-[3] md:border-l md:border-gray-200'
+              : 'hidden md:flex md:flex-[3] md:border-l md:border-gray-200'
+          }`}
+        >
           {/* Chat Header */}
           <div className="flex items-center justify-between p-3 border-b border-gray-200">
             <div className="flex items-center gap-2">
@@ -223,11 +293,12 @@ export function Calendar() {
               <h3 className="font-semibold">팀 채팅</h3>
               {selectedDate && (
                 <span className="text-sm text-gray-500">
-                  - {selectedDate.toLocaleDateString('ko-KR', {
+                  -{' '}
+                  {selectedDate.toLocaleDateString('ko-KR', {
                     timeZone: 'Asia/Seoul',
                     month: 'long',
                     day: 'numeric',
-                    weekday: 'short'
+                    weekday: 'short',
                   })}
                 </span>
               )}
@@ -273,11 +344,15 @@ export function Calendar() {
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
             <span className="text-blue-700">
-              📋 이번 달 일정: {Array.isArray(schedules) ? schedules.length : 0}개
+              📋 이번 달 일정: {Array.isArray(schedules) ? schedules.length : 0}
+              개
             </span>
             {selectedDate && (
               <span className="text-blue-600">
-                📅 선택된 날짜: {selectedDate.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}
+                📅 선택된 날짜:{' '}
+                {selectedDate.toLocaleDateString('ko-KR', {
+                  timeZone: 'Asia/Seoul',
+                })}
               </span>
             )}
           </div>
@@ -287,11 +362,61 @@ export function Calendar() {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
-              weekday: 'long'
+              weekday: 'long',
             })}
           </div>
         </div>
       </div>
+
+      {/* Schedule Modal */}
+      <ScheduleModal
+        open={isScheduleModalOpen}
+        onClose={handleScheduleModalClose}
+        onSubmit={handleScheduleSubmit}
+        initialData={editingSchedule}
+        selectedDate={selectedDate}
+      />
+
+      {/* Schedule Detail Modal */}
+      <ScheduleDetailModal
+        open={isDetailModalOpen}
+        onClose={() => setIsDetailModalOpen(false)}
+        schedule={selectedSchedule}
+        onEdit={() => handleScheduleEdit()}
+        onDelete={() => handleScheduleDelete()}
+        onRequestChange={async (schedule) => {
+          const message = prompt('일정 변경 요청 사유를 입력하세요:')
+          if (message && currentTeam) {
+            try {
+              const response = await fetch('http://localhost:3000/api/chat/schedule-request', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  teamId: currentTeam.id,
+                  scheduleId: schedule.id,
+                  content: message,
+                  targetDate: new Date(schedule.start_time).toISOString().split('T')[0],
+                }),
+              })
+
+              if (!response.ok) {
+                const error = await response.json()
+                throw new Error(error.error || '요청 실패')
+              }
+
+              alert('일정 변경 요청이 전송되었습니다.')
+            } catch (error) {
+              console.error('Schedule change request error:', error)
+              alert(error instanceof Error ? error.message : '일정 변경 요청 중 오류가 발생했습니다.')
+            }
+          }
+        }}
+        canEdit={canEditSchedules}
+        isLeader={canEditSchedules}
+      />
     </div>
   )
 }

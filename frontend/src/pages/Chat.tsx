@@ -3,10 +3,12 @@ import { useTeamStore } from '@/stores/team-store';
 import { ChatRoom } from '@/components/chat/ChatRoom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MessageSquare, Calendar } from 'lucide-react';
+import { getKoreanDate, getKoreanDateISO } from '@/utils/dateUtils';
 
 export function Chat() {
   const { currentTeam } = useTeamStore();
-  const currentDate = new Date().toISOString().split('T')[0];
+  const currentDate = getKoreanDateISO();
+
 
   if (!currentTeam) {
     return (
@@ -42,6 +44,7 @@ export function Chat() {
           </div>
           <p className="text-blue-600 text-sm mt-1">
             {new Date().toLocaleDateString('ko-KR', {
+              timeZone: 'Asia/Seoul',
               year: 'numeric',
               month: 'long',
               day: 'numeric',

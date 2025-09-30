@@ -4,10 +4,11 @@ import type { Schedule, ScheduleParticipant, ApiResponse } from '@/types'
 
 interface CreateScheduleRequest {
   title: string
-  description?: string
-  start_time: string
-  end_time: string
-  participant_ids?: number[]
+  content?: string
+  startDatetime: string
+  endDatetime: string
+  scheduleType: 'personal' | 'team'
+  participantIds?: number[]
 }
 
 interface UpdateScheduleRequest extends Partial<CreateScheduleRequest> {
@@ -64,15 +65,34 @@ export function useSchedules(): UseSchedulesReturn {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}))
-      throw new Error(errorData.message || `HTTP error! status: ${response.status}`)
+      const error: any = new Error(errorData.error || errorData.message || `HTTP error! status: ${response.status}`)
+      // Attach additional error data for conflict handling
+      if (errorData.conflicts) {
+        error.conflicts = errorData.conflicts
+      }
+      throw error
     }
 
     const data: ApiResponse<T> = await response.json()
     if (!data.success) {
-      throw new Error(data.message || data.error || 'API call failed')
+      const error: any = new Error(data.message || data.error || 'API call failed')
+      // Attach additional error data
+      if ((data as any).conflicts) {
+        error.conflicts = (data as any).conflicts
+      }
+      throw error
     }
 
     return data.data!
+  }
+
+  // Normalize schedule data (convert start_datetime/end_datetime to start_time/end_time)
+  const normalizeSchedule = (schedule: any): ScheduleWithParticipants => {
+    return {
+      ...schedule,
+      start_time: schedule.start_datetime || schedule.start_time,
+      end_time: schedule.end_datetime || schedule.end_time,
+    }
   }
 
   // Fetch schedules for current team
@@ -86,11 +106,16 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const response = await apiCall<{ success: boolean; data: { schedules: ScheduleWithParticipants[] } }>(
+      console.log('Fetching schedules for team:', currentTeam.id)
+      const response = await apiCall<{ schedules: ScheduleWithParticipants[] }>(
         `/schedules?teamId=${currentTeam.id}`
       )
-      setSchedules(response.data?.schedules || [])
+      console.log('Schedules API response:', response)
+      const normalizedSchedules = (response.schedules || []).map(normalizeSchedule)
+      console.log('Normalized schedules:', normalizedSchedules)
+      setSchedules(normalizedSchedules)
     } catch (err) {
+      console.error('Failed to fetch schedules:', err)
       setError(err instanceof Error ? err.message : '일정을 불러오는데 실패했습니다.')
       setSchedules([])
     } finally {
@@ -108,7 +133,7 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const response = await apiCall<{ success: boolean; data: { schedule: ScheduleWithParticipants } }>(
+      const response = await apiCall<{ schedule: ScheduleWithParticipants }>(
         `/schedules`,
         {
           method: 'POST',
@@ -119,11 +144,21 @@ export function useSchedules(): UseSchedulesReturn {
         }
       )
 
-      const newSchedule = response.data?.schedule
+      const newSchedule = response.schedule
       if (newSchedule) {
-        setSchedules(prev => [...prev, newSchedule])
+        setSchedules(prev => [...prev, normalizeSchedule(newSchedule)])
       }
-    } catch (err) {
+    } catch (err: any) {
+      // Handle schedule conflicts
+      if (err.message === '일정 충돌이 발생했습니다' && err.conflicts) {
+        const conflictDetails = err.conflicts.map((c: any) =>
+          `${c.userName}: ${c.conflictingSchedule.title} (${new Date(c.conflictingSchedule.startDatetime).toLocaleString('ko-KR')})`
+        ).join('\n')
+        const conflictError = new Error(`일정 충돌이 발생했습니다:\n\n${conflictDetails}\n\n다른 시간을 선택해주세요.`)
+        setError(conflictError.message)
+        throw conflictError
+      }
+
       setError(err instanceof Error ? err.message : '일정 생성에 실패했습니다.')
       throw err
     } finally {
@@ -141,7 +176,7 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const response = await apiCall<{ success: boolean; data: { schedule: ScheduleWithParticipants } }>(
+      const response = await apiCall<{ schedule: ScheduleWithParticipants }>(
         `/schedules/${data.id}`,
         {
           method: 'PUT',
@@ -149,11 +184,11 @@ export function useSchedules(): UseSchedulesReturn {
         }
       )
 
-      const updatedSchedule = response.data?.schedule
+      const updatedSchedule = response.schedule
       if (updatedSchedule) {
         setSchedules(prev =>
           prev.map(schedule =>
-            schedule.id === data.id ? updatedSchedule : schedule
+            schedule.id === data.id ? normalizeSchedule(updatedSchedule) : schedule
           )
         )
       }
@@ -193,7 +228,9 @@ export function useSchedules(): UseSchedulesReturn {
     return (date: string) => {
       const targetDate = new Date(date).toDateString()
       return schedules.filter(schedule => {
-        const scheduleDate = new Date(schedule.start_time).toDateString()
+        const startTime = schedule.start_datetime || schedule.start_time
+        if (!startTime) return false
+        const scheduleDate = new Date(startTime).toDateString()
         return scheduleDate === targetDate
       })
     }
@@ -206,8 +243,12 @@ export function useSchedules(): UseSchedulesReturn {
       const end = new Date(endDate)
 
       return schedules.filter(schedule => {
-        const scheduleStart = new Date(schedule.start_time)
-        const scheduleEnd = new Date(schedule.end_time)
+        const startTime = schedule.start_datetime || schedule.start_time
+        const endTime = schedule.end_datetime || schedule.end_time
+        if (!startTime || !endTime) return false
+
+        const scheduleStart = new Date(startTime)
+        const scheduleEnd = new Date(endTime)
 
         // Check if schedule overlaps with the date range
         return scheduleStart <= end && scheduleEnd >= start

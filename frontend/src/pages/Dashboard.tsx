@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { format } from 'date-fns'
+import { format, formatDistanceToNow } from 'date-fns'
 import { ko } from 'date-fns/locale'
 import {
   Users,
@@ -23,13 +23,27 @@ import { useAuthStore } from '@/stores/authStore'
 import { useTeamStore, type Team } from '@/stores/team-store'
 import { ROUTES } from '@/utils/constants'
 
+interface Activity {
+  id: string
+  type: string
+  icon: string
+  title: string
+  description: string
+  actor: string
+  teamName: string
+  timestamp: string
+  metadata: any
+}
+
 export function Dashboard() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { user } = useAuthStore()
+  const { user, token } = useAuthStore()
   const { currentTeam, teams, setCurrentTeam } = useTeamStore()
 
   const [message, setMessage] = useState<string | null>(null)
+  const [activities, setActivities] = useState<Activity[]>([])
+  const [loadingActivities, setLoadingActivities] = useState(false)
 
   // 페이지 로드 시 메시지 표시 (팀 생성/참여 완료 시)
   useEffect(() => {
@@ -44,6 +58,38 @@ export function Dashboard() {
       return () => clearTimeout(timer)
     }
   }, [location.state])
+
+  // 활동 내역 조회
+  useEffect(() => {
+    const fetchActivities = async () => {
+      if (!token) return
+
+      try {
+        setLoadingActivities(true)
+        const response = await fetch(
+          currentTeam
+            ? `http://localhost:3000/api/activities?teamId=${currentTeam.id}&limit=5`
+            : 'http://localhost:3000/api/activities?limit=5',
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+          }
+        )
+
+        if (response.ok) {
+          const data = await response.json()
+          setActivities(data.data.activities || [])
+        }
+      } catch (error) {
+        console.error('Failed to fetch activities:', error)
+      } finally {
+        setLoadingActivities(false)
+      }
+    }
+
+    fetchActivities()
+  }, [currentTeam, token])
 
   // 팀 선택 핸들러
   const handleSelectTeam = (team: Team) => {
@@ -235,11 +281,32 @@ export function Dashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-600 mb-4">최근 팀 활동을 확인하세요</p>
-              <div className="space-y-2 text-sm text-gray-600">
-                <p>• 활동 내역이 없습니다</p>
-                <p>• 팀에 참여하여 활동을 시작해보세요</p>
-              </div>
+              {loadingActivities ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900"></div>
+                </div>
+              ) : activities.length > 0 ? (
+                <div className="space-y-3">
+                  {activities.map((activity) => (
+                    <div key={activity.id} className="flex gap-2 text-sm">
+                      <span className="text-lg">{activity.icon}</span>
+                      <div className="flex-1">
+                        <p className="text-gray-900">
+                          <span className="font-medium">{activity.description}</span>
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          {activity.teamName} • {formatDistanceToNow(new Date(activity.timestamp), { addSuffix: true, locale: ko })}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="space-y-2 text-sm text-gray-600">
+                  <p>• 활동 내역이 없습니다</p>
+                  <p>• 팀에 참여하여 활동을 시작해보세요</p>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>

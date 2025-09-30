@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import type { Message, User } from '@/types'
+import { getKoreanDate, getKoreanDateISO } from '../utils/dateUtils'
 
 export interface ChatMessage extends Message {
   user: {
@@ -76,7 +77,7 @@ interface ChatState {
 const initialState = {
   messages: [],
   messagesByDate: {},
-  currentDate: new Date().toISOString().split('T')[0],
+  currentDate: getKoreanDateISO(),
   isLoading: false,
   error: null,
   connectionStatus: {
