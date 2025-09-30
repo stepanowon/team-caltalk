@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { AlertCircle, Calendar as CalendarIcon, Users, MessageSquare } from 'lucide-react'
 import { TeamService } from '@/services/team-service'
+import { getKoreanDateISO } from '@/utils/dateUtils'
 
 interface Schedule {
   id: number
@@ -223,6 +224,7 @@ export function Calendar() {
               {selectedDate && (
                 <span className="text-sm text-gray-500">
                   - {selectedDate.toLocaleDateString('ko-KR', {
+                    timeZone: 'Asia/Seoul',
                     month: 'long',
                     day: 'numeric',
                     weekday: 'short'
@@ -251,7 +253,7 @@ export function Calendar() {
           <div className="flex-1 flex flex-col min-h-0">
             <ChatRoom
               teamId={currentTeam.id}
-              selectedDate={(selectedDate || currentDate).toISOString().split('T')[0]}
+              selectedDate={getKoreanDateISO(selectedDate || currentDate)}
               className="flex-1 border-0 shadow-none rounded-none"
             />
           </div>
@@ -275,12 +277,13 @@ export function Calendar() {
             </span>
             {selectedDate && (
               <span className="text-blue-600">
-                📅 선택된 날짜: {selectedDate.toLocaleDateString('ko-KR')}
+                📅 선택된 날짜: {selectedDate.toLocaleDateString('ko-KR', { timeZone: 'Asia/Seoul' })}
               </span>
             )}
           </div>
           <div className="text-blue-600">
             {new Date().toLocaleDateString('ko-KR', {
+              timeZone: 'Asia/Seoul',
               year: 'numeric',
               month: 'long',
               day: 'numeric',

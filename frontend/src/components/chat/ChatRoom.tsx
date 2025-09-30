@@ -7,6 +7,7 @@ import MessageInput from './MessageInput'
 import ConnectionStatus from './ConnectionStatus'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Calendar, MessageCircle, Users } from 'lucide-react'
+import { getKoreanDateISO } from '@/utils/dateUtils'
 
 interface ChatRoomProps {
   teamId: number
@@ -50,6 +51,9 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
 
 
   const abortControllerRef = useRef<AbortController | null>(null)
+
+  // 오늘 날짜인지 확인
+  const isToday = getKoreanDateISO() === selectedDate
 
   // API 호출 헬퍼
   const apiCall = useCallback(async <T,>(
@@ -114,7 +118,7 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
             }
           }>
         }
-      }>(`/chat/teams/${teamId}/messages?date=${selectedDate}`)
+      }>(`/chat/teams/${teamId}/messages?targetDate=${selectedDate}`)
 
 
       if (response.success && response.data?.messages) {
@@ -300,6 +304,7 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
             <MessageCircle className="h-5 w-5" />
             <span className="text-sm text-gray-500">
               {new Date(selectedDate).toLocaleDateString('ko-KR', {
+                timeZone: 'Asia/Seoul',
                 month: 'long',
                 day: 'numeric',
                 weekday: 'short'
@@ -320,7 +325,13 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
 
         {/* 메시지 입력 */}
         <div className="flex-shrink-0 border-t p-4">
-          <MessageInput onSendMessage={sendMessage} disabled={false} />
+          <MessageInput onSendMessage={sendMessage} disabled={!isToday} />
+          {!isToday && (
+            <div className="text-xs text-amber-600 mt-2 flex items-center gap-1">
+              <Calendar className="h-3 w-3" />
+              <span>오늘 날짜만 메시지를 작성할 수 있습니다.</span>
+            </div>
+          )}
           {/* 디버깅: 연결 상태 표시 */}
           <div className="text-xs text-gray-500 mt-1">
             연결 상태: {connectionStatus.isConnected ? '연결됨' : '연결 안됨'} |
