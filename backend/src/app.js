@@ -24,6 +24,7 @@ const teamRoutes = require('./routes/teams');
 const scheduleRoutes = require('./routes/schedules');
 const chatRoutes = require('./routes/chat');
 const pollRoutes = require('./routes/poll');
+const activitiesRoutes = require('./routes/activities');
 
 /**
  * Express 애플리케이션 생성 및 설정
@@ -110,6 +111,7 @@ const createApp = async () => {
         schedules: '/api/schedules',
         chat: '/api/chat',
         poll: '/api/poll',
+        activities: '/api/activities',
         health: '/health',
       },
     });
@@ -122,6 +124,7 @@ const createApp = async () => {
   app.use('/api/schedules', scheduleRoutes);
   app.use('/api/chat', chatRoutes);
   app.use('/api/poll', pollRoutes);
+  app.use('/api/activities', activitiesRoutes);
 
   // 404 처리
   app.use('*', (req, res) => {

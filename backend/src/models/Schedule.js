@@ -35,10 +35,7 @@ class Schedule extends BaseModel {
         scheduleType,
         creatorId,
         teamId,
-        participantIds = [],
-        category = 'other',
-        priority = 'medium',
-        recurrence = null
+        participantIds = []
       } = scheduleData;
 
       // 입력 검증
@@ -55,19 +52,24 @@ class Schedule extends BaseModel {
         throw new Error('팀 일정은 팀 ID가 필요합니다');
       }
 
-      // 일정 충돌 검사
-      const conflicts = await this.checkScheduleConflicts(
-        participantIds.length > 0 ? participantIds : [creatorId],
-        startDatetime,
-        endDatetime
-      );
+      // 참가자가 지정된 경우에만 충돌 검사
+      if (participantIds.length > 0) {
+        const conflicts = await this.checkScheduleConflicts(
+          participantIds,
+          startDatetime,
+          endDatetime
+        );
 
-      if (conflicts.length > 0) {
-        const conflictError = new Error('일정 충돌이 발생했습니다');
-        conflictError.code = 'SCHEDULE_CONFLICT';
-        conflictError.conflicts = conflicts;
-        throw conflictError;
+        if (conflicts.length > 0) {
+          const conflictError = new Error('일정 충돌이 발생했습니다');
+          conflictError.code = 'SCHEDULE_CONFLICT';
+          conflictError.conflicts = conflicts;
+          throw conflictError;
+        }
       }
+
+      // 참가자 목록 생성 (지정된 참가자만 포함, 생성자는 자동 포함하지 않음)
+      const allParticipants = [...new Set(participantIds)];
 
       // 트랜잭션으로 일정과 참가자 생성
       const result = await this.transaction(async (client) => {
@@ -75,9 +77,9 @@ class Schedule extends BaseModel {
         const scheduleResult = await client.query(`
           INSERT INTO schedules (
             title, content, start_datetime, end_datetime,
-            schedule_type, creator_id, team_id, category, priority, recurrence
+            schedule_type, creator_id, team_id
           )
-          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+          VALUES ($1, $2, $3, $4, $5, $6, $7)
           RETURNING *
         `, [
           title.trim(),
@@ -86,21 +88,19 @@ class Schedule extends BaseModel {
           endDatetime,
           scheduleType,
           creatorId,
-          teamId || null,
-          category,
-          priority,
-          recurrence ? JSON.stringify(recurrence) : null
+          teamId || null
         ]);
 
         const schedule = scheduleResult.rows[0];
 
-        // 참가자 추가 (생성자 포함)
-        const allParticipants = [...new Set([creatorId, ...participantIds])];
-        for (const participantId of allParticipants) {
-          await client.query(`
-            INSERT INTO schedule_participants (schedule_id, user_id, participation_status)
-            VALUES ($1, $2, 'confirmed')
-          `, [schedule.id, participantId]);
+        // 참가자 추가 (참가자가 지정된 경우에만)
+        if (allParticipants.length > 0) {
+          for (const participantId of allParticipants) {
+            await client.query(`
+              INSERT INTO schedule_participants (schedule_id, user_id, participation_status)
+              VALUES ($1, $2, 'confirmed')
+            `, [schedule.id, participantId]);
+          }
         }
 
         return schedule;
@@ -110,7 +110,7 @@ class Schedule extends BaseModel {
         scheduleId: result.id,
         creatorId,
         scheduleType,
-        participantCount: participantIds.length + 1,
+        participantCount: allParticipants.length,
       });
 
       logger.audit('SCHEDULE_CREATED', {
@@ -184,8 +184,10 @@ class Schedule extends BaseModel {
         FROM schedules s
         LEFT JOIN users u ON s.creator_id = u.id
         LEFT JOIN teams t ON s.team_id = t.id
-        JOIN schedule_participants sp ON s.id = sp.schedule_id
-        WHERE sp.user_id = $1
+        LEFT JOIN schedule_participants sp ON s.id = sp.schedule_id
+        WHERE (sp.user_id = $1 OR s.team_id IN (
+          SELECT team_id FROM team_members WHERE user_id = $1
+        ))
       `;
 
       const params = [userId];
@@ -217,13 +219,39 @@ class Schedule extends BaseModel {
 
       const result = await this.db.query(query, params);
 
+      // 각 일정에 대한 participants 정보 추가
+      const schedules = await Promise.all(
+        result.rows.map(async (schedule) => {
+          const participantsQuery = `
+            SELECT
+              sp.id,
+              sp.schedule_id,
+              sp.user_id,
+              sp.participation_status as status,
+              sp.created_at,
+              u.name as user_name,
+              u.email as user_email
+            FROM schedule_participants sp
+            JOIN users u ON sp.user_id = u.id
+            WHERE sp.schedule_id = $1
+            ORDER BY sp.created_at ASC
+          `;
+          const participantsResult = await this.db.query(participantsQuery, [schedule.id]);
+
+          return {
+            ...schedule,
+            participants: participantsResult.rows
+          };
+        })
+      );
+
       logger.performance('Schedule.getUserSchedules', Date.now() - start, {
         userId,
-        scheduleCount: result.rows.length,
+        scheduleCount: schedules.length,
         filters,
       });
 
-      return result.rows;
+      return schedules;
     } catch (error) {
       logger.error('Schedule.getUserSchedules 오류:', {
         userId,
@@ -377,22 +405,23 @@ class Schedule extends BaseModel {
 
         // 참가자 업데이트
         if (participantIds !== undefined) {
-          // 기존 참가자 삭제 (생성자 제외)
+          // 기존 참가자 모두 삭제
           await client.query(`
             DELETE FROM schedule_participants
-            WHERE schedule_id = $1 AND user_id != $2
-          `, [scheduleId, existingSchedule.creator_id]);
+            WHERE schedule_id = $1
+          `, [scheduleId]);
 
-          // 새 참가자 추가 (생성자 제외, 중복 제거)
-          const uniqueParticipants = [...new Set(participantIds)]
-            .filter(id => id !== existingSchedule.creator_id);
+          // 새 참가자 추가 (중복 제거)
+          const uniqueParticipants = [...new Set(participantIds)];
 
-          for (const participantId of uniqueParticipants) {
-            await client.query(`
-              INSERT INTO schedule_participants (schedule_id, user_id, participation_status)
-              VALUES ($1, $2, 'confirmed')
-              ON CONFLICT (schedule_id, user_id) DO NOTHING
-            `, [scheduleId, participantId]);
+          if (uniqueParticipants.length > 0) {
+            for (const participantId of uniqueParticipants) {
+              await client.query(`
+                INSERT INTO schedule_participants (schedule_id, user_id, participation_status)
+                VALUES ($1, $2, 'confirmed')
+                ON CONFLICT (schedule_id, user_id) DO NOTHING
+              `, [scheduleId, participantId]);
+            }
           }
         }
 

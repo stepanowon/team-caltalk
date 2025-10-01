@@ -32,13 +32,7 @@ export const Login = () => {
     try {
       const result = await AuthService.login({ email, password })
 
-      console.log('로그인 API 응답:', result)
       if (result.success && result.data && result.data.tokens) {
-        console.log('토큰 데이터:', {
-          user: result.data.user?.email,
-          accessToken: result.data.tokens.accessToken ? `${result.data.tokens.accessToken.substring(0, 20)}...` : 'null',
-          refreshToken: result.data.tokens.refreshToken ? `${result.data.tokens.refreshToken.substring(0, 20)}...` : 'null'
-        })
         setAuth(result.data.user, result.data.tokens.accessToken, result.data.tokens.refreshToken)
         navigate(ROUTES.DASHBOARD)
       } else {

@@ -47,16 +47,6 @@ export function CreateTeam() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // 디버그: 인증 상태 확인
-  console.log('CreateTeam 컴포넌트 - 인증 상태:', {
-    token: token ? `${token.substring(0, 10)}...` : null,
-    user: user?.email,
-    isAuthenticated
-  })
-
-  // 디버그: localStorage 확인
-  const storedAuth = localStorage.getItem('auth-storage')
-  console.log('localStorage auth-storage:', storedAuth)
 
   const {
     register,
@@ -76,14 +66,11 @@ export function CreateTeam() {
   const watchedDescription = watch('description')
 
   const onSubmit = async (data: CreateTeamFormData) => {
-    console.log('토큰 상태:', { token, hasToken: !!token })
-
     // 토큰이 없으면 localStorage에서 직접 확인
     let authToken = token
     if (!authToken) {
       // access_token에서 직접 가져오기
       authToken = localStorage.getItem('access_token')
-      console.log('localStorage access_token에서 토큰 복원:', !!authToken)
 
       // 만약 access_token도 없으면 auth-storage에서 확인
       if (!authToken) {
@@ -92,7 +79,6 @@ export function CreateTeam() {
           try {
             const parsed = JSON.parse(storedAuth)
             authToken = parsed.state?.token || parsed.token
-            console.log('auth-storage에서 토큰 복원:', !!authToken)
           } catch (e) {
             console.error('localStorage 파싱 오류:', e)
           }
@@ -173,14 +159,6 @@ export function CreateTeam() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {/* 디버그: 인증 상태 표시 */}
-            <div className="mb-4 p-3 bg-gray-50 rounded text-sm">
-              <p><strong>디버그 정보:</strong></p>
-              <p>토큰: {token ? '✅ 있음' : '❌ 없음'}</p>
-              <p>사용자: {user?.email || '없음'}</p>
-              <p>인증됨: {isAuthenticated ? '✅' : '❌'}</p>
-              <p>localStorage: {localStorage.getItem('auth-storage') ? '✅ 데이터 있음' : '❌ 데이터 없음'}</p>
-            </div>
 
             {/* 에러 메시지 */}
             {error && (

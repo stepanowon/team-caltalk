@@ -37,6 +37,16 @@ class Message extends BaseModel {
       // 입력 검증
       this.validateMessageData(messageData);
 
+      console.log('[DEBUG] Creating message with data:', {
+        team_id: teamId,
+        sender_id: senderId,
+        content: content.trim(),
+        target_date: targetDate,
+        related_schedule_id: relatedScheduleId,
+        message_type: messageType,
+        sent_at: new Date(),
+      });
+
       // 메시지 전송
       const message = await this.create({
         team_id: teamId,
@@ -46,6 +56,12 @@ class Message extends BaseModel {
         related_schedule_id: relatedScheduleId,
         message_type: messageType,
         sent_at: new Date(),
+      });
+
+      console.log('[DEBUG] Message created successfully:', {
+        id: message.id,
+        team_id: message.team_id,
+        target_date: message.target_date
       });
 
       logger.performance('Message.sendMessage', Date.now() - start, {
@@ -116,45 +132,56 @@ class Message extends BaseModel {
       const { targetDate, page = 1, limit = 50 } = filters;
       const offset = (page - 1) * limit;
 
+      console.log('[DEBUG] getTeamMessages called:', {
+        teamId,
+        userId,
+        targetDate,
+        filters
+      });
+
       let query = `
         SELECT
           m.*,
           u.name as sender_name,
           u.email as sender_email,
           s.title as related_schedule_title,
-          (
-            SELECT COUNT(*)
-            FROM message_reads mr
-            WHERE mr.message_id = m.id
-          ) as read_count,
-          (
-            SELECT EXISTS(
-              SELECT 1
-              FROM message_reads mr
-              WHERE mr.message_id = m.id AND mr.user_id = $2
-            )
-          ) as is_read
+          0 as read_count, -- TODO: Implement read tracking
+          false as is_read
         FROM messages m
         JOIN users u ON m.sender_id = u.id
         LEFT JOIN schedules s ON m.related_schedule_id = s.id
         WHERE m.team_id = $1
       `;
 
-      const params = [teamId, userId];
-      let paramIndex = 3;
+      const params = [teamId];
+      let paramIndex = 2;
 
-      // 날짜 필터
+      // 날짜 필터 적용
       if (targetDate) {
-        query += ` AND m.target_date = $${paramIndex++}`;
-        params.push(targetDate);
+        const dateStr = targetDate.toISOString().split('T')[0]; // YYYY-MM-DD 형식
+        query += ` AND DATE(m.target_date) = $${paramIndex++}`;
+        params.push(dateStr);
+        console.log('[DEBUG] Date filter applied:', dateStr);
+      } else {
+        console.log('[DEBUG] No date filter - showing all messages');
       }
 
       query += ` ORDER BY m.sent_at DESC LIMIT $${paramIndex++} OFFSET $${paramIndex++}`;
       params.push(limit, offset);
 
+      console.log('[DEBUG] Final query:', query);
+      console.log('[DEBUG] Query params:', params);
+
       const result = await this.db.query(query, params);
 
-      // 총 개수 조회
+      console.log('[DEBUG] Raw query result:', {
+        rowCount: result.rows.length,
+        firstRow: result.rows[0] || 'No rows',
+        teamId,
+        targetDate
+      });
+
+      // 총 개수 조회 (날짜 필터 적용)
       let countQuery = `
         SELECT COUNT(*) as total
         FROM messages
@@ -163,12 +190,21 @@ class Message extends BaseModel {
       const countParams = [teamId];
 
       if (targetDate) {
-        countQuery += ` AND target_date = $2`;
-        countParams.push(targetDate);
+        const dateStr = targetDate.toISOString().split('T')[0];
+        countQuery += ` AND DATE(target_date) = $2`;
+        countParams.push(dateStr);
+        console.log('[DEBUG] Count query with date filter:', dateStr);
+      } else {
+        console.log('[DEBUG] Count query without date filter');
       }
+
+      console.log('[DEBUG] Count query:', countQuery);
+      console.log('[DEBUG] Count params:', countParams);
 
       const countResult = await this.db.query(countQuery, countParams);
       const total = parseInt(countResult.rows[0].total);
+
+      console.log('[DEBUG] Total message count:', total);
 
       logger.performance('Message.getTeamMessages', Date.now() - start, {
         teamId,
@@ -178,8 +214,24 @@ class Message extends BaseModel {
         targetDate,
       });
 
+      // Transform data to match frontend expectations
+      const messages = result.rows.map(row => ({
+        id: row.id,
+        team_id: row.team_id,
+        user_id: row.sender_id,
+        content: row.content,
+        message_date: row.target_date,
+        created_at: row.sent_at,
+        updated_at: row.updated_at,
+        user: {
+          id: row.sender_id,
+          username: row.sender_email?.split('@')[0] || `user${row.sender_id}`,
+          full_name: row.sender_name || 'Unknown User'
+        }
+      }));
+
       return {
-        messages: result.rows,
+        messages,
         pagination: {
           page,
           limit,
@@ -453,12 +505,14 @@ class Message extends BaseModel {
     const { teamId, senderId, content, targetDate, messageType = 'normal' } = messageData;
 
     // 팀 ID 검증
-    if (!teamId || !Number.isInteger(teamId) || teamId < 1) {
+    const teamIdNum = parseInt(teamId);
+    if (!teamId || isNaN(teamIdNum) || teamIdNum < 1) {
       throw new Error('올바른 팀 ID가 필요합니다');
     }
 
     // 발신자 ID 검증 (시스템 메시지 제외)
-    if (messageType !== 'system' && (!senderId || !Number.isInteger(senderId) || senderId < 1)) {
+    const senderIdNum = parseInt(senderId);
+    if (messageType !== 'system' && (!senderId || isNaN(senderIdNum) || senderIdNum < 1)) {
       throw new Error('올바른 발신자 ID가 필요합니다');
     }
 
@@ -482,7 +536,7 @@ class Message extends BaseModel {
     }
 
     // 메시지 유형 검증
-    if (!['normal', 'schedule_request', 'schedule_notification', 'system'].includes(messageType)) {
+    if (!['normal', 'schedule_request', 'schedule_approved', 'schedule_rejected', 'schedule_notification', 'system'].includes(messageType)) {
       throw new Error('올바르지 않은 메시지 유형입니다');
     }
   }

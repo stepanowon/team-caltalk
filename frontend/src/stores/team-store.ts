@@ -11,15 +11,18 @@ export interface Team {
 
 export interface TeamMember {
   id: number
-  team_id: number
+  team_id?: number
   user_id: number
   role: 'leader' | 'member'
   joined_at: string
-  user: {
+  name: string
+  email: string
+  // Legacy structure support
+  user?: {
     id: number
     email: string
     name: string
-    phone: string
+    phone?: string
   }
 }
 

@@ -6,11 +6,7 @@ require('dotenv').config();
  */
 
 // 필수 환경 변수 검증
-const requiredEnvVars = [
-  'DB_CONNECTION_STRING',
-  'JWT_SECRET',
-  'JWT_REFRESH_SECRET',
-];
+const requiredEnvVars = ['DB_CONNECTION_STRING', 'JWT_SECRET', 'JWT_REFRESH_SECRET'];
 
 for (const envVar of requiredEnvVars) {
   if (!process.env[envVar]) {
@@ -62,21 +58,30 @@ const config = {
     lockoutDuration: 15 * 60 * 1000, // 15분
   },
 
-  // Rate Limiting 설정
+  // Rate Limiting 설정 (개발 중 완화)
   rateLimit: {
     windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 15 * 60 * 1000, // 15분
-    maxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 100,
-    standardLimitRequests: 100, // 일반 API
-    authLimitRequests: 10, // 인증 API
-    messageLimitRequests: 200, // 메시지 API
+    maxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS) || 1000, // 100 -> 1000으로 증가
+    standardLimitRequests: 1000, // 100 -> 1000으로 증가
+    authLimitRequests: 100, // 10 -> 100으로 증가
+    messageLimitRequests: 1000, // 200 -> 1000으로 증가
   },
 
   // CORS 설정
   cors: {
-    origin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:3000', 'http://localhost:3001'],
+    origin: process.env.CORS_ORIGIN?.split(',') || [
+      'http://localhost:3000',
+      'http://localhost:3001',
+    ],
     credentials: process.env.CORS_CREDENTIALS === 'true',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'Cache-Control',
+      'Pragma',
+    ],
     exposedHeaders: ['X-Total-Count', 'X-Page-Count'],
   },
 

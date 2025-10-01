@@ -1,129 +1,65 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/stores/authStore'
 import { useTeamStore } from '@/stores/team-store'
 import { ROUTES } from '@/utils/constants'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { Menu, X } from 'lucide-react'
 
 export const Header = () => {
   const { user, isAuthenticated, logout } = useAuthStore()
   const { currentTeam } = useTeamStore()
   const navigate = useNavigate()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const handleLogout = () => {
     logout()
     navigate(ROUTES.LOGIN)
+    setIsMobileMenuOpen(false)
+  }
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
   }
 
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        width: '100%',
-        borderBottom: '1px solid #e5e7eb',
-        backgroundColor: 'rgba(255, 255, 255, 0.95)',
-        backdropFilter: 'blur(8px)',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          height: '3.5rem',
-          maxWidth: '100rem',
-          margin: '0 auto',
-          padding: '0 1rem',
-        }}
-      >
-        <div style={{ marginRight: '1rem', display: 'flex' }}>
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+      <div className="flex items-center h-14 max-w-7xl mx-auto px-4">
+        {/* 로고 */}
+        <div className="flex-shrink-0">
           <Link
             to={ROUTES.HOME}
-            style={{
-              marginRight: '1.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              textDecoration: 'none',
-            }}
+            className="flex items-center gap-2 text-decoration-none"
+            onClick={closeMobileMenu}
           >
-            <span
-              style={{
-                fontWeight: 'bold',
-                fontSize: '1.25rem',
-                color: '#1f2937',
-              }}
-            >
+            <span className="font-bold text-xl text-gray-900">
               Team CalTalk
             </span>
           </Link>
         </div>
 
-        <div
-          style={{
-            display: 'flex',
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            gap: '0.5rem',
-          }}
-        >
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        {/* 데스크톱 메뉴 */}
+        <div className="hidden md:flex flex-1 items-center justify-end gap-4">
+          <nav className="flex items-center gap-2">
             {isAuthenticated ? (
               <>
                 <Link
                   to={ROUTES.DASHBOARD}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    color: '#374151',
-                    textDecoration: 'none',
-                    borderRadius: '0.375rem',
-                    transition: 'background-color 0.2s',
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.target.style.backgroundColor = '#f3f4f6')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.target.style.backgroundColor = 'transparent')
-                  }
+                  className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
                 >
                   대시보드
                 </Link>
                 <Link
                   to={ROUTES.TEAMS}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    color: '#374151',
-                    textDecoration: 'none',
-                    borderRadius: '0.375rem',
-                    transition: 'background-color 0.2s',
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.target.style.backgroundColor = '#f3f4f6')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.target.style.backgroundColor = 'transparent')
-                  }
+                  className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
                 >
                   팀
                 </Link>
                 {currentTeam && (
                   <Link
                     to={ROUTES.CALENDAR}
-                    style={{
-                      padding: '0.5rem 1rem',
-                      color: '#374151',
-                      textDecoration: 'none',
-                      borderRadius: '0.375rem',
-                      transition: 'background-color 0.2s',
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.target.style.backgroundColor = '#f3f4f6')
-                    }
-                    onMouseLeave={(e) =>
-                      (e.target.style.backgroundColor = 'transparent')
-                    }
+                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
                   >
                     캘린더
                   </Link>
@@ -131,94 +67,34 @@ export const Header = () => {
 
                 {/* 현재 팀 표시 */}
                 {currentTeam && (
-                  <span
-                    style={{
-                      backgroundColor: '#dbeafe',
-                      color: '#1e40af',
-                      padding: '0.25rem 0.75rem',
-                      borderRadius: '9999px',
-                      fontSize: '0.75rem',
-                      fontWeight: '500',
-                      display: window.innerWidth >= 768 ? 'inline' : 'none',
-                    }}
-                  >
+                  <Badge variant="secondary" className="bg-blue-100 text-blue-800">
                     {currentTeam.name}
-                  </span>
+                  </Badge>
                 )}
 
-                <span
-                  style={{
-                    backgroundColor: '#f3f4f6',
-                    color: '#374151',
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.75rem',
-                    fontWeight: '500',
-                    display: window.innerWidth >= 768 ? 'inline' : 'none',
-                  }}
-                >
+                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">
                   {user?.full_name}님
                 </span>
-                <button
+                <Button
+                  variant="outline"
+                  size="sm"
                   onClick={handleLogout}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    border: '1px solid #d1d5db',
-                    backgroundColor: 'transparent',
-                    color: '#374151',
-                    borderRadius: '0.375rem',
-                    cursor: 'pointer',
-                    fontSize: '0.875rem',
-                    transition: 'background-color 0.2s',
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.target.style.backgroundColor = '#f9fafb')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.target.style.backgroundColor = 'transparent')
-                  }
+                  className="text-gray-700"
                 >
                   로그아웃
-                </button>
+                </Button>
               </>
             ) : (
               <>
                 <Link
                   to={ROUTES.LOGIN}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    color: '#374151',
-                    textDecoration: 'none',
-                    borderRadius: '0.375rem',
-                    fontSize: '0.875rem',
-                    transition: 'background-color 0.2s',
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.target.style.backgroundColor = '#f3f4f6')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.target.style.backgroundColor = 'transparent')
-                  }
+                  className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
                 >
                   로그인
                 </Link>
                 <Link
                   to={ROUTES.REGISTER}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    backgroundColor: '#2563eb',
-                    color: 'white',
-                    textDecoration: 'none',
-                    borderRadius: '0.375rem',
-                    fontSize: '0.875rem',
-                    transition: 'background-color 0.2s',
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.target.style.backgroundColor = '#1d4ed8')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.target.style.backgroundColor = '#2563eb')
-                  }
+                  className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-md transition-colors no-underline"
                 >
                   회원가입
                 </Link>
@@ -226,7 +102,95 @@ export const Header = () => {
             )}
           </nav>
         </div>
+
+        {/* 모바일 햄버거 버튼 */}
+        <div className="flex md:hidden ml-auto">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </Button>
+        </div>
       </div>
+
+      {/* 모바일 메뉴 */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+          <nav className="px-4 py-4 space-y-2">
+            {isAuthenticated ? (
+              <>
+                <Link
+                  to={ROUTES.DASHBOARD}
+                  className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                  onClick={closeMobileMenu}
+                >
+                  대시보드
+                </Link>
+                <Link
+                  to={ROUTES.TEAMS}
+                  className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                  onClick={closeMobileMenu}
+                >
+                  팀
+                </Link>
+                {currentTeam && (
+                  <Link
+                    to={ROUTES.CALENDAR}
+                    className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                    onClick={closeMobileMenu}
+                  >
+                    캘린더
+                  </Link>
+                )}
+
+                {/* 모바일 사용자 정보 */}
+                <div className="border-t border-gray-200 pt-4 mt-4">
+                  {currentTeam && (
+                    <div className="px-4 py-2 text-sm">
+                      <span className="text-gray-500">현재 팀: </span>
+                      <span className="font-medium text-blue-600">{currentTeam.name}</span>
+                    </div>
+                  )}
+                  <div className="px-4 py-2 text-sm">
+                    <span className="text-gray-500">사용자: </span>
+                    <span className="font-medium">{user?.full_name}님</span>
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-3 text-red-600 hover:bg-red-50 rounded-md transition-colors"
+                  >
+                    로그아웃
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link
+                  to={ROUTES.LOGIN}
+                  className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                  onClick={closeMobileMenu}
+                >
+                  로그인
+                </Link>
+                <Link
+                  to={ROUTES.REGISTER}
+                  className="block px-4 py-3 bg-blue-600 text-white hover:bg-blue-700 rounded-md transition-colors no-underline text-center"
+                  onClick={closeMobileMenu}
+                >
+                  회원가입
+                </Link>
+              </>
+            )}
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

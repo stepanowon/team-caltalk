@@ -1,15 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTeamStore } from '@/stores/team-store'
 import { useAuthStore } from '@/stores/authStore'
 import { useSchedules } from '@/hooks/useSchedules'
 import CalendarHeader from '@/components/calendar/CalendarHeader'
 import CalendarGrid from '@/components/calendar/CalendarGrid'
 import ScheduleCard from '@/components/calendar/ScheduleCard'
+import ChatRoom from '@/components/chat/ChatRoom'
+import { ScheduleModal } from '@/components/calendar/ScheduleModal'
+import { ScheduleDetailModal } from '@/components/calendar/ScheduleDetailModal'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { AlertCircle, Calendar as CalendarIcon, Users } from 'lucide-react'
+import {
+  AlertCircle,
+  Calendar as CalendarIcon,
+  Users,
+  MessageSquare,
+} from 'lucide-react'
+import { TeamService } from '@/services/team-service'
+import { getKoreanDateISO } from '@/utils/dateUtils'
 
 interface Schedule {
   id: number
@@ -28,10 +38,16 @@ interface Schedule {
 export function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-  const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null)
+  const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(
+    null
+  )
+  const [isChatOpen, setIsChatOpen] = useState(false)
+  const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false)
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
+  const [editingSchedule, setEditingSchedule] = useState<Schedule | null>(null)
 
-  const { user } = useAuthStore()
-  const { currentTeam, teamMembers } = useTeamStore()
+  const { user, token } = useAuthStore()
+  const { currentTeam, teamMembers, setTeamMembers } = useTeamStore()
   const {
     schedules,
     loading,
@@ -43,10 +59,43 @@ export function Calendar() {
     refetch,
   } = useSchedules()
 
+  // Load team members when currentTeam changes
+  useEffect(() => {
+    const loadTeamMembers = async () => {
+      if (!currentTeam || !token) return
+
+      try {
+        const response = await TeamService.getTeamMembers(currentTeam.id, token)
+        console.log('Calendar - Team Members Response:', response)
+        if (response.success && response.data?.members) {
+          console.log('Calendar - Team Members Data:', response.data.members)
+          setTeamMembers(response.data.members)
+        }
+      } catch (error) {
+        console.error('Failed to load team members:', error)
+      }
+    }
+
+    loadTeamMembers()
+  }, [currentTeam, token, setTeamMembers])
+
+  // Auto-refresh schedules every 30 seconds
+  useEffect(() => {
+    if (!currentTeam) return
+
+    const interval = setInterval(() => {
+      refetch()
+    }, 30000) // 30초마다 새로고침
+
+    return () => clearInterval(interval)
+  }, [currentTeam, refetch])
+
   // Check if current user can edit schedules (team leader)
   const canEditSchedules = React.useMemo(() => {
     if (!user || !currentTeam) return false
-    const currentMember = teamMembers.find(member => member.user_id === user.id)
+    const currentMember = teamMembers.find(
+      (member) => member.user_id === user.id
+    )
     return currentMember?.role === 'leader'
   }, [user, currentTeam, teamMembers])
 
@@ -62,31 +111,62 @@ export function Calendar() {
 
   const handleScheduleClick = (schedule: Schedule) => {
     setSelectedSchedule(schedule)
-    setSelectedDate(new Date(schedule.start_time))
+    setIsDetailModalOpen(true)
   }
 
-  const handleScheduleEdit = (schedule: Schedule) => {
-    // TODO: Open schedule edit modal
-    console.log('Edit schedule:', schedule)
+  const handleScheduleEdit = (schedule?: Schedule) => {
+    const scheduleToEdit = schedule || selectedSchedule
+    if (scheduleToEdit) {
+      setEditingSchedule(scheduleToEdit)
+      setIsScheduleModalOpen(true)
+      setIsDetailModalOpen(false)
+    }
   }
 
-  const handleScheduleDelete = async (scheduleId: number) => {
+  const handleScheduleDelete = async (scheduleId?: number) => {
+    const idToDelete = scheduleId || selectedSchedule?.id
+    if (!idToDelete) return
+
     try {
-      await deleteSchedule(scheduleId)
-      if (selectedSchedule?.id === scheduleId) {
+      await deleteSchedule(idToDelete)
+      if (selectedSchedule?.id === idToDelete) {
         setSelectedSchedule(null)
       }
+      setIsDetailModalOpen(false)
     } catch (error) {
       console.error('Delete schedule failed:', error)
     }
   }
 
   const handleCreateSchedule = () => {
-    // TODO: Open schedule create modal
-    console.log('Create schedule for date:', selectedDate || currentDate)
+    setEditingSchedule(null)
+    setIsScheduleModalOpen(true)
   }
 
-  const selectedDateSchedules = selectedDate ? getSchedulesForDate(selectedDate.toISOString()) : []
+  const handleScheduleModalClose = () => {
+    setIsScheduleModalOpen(false)
+    setEditingSchedule(null)
+  }
+
+  const handleScheduleSubmit = async (data: {
+    title: string
+    content?: string
+    startDatetime: string
+    endDatetime: string
+    scheduleType: 'personal' | 'team'
+    participantIds?: number[]
+  }) => {
+    if (editingSchedule) {
+      await updateSchedule({ ...data, id: editingSchedule.id })
+    } else {
+      await createSchedule(data)
+    }
+    await refetch()
+  }
+
+  const selectedDateSchedules = selectedDate
+    ? getSchedulesForDate(selectedDate.toISOString())
+    : []
 
   // Show team selection message if no team is selected
   if (!currentTeam) {
@@ -102,7 +182,10 @@ export function Calendar() {
               캘린더를 사용하려면 먼저 팀을 선택해야 합니다.
             </p>
             <div className="text-center">
-              <Button variant="outline" onClick={() => window.location.href = '/teams'}>
+              <Button
+                variant="outline"
+                onClick={() => (window.location.href = '/teams')}
+              >
                 팀 관리로 이동
               </Button>
             </div>
@@ -113,152 +196,227 @@ export function Calendar() {
   }
 
   return (
-    <div className="flex h-full bg-gray-50">
-      {/* Main Calendar Area */}
-      <div className="flex-1 flex flex-col">
-        <CalendarHeader
-          currentDate={currentDate}
-          onDateChange={setCurrentDate}
-          onTodayClick={handleTodayClick}
-          onCreateSchedule={canEditSchedules ? handleCreateSchedule : undefined}
-          onRefresh={refetch}
-          scheduleCount={Array.isArray(schedules) ? schedules.length : 0}
-          loading={loading}
-          canCreateSchedule={canEditSchedules}
-        />
-
-        {error && (
-          <Alert className="m-4 border-red-200 bg-red-50">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription className="text-red-800">
-              {error}
-            </AlertDescription>
-          </Alert>
-        )}
-
-        <div className="flex-1 p-4">
-          <CalendarGrid
-            currentDate={currentDate}
-            schedules={schedules}
-            onDateClick={handleDateClick}
-            onScheduleClick={handleScheduleClick}
-            onScheduleEdit={canEditSchedules ? handleScheduleEdit : undefined}
-            onScheduleDelete={canEditSchedules ? handleScheduleDelete : undefined}
-            canEditSchedules={canEditSchedules}
-          />
-        </div>
-      </div>
-
-      {/* Right Sidebar */}
-      <div className="w-80 bg-white border-l border-gray-200 flex flex-col">
-        {/* Team Info */}
-        <div className="p-4 border-b border-gray-200">
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-lg">{currentTeam.name}</h3>
-            <Badge variant="secondary" className="flex items-center gap-1">
-              <Users className="w-3 h-3" />
-              {teamMembers.length}
-            </Badge>
-          </div>
-          {currentTeam.description && (
-            <p className="text-sm text-gray-600">{currentTeam.description}</p>
-          )}
-        </div>
-
-        {/* Selected Date Info */}
-        {selectedDate && (
-          <div className="p-4 border-b border-gray-200">
-            <h4 className="font-medium mb-3">
-              {selectedDate.toLocaleDateString('ko-KR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                weekday: 'long',
-              })}
-            </h4>
-
-            {selectedDateSchedules.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                <CalendarIcon className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                <p className="text-sm">이 날짜에 일정이 없습니다</p>
-                {canEditSchedules && (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="mt-2"
-                    onClick={handleCreateSchedule}
-                  >
-                    일정 추가
-                  </Button>
-                )}
-              </div>
-            ) : (
-              <div className="space-y-2">
-                {selectedDateSchedules.map(schedule => (
-                  <ScheduleCard
-                    key={schedule.id}
-                    schedule={schedule}
-                    variant="compact"
-                    onClick={handleScheduleClick}
-                    onEdit={canEditSchedules ? handleScheduleEdit : undefined}
-                    onDelete={canEditSchedules ? handleScheduleDelete : undefined}
-                    canEdit={canEditSchedules}
-                    className={
-                      selectedSchedule?.id === schedule.id
-                        ? 'ring-2 ring-blue-500'
-                        : ''
-                    }
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Selected Schedule Detail */}
-        {selectedSchedule && (
-          <div className="flex-1 p-4">
-            <h4 className="font-medium mb-3">일정 상세</h4>
-            <ScheduleCard
-              schedule={selectedSchedule}
-              onEdit={canEditSchedules ? handleScheduleEdit : undefined}
-              onDelete={canEditSchedules ? handleScheduleDelete : undefined}
-              canEdit={canEditSchedules}
-            />
-          </div>
-        )}
-
-        {/* Quick Stats */}
-        {!selectedDate && !selectedSchedule && (
-          <div className="flex-1 p-4">
-            <h4 className="font-medium mb-3">이번 달 통계</h4>
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">전체 일정</span>
-                <Badge variant="outline">{Array.isArray(schedules) ? schedules.length : 0}개</Badge>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">내가 참여하는 일정</span>
-                <Badge variant="outline">
-                  {Array.isArray(schedules) ? schedules.filter(s =>
-                    s.participants?.some(p => p.user_id === user?.id)
-                  ).length : 0}개
-                </Badge>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">대기 중인 일정</span>
-                <Badge variant="outline">
-                  {Array.isArray(schedules) ? schedules.filter(s =>
-                    s.participants?.some(p =>
-                      p.user_id === user?.id && p.status === 'pending'
-                    )
-                  ).length : 0}개
-                </Badge>
-              </div>
+    <div className="h-[94vh] flex flex-col bg-gray-50">
+      {/* Top Header */}
+      <div className="bg-white border-b border-gray-200 px-4 py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <span className="text-gray-500">|</span>
+              <h2 className="font-semibold">{currentTeam.name}</h2>
+              <Badge variant="secondary" className="flex items-center gap-1">
+                <Users className="w-3 h-3" />
+                {teamMembers.length}
+              </Badge>
             </div>
           </div>
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" size="sm" onClick={handleTodayClick}>
+              오늘로 이동
+            </Button>
+            {canEditSchedules && (
+              <Button size="sm" onClick={handleCreateSchedule}>
+                + 새 일정
+              </Button>
+            )}
+            {/* 모바일 채팅 토글 버튼 */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsChatOpen(!isChatOpen)}
+              className="md:hidden"
+            >
+              <MessageSquare className="h-4 w-4" />
+              채팅
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Area - Responsive Layout */}
+      <div className="flex-1 flex overflow-hidden pb-12 relative">
+        {/* Left Side - Calendar Area */}
+        <div
+          className={`flex flex-col bg-white transition-all duration-300 ${
+            isChatOpen ? 'hidden md:flex md:flex-[7]' : 'flex-1 md:flex-[7]'
+          }`}
+        >
+          <CalendarHeader
+            currentDate={currentDate}
+            onDateChange={setCurrentDate}
+            onTodayClick={handleTodayClick}
+            onCreateSchedule={
+              canEditSchedules ? handleCreateSchedule : undefined
+            }
+            onRefresh={refetch}
+            scheduleCount={Array.isArray(schedules) ? schedules.length : 0}
+            loading={loading}
+            canCreateSchedule={canEditSchedules}
+          />
+
+          {error && (
+            <Alert className="m-4 border-red-200 bg-red-50">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription className="text-red-800">
+                {error}
+              </AlertDescription>
+            </Alert>
+          )}
+
+          <div className="flex-1 p-4 overflow-auto">
+            <CalendarGrid
+              currentDate={currentDate}
+              schedules={schedules}
+              onDateClick={handleDateClick}
+              onScheduleClick={handleScheduleClick}
+              onScheduleEdit={canEditSchedules ? handleScheduleEdit : undefined}
+              onScheduleDelete={
+                canEditSchedules ? handleScheduleDelete : undefined
+              }
+              canEditSchedules={canEditSchedules}
+            />
+          </div>
+        </div>
+
+        {/* Right Side - Chat Area */}
+        <div
+          className={`flex flex-col bg-white transition-all duration-300 ${
+            isChatOpen
+              ? 'absolute inset-0 z-20 md:relative md:flex-[3] md:border-l md:border-gray-200'
+              : 'hidden md:flex md:flex-[3] md:border-l md:border-gray-200'
+          }`}
+        >
+          {/* Chat Header */}
+          <div className="flex items-center justify-between p-3 border-b border-gray-200">
+            <div className="flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-blue-600" />
+              <h3 className="font-semibold">팀 채팅</h3>
+              {selectedDate && (
+                <span className="text-sm text-gray-500">
+                  -{' '}
+                  {selectedDate.toLocaleDateString('ko-KR', {
+                    timeZone: 'Asia/Seoul',
+                    month: 'long',
+                    day: 'numeric',
+                    weekday: 'short',
+                  })}
+                </span>
+              )}
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-1 text-sm text-gray-500">
+                <Users className="w-4 h-4" />
+                <span>팀원 {teamMembers.length}명</span>
+              </div>
+              {/* 모바일 닫기 버튼 */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsChatOpen(false)}
+                className="md:hidden"
+              >
+                ✕
+              </Button>
+            </div>
+          </div>
+
+          {/* Chat Content */}
+          <div className="flex-1 flex flex-col min-h-0">
+            <ChatRoom
+              teamId={currentTeam.id}
+              selectedDate={getKoreanDateISO(selectedDate || currentDate)}
+              className="flex-1 border-0 shadow-none rounded-none"
+            />
+          </div>
+        </div>
+
+        {/* 모바일 오버레이 */}
+        {isChatOpen && (
+          <div
+            className="absolute inset-0 bg-black bg-opacity-50 z-10 md:hidden"
+            onClick={() => setIsChatOpen(false)}
+          />
         )}
       </div>
+
+      {/* Bottom Status Bar - Fixed at bottom */}
+      <div className="fixed bottom-0 left-0 right-0 bg-blue-50 border-t border-blue-200 px-4 py-2 z-10">
+        <div className="flex items-center justify-between text-sm">
+          <div className="flex items-center gap-4">
+            <span className="text-blue-700">
+              📋 이번 달 일정: {Array.isArray(schedules) ? schedules.length : 0}
+              개
+            </span>
+            {selectedDate && (
+              <span className="text-blue-600">
+                📅 선택된 날짜:{' '}
+                {selectedDate.toLocaleDateString('ko-KR', {
+                  timeZone: 'Asia/Seoul',
+                })}
+              </span>
+            )}
+          </div>
+          <div className="text-blue-600">
+            {new Date().toLocaleDateString('ko-KR', {
+              timeZone: 'Asia/Seoul',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              weekday: 'long',
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Schedule Modal */}
+      <ScheduleModal
+        open={isScheduleModalOpen}
+        onClose={handleScheduleModalClose}
+        onSubmit={handleScheduleSubmit}
+        initialData={editingSchedule}
+        selectedDate={selectedDate}
+      />
+
+      {/* Schedule Detail Modal */}
+      <ScheduleDetailModal
+        open={isDetailModalOpen}
+        onClose={() => setIsDetailModalOpen(false)}
+        schedule={selectedSchedule}
+        onEdit={() => handleScheduleEdit()}
+        onDelete={() => handleScheduleDelete()}
+        onRequestChange={async (schedule) => {
+          const message = prompt('일정 변경 요청 사유를 입력하세요:')
+          if (message && currentTeam) {
+            try {
+              const response = await fetch('http://localhost:3000/api/chat/schedule-request', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  teamId: currentTeam.id,
+                  scheduleId: schedule.id,
+                  content: message,
+                  targetDate: new Date(schedule.start_time).toISOString().split('T')[0],
+                }),
+              })
+
+              if (!response.ok) {
+                const error = await response.json()
+                throw new Error(error.error || '요청 실패')
+              }
+
+              alert('일정 변경 요청이 전송되었습니다.')
+            } catch (error) {
+              console.error('Schedule change request error:', error)
+              alert(error instanceof Error ? error.message : '일정 변경 요청 중 오류가 발생했습니다.')
+            }
+          }
+        }}
+        canEdit={canEditSchedules}
+        isLeader={canEditSchedules}
+      />
     </div>
   )
 }
