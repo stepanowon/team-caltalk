@@ -1,8 +1,29 @@
 # Team CalTalk 종합 실행계획서
 
-**문서 버전**: 1.0
-**작성일**: 2025-09-22
+**문서 버전**: 2.0
+**최종 업데이트**: 2025-10-01
 **작성자**: Architecture & Planning Team
+
+## 📊 현재 개발 진행 상황 (2025-10-01 기준)
+
+### ✅ 완료된 주요 기능
+- **1단계**: PostgreSQL 데이터베이스 완전 구성 및 최적화 완료
+- **인증 시스템**: JWT 기반 회원가입/로그인 완료
+- **팀 관리**: 팀 생성/참여, 초대 코드 시스템 완료
+- **일정 관리**: CRUD, 충돌 감지, 날짜별 조회 완료
+- **실시간 채팅**: 날짜별 채팅 분리, Long Polling 구현 완료
+- **일정 변경 요청**: 팀원 요청 → 팀장 승인/거절 워크플로우 완료
+- **캘린더 UI**: 월간 캘린더, 일정 모달, 자동 새로고침 완료
+- **대시보드**: 최근 활동 내역 (최근 1개월) 완료
+
+### 🔄 GitHub 이슈 현황
+- Issue #15 (실시간 채팅): ✅ 완료 (PR #25)
+- Issue #14 (캘린더 뷰): ✅ 완료 (머지됨)
+
+### 📦 배포된 주요 기능
+- 백엔드 API: 인증, 팀, 일정, 채팅, 활동 내역
+- 프론트엔드: React 18 + TypeScript + Zustand + TanStack Query
+- 데이터베이스: PostgreSQL 17.6, 최적화 설정 적용
 
 ## 📋 프로젝트 개요
 
@@ -349,73 +370,120 @@ Team CalTalk는 5일 MVP 개발 목표로 팀 중심의 일정 관리와 실시�
 
 ---
 
-## 📅 7단계: 캘린더 뷰 및 일정 관리 UI 구현 (Day 4)
+## 📅 7단계: 캘린더 뷰 및 일정 관리 UI 구현 (Day 4) ✅ 완료
 
-### 7.1 캘린더 뷰 컴포넌트
+### 7.1 캘린더 뷰 컴포넌트 ✅
 
-- [ ] **CalendarGrid 컴포넌트**
+- [x] **CalendarGrid 컴포넌트**
   - **완료 조건**: 월/주/일 단위 캘린더, 반응형 디자인
   - **의존성**: 날짜 헬퍼 함수 완료
   - **예상 시간**: 3시간
+  - **✅ 완료**: CalendarGrid.tsx 구현, 월간 뷰 지원
 
-- [ ] **CalendarHeader 및 ScheduleCard 컴포넌트**
+- [x] **CalendarHeader 및 ScheduleCard 컴포넌트**
   - **완료 조건**: 네비게이션 및 일정 카드 표시
   - **의존성**: CalendarGrid 완료
   - **예상 시간**: 3시간
+  - **✅ 완료**: ScheduleCard.tsx, 날짜 네비게이션 구현
 
-### 7.2 일정 CRUD 기능
+### 7.2 일정 CRUD 기능 ✅
 
-- [ ] **일정 생성/수정/상세 보기 모달**
+- [x] **일정 생성/수정/상세 보기 모달**
   - **완료 조건**: 일정 CRUD 인터페이스, 충돌 경고
   - **의존성**: Modal, DatePicker 완료
   - **예상 시간**: 5시간
+  - **✅ 완료**: ScheduleModal.tsx, ScheduleDetailModal.tsx
+  - **추가 기능**:
+    - 시작 날짜 변경 시 종료 날짜 자동 조정
+    - 팀 일정 vs 개인 일정 구분
+    - 권한 기반 수정/삭제 제어
 
-- [ ] **useSchedules 훅 및 ScheduleService**
+- [x] **useSchedules 훅 및 ScheduleService**
   - **완료 조건**: TanStack Query 캐싱, 충돌 감지 로직
   - **의존성**: 일정 모달 완료
   - **예상 시간**: 3.5시간
+  - **✅ 완료**: useSchedules.ts, TanStack Query 기반 캐싱
+  - **추가 기능**:
+    - 30초 자동 새로고침 (팀 일정 동기화)
+    - 낙관적 업데이트
+    - 충돌 감지 API 연동
 
-**Day 4 캘린더 예상 총 소요시간**: 14.5시간
+**Day 4 캘린더 실제 소요시간**: 완료 ✅
+**GitHub Issue**: #14 (Closed, Merged)
 
 ---
 
-## 💬 8단계: 실시간 채팅 UI 및 통합 인터페이스 구현 (Day 5)
+## 💬 8단계: 실시간 채팅 UI 및 통합 인터페이스 구현 (Day 5) ✅ 완료
 
-### 8.1 채팅 시스템
+### 8.1 채팅 시스템 ✅
 
-- [ ] **ChatRoom, MessageList, MessageInput 컴포넌트**
+- [x] **ChatRoom, MessageList, MessageInput 컴포넌트**
   - **완료 조건**: 완전한 채팅 인터페이스
   - **의존성**: Input, Button 컴포넌트 완료
   - **예상 시간**: 4.5시간
+  - **✅ 완료**: ChatRoom.tsx, MessageList.tsx, MessageInput.tsx 구현 완료
+  - **추가 구현**: ScheduleRequestMessage.tsx (일정 변경 요청 전용 컴포넌트)
 
-- [ ] **useRealtime 훅 및 Long Polling 클라이언트**
+- [x] **실시간 메시지 수신 및 연결 상태 관리**
   - **완료 조건**: 실시간 메시지 수신, 연결 상태 관리
   - **의존성**: ChatRoom 완료
   - **예상 시간**: 4시간
+  - **✅ 완료**: 30초 폴링 기반 실시간 메시지 동기화, ConnectionStatus 컴포넌트
 
-- [ ] **ChatService 및 메시지 상태 관리**
+- [x] **ChatService 및 메시지 상태 관리**
   - **완료 조건**: 메시지 전송/조회, 낙관적 업데이트
   - **의존성**: useRealtime 훅 완료
   - **예상 시간**: 2.5시간
+  - **✅ 완료**: Zustand 기반 chat-store.ts, 낙관적 업데이트 구현
 
-### 8.2 통합 대시보드
+### 8.2 통합 대시보드 ✅
 
-- [ ] **DashboardLayout 및 통합 인터페이스**
+- [x] **DashboardLayout 및 통합 인터페이스**
   - **완료 조건**: 캘린더-채팅 통합 대시보드
   - **의존성**: CalendarGrid, ChatRoom 완료
   - **예상 시간**: 2시간
+  - **✅ 완료**: Dashboard.tsx에 최근 활동 내역 통합
 
-- [ ] **날짜별 채팅 연동 및 일정 변경 요청 플로우**
+- [x] **날짜별 채팅 연동 및 일정 변경 요청 플로우**
   - **완료 조건**: 캘린더-채팅 상호 작용
   - **의존성**: DashboardLayout 완료
   - **예상 시간**: 3.5시간
+  - **✅ 완료**: 날짜별 채팅 분리, 일정 변경 요청/승인/거절 워크플로우
+  - **백엔드 API**:
+    - POST `/api/chat/schedule-request` - 일정 변경 요청
+    - POST `/api/chat/approve-request/:messageId` - 요청 승인
+    - POST `/api/chat/reject-request/:messageId` - 요청 거절
+    - GET `/api/chat/teams/:teamId/schedule-requests` - 팀장용 요청 목록
 
-- [ ] **반응형 디자인 적용**
+- [x] **반응형 디자인 적용**
   - **완료 조건**: 모바일/태블릿 최적화
   - **의존성**: 모든 주요 컴포넌트 완료
   - **예상 시간**: 5시간
+  - **✅ 완료**: Tailwind CSS 기반 반응형 레이아웃
 
-**Day 5 채팅 및 통합 예상 총 소요시간**: 21.5시간
+### 8.3 추가 구현 기능 ✨
+
+- [x] **캘린더 자동 새로고침**
+  - 30초 간격 폴링으로 팀원의 캘린더 자동 업데이트
+
+- [x] **일정 수정 시 날짜 비례 조정**
+  - 시작 날짜 변경 시 원래 기간을 유지하며 종료 날짜 자동 조정
+
+- [x] **대시보드 최근 활동 내역**
+  - 최근 1개월 동안의 일정/요청/팀 활동 표시
+  - GET `/api/activities` API 구현
+
+- [x] **포괄적 테스트 커버리지**
+  - 단위 테스트: ChatRoom, MessageList, MessageInput, ChatStore
+  - 통합 테스트: 채팅-캘린더 연동
+  - E2E 테스트: 실시간 메시징 플로우
+  - 접근성 테스트: 키보드 네비게이션, 스크린 리더
+  - 성능 테스트: 메시지 스크롤링
+  - 반응형 테스트: 모바일/태블릿/데스크톱
+
+**Day 5 채팅 및 통합 실제 소요시간**: 완료 ✅
+**GitHub Issue**: #15 (Closed)
+**Pull Request**: #25 (Ready for Review)
 
 ---
 

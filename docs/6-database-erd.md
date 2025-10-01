@@ -1,5 +1,27 @@
 # Team CalTalk 데이터베이스 ERD
 
+**문서 버전**: 2.0
+**최종 업데이트**: 2025-10-01
+**데이터베이스**: PostgreSQL 17.6
+
+## 📊 구현 현황 (2025-10-01 기준)
+
+### ✅ 실제 데이터베이스 상태
+- **PostgreSQL 버전**: 17.6
+- **데이터베이스명**: team_caltalk
+- **스키마**: public
+- **테이블**: 6개 (users, teams, team_members, schedules, schedule_participants, messages)
+- **인덱스**: 21개 (성능 최적화)
+- **제약 조건**: 완전 구현 (CHECK, UNIQUE, FOREIGN KEY)
+- **GIST 인덱스**: 일정 충돌 감지용 tsrange 인덱스 구현
+
+### 📦 주요 구현 특징
+- ✅ **btree_gist 확장**: 일정 시간 범위 검색 최적화
+- ✅ **CASCADE 삭제**: 데이터 무결성 보장
+- ✅ **메시지 타입 확장**: normal, schedule_request, schedule_approved, schedule_rejected (4가지)
+- ✅ **복합 인덱스**: 팀별/날짜별 효율적 조회
+- ✅ **트리거 함수**: updated_at 자동 갱신
+
 ## 개요
 
 Team CalTalk의 PostgreSQL 데이터베이스 설계는 팀 중심의 일정 관리와 실시간 채팅 기능을 지원하며, 3000개 팀의 동시 사용을 고려한 확장 가능한 구조로 설계되었습니다.
@@ -72,7 +94,7 @@ erDiagram
         text content "메시지 내용 (최대 500자)"
         date target_date "대상 날짜 (채팅 날짜별 분리)"
         bigint related_schedule_id FK "관련 일정 ID (선택적)"
-        varchar(50) message_type "메시지 유형: normal, schedule_request"
+        varchar(50) message_type "메시지 유형: normal, schedule_request, schedule_approved, schedule_rejected"
         timestamp sent_at "발송 일시"
         timestamp created_at "생성일시"
     }
@@ -238,7 +260,7 @@ CREATE TABLE messages (
     target_date DATE NOT NULL,
     related_schedule_id BIGINT REFERENCES schedules(id) ON DELETE SET NULL,
     message_type VARCHAR(50) NOT NULL DEFAULT 'normal'
-        CHECK (message_type IN ('normal', 'schedule_request')),
+        CHECK (message_type IN ('normal', 'schedule_request', 'schedule_approved', 'schedule_rejected')),
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -248,13 +270,15 @@ CREATE INDEX idx_messages_team_date ON messages(team_id, target_date, sent_at);
 CREATE INDEX idx_messages_sender ON messages(sender_id);
 CREATE INDEX idx_messages_schedule ON messages(related_schedule_id) WHERE related_schedule_id IS NOT NULL;
 CREATE INDEX idx_messages_type ON messages(team_id, message_type);
+CREATE INDEX idx_messages_sent_at ON messages(sent_at);
 ```
 
 **설계 포인트**:
 - 날짜별 채팅 분리로 효율적 조회
 - 일정 관련 메시지 추적
-- 메시지 유형별 분류
+- **메시지 유형 4가지 지원**: normal, schedule_request, schedule_approved, schedule_rejected
 - 팀별 데이터 격리
+- 일정 변경 요청 워크플로우 지원 (요청 → 승인/거절)
 
 ## 핵심 쿼리 최적화
 
@@ -334,5 +358,59 @@ ORDER BY m.sent_at;
 - 테이블별 크기 및 성장률
 - 인덱스 효율성 추적
 - 쿼리 성능 모니터링
+
+## 📋 실제 구현된 인덱스 목록
+
+### users 테이블 (3개)
+```sql
+CREATE UNIQUE INDEX users_pkey ON users USING btree (id);
+CREATE UNIQUE INDEX users_email_key ON users USING btree (email);
+CREATE INDEX idx_users_email ON users USING btree (email);
+```
+
+### teams 테이블 (4개)
+```sql
+CREATE UNIQUE INDEX teams_pkey ON teams USING btree (id);
+CREATE UNIQUE INDEX teams_invite_code_key ON teams USING btree (invite_code);
+CREATE INDEX idx_teams_invite_code ON teams USING btree (invite_code);
+CREATE INDEX idx_teams_creator_id ON teams USING btree (creator_id);
+```
+
+### team_members 테이블 (5개)
+```sql
+CREATE UNIQUE INDEX team_members_pkey ON team_members USING btree (id);
+CREATE UNIQUE INDEX team_members_team_id_user_id_key ON team_members USING btree (team_id, user_id);
+CREATE INDEX idx_team_members_team_id ON team_members USING btree (team_id);
+CREATE INDEX idx_team_members_user_id ON team_members USING btree (user_id);
+CREATE INDEX idx_team_members_role ON team_members USING btree (team_id, role);
+```
+
+### schedules 테이블 (5개)
+```sql
+CREATE UNIQUE INDEX schedules_pkey ON schedules USING btree (id);
+CREATE INDEX idx_schedules_datetime_range ON schedules USING gist (tsrange(start_datetime, end_datetime));
+CREATE INDEX idx_schedules_creator_datetime ON schedules USING btree (creator_id, start_datetime);
+CREATE INDEX idx_schedules_team_datetime ON schedules USING btree (team_id, start_datetime) WHERE (team_id IS NOT NULL);
+CREATE INDEX idx_schedules_type ON schedules USING btree (schedule_type);
+```
+
+### schedule_participants 테이블 (4개)
+```sql
+CREATE UNIQUE INDEX schedule_participants_pkey ON schedule_participants USING btree (id);
+CREATE UNIQUE INDEX schedule_participants_schedule_id_user_id_key ON schedule_participants USING btree (schedule_id, user_id);
+CREATE INDEX idx_schedule_participants_schedule ON schedule_participants USING btree (schedule_id);
+CREATE INDEX idx_schedule_participants_user ON schedule_participants USING btree (user_id);
+```
+
+### messages 테이블 (5개)
+```sql
+CREATE UNIQUE INDEX messages_pkey ON messages USING btree (id);
+CREATE INDEX idx_messages_team_date ON messages USING btree (team_id, target_date, sent_at);
+CREATE INDEX idx_messages_sender ON messages USING btree (sender_id);
+CREATE INDEX idx_messages_schedule ON messages USING btree (related_schedule_id) WHERE (related_schedule_id IS NOT NULL);
+CREATE INDEX idx_messages_type ON messages USING btree (team_id, message_type);
+```
+
+**총 인덱스**: 26개 (Primary Key 6개 포함)
 
 이 ERD는 Team CalTalk의 핵심 기능을 지원하면서도 확장 가능하고 성능 최적화된 데이터베이스 구조를 제공합니다.
