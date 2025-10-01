@@ -80,3 +80,2261 @@ Error: listen EADDRINUSE: address already in use ::1:3000
     at listenInCluster (node:net:1997:12)
     at GetAddrInfoReqWrap.callback (node:net:2206:7)
     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 12:51:12.014 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 12:51:12 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 21840,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 105750528,
+      "heapTotal": 59367424,
+      "heapUsed": 22954496,
+      "external": 2551080,
+      "arrayBuffers": 28098
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 413485.765
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 12:52:51.436 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 12:52:51 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 15468,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 104128512,
+      "heapTotal": 57794560,
+      "heapUsed": 35839840,
+      "external": 2577445,
+      "arrayBuffers": 28275
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 413585.187
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 12:54:29.302 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 12:54:29 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 19728,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 104628224,
+      "heapTotal": 57532416,
+      "heapUsed": 36288584,
+      "external": 2569253,
+      "arrayBuffers": 20083
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 413683.062
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 12:54:37.892 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 12:54:37 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 3704,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 103768064,
+      "heapTotal": 58056704,
+      "heapUsed": 35569776,
+      "external": 2577445,
+      "arrayBuffers": 28275
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 413691.64
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 12:55:21.543 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 12:55:21 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 19040,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 106405888,
+      "heapTotal": 58580992,
+      "heapUsed": 29655432,
+      "external": 2577444,
+      "arrayBuffers": 28274
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 413735.296
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 12:55:44.936 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 12:55:44 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 12032,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 106217472,
+      "heapTotal": 58580992,
+      "heapUsed": 29708648,
+      "external": 2569252,
+      "arrayBuffers": 20082
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 413758.687
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 13:07:53.614 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 13:07:53 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 22332,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 104615936,
+      "heapTotal": 57532416,
+      "heapUsed": 36118864,
+      "external": 2569253,
+      "arrayBuffers": 20083
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 414487.375
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 16:54:55.356 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 16:54:55 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 34856,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 105689088,
+      "heapTotal": 57794560,
+      "heapUsed": 36117616,
+      "external": 2577445,
+      "arrayBuffers": 28275
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 428109.109
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 20:26:50.526 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 20:26:50 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 21300,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 104804352,
+      "heapTotal": 57794560,
+      "heapUsed": 36251624,
+      "external": 2577445,
+      "arrayBuffers": 28275
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 440824.265
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 20:27:58.774 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 20:27:58 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 29372,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 105168896,
+      "heapTotal": 57794560,
+      "heapUsed": 36424520,
+      "external": 2577445,
+      "arrayBuffers": 28275
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 440892.531
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 20:29:43.253 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 20:29:43 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 39172,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 106147840,
+      "heapTotal": 58843136,
+      "heapUsed": 29783184,
+      "external": 2577444,
+      "arrayBuffers": 28274
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 440997
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 20:30:02.511 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 20:30:02 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 22404,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 106520576,
+      "heapTotal": 59105280,
+      "heapUsed": 29796640,
+      "external": 2577444,
+      "arrayBuffers": 28274
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 441016.265
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-29 20:30:36.141 [ERROR]: uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20) {
+  "error": {
+    "errno": -4047,
+    "syscall": "write",
+    "code": "EPIPE"
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 20:30:36 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 31768,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 104857600,
+      "heapTotal": 58179584,
+      "heapUsed": 28377136,
+      "external": 2549906,
+      "arrayBuffers": 19867
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 441049.89
+  },
+  "trace": [
+    {
+      "column": 18,
+      "file": "node:internal/net",
+      "function": "Socket._write",
+      "line": 75,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 570,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 499,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Writable.write",
+      "line": 508,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston\\lib\\winston\\transports\\console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 17,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston-transport\\modern.js",
+      "function": "Console._write",
+      "line": 103,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "writeOrBuffer",
+      "line": 381,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "Writable.write",
+      "line": 302,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 20,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_readable.js",
+      "function": "DerivedLogger.ondata",
+      "line": 629,
+      "method": "ondata",
+      "native": false
+    }
+  ]
+}
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20)
+2025-09-29 20:59:44.558 [ERROR]: uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20) {
+  "error": {
+    "errno": -4047,
+    "syscall": "write",
+    "code": "EPIPE"
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 20:59:44 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 28248,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 95424512,
+      "heapTotal": 31399936,
+      "heapUsed": 26140752,
+      "external": 2768310,
+      "arrayBuffers": 247870
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 1706.609
+  },
+  "trace": [
+    {
+      "column": 18,
+      "file": "node:internal/net",
+      "function": "Socket._write",
+      "line": 75,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 570,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 499,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Writable.write",
+      "line": 508,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston\\lib\\winston\\transports\\console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 17,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston-transport\\modern.js",
+      "function": "Console._write",
+      "line": 103,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "writeOrBuffer",
+      "line": 381,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "Writable.write",
+      "line": 302,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 20,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_readable.js",
+      "function": "DerivedLogger.ondata",
+      "line": 629,
+      "method": "ondata",
+      "native": false
+    }
+  ]
+}
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20)
+2025-09-29 21:04:26.708 [ERROR]: uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20) {
+  "error": {
+    "errno": -4047,
+    "syscall": "write",
+    "code": "EPIPE"
+  },
+  "exception": true,
+  "date": "Mon Sep 29 2025 21:04:26 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 27724,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 82599936,
+      "heapTotal": 25370624,
+      "heapUsed": 23321528,
+      "external": 2575217,
+      "arrayBuffers": 52427
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 1988.75
+  },
+  "trace": [
+    {
+      "column": 18,
+      "file": "node:internal/net",
+      "function": "Socket._write",
+      "line": 75,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 570,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 499,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Writable.write",
+      "line": 508,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston\\lib\\winston\\transports\\console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 17,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston-transport\\modern.js",
+      "function": "Console._write",
+      "line": 103,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "writeOrBuffer",
+      "line": 381,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "Writable.write",
+      "line": 302,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 20,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_readable.js",
+      "function": "DerivedLogger.ondata",
+      "line": 629,
+      "method": "ondata",
+      "native": false
+    }
+  ]
+}
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20)
+2025-09-30 15:09:21.327 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Tue Sep 30 2025 15:09:21 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 29688,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 108163072,
+      "heapTotal": 57794560,
+      "heapUsed": 36280208,
+      "external": 2577445,
+      "arrayBuffers": 28275
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 67083.375
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-30 15:12:35.651 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Tue Sep 30 2025 15:12:35 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 4820,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 109735936,
+      "heapTotal": 58843136,
+      "heapUsed": 29763520,
+      "external": 2577444,
+      "arrayBuffers": 28274
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 67277.703
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-30 15:53:11.732 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Tue Sep 30 2025 15:53:11 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 17172,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 103227392,
+      "heapTotal": 58580992,
+      "heapUsed": 29692968,
+      "external": 2577444,
+      "arrayBuffers": 28274
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 69713.781
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-30 21:20:18.122 [ERROR]: uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20) {
+  "error": {
+    "errno": -4047,
+    "syscall": "write",
+    "code": "EPIPE"
+  },
+  "exception": true,
+  "date": "Tue Sep 30 2025 21:20:18 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 28804,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 87121920,
+      "heapTotal": 28778496,
+      "heapUsed": 27189536,
+      "external": 2638428,
+      "arrayBuffers": 89226
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 89340.171
+  },
+  "trace": [
+    {
+      "column": 18,
+      "file": "node:internal/net",
+      "function": "Socket._write",
+      "line": 75,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 570,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 499,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Writable.write",
+      "line": 508,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston\\lib\\winston\\transports\\console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 17,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston-transport\\modern.js",
+      "function": "Console._write",
+      "line": 103,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "writeOrBuffer",
+      "line": 381,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "Writable.write",
+      "line": 302,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 20,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_readable.js",
+      "function": "DerivedLogger.ondata",
+      "line": 629,
+      "method": "ondata",
+      "native": false
+    }
+  ]
+}
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20)
+2025-09-30 21:38:31.085 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Tue Sep 30 2025 21:38:31 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 21704,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 103481344,
+      "heapTotal": 58142720,
+      "heapUsed": 28873456,
+      "external": 2549901,
+      "arrayBuffers": 27079
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 90433.125
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-30 21:40:52.077 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Tue Sep 30 2025 21:40:52 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 2584,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 102367232,
+      "heapTotal": 57544704,
+      "heapUsed": 36569976,
+      "external": 2551081,
+      "arrayBuffers": 28099
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 90574.125
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-30 21:47:31.010 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Tue Sep 30 2025 21:47:31 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 16692,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 103538688,
+      "heapTotal": 60952576,
+      "heapUsed": 23239176,
+      "external": 2551080,
+      "arrayBuffers": 28098
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 90973.062
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-09-30 22:22:45.798 [ERROR]: uncaughtException: listen EADDRINUSE: address already in use ::1:3000
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8) {
+  "error": {
+    "code": "EADDRINUSE",
+    "errno": -4091,
+    "syscall": "listen",
+    "address": "::1",
+    "port": 3000
+  },
+  "exception": true,
+  "date": "Tue Sep 30 2025 22:22:45 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 5660,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 103677952,
+      "heapTotal": 58671104,
+      "heapUsed": 29134584,
+      "external": 2549902,
+      "arrayBuffers": 27080
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 93087.843
+  },
+  "trace": [
+    {
+      "column": 16,
+      "file": "node:net",
+      "function": "Server.setupListenHandle [as _listen2]",
+      "line": 1940,
+      "method": "setupListenHandle [as _listen2]",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:net",
+      "function": "listenInCluster",
+      "line": 1997,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 7,
+      "file": "node:net",
+      "function": "GetAddrInfoReqWrap.callback",
+      "line": 2206,
+      "method": "callback",
+      "native": false
+    },
+    {
+      "column": 8,
+      "file": "node:dns",
+      "function": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+      "line": 134,
+      "method": "onlookupall [as oncomplete]",
+      "native": false
+    }
+  ]
+}
+Error: listen EADDRINUSE: address already in use ::1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+2025-10-01 08:28:48.418 [ERROR]: uncaughtException: EPIPE: broken pipe, write
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20) {
+  "error": {
+    "errno": -4047,
+    "syscall": "write",
+    "code": "EPIPE"
+  },
+  "exception": true,
+  "date": "Wed Oct 01 2025 08:28:48 GMT+0900 (대한민국 표준시)",
+  "process": {
+    "pid": 15856,
+    "uid": null,
+    "gid": null,
+    "cwd": "D:\\dev\\workspace_test\\team-caltalk\\backend",
+    "execPath": "C:\\nvm4w\\nodejs\\node.exe",
+    "version": "v24.7.0",
+    "argv": [
+      "C:\\nvm4w\\nodejs\\node.exe",
+      "D:\\dev\\workspace_test\\team-caltalk\\backend\\src\\server.js"
+    ],
+    "memoryUsage": {
+      "rss": 95846400,
+      "heapTotal": 35340288,
+      "heapUsed": 31040744,
+      "external": 2648856,
+      "arrayBuffers": 123776
+    }
+  },
+  "os": {
+    "loadavg": [
+      0,
+      0,
+      0
+    ],
+    "uptime": 129450.468
+  },
+  "trace": [
+    {
+      "column": 18,
+      "file": "node:internal/net",
+      "function": "Socket._write",
+      "line": 75,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 12,
+      "file": "node:internal/streams/writable",
+      "function": "writeOrBuffer",
+      "line": 570,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "_write",
+      "line": 499,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 10,
+      "file": "node:internal/streams/writable",
+      "function": "Writable.write",
+      "line": 508,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 23,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston\\lib\\winston\\transports\\console.js",
+      "function": "Console.log",
+      "line": 87,
+      "method": "log",
+      "native": false
+    },
+    {
+      "column": 17,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\winston-transport\\modern.js",
+      "function": "Console._write",
+      "line": 103,
+      "method": "_write",
+      "native": false
+    },
+    {
+      "column": 139,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "doWrite",
+      "line": 390,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 5,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "writeOrBuffer",
+      "line": 381,
+      "method": null,
+      "native": false
+    },
+    {
+      "column": 11,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_writable.js",
+      "function": "Writable.write",
+      "line": 302,
+      "method": "write",
+      "native": false
+    },
+    {
+      "column": 20,
+      "file": "D:\\dev\\workspace_test\\team-caltalk\\backend\\node_modules\\readable-stream\\lib\\_stream_readable.js",
+      "function": "DerivedLogger.ondata",
+      "line": 629,
+      "method": "ondata",
+      "native": false
+    }
+  ]
+}
+Error: EPIPE: broken pipe, write
+    at Socket._write (node:internal/net:75:18)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at Console.log (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston\lib\winston\transports\console.js:87:23)
+    at Console._write (D:\dev\workspace_test\team-caltalk\backend\node_modules\winston-transport\modern.js:103:17)
+    at doWrite (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:390:139)
+    at writeOrBuffer (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:381:5)
+    at Writable.write (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_writable.js:302:11)
+    at DerivedLogger.ondata (D:\dev\workspace_test\team-caltalk\backend\node_modules\readable-stream\lib\_stream_readable.js:629:20)
