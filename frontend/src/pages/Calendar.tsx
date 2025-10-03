@@ -21,6 +21,8 @@ import {
 import { TeamService } from '@/services/team-service'
 import { getKoreanDateISO } from '@/utils/dateUtils'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
+
 interface Schedule {
   id: number
   title: string
@@ -388,7 +390,7 @@ export function Calendar() {
           const message = prompt('일정 변경 요청 사유를 입력하세요:')
           if (message && currentTeam) {
             try {
-              const response = await fetch('http://localhost:3000/api/chat/schedule-request', {
+              const response = await fetch(`${API_BASE_URL}/chat/schedule-request`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

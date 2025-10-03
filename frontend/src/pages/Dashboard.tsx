@@ -66,10 +66,11 @@ export function Dashboard() {
 
       try {
         setLoadingActivities(true)
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
         const response = await fetch(
           currentTeam
-            ? `http://localhost:3000/api/activities?teamId=${currentTeam.id}&limit=5`
-            : 'http://localhost:3000/api/activities?limit=5',
+            ? `${API_BASE_URL}/activities?teamId=${currentTeam.id}&limit=5`
+            : `${API_BASE_URL}/activities?limit=5`,
           {
             headers: {
               'Authorization': `Bearer ${token}`,

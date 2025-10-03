@@ -11,6 +11,8 @@ interface MessageListProps {
   className?: string
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
+
 export default function MessageList({ className }: MessageListProps) {
   const { messages, isLoading } = useChatStore()
   const { user, token } = useAuthStore()
@@ -30,7 +32,7 @@ export default function MessageList({ className }: MessageListProps) {
       try {
         setLoadingRequests(true)
         const response = await fetch(
-          `http://localhost:3000/api/chat/teams/${currentTeam.id}/schedule-requests`,
+          `${API_BASE_URL}/chat/teams/${currentTeam.id}/schedule-requests`,
           {
             headers: {
               'Authorization': `Bearer ${token}`,
@@ -62,7 +64,7 @@ export default function MessageList({ className }: MessageListProps) {
     try {
       setProcessingRequests(prev => new Set(prev).add(messageId))
 
-      const response = await fetch(`http://localhost:3000/api/chat/approve-request/${messageId}`, {
+      const response = await fetch(`${API_BASE_URL}/chat/approve-request/${messageId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +79,7 @@ export default function MessageList({ className }: MessageListProps) {
 
       // 요청 목록 새로고침
       const refreshResponse = await fetch(
-        `http://localhost:3000/api/chat/teams/${currentTeam?.id}/schedule-requests`,
+        `${API_BASE_URL}/chat/teams/${currentTeam?.id}/schedule-requests`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -108,7 +110,7 @@ export default function MessageList({ className }: MessageListProps) {
     try {
       setProcessingRequests(prev => new Set(prev).add(messageId))
 
-      const response = await fetch(`http://localhost:3000/api/chat/reject-request/${messageId}`, {
+      const response = await fetch(`${API_BASE_URL}/chat/reject-request/${messageId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -123,7 +125,7 @@ export default function MessageList({ className }: MessageListProps) {
 
       // 요청 목록 새로고침
       const refreshResponse = await fetch(
-        `http://localhost:3000/api/chat/teams/${currentTeam?.id}/schedule-requests`,
+        `${API_BASE_URL}/chat/teams/${currentTeam?.id}/schedule-requests`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -154,7 +156,7 @@ export default function MessageList({ className }: MessageListProps) {
     try {
       setProcessingRequests(prev => new Set(prev).add(messageId))
 
-      const response = await fetch(`http://localhost:3000/api/chat/acknowledge-response/${messageId}`, {
+      const response = await fetch(`${API_BASE_URL}/chat/acknowledge-response/${messageId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
