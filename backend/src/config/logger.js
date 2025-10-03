@@ -1,10 +1,15 @@
 const winston = require('winston');
 const path = require('path');
+const fs = require('fs');
 
 /**
  * Winston 로거 설정
  * 환경별 로그 레벨 및 포맷 설정
+ * Vercel 서버리스 환경 지원
  */
+
+// Vercel 환경 감지
+const isVercel = process.env.VERCEL === '1';
 
 // 로그 포맷 정의
 const logFormat = winston.format.combine(
@@ -49,76 +54,88 @@ const consoleFormat = winston.format.combine(
 // 트랜스포트 설정
 const transports = [];
 
-// 콘솔 출력 (개발환경)
-if (process.env.NODE_ENV !== 'production') {
+// 콘솔 출력 (항상 활성화 - Vercel 환경에서는 필수)
+transports.push(
+  new winston.transports.Console({
+    format: isVercel ? logFormat : consoleFormat,
+    level: process.env.LOG_LEVEL || 'info',
+  })
+);
+
+// 파일 출력 (로컬 환경에서만 활성화)
+if (!isVercel) {
+  const logDir = path.join(__dirname, '../../logs');
+
+  // 로그 디렉토리 생성
+  if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true });
+  }
+
+  // 일반 로그 파일
   transports.push(
-    new winston.transports.Console({
-      format: consoleFormat,
+    new winston.transports.File({
+      filename: path.join(logDir, 'app.log'),
+      format: logFormat,
       level: process.env.LOG_LEVEL || 'info',
+      maxsize: 5242880, // 5MB
+      maxFiles: 10,
+      tailable: true,
+    })
+  );
+
+  // 에러 로그 파일
+  transports.push(
+    new winston.transports.File({
+      filename: path.join(logDir, 'error.log'),
+      format: logFormat,
+      level: 'error',
+      maxsize: 5242880, // 5MB
+      maxFiles: 5,
+      tailable: true,
+    })
+  );
+
+  // 감사 로그 파일 (보안 관련)
+  transports.push(
+    new winston.transports.File({
+      filename: path.join(logDir, 'audit.log'),
+      format: logFormat,
+      level: 'warn',
+      maxsize: 5242880, // 5MB
+      maxFiles: 10,
+      tailable: true,
     })
   );
 }
 
-// 파일 출력 (모든 환경)
-const logDir = path.join(__dirname, '../../logs');
-
-// 일반 로그 파일
-transports.push(
-  new winston.transports.File({
-    filename: path.join(logDir, 'app.log'),
-    format: logFormat,
-    level: process.env.LOG_LEVEL || 'info',
-    maxsize: 5242880, // 5MB
-    maxFiles: 10,
-    tailable: true,
-  })
-);
-
-// 에러 로그 파일
-transports.push(
-  new winston.transports.File({
-    filename: path.join(logDir, 'error.log'),
-    format: logFormat,
-    level: 'error',
-    maxsize: 5242880, // 5MB
-    maxFiles: 5,
-    tailable: true,
-  })
-);
-
-// 감사 로그 파일 (보안 관련)
-transports.push(
-  new winston.transports.File({
-    filename: path.join(logDir, 'audit.log'),
-    format: logFormat,
-    level: 'warn',
-    maxsize: 5242880, // 5MB
-    maxFiles: 10,
-    tailable: true,
-  })
-);
-
 // 로거 생성
-const logger = winston.createLogger({
+const loggerConfig = {
   level: process.env.LOG_LEVEL || 'info',
   format: logFormat,
   transports,
-  // 예외 처리
-  exceptionHandlers: [
+  exitOnError: false,
+};
+
+// 예외/rejection 핸들러 (로컬 환경에서만)
+if (!isVercel) {
+  const logDir = path.join(__dirname, '../../logs');
+
+  loggerConfig.exceptionHandlers = [
     new winston.transports.File({
       filename: path.join(logDir, 'exceptions.log'),
       format: logFormat,
     }),
-  ],
-  // rejection 처리
-  rejectionHandlers: [
+  ];
+
+  loggerConfig.rejectionHandlers = [
     new winston.transports.File({
       filename: path.join(logDir, 'rejections.log'),
       format: logFormat,
     }),
-  ],
-  exitOnError: false,
-});
+  ];
+}
+
+const logger = winston.createLogger(loggerConfig);
 
 /**
  * 보안 감사 로그
