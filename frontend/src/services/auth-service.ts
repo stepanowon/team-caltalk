@@ -26,9 +26,14 @@ export interface AuthResponse {
   success: boolean
   data?: {
     user: User
-    token: string
+    tokens: {
+      accessToken: string
+      refreshToken: string
+      expiresIn: string
+    }
   }
   error?: string
+  message?: string
 }
 
 export interface ApiResponse<T> {
