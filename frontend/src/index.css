@@ -1,68 +1,118 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* 네이버 캘린더 색상 시스템 */
+    --naver-green: 16 185 129;
+    --naver-blue: 59 130 246;
+    --naver-red: 239 68 68;
+    --naver-purple: 124 58 237;
+
+    /* 기본 테마 변수 재정의 */
+    --background: 0 0% 100%;
+    --foreground: 31 41 55;
+
+    --card: 0 0% 100%;
+    --card-foreground: 31 41 55;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 31 41 55;
+
+    --primary: var(--naver-green);
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 249 250 251;
+    --secondary-foreground: 31 41 55;
+
+    --muted: 243 244 246;
+    --muted-foreground: 107 114 128;
+
+    --accent: var(--naver-blue);
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: var(--naver-red);
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 229 231 235;
+    --input: 229 231 235;
+    --ring: var(--naver-green);
+
+    --radius: 0.5rem;
   }
-  a:hover {
-    color: #747bff;
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
-  button {
-    background-color: #f9f9f9;
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* 네이버 캘린더 스타일 컴포넌트 */
+  .naver-header {
+    @apply flex items-center justify-between px-4 py-3 border-b border-naver-gray-200 bg-white;
+  }
+
+  .naver-logo {
+    @apply text-2xl font-bold text-naver-green;
+  }
+
+  .naver-sidebar {
+    @apply w-sidebar border-r border-naver-gray-200 bg-white;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+
+  .naver-create-button {
+    @apply w-full flex items-center justify-center gap-2 px-4 py-3
+           bg-naver-blue text-white rounded-lg hover:bg-naver-blue-600
+           transition-colors font-medium;
+  }
+
+  .naver-calendar-cell {
+    @apply border-r border-b border-naver-gray-200 p-2 cursor-pointer
+           hover:bg-naver-blue-50 transition-colors;
+    min-height: 120px;
+  }
+
+  .naver-today-badge {
+    @apply inline-flex items-center justify-center w-6 h-6
+           bg-naver-green text-white rounded-full font-bold;
+  }
+
+  .naver-schedule-red {
+    @apply bg-naver-red-50 text-naver-red-700 text-calendar-schedule
+           px-1.5 py-0.5 rounded truncate;
+  }
+
+  .naver-schedule-purple {
+    @apply bg-naver-purple-50 text-naver-purple-700 text-calendar-schedule
+           px-1.5 py-0.5 rounded truncate;
+  }
+
+  .naver-schedule-blue {
+    @apply bg-naver-blue-50 text-naver-blue-500 text-calendar-schedule
+           px-1.5 py-0.5 rounded truncate;
+  }
+
+  .naver-icon-button {
+    @apply p-2 rounded-md hover:bg-naver-gray-100 transition-colors cursor-pointer;
+  }
+
+  .naver-menu-item {
+    @apply w-full flex items-center gap-2 py-2 px-2 text-sidebar-menu
+           hover:bg-naver-gray-50 rounded cursor-pointer;
   }
 }

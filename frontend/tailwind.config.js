@@ -52,11 +52,67 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // 네이버 캘린더 스타일 색상 시스템
+        naver: {
+          green: {
+            DEFAULT: '#10b981',
+            50: '#d1fae5',
+            100: '#a7f3d0',
+            500: '#10b981',
+            600: '#059669',
+          },
+          blue: {
+            DEFAULT: '#3b82f6',
+            50: '#dbeafe',
+            100: '#bfdbfe',
+            500: '#3b82f6',
+            600: '#2563eb',
+          },
+          red: {
+            DEFAULT: '#ef4444',
+            50: '#fee2e2',
+            100: '#fecaca',
+            500: '#ef4444',
+            700: '#b91c1c',
+          },
+          purple: {
+            DEFAULT: '#7c3aed',
+            50: '#ede9fe',
+            100: '#ddd6fe',
+            500: '#7c3aed',
+            700: '#6d28d9',
+          },
+          gray: {
+            50: '#f9fafb',
+            100: '#f3f4f6',
+            200: '#e5e7eb',
+            300: '#d1d5db',
+            400: '#9ca3af',
+            500: '#6b7280',
+            600: '#4b5563',
+            700: '#374151',
+            800: '#1f2937',
+            900: '#111827',
+          },
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      // 네이버 캘린더 스타일 폰트 크기
+      fontSize: {
+        'calendar-date': ['14px', { lineHeight: '1.5' }],
+        'calendar-schedule': ['12px', { lineHeight: '1.5' }],
+        'sidebar-menu': ['14px', { lineHeight: '1.5' }],
+        'header-brand': ['18px', { lineHeight: '1.5', fontWeight: '600' }],
+      },
+      // 네이버 캘린더 스타일 간격
+      spacing: {
+        'sidebar': '256px',
+        'header': '64px',
+        'calendar-cell': '120px',
       },
       keyframes: {
         "accordion-down": {
