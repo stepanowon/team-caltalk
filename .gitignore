@@ -1,6 +1,9 @@
 *.local.json
 .env
 .env.local
+.env.production
+.env.preview
+.env.vercel.*
 node_modules/
 dist/
 build/
@@ -14,3 +17,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+.vercel
