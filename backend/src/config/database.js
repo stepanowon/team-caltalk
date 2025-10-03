@@ -16,6 +16,15 @@ class DatabaseConfig {
    */
   async initialize() {
     try {
+      // 연결 문자열 디버깅 (비밀번호 마스킹)
+      const connStr = process.env.DB_CONNECTION_STRING;
+      if (connStr) {
+        const maskedConnStr = connStr.replace(/:([^@]+)@/, ':****@');
+        logger.info('데이터베이스 연결 시도:', { connectionString: maskedConnStr });
+      } else {
+        throw new Error('DB_CONNECTION_STRING 환경변수가 설정되지 않았습니다');
+      }
+
       const config = {
         connectionString: process.env.DB_CONNECTION_STRING,
         min: parseInt(process.env.DB_POOL_MIN) || 2,

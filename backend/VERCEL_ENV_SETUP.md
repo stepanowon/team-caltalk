@@ -213,7 +213,63 @@ DB_CONNECTION_STRING=postgresql://postgres.xkntxvgelibwtaivisly:실제비밀번�
 | `Tenant or user not found` | 사용자명 또는 비밀번호 오류 | 사용자명이 `postgres.xkntxvgelibwtaivisly` 형식인지 확인 |
 | `ENOTFOUND` | 호스트명 오류 | pooler 호스트 사용: `aws-0-ap-northeast-2.pooler.supabase.com` |
 | `Connection refused` | 포트 오류 | pooler 포트 사용: `6543` |
-| `password authentication failed` | 비밀번호 오류 | Supabase Dashboard에서 비밀번호 확인/리셋 |
+| `password authentication failed` | 비밀번호 오류 | 아래 비밀번호 문제 해결 참고 |
+
+### 비밀번호 인증 실패 해결 방법
+
+**문제 1: 비밀번호가 틀림**
+1. Supabase Dashboard → Project Settings → Database
+2. "Reset Database Password" 클릭
+3. 새 비밀번호 생성 및 복사
+4. Vercel 환경변수 업데이트
+
+**문제 2: 비밀번호에 특수문자가 있음**
+
+비밀번호에 특수문자(`@`, `#`, `$`, `%`, `&` 등)가 포함된 경우 URL 인코딩 필요:
+
+```bash
+# 잘못된 예 (특수문자 그대로)
+postgresql://postgres.xkntxvgelibwtaivisly:P@ssw0rd!@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres
+
+# 올바른 예 (URL 인코딩)
+postgresql://postgres.xkntxvgelibwtaivisly:P%40ssw0rd%21@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres
+```
+
+**특수문자 URL 인코딩 표:**
+| 문자 | 인코딩 | 문자 | 인코딩 |
+|------|--------|------|--------|
+| `@`  | `%40`  | `#`  | `%23`  |
+| `$`  | `%24`  | `%`  | `%25`  |
+| `&`  | `%26`  | `+`  | `%2B`  |
+| `=`  | `%3D`  | `!`  | `%21`  |
+| `/`  | `%2F`  | `:`  | `%3A`  |
+
+**자동 인코딩 방법:**
+```javascript
+// JavaScript/Node.js
+const password = 'P@ssw0rd!';
+const encoded = encodeURIComponent(password);
+console.log(encoded); // P%40ssw0rd%21
+```
+
+**문제 3: 환경변수에 따옴표가 포함됨**
+
+Vercel 환경변수 입력 시 따옴표를 포함하지 마세요:
+
+```bash
+# ❌ 잘못됨
+"postgresql://postgres.xkntxvgelibwtaivisly:password@..."
+
+# ✅ 올바름
+postgresql://postgres.xkntxvgelibwtaivisly:password@...
+```
+
+**권장: 비밀번호 단순화**
+
+Vercel 배포 시 복잡한 비밀번호로 인한 문제를 피하려면:
+1. Supabase에서 비밀번호 리셋
+2. 특수문자 없는 긴 비밀번호 생성 (예: `longpassword123456abcdef`)
+3. 또는 Base64 인코딩된 비밀번호 사용
 
 **5. 연결 테스트 (선택사항):**
 ```bash
