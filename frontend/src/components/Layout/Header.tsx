@@ -13,6 +13,9 @@ export const Header = () => {
   const navigate = useNavigate()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+  // 디버깅: 사용자 정보 확인
+  console.log('[Header] User state:', { user, isAuthenticated })
+
   const handleLogout = () => {
     logout()
     navigate(ROUTES.LOGIN)

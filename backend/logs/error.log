@@ -88,3 +88,1151 @@ Error: listen EADDRINUSE: address already in use ::1:3000
   "error": "이메일 또는 비밀번호가 올바르지 않습니다",
   "email": "stepanowon@hotmail.com"
 }
+2025-10-03 16:03:42.950 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:42.950 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:42.953 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:42.954 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:43.249 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:43.250 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:43.252 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:43.252 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:43.377 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:43.377 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:43.380 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:43.380 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:44.417 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:44.418 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:44.419 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:44.420 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:44.549 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:44.550 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:44.553 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:44.553 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:45.534 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:45.534 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:45.536 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:45.537 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:45.682 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:45.682 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:45.685 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:45.686 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:58:38.992 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759478315702@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 16:58:38.993 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759478315702@example.com"
+}
+2025-10-03 17:32:01.798 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480318039@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:32:01.799 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480318039@example.com"
+}
+2025-10-03 17:32:24.451 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480340701@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:32:24.451 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480340701@example.com"
+}
+2025-10-03 17:32:46.996 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480363269@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:32:46.996 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480363269@example.com"
+}
+2025-10-03 17:33:09.561 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480385828@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:33:09.561 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480385828@example.com"
+}
+2025-10-03 17:33:32.195 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480408454@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:33:32.195 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480408454@example.com"
+}
+2025-10-03 17:33:54.830 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480431094@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:33:54.831 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480431094@example.com"
+}
+2025-10-03 17:35:51.055 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480547415@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:35:51.055 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480547415@example.com"
+}
+2025-10-03 17:36:13.955 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480570314@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:36:13.955 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480570314@example.com"
+}
+2025-10-03 17:36:36.958 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480593326@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:36:36.958 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480593326@example.com"
+}
+2025-10-03 17:36:59.949 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480616309@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:36:59.951 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480616309@example.com"
+}
+2025-10-03 17:37:22.855 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480639222@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:37:22.855 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480639222@example.com"
+}
+2025-10-03 17:37:45.821 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480662199@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:37:45.821 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480662199@example.com"
+}
+2025-10-03 17:48:21.939 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481298497@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:48:21.940 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481298497@example.com"
+}
+2025-10-03 17:48:29.570 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481298497@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:48:29.570 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481298497@example.com"
+}
+2025-10-03 17:48:51.754 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481328317@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:48:51.754 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481328317@example.com"
+}
+2025-10-03 17:48:59.383 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481328317@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:48:59.384 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481328317@example.com"
+}
+2025-10-03 17:49:21.604 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481358148@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:49:21.604 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481358148@example.com"
+}
+2025-10-03 17:49:29.233 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481358148@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:49:29.233 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481358148@example.com"
+}
+2025-10-03 17:49:51.418 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481387982@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:49:51.418 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481387982@example.com"
+}
+2025-10-03 17:49:59.031 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481387982@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:49:59.031 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481387982@example.com"
+}
+2025-10-03 17:50:21.218 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481417768@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:50:21.218 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481417768@example.com"
+}
+2025-10-03 17:50:28.831 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481417768@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:50:28.831 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481417768@example.com"
+}
+2025-10-03 17:50:51.049 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481447607@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:50:51.049 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481447607@example.com"
+}
+2025-10-03 17:50:58.664 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481447607@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:50:58.664 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481447607@example.com"
+}
+2025-10-03 17:52:28.428 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481534006@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:52:28.429 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481534006@example.com"
+}
+2025-10-03 17:57:15.902 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481821504@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:57:15.902 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481821504@example.com"
+}
+2025-10-03 17:57:23.049 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481821504@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:57:23.049 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481821504@example.com"
+}
+2025-10-03 17:58:19.332 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481884906@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:58:19.332 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481884906@example.com"
+}
+2025-10-03 17:58:26.462 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481884906@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:58:26.462 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481884906@example.com"
+}
+2025-10-03 17:59:58.966 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759481989408@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 17:59:58.967 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759481989408@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 17:59:58.967 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759481989408@example.com"
+}
+2025-10-03 18:00:28.812 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:00:28.812 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:00:28.812 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:00:51.349 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:00:51.350 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:00:51.351 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:01:12.309 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:01:12.309 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:01:12.309 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:02:05.228 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:05.228 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:05.228 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:25.772 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:25.772 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:25.772 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:46.255 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:46.255 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:46.255 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:03:08.686 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:03:08.686 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:03:08.686 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:03:29.651 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:03:29.651 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:03:29.651 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 21:29:52.370 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:29:52.371 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:30:03.277 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:03.277 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:30:40.204 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:40.204 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:30:46.054 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:46.055 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:30:57.090 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:57.091 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:30:59.662 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:59.663 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:30:59.668 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:59.669 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:30:59.674 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:59.675 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:05.869 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:05.869 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:06.798 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:06.799 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:06.806 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:06.806 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:06.809 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:06.809 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:19.551 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:19.552 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:20.495 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:20.496 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:20.502 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:20.503 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:20.505 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:20.506 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:29.671 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:29.672 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:29.686 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:29.686 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:29.908 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:29.908 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:50.511 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:50.511 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:50.513 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:50.514 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:50.719 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:50.719 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:59.672 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:59.673 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:59.687 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:59.687 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:59.925 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:59.925 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:32:20.504 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:20.504 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:20.505 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:20.506 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:20.738 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:20.739 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:31.170 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:31.170 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:32:31.172 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:31.172 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:32:31.175 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:31.175 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:32:50.510 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:50.511 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:50.513 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:50.513 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:50.780 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:50.781 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:01.172 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:01.172 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:01.174 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:01.174 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:01.186 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:01.186 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:20.511 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:20.511 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:20.512 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:20.513 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:20.804 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:20.805 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:31.172 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:31.172 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:31.174 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:31.174 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:31.204 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:31.204 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:50.516 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:50.517 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:50.519 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:50.519 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:50.822 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:50.822 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:01.189 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:01.189 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:01.191 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:01.191 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:01.219 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:01.220 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:20.508 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:20.508 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:20.509 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:20.510 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:20.840 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:20.841 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:31.195 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:31.195 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:31.196 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:31.196 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:31.240 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:31.240 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:50.510 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:50.511 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:50.512 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:50.512 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:50.859 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:50.860 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:01.207 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:01.207 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:01.209 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:01.209 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:01.254 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:01.254 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:20.512 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:20.512 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:20.513 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:20.514 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:20.884 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:20.885 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:31.219 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:31.220 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:31.221 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:31.221 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:31.275 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:31.276 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:50.512 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:50.513 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:50.514 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:50.514 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:50.911 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:50.912 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:36:02.719 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:02.719 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:36:02.721 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:02.721 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:36:02.724 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:02.724 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:36:20.502 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:20.503 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:36:20.504 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:20.505 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:36:20.943 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:20.943 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:36:33.884 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:33.885 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:36:35.916 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:35.916 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:47.341 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:47.341 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:49.196 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:49.196 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:49.202 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:49.202 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:49.209 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:49.209 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:58.291 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:58.292 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:59.547 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:59.548 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:59.551 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:59.551 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:59.554 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:59.554 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}

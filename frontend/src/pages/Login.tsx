@@ -31,11 +31,15 @@ export const Login = () => {
 
     try {
       const result = await AuthService.login({ email, password })
+      console.log('Login result:', result)
 
       if (result.success && result.data && result.data.tokens) {
+        console.log('User data:', result.data.user)
+        console.log('Tokens:', result.data.tokens)
         setAuth(result.data.user, result.data.tokens.accessToken, result.data.tokens.refreshToken)
         navigate(ROUTES.DASHBOARD)
       } else {
+        console.log('Login failed:', result)
         setError(
           result.error ||
             '로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.'

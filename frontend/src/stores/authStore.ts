@@ -17,6 +17,8 @@ export const useAuthStore = create<AuthState>()(
       token: null,
       isAuthenticated: false,
       setAuth: (user, accessToken, refreshToken) => {
+        console.log('[AuthStore] setAuth called with:', { user, accessToken, refreshToken })
+
         // localStorage에도 토큰 직접 저장
         localStorage.setItem('access_token', accessToken)
         localStorage.setItem('refresh_token', refreshToken || accessToken)
@@ -26,6 +28,8 @@ export const useAuthStore = create<AuthState>()(
           token: accessToken,
           isAuthenticated: true,
         })
+
+        console.log('[AuthStore] State after setAuth:', { user, isAuthenticated: true })
       },
       logout: () => {
         // localStorage에서도 토큰 제거

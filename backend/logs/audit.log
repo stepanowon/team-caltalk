@@ -576,3 +576,4023 @@ Error: listen EADDRINUSE: address already in use ::1:3000
   "userId": "102",
   "email": "stepanowon@hotmail.com"
 }
+2025-10-03 16:02:15.848 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-03 16:02:15.853 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-03 16:03:27.692 [WARN]: 느린 쿼리 감지: {
+  "duration": "104ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-03 16:03:27.698 [WARN]: 느린 쿼리 감지: {
+  "duration": "106ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-03 16:03:27.704 [WARN]: 느린 쿼리 감지: {
+  "duration": "110ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-03 16:03:42.950 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:42.950 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:42.951 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:42.952 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:42.953 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:42.954 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:42.955 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:42.956 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:43.249 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:43.250 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:43.251 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/teams",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:43.251 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:43.252 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:43.252 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:43.253 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/teams",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:43.254 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:43.377 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:43.377 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:43.378 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:43.379 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:43.380 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:43.380 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:43.381 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:43.382 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:44.417 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:44.418 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:44.418 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/teams",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:44.419 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:44.419 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:44.420 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:44.421 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/teams",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:44.421 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:44.549 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:44.550 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:44.551 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:44.551 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:44.553 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:44.553 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:44.554 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:44.554 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:45.534 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:45.534 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:45.535 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/teams",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:45.535 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:45.536 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:45.537 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:45.537 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/teams",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:45.538 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:45.682 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:45.682 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:45.683 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:45.683 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:45.685 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-03 16:03:45.686 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 16:03:45.687 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 16:03:45.687 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 16:03:55.920 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "103",
+  "email": "stepanowon@gmail.com"
+}
+2025-10-03 16:03:55.922 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "103",
+  "email": "stepanowon@gmail.com"
+}
+2025-10-03 16:04:14.706 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "5658",
+  "data": {
+    "team_id": "52",
+    "sender_id": "103",
+    "content": "111",
+    "target_date": "2025-10-12",
+    "related_schedule_id": "382",
+    "message_type": "schedule_request",
+    "sent_at": "2025-10-03T07:04:14.691Z"
+  }
+}
+2025-10-03 16:04:14.708 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "5658",
+  "teamId": "52",
+  "senderId": "103",
+  "targetDate": "2025-10-12",
+  "messageType": "schedule_request",
+  "contentLength": 3
+}
+2025-10-03 16:04:14.711 [WARN]: AUDIT {
+  "action": "SCHEDULE_REQUEST_CREATED",
+  "messageId": "5658",
+  "teamId": "52",
+  "scheduleId": "382",
+  "userId": "103"
+}
+2025-10-03 16:04:30.063 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "5659",
+  "data": {
+    "team_id": "52",
+    "sender_id": "102",
+    "content": "\"111\" 요청이 승인되었습니다.",
+    "target_date": "2025-10-12T00:00:00.000Z",
+    "related_schedule_id": "382",
+    "message_type": "schedule_approved",
+    "sent_at": "2025-10-03T07:04:30.060Z"
+  }
+}
+2025-10-03 16:04:30.064 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "5659",
+  "teamId": "52",
+  "senderId": "102",
+  "targetDate": "2025-10-12T00:00:00.000Z",
+  "messageType": "schedule_approved",
+  "contentLength": 18
+}
+2025-10-03 16:04:30.066 [WARN]: AUDIT {
+  "action": "SCHEDULE_REQUEST_APPROVED",
+  "originalMessageId": 5658,
+  "approvalMessageId": "5659",
+  "teamId": "52",
+  "scheduleId": "382",
+  "userId": "102"
+}
+2025-10-03 16:04:38.331 [WARN]: AUDIT {
+  "action": "RECORD_UPDATED",
+  "table": "schedules",
+  "id": 382,
+  "data": {
+    "title": "222",
+    "content": "2222",
+    "start_datetime": "2025-10-19T00:00:00.000Z",
+    "end_datetime": "2025-10-21T01:00:00.000Z"
+  }
+}
+2025-10-03 16:04:38.336 [WARN]: AUDIT {
+  "action": "SCHEDULE_UPDATED",
+  "scheduleId": 382,
+  "updateData": {
+    "title": "222",
+    "content": "2222",
+    "startDatetime": "2025-10-19T00:00:00.000Z",
+    "endDatetime": "2025-10-21T01:00:00.000Z",
+    "participantIds": 1
+  }
+}
+2025-10-03 16:06:31.918 [WARN]: 느린 쿼리 감지: {
+  "duration": "165ms",
+  "query": "\n            SELECT\n              sp.id,\n              sp.schedule_id,\n              sp.user_id,\n   ...",
+  "rowCount": 1
+}
+2025-10-03 16:56:28.155 [WARN]: AUDIT {
+  "action": "SUSPICIOUS_ACTIVITY",
+  "type": "SUSPICIOUS_BOT",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0",
+  "path": "/health",
+  "method": "GET"
+}
+2025-10-03 16:58:38.992 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759478315702@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 16:58:38.992 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759478315702@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 16:58:38.993 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759478315702@example.com"
+}
+2025-10-03 16:58:38.993 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "53ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 16:58:38.993 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:32:01.798 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480318039@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:32:01.798 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480318039@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:32:01.799 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480318039@example.com"
+}
+2025-10-03 17:32:01.800 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:32:01.800 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:32:24.450 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480340701@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:32:24.451 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480340701@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:32:24.451 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480340701@example.com"
+}
+2025-10-03 17:32:24.451 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:32:24.452 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:32:46.996 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480363269@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:32:46.996 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480363269@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:32:46.996 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480363269@example.com"
+}
+2025-10-03 17:32:46.997 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:32:46.998 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:33:09.561 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480385828@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:33:09.561 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480385828@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:33:09.561 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480385828@example.com"
+}
+2025-10-03 17:33:09.562 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:33:09.562 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:33:32.194 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480408454@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:33:32.195 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480408454@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:33:32.195 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480408454@example.com"
+}
+2025-10-03 17:33:32.195 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:33:32.196 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:33:54.830 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480431094@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:33:54.830 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480431094@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:33:54.831 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480431094@example.com"
+}
+2025-10-03 17:33:54.831 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:33:54.831 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:35:51.055 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480547415@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:35:51.055 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480547415@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:35:51.055 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480547415@example.com"
+}
+2025-10-03 17:35:51.056 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:35:51.056 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:36:13.955 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480570314@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:36:13.955 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480570314@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:36:13.955 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480570314@example.com"
+}
+2025-10-03 17:36:13.956 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:36:13.956 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:36:36.957 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480593326@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:36:36.958 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480593326@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:36:36.958 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480593326@example.com"
+}
+2025-10-03 17:36:36.959 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:36:36.959 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:36:59.945 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480616309@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:36:59.949 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480616309@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:36:59.951 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480616309@example.com"
+}
+2025-10-03 17:36:59.956 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "14ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:36:59.958 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:37:22.855 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480639222@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:37:22.855 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480639222@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:37:22.855 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480639222@example.com"
+}
+2025-10-03 17:37:22.856 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:37:22.856 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:37:45.820 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759480662199@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:37:45.821 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759480662199@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:37:45.821 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759480662199@example.com"
+}
+2025-10-03 17:37:45.821 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:37:45.822 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:48:21.939 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481298497@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:48:21.939 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481298497@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:48:21.940 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481298497@example.com"
+}
+2025-10-03 17:48:21.940 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:48:21.940 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:48:29.569 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481298497@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:48:29.570 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481298497@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:48:29.570 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481298497@example.com"
+}
+2025-10-03 17:48:29.570 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:48:29.571 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:48:51.754 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481328317@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:48:51.754 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481328317@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:48:51.754 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481328317@example.com"
+}
+2025-10-03 17:48:51.754 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:48:51.755 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:48:59.383 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481328317@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:48:59.383 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481328317@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:48:59.384 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481328317@example.com"
+}
+2025-10-03 17:48:59.384 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:48:59.384 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:49:21.604 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481358148@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:49:21.604 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481358148@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:49:21.604 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481358148@example.com"
+}
+2025-10-03 17:49:21.605 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:49:21.605 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:49:29.233 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481358148@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:49:29.233 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481358148@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:49:29.233 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481358148@example.com"
+}
+2025-10-03 17:49:29.234 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:49:29.234 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:49:51.418 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481387982@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:49:51.418 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481387982@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:49:51.418 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481387982@example.com"
+}
+2025-10-03 17:49:51.419 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:49:51.419 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:49:59.031 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481387982@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:49:59.031 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481387982@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:49:59.032 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481387982@example.com"
+}
+2025-10-03 17:49:59.032 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:49:59.032 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:50:21.217 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481417768@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:50:21.218 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481417768@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:50:21.218 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481417768@example.com"
+}
+2025-10-03 17:50:21.218 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:50:21.218 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:50:28.831 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481417768@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:50:28.831 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481417768@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:50:28.831 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481417768@example.com"
+}
+2025-10-03 17:50:28.832 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:50:28.832 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:50:51.049 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481447607@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:50:51.049 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481447607@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:50:51.049 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481447607@example.com"
+}
+2025-10-03 17:50:51.049 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:50:51.049 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:50:58.663 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481447607@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:50:58.664 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481447607@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:50:58.664 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481447607@example.com"
+}
+2025-10-03 17:50:58.664 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:50:58.665 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:52:28.428 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481534006@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:52:28.428 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481534006@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:52:28.429 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481534006@example.com"
+}
+2025-10-03 17:52:28.429 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:52:28.429 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:54:23.358 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "105",
+  "data": {
+    "email": "gdhong@test.com",
+    "name": "홍길동",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-10-03 17:54:23.360 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "105",
+  "email": "gdhong@test.com",
+  "name": "홍길동"
+}
+2025-10-03 17:54:23.364 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "105",
+  "email": "gdhong@test.com"
+}
+2025-10-03 17:54:35.145 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "105",
+  "email": "gdhong@test.com"
+}
+2025-10-03 17:54:35.147 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "105",
+  "email": "gdhong@test.com"
+}
+2025-10-03 17:57:15.901 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481821504@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:57:15.902 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481821504@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:57:15.902 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481821504@example.com"
+}
+2025-10-03 17:57:15.903 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:57:15.903 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:57:23.049 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481821504@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:57:23.049 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481821504@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:57:23.049 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481821504@example.com"
+}
+2025-10-03 17:57:23.050 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:57:23.050 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:58:19.331 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481884906@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:58:19.332 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481884906@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:58:19.332 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481884906@example.com"
+}
+2025-10-03 17:58:19.332 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:58:19.333 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:58:26.461 [WARN]: AUDIT {
+  "action": "AUTH_FAILED",
+  "email": "test_leader_1759481884906@example.com",
+  "reason": "user_not_found"
+}
+2025-10-03 17:58:26.462 [ERROR]: AuthService.login 오류: {
+  "email": "test_leader_1759481884906@example.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-03 17:58:26.462 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "test_leader_1759481884906@example.com"
+}
+2025-10-03 17:58:26.463 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 17:58:26.463 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "path": "/login",
+  "method": "POST"
+}
+2025-10-03 17:59:13.259 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "106",
+  "data": {
+    "email": "test_leader_1759481952212@example.com",
+    "name": "테스트팀장",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-10-03 17:59:13.260 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "106",
+  "email": "test_leader_1759481952212@example.com",
+  "name": "테스트팀장"
+}
+2025-10-03 17:59:13.260 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "106",
+  "email": "test_leader_1759481952212@example.com"
+}
+2025-10-03 17:59:15.059 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "106",
+  "email": "test_leader_1759481952212@example.com"
+}
+2025-10-03 17:59:15.060 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "106",
+  "email": "test_leader_1759481952212@example.com"
+}
+2025-10-03 17:59:50.457 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "107",
+  "data": {
+    "email": "test_leader_1759481989408@example.com",
+    "name": "테스트팀장",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-10-03 17:59:50.458 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "107",
+  "email": "test_leader_1759481989408@example.com",
+  "name": "테스트팀장"
+}
+2025-10-03 17:59:50.458 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "107",
+  "email": "test_leader_1759481989408@example.com"
+}
+2025-10-03 17:59:52.239 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "107",
+  "email": "test_leader_1759481989408@example.com"
+}
+2025-10-03 17:59:52.239 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "107",
+  "email": "test_leader_1759481989408@example.com"
+}
+2025-10-03 17:59:58.967 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759481989408@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 17:59:58.967 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759481989408@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 17:59:58.967 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759481989408@example.com"
+}
+2025-10-03 17:59:58.968 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 18:00:12.717 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "107",
+  "email": "test_leader_1759481989408@example.com"
+}
+2025-10-03 18:00:12.717 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "107",
+  "email": "test_leader_1759481989408@example.com"
+}
+2025-10-03 18:00:20.303 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "108",
+  "data": {
+    "email": "test_leader_1759482019267@example.com",
+    "name": "테스트팀장",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-10-03 18:00:20.303 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com",
+  "name": "테스트팀장"
+}
+2025-10-03 18:00:20.304 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:00:22.080 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:00:22.081 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:00:28.812 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:00:28.812 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:00:28.812 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:00:28.813 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 18:00:42.547 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:00:42.548 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:00:51.350 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:00:51.350 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:00:51.351 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:00:51.352 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 18:01:05.080 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:01:05.081 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:01:12.309 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:01:12.309 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482019267@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:01:12.309 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:01:12.310 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 18:01:26.044 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:01:26.045 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "108",
+  "email": "test_leader_1759482019267@example.com"
+}
+2025-10-03 18:01:56.735 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "109",
+  "data": {
+    "email": "test_leader_1759482115701@example.com",
+    "name": "테스트팀장",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-10-03 18:01:56.736 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com",
+  "name": "테스트팀장"
+}
+2025-10-03 18:01:56.736 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:01:58.513 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:01:58.513 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:05.228 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:05.228 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:05.228 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:05.229 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 18:02:18.975 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:18.975 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:25.772 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:25.772 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:25.772 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:25.773 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 18:02:39.525 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:39.525 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:46.255 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:46.255 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:02:46.255 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:46.255 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 18:02:59.992 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:02:59.992 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:03:08.686 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:03:08.686 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:03:08.686 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:03:08.687 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 18:03:22.423 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:03:22.424 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:03:29.651 [ERROR]: User.createUser 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:03:29.651 [ERROR]: AuthService.register 오류: {
+  "email": "test_leader_1759482115701@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-03 18:03:29.651 [ERROR]: 회원가입 오류: {
+  "error": "이미 등록된 이메일입니다",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:03:29.652 [WARN]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/register",
+  "status": 400,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.186 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 18:03:43.407 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 18:03:43.407 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "109",
+  "email": "test_leader_1759482115701@example.com"
+}
+2025-10-03 20:37:08.192 [WARN]: 404 요청: {
+  "method": "GET",
+  "url": "/",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 20:37:08.198 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/",
+  "status": 404,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 20:37:08.281 [WARN]: 404 요청: {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 20:37:08.282 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "status": 404,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:29:52.370 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:29:52.371 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:29:52.373 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:29:52.374 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:30:03.277 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:03.277 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:30:03.278 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?teamId=1&limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:30:03.278 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:30:40.204 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:40.204 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:30:40.205 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:30:40.205 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:30:46.054 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:46.055 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:30:46.055 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?teamId=1&limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:30:46.056 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:30:57.091 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:57.091 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:30:57.092 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?teamId=1&limit=5",
+  "status": 401,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:30:57.093 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:30:59.662 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:59.663 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:30:59.664 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:30:59.664 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:30:59.669 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:59.669 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:30:59.670 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:30:59.670 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:30:59.674 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:30:59.675 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:30:59.676 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:30:59.676 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:31:05.869 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:05.869 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:05.871 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?teamId=1&limit=5",
+  "status": 401,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:05.871 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:31:06.798 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:06.799 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:06.800 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:06.800 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:31:06.806 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:06.806 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:06.807 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:06.807 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:31:06.809 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:06.809 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:06.810 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:06.810 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:31:19.551 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:19.552 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:19.553 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?teamId=1&limit=5",
+  "status": 401,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:19.553 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:31:20.495 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:20.496 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:20.497 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:20.497 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:31:20.502 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:20.503 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:20.504 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:20.504 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:31:20.506 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:20.506 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:20.507 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:20.507 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:31:29.671 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:29.672 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:29.672 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:29.673 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:31:29.686 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:29.686 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:29.687 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:29.688 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:31:29.908 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:29.908 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:29.909 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:29.909 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:31:50.511 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:50.511 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:50.512 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:50.512 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:31:50.513 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:50.514 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:50.514 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:50.515 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:31:50.719 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:50.719 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:31:50.720 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:50.721 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:31:59.673 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:59.673 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:59.674 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:59.674 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:31:59.687 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:59.687 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:59.687 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:59.687 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:31:59.925 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:31:59.925 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:31:59.926 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:31:59.926 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:32:20.504 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:20.504 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:20.505 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:32:20.505 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:32:20.505 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:20.506 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:20.507 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:32:20.507 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:32:20.739 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:20.739 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:20.739 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:32:20.740 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:32:31.170 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:31.170 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:32:31.171 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:32:31.171 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:32:31.172 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:31.172 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:32:31.173 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:32:31.173 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:32:31.175 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:31.175 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:32:31.176 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:32:31.176 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:32:50.510 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:50.511 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:50.511 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:32:50.512 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:32:50.513 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:50.513 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:50.514 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:32:50.514 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:32:50.780 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:32:50.781 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:32:50.782 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:32:50.782 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:33:01.172 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:01.172 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:01.173 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:01.173 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:33:01.174 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:01.174 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:01.175 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:01.175 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:33:01.186 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:01.186 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:01.187 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:01.187 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:33:20.511 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:20.511 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:20.512 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:20.512 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:33:20.512 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:20.513 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:20.513 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:20.514 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:33:20.804 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:20.805 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:20.805 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:20.805 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:33:31.172 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:31.172 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:31.173 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:31.173 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:33:31.174 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:31.174 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:31.175 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "0ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:31.175 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:33:31.204 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:31.204 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:33:31.205 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:31.205 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:33:50.516 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:50.517 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:50.518 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:50.518 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:33:50.519 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:50.519 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:50.519 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:50.519 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:33:50.822 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:33:50.822 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:33:50.823 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:33:50.823 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:34:01.189 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:01.189 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:01.190 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:01.190 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:34:01.191 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:01.191 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:01.192 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:01.192 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:34:01.219 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:01.220 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:01.220 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:01.220 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:34:20.508 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:20.508 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:20.508 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:20.509 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:34:20.509 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:20.510 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:20.510 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:20.510 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:34:20.840 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:20.841 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:20.842 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:20.842 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:34:31.195 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:31.195 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:31.195 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:31.195 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:34:31.196 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:31.196 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:31.196 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "0ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:31.197 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:34:31.240 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:31.240 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:34:31.240 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:31.241 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:34:50.510 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:50.511 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:50.511 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:50.511 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:34:50.512 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:50.512 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:50.512 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:50.513 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:34:50.859 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:34:50.860 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:34:50.860 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:34:50.861 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:35:01.207 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:01.207 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:01.208 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:01.208 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:35:01.209 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:01.209 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:01.209 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:01.209 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:35:01.254 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:01.254 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:01.254 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:01.254 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:35:20.512 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:20.512 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:20.512 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:20.513 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:35:20.513 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:20.514 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:20.514 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:20.514 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:35:20.884 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:20.885 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:20.886 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "3ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:20.886 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:35:31.219 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:31.220 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:31.220 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:31.220 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:35:31.221 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:31.221 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:31.222 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:31.222 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:35:31.275 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:31.276 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:35:31.276 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:31.276 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:35:50.512 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:50.513 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:50.513 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:50.514 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:35:50.514 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:50.514 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:50.514 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "0ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:50.515 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:35:50.911 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:35:50.912 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:35:50.912 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:35:50.913 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:36:02.719 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:02.719 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:36:02.720 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:36:02.720 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:36:02.721 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:02.721 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:36:02.721 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:36:02.722 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:36:02.724 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:02.724 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:36:02.725 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:36:02.725 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:36:20.503 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:20.503 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:36:20.503 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:36:20.503 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:36:20.504 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:20.505 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:36:20.505 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:36:20.506 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:36:20.943 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:20.943 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:36:20.944 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:36:20.944 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:36:33.884 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:33.885 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-03 21:36:33.885 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:36:33.886 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:36:35.916 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:36:35.916 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:36:35.917 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:36:35.917 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:42:47.341 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:47.341 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:47.342 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?teamId=1&limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:42:47.342 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:42:49.196 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:49.196 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:49.197 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:42:49.197 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:42:49.202 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:49.202 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:49.203 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:42:49.204 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:42:49.209 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:49.209 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:49.210 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:42:49.210 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:42:58.291 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:58.292 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:58.293 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?teamId=1&limit=5",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:42:58.293 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:42:59.547 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:59.548 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:59.548 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/schedule-requests",
+  "status": 401,
+  "duration": "1ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:42:59.549 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/schedule-requests",
+  "method": "GET"
+}
+2025-10-03 21:42:59.551 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:59.551 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:59.552 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=1",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:42:59.553 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-03 21:42:59.554 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-03 21:42:59.554 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-03 21:42:59.555 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/chat/teams/1/messages?targetDate=2025-10-03",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "userId": "anonymous"
+}
+2025-10-03 21:42:59.555 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0",
+  "path": "/teams/1/messages",
+  "method": "GET"
+}
+2025-10-03 21:46:59.579 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-03 21:46:59.581 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-03 21:47:03.656 [WARN]: 느린 쿼리 감지: {
+  "duration": "163ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-03 21:47:22.946 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-03 21:47:22.947 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
