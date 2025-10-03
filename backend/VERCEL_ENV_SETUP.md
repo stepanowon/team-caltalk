@@ -158,11 +158,26 @@ vercel env push .env.vercel.production production
 - 무료 티어 제공
 - 연결 문자열 복사 → Vercel 환경변수 설정
 
-### 옵션 3: Supabase
+### 옵션 3: Supabase (현재 프로젝트 사용 중)
 - https://supabase.com
 - PostgreSQL + 추가 기능 제공
 - 무료 티어 제공
-- 연결 문자열 복사 → Vercel 환경변수 설정
+- **현재 프로젝트 DB 호스트**: `db.xkntxvgelibwtaivisly.supabase.co`
+
+**Vercel 환경변수 설정:**
+```bash
+# Supabase 연결 문자열 형식
+DB_CONNECTION_STRING=postgresql://postgres.[PROJECT_REF]:[PASSWORD]@db.[PROJECT_REF].supabase.co:5432/postgres
+
+# 예시 (실제 비밀번호로 변경 필요)
+DB_CONNECTION_STRING=postgresql://postgres.xkntxvgelibwtaivisly:YOUR_SUPABASE_PASSWORD@db.xkntxvgelibwtaivisly.supabase.co:5432/postgres
+```
+
+**Supabase 연결 정보 확인 방법:**
+1. Supabase Dashboard → Project Settings → Database
+2. Connection String 섹션에서 URI 복사
+3. `[YOUR-PASSWORD]`를 실제 데이터베이스 비밀번호로 변경
+4. Vercel 환경변수 `DB_CONNECTION_STRING`에 설정
 
 ### 옵션 4: Railway / Render
 - 외부 PostgreSQL 호스팅 서비스
