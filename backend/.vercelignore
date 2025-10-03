@@ -1,0 +1,35 @@
+# Vercel 배포 시 제외할 파일
+
+# 개발 도구
+node_modules/
+.env.local
+.env.development
+
+# 테스트
+tests/
+coverage/
+*.test.js
+*.spec.js
+
+# 로그 및 임시 파일
+logs/
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE 설정
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# 문서
+README.md
+CLAUDE.md
+
+# 스크립트 (배포에 불필요)
+scripts/

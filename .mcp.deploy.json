@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "postgresql-mcp": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@henkey/postgres-mcp-server"]
+    },
+    "supabase": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@smithery/cli@latest", "run", "supabase", "--key", "10b79178-f358-4dd4-8b4f-3fbb3d9fd053"]
+    }
+  }
+}
