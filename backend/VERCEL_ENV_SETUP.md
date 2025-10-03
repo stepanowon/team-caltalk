@@ -166,29 +166,65 @@ vercel env push .env.vercel.production production
 
 **⚠️ 중요: Supabase 연결 문자열 형식**
 
-Supabase Dashboard에서 정확한 연결 문자열을 복사해야 합니다:
+**Supabase 프로젝트 정보:**
+- 프로젝트 ID: `xkntxvgelibwtaivisly`
+- 리전: `ap-northeast-2`
 
-**1. Supabase Dashboard에서 연결 문자열 가져오기:**
-1. https://supabase.com/dashboard → 프로젝트 선택 (MyProject)
-2. Project Settings → Database
-3. **Connection String** 섹션 → **Transaction pooler** 모드 선택
-4. URI를 복사하고 `[YOUR-PASSWORD]`를 실제 비밀번호로 변경
+**1. Supabase Dashboard에서 비밀번호 확인:**
+1. https://supabase.com/dashboard
+2. 프로젝트 선택: **MyProject**
+3. Project Settings → Database → **Database password**
+4. 비밀번호를 확인하거나 Reset password로 새로 생성
+   - ⚠️ 비밀번호 리셋 시 기존 연결이 끊어집니다!
 
-**2. Vercel 환경변수 설정:**
+**2. 올바른 연결 문자열 형식 (3가지 방법):**
+
+### 방법 A: Transaction Pooler (권장 - Serverless 최적화)
 ```bash
-# ✅ 올바른 형식 (Transaction pooler)
-DB_CONNECTION_STRING=postgresql://postgres.xkntxvgelibwtaivisly:[YOUR-PASSWORD]@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres
+# Connection Pooling 모드 - IPv4 (Supavisor)
+postgresql://postgres.xkntxvgelibwtaivisly:[YOUR-PASSWORD]@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres
 
-# ❌ 잘못된 형식 (이 형식은 작동하지 않습니다)
-DB_CONNECTION_STRING=postgresql://postgres:password@db.xkntxvgelibwtaivisly.supabase.co:5432/postgres
+# ⚠️ 주의사항:
+# - 사용자명: postgres.xkntxvgelibwtaivisly (프로젝트 ID 포함)
+# - 포트: 6543 (pooler 포트)
+# - [YOUR-PASSWORD]: 실제 데이터베이스 비밀번호로 변경
 ```
 
-**3. 연결 모드 선택:**
-- **Transaction pooler** (권장): 포트 6543, Serverless 환경에 최적화
-- **Session pooler**: 포트 6543, 연결 재사용
-- **Direct connection**: 포트 5432, 연결 수 제한
+### 방법 B: Session Pooler
+```bash
+postgresql://postgres.xkntxvgelibwtaivisly:[YOUR-PASSWORD]@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres?pgbouncer=true
+```
 
-**Serverless Function에서는 반드시 Transaction pooler 또는 Session pooler를 사용하세요!**
+### 방법 C: Direct Connection (로컬 개발용)
+```bash
+postgresql://postgres:[YOUR-PASSWORD]@db.xkntxvgelibwtaivisly.supabase.co:5432/postgres
+```
+
+**3. Vercel 환경변수 설정:**
+```bash
+# Transaction Pooler 사용 (권장)
+DB_CONNECTION_STRING=postgresql://postgres.xkntxvgelibwtaivisly:실제비밀번호@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres
+```
+
+**4. 일반적인 오류 및 해결:**
+
+| 오류 메시지 | 원인 | 해결 방법 |
+|------------|------|----------|
+| `Tenant or user not found` | 사용자명 또는 비밀번호 오류 | 사용자명이 `postgres.xkntxvgelibwtaivisly` 형식인지 확인 |
+| `ENOTFOUND` | 호스트명 오류 | pooler 호스트 사용: `aws-0-ap-northeast-2.pooler.supabase.com` |
+| `Connection refused` | 포트 오류 | pooler 포트 사용: `6543` |
+| `password authentication failed` | 비밀번호 오류 | Supabase Dashboard에서 비밀번호 확인/리셋 |
+
+**5. 연결 테스트 (선택사항):**
+```bash
+# psql로 연결 테스트
+psql "postgresql://postgres.xkntxvgelibwtaivisly:비밀번호@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres"
+
+# Node.js로 테스트
+node -e "const {Pool}=require('pg');const pool=new Pool({connectionString:'postgresql://postgres.xkntxvgelibwtaivisly:비밀번호@aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres'});pool.query('SELECT NOW()').then(r=>console.log(r.rows)).catch(e=>console.error(e)).finally(()=>pool.end());"
+```
+
+**Serverless Function에서는 반드시 Transaction pooler를 사용하세요!**
 
 ### 옵션 4: Railway / Render
 - 외부 PostgreSQL 호스팅 서비스
