@@ -10551,3 +10551,152 @@ Error: listen EADDRINUSE: address already in use ::1:3000
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
   "userId": "102"
 }
+2025-10-03 21:48:43.456 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "102",
+  "found": true
+}
+2025-10-03 21:48:43.461 [INFO]: 활동 내역 조회 성공 {
+  "userId": "102",
+  "teamIds": [
+    "52",
+    "53"
+  ],
+  "activityCount": 5
+}
+2025-10-03 21:48:43.461 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "102"
+}
+2025-10-03 21:48:43.464 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "102",
+  "found": true
+}
+2025-10-03 21:48:43.467 [INFO]: 활동 내역 조회 성공 {
+  "userId": "102",
+  "teamIds": [
+    "52",
+    "53"
+  ],
+  "activityCount": 5
+}
+2025-10-03 21:48:43.468 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "102"
+}
+2025-10-03 21:48:51.126 [INFO]: PERFORMANCE {
+  "operation": "User.verifyPassword",
+  "duration": "193ms"
+}
+2025-10-03 21:48:51.126 [INFO]: PERFORMANCE {
+  "operation": "User.authenticate",
+  "duration": "194ms",
+  "userId": "102",
+  "success": true
+}
+2025-10-03 21:48:51.127 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-03 21:48:51.127 [INFO]: PERFORMANCE {
+  "operation": "AuthService.login",
+  "duration": "195ms",
+  "userId": "102"
+}
+2025-10-03 21:48:51.128 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-03 21:48:51.128 [INFO]: API_REQUEST {
+  "method": "POST",
+  "url": "/api/auth/login",
+  "status": 200,
+  "duration": "196ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-03 21:48:51.158 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "102",
+  "found": true
+}
+2025-10-03 21:48:51.162 [INFO]: 활동 내역 조회 성공 {
+  "userId": "102",
+  "teamIds": [
+    "52",
+    "53"
+  ],
+  "activityCount": 5
+}
+2025-10-03 21:48:51.163 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "102"
+}
+2025-10-03 21:48:51.165 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "102",
+  "found": true
+}
+2025-10-03 21:48:51.168 [INFO]: 활동 내역 조회 성공 {
+  "userId": "102",
+  "teamIds": [
+    "52",
+    "53"
+  ],
+  "activityCount": 5
+}
+2025-10-03 21:48:51.168 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "102"
+}
+2025-10-03 21:49:59.044 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "102",
+  "found": true
+}
+2025-10-03 21:49:59.048 [INFO]: 활동 내역 조회 성공 {
+  "userId": "102",
+  "teamIds": [
+    "52",
+    "53"
+  ],
+  "activityCount": 5
+}
+2025-10-03 21:49:59.049 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "102"
+}

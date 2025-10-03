@@ -113,8 +113,8 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
             updated_at: string
             user: {
               id: number
-              username: string
-              full_name: string
+              username?: string
+              name: string
             }
           }>
         }

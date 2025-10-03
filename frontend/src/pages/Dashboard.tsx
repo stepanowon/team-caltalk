@@ -110,7 +110,7 @@ export function Dashboard() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                안녕하세요, {user?.full_name}님! 👋
+                안녕하세요, {user?.name}님! 👋
               </h1>
               <p className="text-gray-600">
                 오늘은 {currentDate}이고, 현재 시각은 {currentTime}입니다

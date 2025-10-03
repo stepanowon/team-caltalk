@@ -4596,3 +4596,13 @@ Error: listen EADDRINUSE: address already in use ::1:3000
   "userId": "102",
   "email": "stepanowon@hotmail.com"
 }
+2025-10-03 21:48:51.127 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-03 21:48:51.128 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "102",
+  "email": "stepanowon@hotmail.com"
+}

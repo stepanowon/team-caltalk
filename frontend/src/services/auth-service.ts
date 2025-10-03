@@ -14,10 +14,10 @@ export interface RegisterData {
 }
 
 export interface User {
-  id: number
-  username: string
+  id: number | string
+  username?: string
   email: string
-  full_name: string
+  name: string
   created_at: string
   updated_at: string
 }

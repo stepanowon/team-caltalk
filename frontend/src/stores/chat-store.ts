@@ -5,8 +5,8 @@ import { getKoreanDate, getKoreanDateISO } from '../utils/dateUtils'
 export interface ChatMessage extends Message {
   user: {
     id: number
-    username: string
-    full_name: string
+    username?: string
+    name: string
   }
 }
 

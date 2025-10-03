@@ -76,7 +76,7 @@ export const Header = () => {
                 )}
 
                 <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">
-                  {user?.full_name}님
+                  {user?.name}님
                 </span>
                 <Button
                   variant="outline"
@@ -163,7 +163,7 @@ export const Header = () => {
                   )}
                   <div className="px-4 py-2 text-sm">
                     <span className="text-gray-500">사용자: </span>
-                    <span className="font-medium">{user?.full_name}님</span>
+                    <span className="font-medium">{user?.name}님</span>
                   </div>
                   <button
                     onClick={handleLogout}

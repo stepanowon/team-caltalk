@@ -280,7 +280,7 @@ export default function MessageList({ className }: MessageListProps) {
                       'text-xs font-medium',
                       isOwn ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-700'
                     )}>
-                      {message.user.full_name?.charAt(0) || message.user.username?.charAt(0) || '?'}
+                      {message.user.name?.charAt(0) || message.user.username?.charAt(0) || '?'}
                     </AvatarFallback>
                   </Avatar>
                 ) : (
@@ -294,7 +294,7 @@ export default function MessageList({ className }: MessageListProps) {
                 {showAvatar && !isOwn && (
                   <div className="mb-1">
                     <span className="text-sm font-medium text-gray-700">
-                      {message.user.full_name || message.user.username}
+                      {message.user.name || message.user.username}
                     </span>
                   </div>
                 )}

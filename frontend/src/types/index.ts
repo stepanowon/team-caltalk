@@ -8,10 +8,10 @@ export interface ApiResponse<T> {
 
 // User Types
 export interface User {
-  id: number
-  username: string
+  id: number | string
+  username?: string
   email: string
-  full_name: string
+  name: string
   created_at: string
   updated_at: string
 }
@@ -82,7 +82,7 @@ export interface RegisterRequest {
   username: string
   email: string
   password: string
-  full_name: string
+  name: string
 }
 
 export interface AuthResponse {
