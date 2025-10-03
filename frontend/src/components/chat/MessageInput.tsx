@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { logger } from '@/utils/logger'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
@@ -47,7 +48,7 @@ export default function MessageInput({
       // AbortError가 아닌 경우에만 메시지 복원 및 로깅
       if (error instanceof Error && error.name !== 'AbortError') {
         setMessage(messageToSend)
-        console.error('Failed to send message:', error)
+        logger.error('Failed to send message:', error)
       }
     } finally {
       setIsSending(false)

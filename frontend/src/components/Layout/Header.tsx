@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { logger } from '@/utils/logger'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/stores/authStore'
 import { useTeamStore } from '@/stores/team-store'
@@ -14,7 +15,7 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   // 디버깅: 사용자 정보 확인
-  console.log('[Header] User state:', { user, isAuthenticated })
+  logger.log('[Header] User state:', { user, isAuthenticated })
 
   const handleLogout = () => {
     logout()

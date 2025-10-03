@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { logger } from '@/utils/logger'
 import { useChatStore } from '@/stores/chat-store'
 import { useAuthStore } from '@/stores/authStore'
 import { useTeamStore } from '@/stores/team-store'
@@ -45,7 +46,7 @@ export default function MessageList({ className }: MessageListProps) {
           setScheduleRequests(data.data.requests || [])
         }
       } catch (error) {
-        console.error('Failed to fetch schedule requests:', error)
+        logger.error('Failed to fetch schedule requests:', error)
       } finally {
         setLoadingRequests(false)
       }
@@ -93,7 +94,7 @@ export default function MessageList({ className }: MessageListProps) {
 
       alert('일정 변경 요청이 승인되었습니다.')
     } catch (error) {
-      console.error('Approve request error:', error)
+      logger.error('Approve request error:', error)
       alert(error instanceof Error ? error.message : '요청 승인 중 오류가 발생했습니다.')
     } finally {
       setProcessingRequests(prev => {
@@ -139,7 +140,7 @@ export default function MessageList({ className }: MessageListProps) {
 
       alert('일정 변경 요청이 거절되었습니다.')
     } catch (error) {
-      console.error('Reject request error:', error)
+      logger.error('Reject request error:', error)
       alert(error instanceof Error ? error.message : '요청 거절 중 오류가 발생했습니다.')
     } finally {
       setProcessingRequests(prev => {
@@ -171,7 +172,7 @@ export default function MessageList({ className }: MessageListProps) {
       // 메시지 목록 새로고침
       window.location.reload()
     } catch (error) {
-      console.error('Acknowledge error:', error)
+      logger.error('Acknowledge error:', error)
       alert(error instanceof Error ? error.message : '확인 중 오류가 발생했습니다.')
     } finally {
       setProcessingRequests(prev => {

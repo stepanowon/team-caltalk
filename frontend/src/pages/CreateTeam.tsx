@@ -3,6 +3,7 @@
  */
 
 import { useState } from 'react'
+import { logger } from '@/utils/logger'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -80,7 +81,7 @@ export function CreateTeam() {
             const parsed = JSON.parse(storedAuth)
             authToken = parsed.state?.token || parsed.token
           } catch (e) {
-            console.error('localStorage 파싱 오류:', e)
+            logger.error('localStorage 파싱 오류:', e)
           }
         }
       }
@@ -113,7 +114,7 @@ export function CreateTeam() {
         setError(response.error || '팀 생성에 실패했습니다.')
       }
     } catch (error: any) {
-      console.error('팀 생성 오류:', error)
+      logger.error('팀 생성 오류:', error)
       setError(error.message || '네트워크 오류가 발생했습니다.')
     } finally {
       setIsSubmitting(false)

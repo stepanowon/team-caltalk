@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { logger } from '@/utils/logger'
 import { useTeamStore } from '@/stores/team-store'
 import {
   Dialog,
@@ -59,8 +60,8 @@ export function ScheduleModal({
   // Debug: Log team members when modal opens
   useEffect(() => {
     if (open) {
-      console.log('ScheduleModal - teamMembers:', teamMembers)
-      console.log('ScheduleModal - teamMembers.length:', teamMembers.length)
+      logger.log('ScheduleModal - teamMembers:', teamMembers)
+      logger.log('ScheduleModal - teamMembers.length:', teamMembers.length)
     }
   }, [open, teamMembers])
 
@@ -209,8 +210,8 @@ export function ScheduleModal({
       const startDatetime = new Date(`${startDate}T${startTime}`).toISOString()
       const endDatetime = new Date(`${endDate}T${endTime}`).toISOString()
 
-      console.log('ScheduleModal - selectedParticipants:', selectedParticipants)
-      console.log('ScheduleModal - selectedParticipants type:', selectedParticipants.map(p => typeof p))
+      logger.log('ScheduleModal - selectedParticipants:', selectedParticipants)
+      logger.log('ScheduleModal - selectedParticipants type:', selectedParticipants.map(p => typeof p))
 
       await onSubmit({
         title: title.trim(),

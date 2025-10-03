@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { logger } from '@/utils/logger'
 import { useTeamStore } from '@/stores/team-store'
 import { useAuthStore } from '@/stores/authStore'
 import { useSchedules } from '@/hooks/useSchedules'
@@ -68,13 +69,13 @@ export function Calendar() {
 
       try {
         const response = await TeamService.getTeamMembers(currentTeam.id, token)
-        console.log('Calendar - Team Members Response:', response)
+        logger.log('Calendar - Team Members Response:', response)
         if (response.success && response.data?.members) {
-          console.log('Calendar - Team Members Data:', response.data.members)
+          logger.log('Calendar - Team Members Data:', response.data.members)
           setTeamMembers(response.data.members)
         }
       } catch (error) {
-        console.error('Failed to load team members:', error)
+        logger.error('Failed to load team members:', error)
       }
     }
 
@@ -136,7 +137,7 @@ export function Calendar() {
       }
       setIsDetailModalOpen(false)
     } catch (error) {
-      console.error('Delete schedule failed:', error)
+      logger.error('Delete schedule failed:', error)
     }
   }
 
@@ -411,7 +412,7 @@ export function Calendar() {
 
               alert('일정 변경 요청이 전송되었습니다.')
             } catch (error) {
-              console.error('Schedule change request error:', error)
+              logger.error('Schedule change request error:', error)
               alert(error instanceof Error ? error.message : '일정 변경 요청 중 오류가 발생했습니다.')
             }
           }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { logger } from '@/utils/logger'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { format, formatDistanceToNow } from 'date-fns'
 import { ko } from 'date-fns/locale'
@@ -83,7 +84,7 @@ export function Dashboard() {
           setActivities(data.data.activities || [])
         }
       } catch (error) {
-        console.error('Failed to fetch activities:', error)
+        logger.error('Failed to fetch activities:', error)
       } finally {
         setLoadingActivities(false)
       }

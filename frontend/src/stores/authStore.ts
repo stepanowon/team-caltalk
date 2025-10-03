@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { User } from '@/types'
+import { logger } from '@/utils/logger'
 
 interface AuthState {
   user: User | null
@@ -17,7 +18,7 @@ export const useAuthStore = create<AuthState>()(
       token: null,
       isAuthenticated: false,
       setAuth: (user, accessToken, refreshToken) => {
-        console.log('[AuthStore] setAuth called with:', { user, accessToken, refreshToken })
+        logger.log('[AuthStore] setAuth called with:', { user, accessToken, refreshToken })
 
         // localStorage에도 토큰 직접 저장
         localStorage.setItem('access_token', accessToken)
@@ -29,7 +30,7 @@ export const useAuthStore = create<AuthState>()(
           isAuthenticated: true,
         })
 
-        console.log('[AuthStore] State after setAuth:', { user, isAuthenticated: true })
+        logger.log('[AuthStore] State after setAuth:', { user, isAuthenticated: true })
       },
       logout: () => {
         // localStorage에서도 토큰 제거

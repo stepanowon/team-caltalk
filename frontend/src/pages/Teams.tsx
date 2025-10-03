@@ -3,6 +3,7 @@
  */
 
 import { useState, useEffect } from 'react'
+import { logger } from '@/utils/logger'
 import { useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 import { ko } from 'date-fns/locale'
@@ -97,7 +98,7 @@ export function Teams() {
               })
             }
           } catch (error) {
-            console.error(`팀 ${team.id} 멤버 로드 실패:`, error)
+            logger.error(`팀 ${team.id} 멤버 로드 실패:`, error)
             teamsWithMembers.push({
               ...team,
               memberCount: 0,
@@ -112,7 +113,7 @@ export function Teams() {
         setError(response.error || '팀 목록을 불러올 수 없습니다.')
       }
     } catch (error: any) {
-      console.error('팀 목록 로드 오류:', error)
+      logger.error('팀 목록 로드 오류:', error)
       setError(error.message || '네트워크 오류가 발생했습니다.')
     } finally {
       if (showLoading) setLoading(false)
@@ -139,7 +140,7 @@ export function Teams() {
       // TODO: Toast 알림 추가
       alert('초대 코드가 클립보드에 복사되었습니다!')
     } catch (error) {
-      console.error('복사 실패:', error)
+      logger.error('복사 실패:', error)
       alert('복사에 실패했습니다. 직접 선택해서 복사해주세요.')
     }
   }

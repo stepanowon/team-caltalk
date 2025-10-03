@@ -3,6 +3,7 @@
  */
 
 import { useState } from 'react'
+import { logger } from '@/utils/logger'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -101,7 +102,7 @@ export function JoinTeam() {
         )
       }
     } catch (error: any) {
-      console.error('팀 참여 오류:', error)
+      logger.error('팀 참여 오류:', error)
       setError(error.message || '네트워크 오류가 발생했습니다.')
     } finally {
       setIsSubmitting(false)

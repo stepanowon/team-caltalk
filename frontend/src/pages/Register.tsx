@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { logger } from '@/utils/logger'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthService } from '@/services/auth-service'
 import { ROUTES } from '@/utils/constants'
@@ -61,7 +62,7 @@ export const Register = () => {
       }
     } catch (err) {
       setError('네트워크 오류가 발생했습니다.')
-      console.error('Register error:', err)
+      logger.error('Register error:', err)
     } finally {
       setIsLoading(false)
     }

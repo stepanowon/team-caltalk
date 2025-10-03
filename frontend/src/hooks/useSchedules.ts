@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
+import { logger } from '@/utils/logger'
 import { useTeamStore } from '@/stores/team-store'
 import type { Schedule, ScheduleParticipant, ApiResponse } from '@/types'
 
@@ -106,16 +107,16 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      console.log('Fetching schedules for team:', currentTeam.id)
+      logger.log('Fetching schedules for team:', currentTeam.id)
       const response = await apiCall<{ schedules: ScheduleWithParticipants[] }>(
         `/schedules?teamId=${currentTeam.id}`
       )
-      console.log('Schedules API response:', response)
+      logger.log('Schedules API response:', response)
       const normalizedSchedules = (response.schedules || []).map(normalizeSchedule)
-      console.log('Normalized schedules:', normalizedSchedules)
+      logger.log('Normalized schedules:', normalizedSchedules)
       setSchedules(normalizedSchedules)
     } catch (err) {
-      console.error('Failed to fetch schedules:', err)
+      logger.error('Failed to fetch schedules:', err)
       setError(err instanceof Error ? err.message : '일정을 불러오는데 실패했습니다.')
       setSchedules([])
     } finally {
