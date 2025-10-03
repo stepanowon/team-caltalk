@@ -6,7 +6,7 @@
     },
     "supabase": {
       "command": "cmd",
-      "args": ["/c", "npx", "-y", "@smithery/cli@latest", "run", "supabase", "--key", "10b79178-f358-4dd4-8b4f-3fbb3d9fd053"]
+      "args": ["/c", "npx", "-y", "@supabase/mcp-server-supabase@latest", "--access-token", "ACCESS_TOKEN"]
     }
   }
 }
