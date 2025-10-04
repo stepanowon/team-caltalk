@@ -30,6 +30,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { useToast } from '@/components/ui/use-toast'
 
 import { TeamService } from '@/services/team-service'
 import { useTeamStore, type Team } from '@/stores/team-store'
@@ -54,6 +55,7 @@ export function Teams() {
     setError,
   } = useTeamStore()
 
+  const { toast } = useToast()
   const [teamsData, setTeamsData] = useState<TeamWithMembers[]>([])
   const [isRefreshing, setIsRefreshing] = useState(false)
 
@@ -137,12 +139,27 @@ export function Teams() {
   const copyInviteCode = async (inviteCode: string) => {
     try {
       await navigator.clipboard.writeText(inviteCode)
-      // TODO: Toast 알림 추가
-      alert('초대 코드가 클립보드에 복사되었습니다!')
+      toast({
+        title: "복사 완료",
+        description: "초대 코드가 클립보드에 복사되었습니다.",
+      })
     } catch (error) {
       logger.error('복사 실패:', error)
-      alert('복사에 실패했습니다. 직접 선택해서 복사해주세요.')
+      toast({
+        title: "복사 실패",
+        description: "복사에 실패했습니다. 직접 선택해서 복사해주세요.",
+        variant: "destructive",
+      })
     }
+  }
+
+  // 팀 설정 핸들러
+  const handleTeamSettings = () => {
+    toast({
+      title: "준비 중",
+      description: "팀 설정 기능은 추후 구현 예정입니다.",
+      variant: "default",
+    })
   }
 
   // 컴포넌트 마운트 시 팀 목록 로드
@@ -357,8 +374,7 @@ export function Teams() {
                         variant="outline"
                         onClick={(e) => {
                           e.stopPropagation()
-                          // TODO: 팀 설정 페이지로 이동
-                          alert('팀 설정 기능은 추후 구현 예정입니다.')
+                          handleTeamSettings()
                         }}
                       >
                         <Settings className="h-4 w-4" />

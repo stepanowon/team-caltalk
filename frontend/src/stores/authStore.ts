@@ -1,12 +1,13 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { User } from '@/types'
-import { logger } from '@/utils/logger'
 
 interface AuthState {
   user: User | null
   token: string | null
   isAuthenticated: boolean
+  _hasHydrated: boolean
+  setHasHydrated: (state: boolean) => void
   setAuth: (user: User, accessToken: string, refreshToken?: string) => void
   logout: () => void
 }
@@ -17,10 +18,13 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       token: null,
       isAuthenticated: false,
-      setAuth: (user, accessToken, refreshToken) => {
-        logger.log('[AuthStore] setAuth called with:', { user, accessToken, refreshToken })
+      _hasHydrated: false,
 
-        // localStorage에도 토큰 직접 저장
+      setHasHydrated: (state) => {
+        set({ _hasHydrated: state })
+      },
+
+      setAuth: (user, accessToken, refreshToken) => {
         localStorage.setItem('access_token', accessToken)
         localStorage.setItem('refresh_token', refreshToken || accessToken)
 
@@ -29,9 +33,8 @@ export const useAuthStore = create<AuthState>()(
           token: accessToken,
           isAuthenticated: true,
         })
-
-        logger.log('[AuthStore] State after setAuth:', { user, isAuthenticated: true })
       },
+
       logout: () => {
         // localStorage에서도 토큰 제거
         localStorage.removeItem('access_token')
@@ -46,11 +49,9 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: 'auth-storage',
-      partialize: (state) => ({
-        user: state.user,
-        token: state.token,
-        isAuthenticated: state.isAuthenticated,
-      }),
+      onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true)
+      },
     }
   )
 )

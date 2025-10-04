@@ -27,12 +27,12 @@ export interface ScheduleRequest {
   related_schedule_title: string
 }
 
-export interface SendMessageRequest {
+export type SendMessageRequest = {
   content: string
   targetDate: string
 }
 
-export interface ScheduleChangeRequest {
+export type ScheduleChangeRequest = {
   teamId: number
   scheduleId: number
   content: string

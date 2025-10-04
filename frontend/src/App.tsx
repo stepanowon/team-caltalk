@@ -16,27 +16,27 @@ import { Teams } from '@/pages/Teams'
 import { CreateTeam } from '@/pages/CreateTeam'
 import { JoinTeam } from '@/pages/JoinTeam'
 import { Calendar } from '@/pages/Calendar'
+import { Toaster } from '@/components/ui/toaster'
 import { ROUTES } from '@/utils/constants'
 import '@/styles/globals.css'
 
-// Protected Route Component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useAuthStore()
-  return isAuthenticated ? (
-    <>{children}</>
-  ) : (
-    <Navigate to={ROUTES.LOGIN} replace />
-  )
-}
+  const authStorage = localStorage.getItem('auth-storage')
 
-// Public Route Component (redirect to dashboard if already authenticated)
-const PublicRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useAuthStore()
-  return !isAuthenticated ? (
-    <>{children}</>
-  ) : (
-    <Navigate to={ROUTES.DASHBOARD} replace />
-  )
+  if (!authStorage) {
+    return <Navigate to={ROUTES.LOGIN} replace />
+  }
+
+  try {
+    const { state } = JSON.parse(authStorage)
+    if (!state.isAuthenticated || !state.user) {
+      return <Navigate to={ROUTES.LOGIN} replace />
+    }
+  } catch {
+    return <Navigate to={ROUTES.LOGIN} replace />
+  }
+
+  return <>{children}</>
 }
 
 function App() {
@@ -46,22 +46,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route
-              path={ROUTES.LOGIN}
-              element={
-                <PublicRoute>
-                  <Login />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path={ROUTES.REGISTER}
-              element={
-                <PublicRoute>
-                  <Register />
-                </PublicRoute>
-              }
-            />
+            <Route path={ROUTES.LOGIN} element={<Login />} />
+            <Route path={ROUTES.REGISTER} element={<Register />} />
             <Route
               path={ROUTES.DASHBOARD}
               element={
@@ -104,6 +90,7 @@ function App() {
             />
           </Route>
         </Routes>
+        <Toaster />
       </Router>
     </QueryClientProvider>
   )

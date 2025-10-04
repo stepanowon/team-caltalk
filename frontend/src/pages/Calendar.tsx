@@ -14,6 +14,16 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { Textarea } from '@/components/ui/textarea'
+import { useToast } from '@/components/ui/use-toast'
+import {
   AlertCircle,
   Calendar as CalendarIcon,
   Users,
@@ -47,6 +57,11 @@ export function Calendar() {
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
   const [editingSchedule, setEditingSchedule] = useState<Schedule | null>(null)
 
+  // Dialog state for schedule change request
+  const [changeRequestDialogOpen, setChangeRequestDialogOpen] = useState(false)
+  const [changeRequestMessage, setChangeRequestMessage] = useState('')
+  const [selectedScheduleForChange, setSelectedScheduleForChange] = useState<Schedule | null>(null)
+
   const { user, token } = useAuthStore()
   const { currentTeam, teamMembers, setTeamMembers } = useTeamStore()
   const {
@@ -59,6 +74,8 @@ export function Calendar() {
     getSchedulesForDate,
     refetch,
   } = useSchedules()
+
+  const { toast } = useToast()
 
   // 일정 변경 요청 mutation
   const sendScheduleRequestMutation = useSendScheduleRequest()
@@ -168,21 +185,36 @@ export function Calendar() {
     await refetch()
   }
 
-  // 일정 변경 요청 핸들러
-  const handleRequestChange = async (schedule: Schedule) => {
-    const message = prompt('일정 변경 요청 사유를 입력하세요:')
-    if (message && currentTeam) {
+  // 일정 변경 요청 핸들러 - Dialog 열기
+  const handleRequestChange = (schedule: Schedule) => {
+    setSelectedScheduleForChange(schedule)
+    setChangeRequestDialogOpen(true)
+  }
+
+  // Dialog에서 일정 변경 요청 전송
+  const handleSubmitChangeRequest = async () => {
+    if (changeRequestMessage && currentTeam && selectedScheduleForChange) {
       try {
         await sendScheduleRequestMutation.mutateAsync({
           teamId: currentTeam.id,
-          scheduleId: schedule.id,
-          content: message,
-          targetDate: new Date(schedule.start_time).toISOString().split('T')[0],
+          scheduleId: selectedScheduleForChange.id,
+          content: changeRequestMessage,
+          targetDate: new Date(selectedScheduleForChange.start_time).toISOString().split('T')[0],
         })
-        alert('일정 변경 요청이 전송되었습니다.')
+        toast({
+          title: "요청 완료",
+          description: "일정 변경 요청이 전송되었습니다."
+        })
+        setChangeRequestDialogOpen(false)
+        setChangeRequestMessage('')
+        setSelectedScheduleForChange(null)
       } catch (error) {
         logger.error('Schedule change request error:', error)
-        alert(error instanceof Error ? error.message : '일정 변경 요청 중 오류가 발생했습니다.')
+        toast({
+          title: "오류",
+          description: error instanceof Error ? error.message : '일정 변경 요청 중 오류가 발생했습니다.',
+          variant: "destructive"
+        })
       }
     }
   }
@@ -411,6 +443,34 @@ export function Calendar() {
         canEdit={canEditSchedules}
         isLeader={canEditSchedules}
       />
+
+      {/* Schedule Change Request Dialog */}
+      <Dialog open={changeRequestDialogOpen} onOpenChange={setChangeRequestDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>일정 변경 요청</DialogTitle>
+            <DialogDescription>
+              일정 변경이 필요한 사유를 입력해주세요.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <Textarea
+              value={changeRequestMessage}
+              onChange={(e) => setChangeRequestMessage(e.target.value)}
+              placeholder="변경 사유를 입력하세요..."
+              rows={4}
+            />
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setChangeRequestDialogOpen(false)}>
+              취소
+            </Button>
+            <Button onClick={handleSubmitChangeRequest} disabled={!changeRequestMessage.trim()}>
+              요청 전송
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

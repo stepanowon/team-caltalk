@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { ChatService, SendMessageRequest, ScheduleChangeRequest } from '@/services/chat-service'
+import { ChatService } from '@/services/chat-service'
+import type { SendMessageRequest, ScheduleChangeRequest } from '@/services/chat-service'
 
 // Query Keys
 export const chatKeys = {

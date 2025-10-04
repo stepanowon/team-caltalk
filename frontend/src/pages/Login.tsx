@@ -32,15 +32,13 @@ export const Login = () => {
 
     try {
       const result = await AuthService.login({ email, password })
-      logger.log('Login result:', result)
 
       if (result.success && result.data && result.data.tokens) {
-        logger.log('User data:', result.data.user)
-        logger.log('Tokens:', result.data.tokens)
         setAuth(result.data.user, result.data.tokens.accessToken, result.data.tokens.refreshToken)
-        navigate(ROUTES.DASHBOARD)
+
+        await new Promise(resolve => setTimeout(resolve, 100))
+        navigate(ROUTES.DASHBOARD, { replace: true })
       } else {
-        logger.log('Login failed:', result)
         setError(
           result.error ||
             '로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.'
