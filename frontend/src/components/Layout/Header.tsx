@@ -37,9 +37,7 @@ export const Header = () => {
             className="flex items-center gap-2 text-decoration-none"
             onClick={closeMobileMenu}
           >
-            <span className="font-bold text-xl text-gray-900">
-              Team CalTalk
-            </span>
+            <span className="font-bold text-xl text-gray-900">팀캘린더톡</span>
           </Link>
         </div>
 
@@ -71,7 +69,10 @@ export const Header = () => {
 
                 {/* 현재 팀 표시 */}
                 {currentTeam && (
-                  <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                  <Badge
+                    variant="secondary"
+                    className="bg-blue-100 text-blue-800"
+                  >
                     {currentTeam.name}
                   </Badge>
                 )}
@@ -159,7 +160,9 @@ export const Header = () => {
                   {currentTeam && (
                     <div className="px-4 py-2 text-sm">
                       <span className="text-gray-500">현재 팀: </span>
-                      <span className="font-medium text-blue-600">{currentTeam.name}</span>
+                      <span className="font-medium text-blue-600">
+                        {currentTeam.name}
+                      </span>
                     </div>
                   )}
                   <div className="px-4 py-2 text-sm">
