@@ -964,6 +964,20 @@ router.post(
         });
       }
 
+      // 일정 참가자 확인
+      const participantCheck = await db.query(
+        'SELECT 1 FROM schedule_participants WHERE schedule_id = $1 AND user_id = $2',
+        [scheduleId, req.user.id]
+      );
+
+      if (participantCheck.rows.length === 0) {
+        return res.status(403).json({
+          success: false,
+          error: '일정 참가자만 변경 요청을 할 수 있습니다',
+          code: 'NOT_SCHEDULE_PARTICIPANT',
+        });
+      }
+
       // 메시지 생성
       const message = await Message.sendMessage({
         teamId,
