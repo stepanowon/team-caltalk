@@ -1097,14 +1097,16 @@ router.post(
     } catch (error) {
       logger.error('일정 변경 요청 승인 오류:', {
         error: error.message,
+        stack: error.stack,
         messageId: req.params.messageId,
         userId: req.user.id,
       });
 
       res.status(500).json({
         success: false,
-        error: '일정 변경 요청 승인 중 오류가 발생했습니다',
+        error: error.message || '일정 변경 요청 승인 중 오류가 발생했습니다',
         code: 'APPROVE_REQUEST_FAILED',
+        ...(process.env.NODE_ENV === 'development' && { stack: error.stack })
       });
     }
   }
