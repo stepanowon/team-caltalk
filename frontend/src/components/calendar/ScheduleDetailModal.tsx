@@ -61,9 +61,21 @@ export function ScheduleDetailModal({
   // 현재 사용자가 일정 참가자인지 확인
   const userStr = localStorage.getItem('user')
   const currentUser = userStr ? JSON.parse(userStr) : null
+
+  // 디버깅 로그
+  console.log('[ScheduleDetailModal] Debug Info:', {
+    currentUser,
+    currentUserId: currentUser?.id,
+    scheduleId: schedule.id,
+    participants: schedule.participants,
+    participantUserIds: schedule.participants?.map(p => p.user_id),
+  })
+
   const isParticipant = schedule.participants?.some(
     (p) => p.user_id === currentUser?.id
   ) || false
+
+  console.log('[ScheduleDetailModal] isParticipant:', isParticipant, 'isLeader:', isLeader)
 
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString)
