@@ -34,7 +34,10 @@ interface UseSchedulesReturn {
 
   // Filter and utility functions
   getSchedulesForDate: (date: string) => ScheduleWithParticipants[]
-  getSchedulesForDateRange: (startDate: string, endDate: string) => ScheduleWithParticipants[]
+  getSchedulesForDateRange: (
+    startDate: string,
+    endDate: string
+  ) => ScheduleWithParticipants[]
 
   // Refresh data
   refetch: () => Promise<void>
@@ -68,19 +71,22 @@ export function useSchedules(): UseSchedulesReturn {
 
     try {
       logger.log('Fetching schedules for team:', currentTeam.id)
-      const response = await api.get<ApiResponse<{ schedules: ScheduleWithParticipants[] }>>(
-        '/schedules',
-        {
-          params: { teamId: currentTeam.id },
-        }
-      )
+      const response = await api.get<
+        ApiResponse<{ schedules: ScheduleWithParticipants[] }>
+      >('/schedules', {
+        params: { teamId: currentTeam.id },
+      })
       logger.log('Schedules API response:', response.data)
-      const normalizedSchedules = (response.data.data?.schedules || []).map(normalizeSchedule)
+      const normalizedSchedules = (response.data.data?.schedules || []).map(
+        normalizeSchedule
+      )
       logger.log('Normalized schedules:', normalizedSchedules)
       setSchedules(normalizedSchedules)
     } catch (err) {
       logger.error('Failed to fetch schedules:', err)
-      setError(err instanceof Error ? err.message : '일정을 불러오는데 실패했습니다.')
+      setError(
+        err instanceof Error ? err.message : '일정을 불러오는데 실패했습니다.'
+      )
       setSchedules([])
     } finally {
       setLoading(false)
@@ -97,30 +103,41 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const response = await api.post<ApiResponse<{ schedule: ScheduleWithParticipants }>>(
-        '/schedules',
-        {
-          ...data,
-          teamId: currentTeam.id,
-        }
-      )
+      const response = await api.post<
+        ApiResponse<{ schedule: ScheduleWithParticipants }>
+      >('/schedules', {
+        ...data,
+        teamId: currentTeam.id,
+      })
 
       const newSchedule = response.data.data?.schedule
       if (newSchedule) {
-        setSchedules(prev => [...prev, normalizeSchedule(newSchedule)])
+        setSchedules((prev) => [...prev, normalizeSchedule(newSchedule)])
       }
     } catch (err: any) {
       // Handle schedule conflicts
-      if (err.response?.data?.message === '일정 충돌이 발생했습니다' && err.response?.data?.conflicts) {
-        const conflictDetails = err.response.data.conflicts.map((c: any) =>
-          `${c.userName}: ${c.conflictingSchedule.title} (${new Date(c.conflictingSchedule.startDatetime).toLocaleString('ko-KR')})`
-        ).join('\n')
-        const conflictError = new Error(`일정 충돌이 발생했습니다:\n\n${conflictDetails}\n\n다른 시간을 선택해주세요.`)
+      if (
+        err.response?.data?.message === '일정 충돌이 발생했습니다' &&
+        err.response?.data?.conflicts
+      ) {
+        const conflictDetails = err.response.data.conflicts
+          .map(
+            (c: any) =>
+              `${c.userName}: ${c.conflictingSchedule.title} (${new Date(c.conflictingSchedule.startDatetime).toLocaleString('ko-KR')})`
+          )
+          .join('\n')
+        const conflictError = new Error(
+          `일정 충돌이 발생했습니다:\n\n${conflictDetails}\n\n다른 시간을 선택해주세요.`
+        )
         setError(conflictError.message)
         throw conflictError
       }
 
-      setError(err.response?.data?.message || err.message || '일정 생성에 실패했습니다.')
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          '일정 생성에 실패했습니다.'
+      )
       throw err
     } finally {
       setLoading(false)
@@ -137,21 +154,26 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const response = await api.put<ApiResponse<{ schedule: ScheduleWithParticipants }>>(
-        `/schedules/${data.id}`,
-        data
-      )
+      const response = await api.put<
+        ApiResponse<{ schedule: ScheduleWithParticipants }>
+      >(`/schedules/${data.id}`, data)
 
       const updatedSchedule = response.data.data?.schedule
       if (updatedSchedule) {
-        setSchedules(prev =>
-          prev.map(schedule =>
-            schedule.id === data.id ? normalizeSchedule(updatedSchedule) : schedule
+        setSchedules((prev) =>
+          prev.map((schedule) =>
+            schedule.id === data.id
+              ? normalizeSchedule(updatedSchedule)
+              : schedule
           )
         )
       }
     } catch (err: any) {
-      setError(err.response?.data?.message || err.message || '일정 수정에 실패했습니다.')
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          '일정 수정에 실패했습니다.'
+      )
       throw err
     } finally {
       setLoading(false)
@@ -169,9 +191,15 @@ export function useSchedules(): UseSchedulesReturn {
 
     try {
       await api.delete(`/schedules/${scheduleId}`)
-      setSchedules(prev => prev.filter(schedule => schedule.id !== scheduleId))
+      setSchedules((prev) =>
+        prev.filter((schedule) => schedule.id !== scheduleId)
+      )
     } catch (err: any) {
-      setError(err.response?.data?.message || err.message || '일정 삭제에 실패했습니다.')
+      setError(
+        err.response?.data?.message ||
+          err.message ||
+          '일정 삭제에 실패했습니다.'
+      )
       throw err
     } finally {
       setLoading(false)
@@ -182,7 +210,7 @@ export function useSchedules(): UseSchedulesReturn {
   const getSchedulesForDate = useMemo(() => {
     return (date: string) => {
       const targetDate = new Date(date).toDateString()
-      return schedules.filter(schedule => {
+      return schedules.filter((schedule) => {
         const startTime = schedule.start_datetime || schedule.start_time
         if (!startTime) return false
         const scheduleDate = new Date(startTime).toDateString()
@@ -197,7 +225,7 @@ export function useSchedules(): UseSchedulesReturn {
       const start = new Date(startDate)
       const end = new Date(endDate)
 
-      return schedules.filter(schedule => {
+      return schedules.filter((schedule) => {
         const startTime = schedule.start_datetime || schedule.start_time
         const endTime = schedule.end_datetime || schedule.end_time
         if (!startTime || !endTime) return false

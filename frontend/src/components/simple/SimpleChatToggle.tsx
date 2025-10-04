@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { useTeamStore } from '@/stores/team-store';
-import { ChatRoom } from '@/components/chat/ChatRoom';
-import { Button } from '@/components/ui/button';
-import { MessageSquare, X } from 'lucide-react';
-import { getKoreanDate, getKoreanDateISO } from '@/utils/dateUtils';
+import React, { useState } from 'react'
+import { useTeamStore } from '@/stores/team-store'
+import { ChatRoom } from '@/components/chat/ChatRoom'
+import { Button } from '@/components/ui/button'
+import { MessageSquare, X } from 'lucide-react'
+import { getKoreanDate, getKoreanDateISO } from '@/utils/dateUtils'
 
 interface SimpleChatToggleProps {
-  className?: string;
+  className?: string
 }
 
 export function SimpleChatToggle({ className }: SimpleChatToggleProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const { currentTeam } = useTeamStore();
-  const currentDate = getKoreanDateISO();
+  const [isOpen, setIsOpen] = useState(false)
+  const { currentTeam } = useTeamStore()
+  const currentDate = getKoreanDateISO()
 
   if (!currentTeam) {
-    return null;
+    return null
   }
 
   return (
@@ -26,7 +26,11 @@ export function SimpleChatToggle({ className }: SimpleChatToggleProps) {
         className={`fixed bottom-4 right-4 z-50 rounded-full w-14 h-14 shadow-lg ${className}`}
         size="lg"
       >
-        {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
+        {isOpen ? (
+          <X className="w-6 h-6" />
+        ) : (
+          <MessageSquare className="w-6 h-6" />
+        )}
       </Button>
 
       {/* 채팅 오버레이 */}
@@ -44,7 +48,9 @@ export function SimpleChatToggle({ className }: SimpleChatToggleProps) {
             <div className="flex items-center justify-between p-3 border-b">
               <div className="flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-blue-600" />
-                <h3 className="font-semibold text-sm">{currentTeam.name} 채팅</h3>
+                <h3 className="font-semibold text-sm">
+                  {currentTeam.name} 채팅
+                </h3>
               </div>
               <Button
                 variant="ghost"
@@ -68,5 +74,5 @@ export function SimpleChatToggle({ className }: SimpleChatToggleProps) {
         </>
       )}
     </>
-  );
+  )
 }

@@ -81,7 +81,11 @@ describe('useRealtime', () => {
   describe('메시지 수신', () => {
     it('새로운 메시지가 도착하면 상태가 업데이트되어야 한다', async () => {
       const initialMessages = [
-        { id: 1, content: '첫 번째 메시지', user: { id: 1, username: 'user1', full_name: '사용자1' } },
+        {
+          id: 1,
+          content: '첫 번째 메시지',
+          user: { id: 1, username: 'user1', full_name: '사용자1' },
+        },
       ]
       const newMessage = {
         id: 2,
@@ -171,7 +175,9 @@ describe('useRealtime', () => {
 
       const { result } = renderHook(() => mockUseRealtime())
 
-      await expect(result.current.sendMessage('테스트')).rejects.toThrow('전송 실패')
+      await expect(result.current.sendMessage('테스트')).rejects.toThrow(
+        '전송 실패'
+      )
     })
 
     it('연결되지 않은 상태에서는 메시지를 전송할 수 없어야 한다', async () => {
@@ -298,7 +304,7 @@ describe('useRealtime', () => {
 
       // 최대 재연결 시도 횟수 테스트 (예: 3회)
       act(() => {
-        vi.advanceTimersByTime(5000)  // 첫 번째 시도
+        vi.advanceTimersByTime(5000) // 첫 번째 시도
         vi.advanceTimersByTime(10000) // 두 번째 시도
         vi.advanceTimersByTime(20000) // 세 번째 시도
         vi.advanceTimersByTime(40000) // 네 번째 시도 (실행되지 않아야 함)

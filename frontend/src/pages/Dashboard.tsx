@@ -33,10 +33,10 @@ export function Dashboard() {
   const [message, setMessage] = useState<string | null>(null)
 
   // 활동 내역 조회
-  const {
-    data: activitiesData,
-    isLoading: loadingActivities,
-  } = useActivities(currentTeam?.id, 5)
+  const { data: activitiesData, isLoading: loadingActivities } = useActivities(
+    currentTeam?.id,
+    5
+  )
 
   const activities = activitiesData?.data?.activities || []
 
@@ -255,10 +255,16 @@ export function Dashboard() {
                       <span className="text-lg">{activity.icon}</span>
                       <div className="flex-1">
                         <p className="text-gray-900">
-                          <span className="font-medium">{activity.description}</span>
+                          <span className="font-medium">
+                            {activity.description}
+                          </span>
                         </p>
                         <p className="text-xs text-gray-500">
-                          {activity.teamName} • {formatDistanceToNow(new Date(activity.timestamp), { addSuffix: true, locale: ko })}
+                          {activity.teamName} •{' '}
+                          {formatDistanceToNow(new Date(activity.timestamp), {
+                            addSuffix: true,
+                            locale: ko,
+                          })}
                         </p>
                       </div>
                     </div>

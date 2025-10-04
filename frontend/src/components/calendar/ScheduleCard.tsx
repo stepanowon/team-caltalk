@@ -70,7 +70,10 @@ export function ScheduleCard({
     }
 
     // 참가자 ID들을 정렬하여 일관된 해시 생성
-    const participantIds = schedule.participants.map(p => p.user_id).sort().join(',')
+    const participantIds = schedule.participants
+      .map((p) => p.user_id)
+      .sort()
+      .join(',')
 
     // 간단한 해시 함수
     let hash = 0
@@ -119,7 +122,9 @@ export function ScheduleCard({
     if (!schedule.participants || schedule.participants.length === 0) {
       return '참가자 없음'
     }
-    return schedule.participants.map(p => p.user_name || '이름 없음').join(', ')
+    return schedule.participants
+      .map((p) => p.user_name || '이름 없음')
+      .join(', ')
   }
 
   if (variant === 'mini') {
@@ -160,7 +165,10 @@ export function ScheduleCard({
               <h4 className="font-medium text-sm truncate">{schedule.title}</h4>
               <div className="flex items-center gap-2 mt-1 text-xs text-gray-600">
                 <Clock className="w-3 h-3" />
-                <span>{formatTime(schedule.start_time)} - {formatTime(schedule.end_time)}</span>
+                <span>
+                  {formatTime(schedule.start_time)} -{' '}
+                  {formatTime(schedule.end_time)}
+                </span>
                 <Users className="w-3 h-3 ml-1" />
                 <span>{schedule.participant_count}명</span>
               </div>
@@ -193,7 +201,9 @@ export function ScheduleCard({
       <CardContent className="p-4">
         <div className="flex items-start justify-between">
           <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-base mb-2 truncate">{schedule.title}</h3>
+            <h3 className="font-semibold text-base mb-2 truncate">
+              {schedule.title}
+            </h3>
 
             {schedule.description && (
               <p className="text-sm text-gray-600 mb-3 line-clamp-2">
@@ -204,7 +214,10 @@ export function ScheduleCard({
             <div className="flex items-center gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
-                <span>{formatTime(schedule.start_time)} - {formatTime(schedule.end_time)}</span>
+                <span>
+                  {formatTime(schedule.start_time)} -{' '}
+                  {formatTime(schedule.end_time)}
+                </span>
               </div>
 
               <div className="flex items-center gap-1">
@@ -219,8 +232,10 @@ export function ScheduleCard({
 
             {schedule.participants.length > 0 && (
               <div className="mt-3 flex gap-1">
-                {['accepted', 'pending', 'declined'].map(status => {
-                  const count = schedule.participants.filter(p => p.status === status).length
+                {['accepted', 'pending', 'declined'].map((status) => {
+                  const count = schedule.participants.filter(
+                    (p) => p.status === status
+                  ).length
                   if (count === 0) return null
 
                   const statusConfig = {
@@ -230,12 +245,13 @@ export function ScheduleCard({
                   }[status as keyof typeof statusConfig]
 
                   return (
-                    <Badge
-                      key={status}
-                      variant="outline"
-                      className="text-xs"
-                    >
-                      <div className={cn('w-2 h-2 rounded-full mr-1', statusConfig.color)} />
+                    <Badge key={status} variant="outline" className="text-xs">
+                      <div
+                        className={cn(
+                          'w-2 h-2 rounded-full mr-1',
+                          statusConfig.color
+                        )}
+                      />
                       {statusConfig.label} {count}
                     </Badge>
                   )

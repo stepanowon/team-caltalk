@@ -55,7 +55,9 @@ describe('ChatStore', () => {
 
       expect(result.current.messages).toEqual([])
       expect(result.current.messagesByDate).toEqual({})
-      expect(result.current.currentDate).toBe(new Date().toISOString().split('T')[0])
+      expect(result.current.currentDate).toBe(
+        new Date().toISOString().split('T')[0]
+      )
       expect(result.current.isLoading).toBe(false)
       expect(result.current.error).toBe(null)
       expect(result.current.connectionStatus.isConnected).toBe(false)
@@ -101,7 +103,9 @@ describe('ChatStore', () => {
 
       const updatedContent = '업데이트된 메시지'
       act(() => {
-        result.current.updateMessage(mockMessage.id, { content: updatedContent })
+        result.current.updateMessage(mockMessage.id, {
+          content: updatedContent,
+        })
       })
 
       expect(result.current.messages[0].content).toBe(updatedContent)
@@ -187,8 +191,16 @@ describe('ChatStore', () => {
       const { result } = renderHook(() => useChatStore())
 
       const message1 = { ...mockMessage, created_at: '2024-01-15T10:00:00Z' }
-      const message2 = { ...mockMessage, id: 3, created_at: '2024-01-15T09:00:00Z' }
-      const message3 = { ...mockMessage, id: 4, created_at: '2024-01-15T11:00:00Z' }
+      const message2 = {
+        ...mockMessage,
+        id: 3,
+        created_at: '2024-01-15T09:00:00Z',
+      }
+      const message3 = {
+        ...mockMessage,
+        id: 4,
+        created_at: '2024-01-15T11:00:00Z',
+      }
 
       act(() => {
         result.current.setMessages([message1, message3, message2])
@@ -206,7 +218,10 @@ describe('ChatStore', () => {
       const { result } = renderHook(() => useChatStore())
 
       act(() => {
-        result.current.setConnectionStatus({ isConnected: true, reconnecting: false })
+        result.current.setConnectionStatus({
+          isConnected: true,
+          reconnecting: false,
+        })
       })
 
       expect(result.current.connectionStatus.isConnected).toBe(true)
@@ -273,7 +288,9 @@ describe('ChatStore', () => {
       })
 
       expect(result.current.typingUsers).toHaveLength(1)
-      expect(result.current.typingUsers[0].timestamp).not.toEqual(firstTimestamp)
+      expect(result.current.typingUsers[0].timestamp).not.toEqual(
+        firstTimestamp
+      )
     })
 
     it('타이핑 사용자를 제거할 수 있어야 한다', () => {
@@ -427,7 +444,9 @@ describe('ChatStore', () => {
       // 초기 상태 확인
       expect(result.current.messages).toEqual([])
       expect(result.current.messagesByDate).toEqual({})
-      expect(result.current.currentDate).toBe(new Date().toISOString().split('T')[0])
+      expect(result.current.currentDate).toBe(
+        new Date().toISOString().split('T')[0]
+      )
       expect(result.current.isLoading).toBe(false)
       expect(result.current.error).toBe(null)
       expect(result.current.connectionStatus.isConnected).toBe(false)

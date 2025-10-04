@@ -1,13 +1,25 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { screen, waitFor, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { renderChat, mockMessages, simulateRealtimeEvents } from '../utils/chat-test-utils'
-import { MockLongPolling, realtimeTestScenarios } from '../utils/realtime-test-helpers'
+import {
+  renderChat,
+  mockMessages,
+  simulateRealtimeEvents,
+} from '../utils/chat-test-utils'
+import {
+  MockLongPolling,
+  realtimeTestScenarios,
+} from '../utils/realtime-test-helpers'
 import { server } from '@/test/mocks/server'
 import { http, HttpResponse } from 'msw'
 
 // 통합 테스트를 위한 전체 채팅 시스템 모킹
-const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }: any) => {
+const MockChatSystem = ({
+  teamId,
+  messageDate,
+  currentUserId,
+  onScheduleClick,
+}: any) => {
   const [messages, setMessages] = React.useState(mockMessages)
   const [isConnected, setIsConnected] = React.useState(false)
   const [typingUsers, setTypingUsers] = React.useState<any[]>([])
@@ -40,12 +52,12 @@ const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }:
         })
 
         polling.on('new_message', (message: any) => {
-          setMessages(prev => [...prev, message])
+          setMessages((prev) => [...prev, message])
         })
 
         polling.on('user_typing', (data: any) => {
-          setTypingUsers(prev => {
-            const filtered = prev.filter(u => u.user_id !== data.user_id)
+          setTypingUsers((prev) => {
+            const filtered = prev.filter((u) => u.user_id !== data.user_id)
             return data.is_typing ? [...filtered, data] : filtered
           })
         })
@@ -60,7 +72,6 @@ const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }:
         })
 
         await polling.connect(teamId, messageDate)
-
       } catch (error) {
         setConnectionStatus('error')
       }
@@ -102,11 +113,15 @@ const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }:
   return (
     <div data-testid="chat-system" className="chat-system">
       {/* 연결 상태 표시 */}
-      <div data-testid="connection-status" className={`status ${connectionStatus}`}>
+      <div
+        data-testid="connection-status"
+        className={`status ${connectionStatus}`}
+      >
         {connectionStatus === 'connected' && '✓ 연결됨'}
         {connectionStatus === 'connecting' && '🔄 연결 중...'}
         {connectionStatus === 'disconnected' && '❌ 연결 끊김'}
-        {connectionStatus === 'reconnecting' && `🔄 재연결 중... (${retryCount}회 시도)`}
+        {connectionStatus === 'reconnecting' &&
+          `🔄 재연결 중... (${retryCount}회 시도)`}
         {connectionStatus === 'failed' && '⚠️ 연결 실패'}
         {connectionStatus === 'error' && '❌ 오류 발생'}
       </div>
@@ -118,9 +133,14 @@ const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }:
         aria-live="polite"
         aria-label="메시지 목록"
         className="message-list"
-        style={{ height: '400px', overflowY: 'auto', border: '1px solid #ccc', padding: '10px' }}
+        style={{
+          height: '400px',
+          overflowY: 'auto',
+          border: '1px solid #ccc',
+          padding: '10px',
+        }}
       >
-        {messages.map(msg => (
+        {messages.map((msg) => (
           <div
             key={msg.id}
             data-testid={`message-${msg.id}`}
@@ -134,17 +154,21 @@ const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }:
             style={{
               margin: '5px 0',
               padding: '8px',
-              backgroundColor: msg.user_id === currentUserId ? '#e3f2fd' : '#f5f5f5',
+              backgroundColor:
+                msg.user_id === currentUserId ? '#e3f2fd' : '#f5f5f5',
               borderRadius: '8px',
-              cursor: msg.related_schedule_id ? 'pointer' : 'default'
+              cursor: msg.related_schedule_id ? 'pointer' : 'default',
             }}
           >
-            <div className="message-header" style={{ fontSize: '0.8em', color: '#666' }}>
+            <div
+              className="message-header"
+              style={{ fontSize: '0.8em', color: '#666' }}
+            >
               <span data-testid="message-user">{msg.user_name}</span>
               <span data-testid="message-time" style={{ float: 'right' }}>
                 {new Date(msg.created_at).toLocaleTimeString('ko-KR', {
                   hour: '2-digit',
-                  minute: '2-digit'
+                  minute: '2-digit',
                 })}
               </span>
             </div>
@@ -153,7 +177,13 @@ const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }:
               {msg.content}
             </div>
             {msg.related_schedule_id && (
-              <div style={{ marginTop: '4px', fontSize: '0.8em', color: '#1976d2' }}>
+              <div
+                style={{
+                  marginTop: '4px',
+                  fontSize: '0.8em',
+                  color: '#1976d2',
+                }}
+              >
                 관련 일정 보기 →
               </div>
             )}
@@ -163,13 +193,22 @@ const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }:
 
       {/* 타이핑 사용자 표시 */}
       {typingUsers.length > 0 && (
-        <div data-testid="typing-indicator" className="typing-indicator" style={{ padding: '8px', fontStyle: 'italic', color: '#666' }}>
-          {typingUsers.map(user => user.user_name).join(', ')}님이 입력 중입니다...
+        <div
+          data-testid="typing-indicator"
+          className="typing-indicator"
+          style={{ padding: '8px', fontStyle: 'italic', color: '#666' }}
+        >
+          {typingUsers.map((user) => user.user_name).join(', ')}님이 입력
+          중입니다...
         </div>
       )}
 
       {/* 메시지 입력 폼 */}
-      <form onSubmit={handleSubmit} data-testid="message-form" style={{ padding: '10px', borderTop: '1px solid #ccc' }}>
+      <form
+        onSubmit={handleSubmit}
+        data-testid="message-form"
+        style={{ padding: '10px', borderTop: '1px solid #ccc' }}
+      >
         <div style={{ display: 'flex', gap: '8px' }}>
           <textarea
             name="message"
@@ -184,7 +223,13 @@ const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }:
             type="submit"
             data-testid="send-button"
             disabled={!isConnected}
-            style={{ padding: '8px 16px', backgroundColor: isConnected ? '#1976d2' : '#ccc', color: 'white', border: 'none', borderRadius: '4px' }}
+            style={{
+              padding: '8px 16px',
+              backgroundColor: isConnected ? '#1976d2' : '#ccc',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+            }}
           >
             전송
           </button>
@@ -192,14 +237,17 @@ const MockChatSystem = ({ teamId, messageDate, currentUserId, onScheduleClick }:
       </form>
 
       {/* 테스트용 컨트롤 */}
-      <div data-testid="test-controls" style={{ padding: '10px', backgroundColor: '#f0f0f0', display: 'none' }}>
+      <div
+        data-testid="test-controls"
+        style={{ padding: '10px', backgroundColor: '#f0f0f0', display: 'none' }}
+      >
         <button
           onClick={() => {
             if (mockPolling.current) {
               const event = simulateRealtimeEvents.newMessage({
                 content: '테스트 메시지',
                 user_id: 'test-user',
-                user_name: '테스트 사용자'
+                user_name: '테스트 사용자',
               })
               mockPolling.current.emit('new_message', event.data)
             }
@@ -237,36 +285,43 @@ describe('Chat Integration Tests', () => {
 
     // API 모킹
     server.use(
-      http.get('http://localhost:3000/api/teams/:teamId/messages', ({ params, request }) => {
-        const url = new URL(request.url)
-        const date = url.searchParams.get('date')
+      http.get(
+        'http://localhost:3000/api/teams/:teamId/messages',
+        ({ params, request }) => {
+          const url = new URL(request.url)
+          const date = url.searchParams.get('date')
 
-        return HttpResponse.json({
-          success: true,
-          data: mockMessages.filter(msg =>
-            msg.team_id === params.teamId && msg.message_date === date
-          ),
-        })
-      }),
+          return HttpResponse.json({
+            success: true,
+            data: mockMessages.filter(
+              (msg) =>
+                msg.team_id === params.teamId && msg.message_date === date
+            ),
+          })
+        }
+      ),
 
-      http.post('http://localhost:3000/api/teams/:teamId/messages', async ({ request, params }) => {
-        const body = await request.json()
+      http.post(
+        'http://localhost:3000/api/teams/:teamId/messages',
+        async ({ request, params }) => {
+          const body = await request.json()
 
-        return HttpResponse.json({
-          success: true,
-          data: {
-            id: Date.now(),
-            content: (body as any).content,
-            user_id: 'user-1',
-            user_name: '현재 사용자',
-            team_id: params.teamId,
-            message_date: (body as any).message_date,
-            created_at: new Date().toISOString(),
-            message_type: 'text',
-            related_schedule_id: null,
-          },
-        })
-      })
+          return HttpResponse.json({
+            success: true,
+            data: {
+              id: Date.now(),
+              content: (body as any).content,
+              user_id: 'user-1',
+              user_name: '현재 사용자',
+              team_id: params.teamId,
+              message_date: (body as any).message_date,
+              created_at: new Date().toISOString(),
+              message_type: 'text',
+              related_schedule_id: null,
+            },
+          })
+        }
+      )
     )
   })
 
@@ -285,12 +340,15 @@ describe('Chat Integration Tests', () => {
       expect(screen.getByTestId('message-form')).toBeInTheDocument()
 
       // 자동 연결 대기
-      await waitFor(() => {
-        expect(screen.getByText('✓ 연결됨')).toBeInTheDocument()
-      }, { timeout: 3000 })
+      await waitFor(
+        () => {
+          expect(screen.getByText('✓ 연결됨')).toBeInTheDocument()
+        },
+        { timeout: 3000 }
+      )
 
       // 초기 메시지 표시 확인
-      mockMessages.forEach(msg => {
+      mockMessages.forEach((msg) => {
         expect(screen.getByText(msg.content)).toBeInTheDocument()
       })
     })
@@ -332,7 +390,9 @@ describe('Chat Integration Tests', () => {
 
       // 다른 사용자의 메시지 시뮬레이션
       const testControls = screen.getByTestId('test-controls')
-      const addMessageButton = testControls.querySelector('button') as HTMLButtonElement
+      const addMessageButton = testControls.querySelector(
+        'button'
+      ) as HTMLButtonElement
 
       act(() => {
         addMessageButton.click()
@@ -355,7 +415,9 @@ describe('Chat Integration Tests', () => {
 
       // 연결 해제 시뮬레이션
       const testControls = screen.getByTestId('test-controls')
-      const disconnectButton = testControls.querySelectorAll('button')[1] as HTMLButtonElement
+      const disconnectButton = testControls.querySelectorAll(
+        'button'
+      )[1] as HTMLButtonElement
 
       act(() => {
         disconnectButton.click()
@@ -379,7 +441,9 @@ describe('Chat Integration Tests', () => {
       const onScheduleClick = vi.fn()
       const user = userEvent.setup()
 
-      renderChat(<MockChatSystem {...defaultProps} onScheduleClick={onScheduleClick} />)
+      renderChat(
+        <MockChatSystem {...defaultProps} onScheduleClick={onScheduleClick} />
+      )
 
       // 연결 대기
       await waitFor(() => {
@@ -387,12 +451,18 @@ describe('Chat Integration Tests', () => {
       })
 
       // 일정 관련 메시지 찾기 및 클릭
-      const scheduleMessage = mockMessages.find(msg => msg.related_schedule_id)
+      const scheduleMessage = mockMessages.find(
+        (msg) => msg.related_schedule_id
+      )
       if (scheduleMessage) {
-        const messageElement = screen.getByTestId(`message-${scheduleMessage.id}`)
+        const messageElement = screen.getByTestId(
+          `message-${scheduleMessage.id}`
+        )
         await user.click(messageElement)
 
-        expect(onScheduleClick).toHaveBeenCalledWith(scheduleMessage.related_schedule_id)
+        expect(onScheduleClick).toHaveBeenCalledWith(
+          scheduleMessage.related_schedule_id
+        )
       }
     })
 
@@ -422,7 +492,10 @@ describe('Chat Integration Tests', () => {
       act(() => {
         const messageList = screen.getByTestId('message-list')
         const messageDiv = document.createElement('div')
-        messageDiv.setAttribute('data-testid', `message-${scheduleUpdateMessage.id}`)
+        messageDiv.setAttribute(
+          'data-testid',
+          `message-${scheduleUpdateMessage.id}`
+        )
         messageDiv.className = 'message schedule_update'
         messageDiv.innerHTML = `
           <div class="message-header">
@@ -437,7 +510,9 @@ describe('Chat Integration Tests', () => {
 
       // 일정 업데이트 메시지가 표시되는지 확인
       await waitFor(() => {
-        expect(screen.getByText('📅 새로운 일정이 추가되었습니다: 긴급 회의')).toBeInTheDocument()
+        expect(
+          screen.getByText('📅 새로운 일정이 추가되었습니다: 긴급 회의')
+        ).toBeInTheDocument()
       })
     })
   })
@@ -516,7 +591,9 @@ describe('Chat Integration Tests', () => {
 
       // 연결 해제
       const testControls = screen.getByTestId('test-controls')
-      const disconnectButton = testControls.querySelectorAll('button')[1] as HTMLButtonElement
+      const disconnectButton = testControls.querySelectorAll(
+        'button'
+      )[1] as HTMLButtonElement
 
       act(() => {
         disconnectButton.click()
@@ -557,12 +634,14 @@ describe('Chat Integration Tests', () => {
 
       // 다른 사용자의 타이핑 상태를 수동으로 시뮬레이션
       act(() => {
-        const typingIndicator = screen.getByTestId('typing-indicator').parentElement
+        const typingIndicator =
+          screen.getByTestId('typing-indicator').parentElement
         if (typingIndicator) {
           const indicator = document.createElement('div')
           indicator.setAttribute('data-testid', 'typing-indicator')
           indicator.textContent = '이개발님이 입력 중입니다...'
-          indicator.style.cssText = 'padding: 8px; font-style: italic; color: #666;'
+          indicator.style.cssText =
+            'padding: 8px; font-style: italic; color: #666;'
 
           // 기존 타이핑 인디케이터를 찾아서 업데이트
           const existingIndicator = screen.queryByTestId('typing-indicator')
@@ -586,10 +665,7 @@ describe('Chat Integration Tests', () => {
       // API 에러 시뮬레이션
       server.use(
         http.post('http://localhost:3000/api/teams/:teamId/messages', () => {
-          return HttpResponse.json(
-            { error: 'Server error' },
-            { status: 500 }
-          )
+          return HttpResponse.json({ error: 'Server error' }, { status: 500 })
         })
       )
 
@@ -610,9 +686,12 @@ describe('Chat Integration Tests', () => {
 
       // 에러 상태 확인 (실제 구현에서는 토스트나 에러 메시지 표시)
       // 여기서는 메시지가 전송되지 않고 입력 필드가 초기화되지 않는 것으로 확인
-      await waitFor(() => {
-        expect(messageInput).toHaveValue('실패할 메시지')
-      }, { timeout: 2000 })
+      await waitFor(
+        () => {
+          expect(messageInput).toHaveValue('실패할 메시지')
+        },
+        { timeout: 2000 }
+      )
     })
 
     it('네트워크 연결 문제 시 재연결 플로우가 작동해야 한다', async () => {
@@ -627,7 +706,9 @@ describe('Chat Integration Tests', () => {
 
       // 네트워크 연결 끊김 시뮬레이션
       const testControls = screen.getByTestId('test-controls')
-      const disconnectButton = testControls.querySelectorAll('button')[1] as HTMLButtonElement
+      const disconnectButton = testControls.querySelectorAll(
+        'button'
+      )[1] as HTMLButtonElement
 
       act(() => {
         disconnectButton.click()
@@ -644,10 +725,13 @@ describe('Chat Integration Tests', () => {
       })
 
       // 재연결 중 상태 확인 (실제 구현에 따라 달라질 수 있음)
-      await waitFor(() => {
-        const statusElement = screen.getByTestId('connection-status')
-        expect(statusElement.textContent).toContain('재연결')
-      }, { timeout: 1000 })
+      await waitFor(
+        () => {
+          const statusElement = screen.getByTestId('connection-status')
+          expect(statusElement.textContent).toContain('재연결')
+        },
+        { timeout: 1000 }
+      )
 
       vi.useRealTimers()
     })

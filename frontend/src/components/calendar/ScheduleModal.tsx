@@ -97,7 +97,9 @@ export function ScheduleModal({
       if (initialData.participant_ids) {
         setSelectedParticipants(initialData.participant_ids)
       } else if (initialData.participants) {
-        const participantIds = initialData.participants.map(p => Number(p.user_id))
+        const participantIds = initialData.participants.map((p) =>
+          Number(p.user_id)
+        )
         setSelectedParticipants(participantIds)
       } else {
         setSelectedParticipants([])
@@ -186,7 +188,8 @@ export function ScheduleModal({
     }
 
     // Check if schedule duration is more than 7 days
-    const durationInDays = (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
+    const durationInDays =
+      (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
     if (durationInDays > 7) {
       return '일정 기간은 최대 7일까지 가능합니다.'
     }
@@ -211,7 +214,10 @@ export function ScheduleModal({
       const endDatetime = new Date(`${endDate}T${endTime}`).toISOString()
 
       logger.log('ScheduleModal - selectedParticipants:', selectedParticipants)
-      logger.log('ScheduleModal - selectedParticipants type:', selectedParticipants.map(p => typeof p))
+      logger.log(
+        'ScheduleModal - selectedParticipants type:',
+        selectedParticipants.map((p) => typeof p)
+      )
 
       await onSubmit({
         title: title.trim(),
@@ -219,7 +225,8 @@ export function ScheduleModal({
         startDatetime,
         endDatetime,
         scheduleType: 'team',
-        participantIds: selectedParticipants.length > 0 ? selectedParticipants : undefined,
+        participantIds:
+          selectedParticipants.length > 0 ? selectedParticipants : undefined,
       } as any)
 
       onClose()
@@ -239,7 +246,9 @@ export function ScheduleModal({
             {initialData ? '일정 수정' : '새 일정 추가'}
           </DialogTitle>
           <DialogDescription>
-            {initialData ? '일정 정보를 수정하세요' : '새로운 일정을 추가하세요'}
+            {initialData
+              ? '일정 정보를 수정하세요'
+              : '새로운 일정을 추가하세요'}
           </DialogDescription>
         </DialogHeader>
 
@@ -366,7 +375,9 @@ export function ScheduleModal({
                             <span className="text-sm">
                               {member.name || member.user?.name || '이름 없음'}
                               {member.role === 'leader' && (
-                                <span className="ml-1 text-xs text-blue-600">(팀장)</span>
+                                <span className="ml-1 text-xs text-blue-600">
+                                  (팀장)
+                                </span>
                               )}
                             </span>
                           </label>

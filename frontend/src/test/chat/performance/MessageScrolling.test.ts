@@ -1,6 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
-import { generateTestData, performanceTestHelpers } from '../utils/realtime-test-helpers'
+import {
+  generateTestData,
+  performanceTestHelpers,
+} from '../utils/realtime-test-helpers'
 
 // 성능 측정을 위한 가상화된 스크롤 컴포넌트 모킹
 const createVirtualScrollContainer = () => {
@@ -35,7 +38,10 @@ const createVirtualScrollContainer = () => {
   }
 
   const scrollTo = (scrollTop: number) => {
-    state.scrollTop = Math.max(0, Math.min(scrollTop, state.totalHeight - containerHeight))
+    state.scrollTop = Math.max(
+      0,
+      Math.min(scrollTop, state.totalHeight - containerHeight)
+    )
     container.scrollTop = state.scrollTop
     updateVisibleRange()
   }
@@ -60,7 +66,7 @@ const createVirtualScrollContainer = () => {
     totalHeight: state.totalHeight,
     visibleStartIndex,
     visibleEndIndex,
-    memoryUsage: state.items.length * 500 // 대략적인 메모리 사용량 (바이트)
+    memoryUsage: state.items.length * 500, // 대략적인 메모리 사용량 (바이트)
   })
 
   return {
@@ -69,12 +75,15 @@ const createVirtualScrollContainer = () => {
     scrollTo,
     scrollToBottom,
     getMetrics,
-    state
+    state,
   }
 }
 
 // 스크롤 성능 테스트를 위한 훅
-const useVirtualScroll = (itemHeight: number = 60, containerHeight: number = 400) => {
+const useVirtualScroll = (
+  itemHeight: number = 60,
+  containerHeight: number = 400
+) => {
   const [state, setState] = React.useState({
     items: [] as any[],
     scrollTop: 0,
@@ -85,25 +94,28 @@ const useVirtualScroll = (itemHeight: number = 60, containerHeight: number = 400
 
   const visibleItemCount = Math.ceil(containerHeight / itemHeight)
 
-  const updateVisibleRange = React.useCallback((scrollTop: number) => {
-    const visibleStartIndex = Math.floor(scrollTop / itemHeight)
-    const visibleEndIndex = Math.min(
-      visibleStartIndex + visibleItemCount + 1,
-      state.items.length
-    )
+  const updateVisibleRange = React.useCallback(
+    (scrollTop: number) => {
+      const visibleStartIndex = Math.floor(scrollTop / itemHeight)
+      const visibleEndIndex = Math.min(
+        visibleStartIndex + visibleItemCount + 1,
+        state.items.length
+      )
 
-    setState(prev => ({
-      ...prev,
-      scrollTop,
-      visibleStartIndex,
-      visibleEndIndex,
-    }))
-  }, [itemHeight, visibleItemCount, state.items.length])
+      setState((prev) => ({
+        ...prev,
+        scrollTop,
+        visibleStartIndex,
+        visibleEndIndex,
+      }))
+    },
+    [itemHeight, visibleItemCount, state.items.length]
+  )
 
   const addItems = React.useCallback((newItems: any[]) => {
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
-      items: [...prev.items, ...newItems]
+      items: [...prev.items, ...newItems],
     }))
   }, [])
 
@@ -175,7 +187,8 @@ describe('Message Scrolling Performance Tests', () => {
 
       // 스크롤 성능 측정
       const scrollSteps = 50
-      const scrollDistance = virtualScroll.getMetrics().totalHeight / scrollSteps
+      const scrollDistance =
+        virtualScroll.getMetrics().totalHeight / scrollSteps
       let totalScrollTime = 0
 
       for (let i = 0; i < scrollSteps; i++) {
@@ -183,7 +196,7 @@ describe('Message Scrolling Performance Tests', () => {
         virtualScroll.scrollTo(i * scrollDistance)
         const endTime = performance.now()
 
-        totalScrollTime += (endTime - startTime)
+        totalScrollTime += endTime - startTime
       }
 
       const averageScrollTime = totalScrollTime / scrollSteps
@@ -207,7 +220,11 @@ describe('Message Scrolling Performance Tests', () => {
       const addTimes: number[] = []
 
       for (let i = 0; i < 5; i++) {
-        const newMessages = generateTestData.messages(10, 'team-1', '2024-12-25')
+        const newMessages = generateTestData.messages(
+          10,
+          'team-1',
+          '2024-12-25'
+        )
         const addTime = virtualScroll.addItems(newMessages)
         addTimes.push(addTime)
 
@@ -346,11 +363,12 @@ describe('Message Scrolling Performance Tests', () => {
             const progress = Math.min(elapsed / duration, 1)
 
             // easeInOutCubic 함수
-            const easeProgress = progress < 0.5
-              ? 4 * progress * progress * progress
-              : 1 - Math.pow(-2 * progress + 2, 3) / 2
+            const easeProgress =
+              progress < 0.5
+                ? 4 * progress * progress * progress
+                : 1 - Math.pow(-2 * progress + 2, 3) / 2
 
-            const currentPosition = startPosition + (distance * easeProgress)
+            const currentPosition = startPosition + distance * easeProgress
             virtualScroll.scrollTo(currentPosition)
 
             if (progress < 1) {
@@ -371,7 +389,8 @@ describe('Message Scrolling Performance Tests', () => {
 
       // 프레임 레이트 계산
       if (animationFrames.length > 1) {
-        const totalTime = animationFrames[animationFrames.length - 1] - animationFrames[0]
+        const totalTime =
+          animationFrames[animationFrames.length - 1] - animationFrames[0]
         const fps = (animationFrames.length - 1) / (totalTime / 1000)
 
         expect(fps).toBeGreaterThan(30) // 최소 30fps
@@ -410,7 +429,8 @@ describe('Message Scrolling Performance Tests', () => {
       }
 
       const frameTimings = simulateInertia()
-      const averageFrameTime = frameTimings.reduce((a, b) => a + b, 0) / frameTimings.length
+      const averageFrameTime =
+        frameTimings.reduce((a, b) => a + b, 0) / frameTimings.length
       const maxFrameTime = Math.max(...frameTimings)
 
       expect(averageFrameTime).toBeLessThan(16) // 평균 프레임 시간 16ms 이하
@@ -444,7 +464,8 @@ describe('Message Scrolling Performance Tests', () => {
 
       simulateTouchScroll()
 
-      const averageEventTime = touchEventTimes.reduce((a, b) => a + b, 0) / touchEventTimes.length
+      const averageEventTime =
+        touchEventTimes.reduce((a, b) => a + b, 0) / touchEventTimes.length
       const maxEventTime = Math.max(...touchEventTimes)
 
       expect(averageEventTime).toBeLessThan(8) // 평균 이벤트 처리 시간 8ms 이하
@@ -500,7 +521,7 @@ describe('Message Scrolling Performance Tests', () => {
       // 다양한 크기의 메시지 세트로 성능 측정
       const testSizes = [100, 500, 1000, 2000, 5000]
 
-      testSizes.forEach(size => {
+      testSizes.forEach((size) => {
         const messages = generateTestData.messages(size)
 
         const startTime = performance.now()
@@ -509,7 +530,7 @@ describe('Message Scrolling Performance Tests', () => {
 
         measurements.push({
           count: size,
-          time: endTime - startTime
+          time: endTime - startTime,
         })
 
         // 다음 테스트를 위해 초기화
@@ -533,7 +554,7 @@ describe('Message Scrolling Performance Tests', () => {
       const scrollTimes: number[] = []
       const messageCounts = [100, 1000, 5000, 10000]
 
-      messageCounts.forEach(count => {
+      messageCounts.forEach((count) => {
         const virtualScroll = createVirtualScrollContainer()
         virtualScroll.addItems(generateTestData.messages(count))
 

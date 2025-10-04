@@ -9,7 +9,15 @@ import {
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Calendar, Clock, Users, User, Edit, Trash2, MessageSquare } from 'lucide-react'
+import {
+  Calendar,
+  Clock,
+  Users,
+  User,
+  Edit,
+  Trash2,
+  MessageSquare,
+} from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
 
 interface Schedule {
@@ -68,14 +76,18 @@ export function ScheduleDetailModal({
     currentUserId: currentUser?.id,
     scheduleId: schedule.id,
     participants: schedule.participants,
-    participantUserIds: schedule.participants?.map(p => p.user_id),
+    participantUserIds: schedule.participants?.map((p) => p.user_id),
   })
 
-  const isParticipant = schedule.participants?.some(
-    (p) => p.user_id === currentUser?.id
-  ) || false
+  const isParticipant =
+    schedule.participants?.some((p) => p.user_id === currentUser?.id) || false
 
-  console.log('[ScheduleDetailModal] isParticipant:', isParticipant, 'isLeader:', isLeader)
+  console.log(
+    '[ScheduleDetailModal] isParticipant:',
+    isParticipant,
+    'isLeader:',
+    isLeader
+  )
 
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString)
@@ -109,7 +121,13 @@ export function ScheduleDetailModal({
   }
 
   const getStatusBadge = (status: string) => {
-    const statusMap: Record<string, { label: string; variant: 'default' | 'secondary' | 'destructive' | 'outline' }> = {
+    const statusMap: Record<
+      string,
+      {
+        label: string
+        variant: 'default' | 'secondary' | 'destructive' | 'outline'
+      }
+    > = {
       confirmed: { label: '참가', variant: 'default' },
       pending: { label: '대기', variant: 'secondary' },
       declined: { label: '거절', variant: 'outline' },
@@ -138,9 +156,7 @@ export function ScheduleDetailModal({
             <Calendar className="w-5 h-5" />
             {schedule.title}
           </DialogTitle>
-          <DialogDescription>
-            일정 상세 정보를 확인하세요
-          </DialogDescription>
+          <DialogDescription>일정 상세 정보를 확인하세요</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">

@@ -74,28 +74,37 @@ describe('캘린더 E2E 테스트', () => {
       await page.waitForSelector('[data-testid="calendar-page"]')
 
       // 2. 캘린더 페이지 접근
-      expect(await page.locator('[data-testid="calendar-page"]').isVisible()).toBe(true)
+      expect(
+        await page.locator('[data-testid="calendar-page"]').isVisible()
+      ).toBe(true)
 
       // 3. 새 일정 생성
       await page.click('[data-testid="create-schedule-btn"]')
       await page.waitForSelector('[data-testid="create-modal"]')
 
       await page.fill('[data-testid="create-title"]', 'E2E 테스트 회의')
-      await page.fill('[data-testid="create-description"]', 'E2E 테스트를 위한 회의입니다.')
+      await page.fill(
+        '[data-testid="create-description"]',
+        'E2E 테스트를 위한 회의입니다.'
+      )
       await page.fill('[data-testid="create-start-time"]', '2024-01-15T10:00')
       await page.fill('[data-testid="create-end-time"]', '2024-01-15T11:00')
 
       await page.click('[data-testid="create-submit"]')
 
       // 4. 생성된 일정 확인
-      await page.waitForSelector('[data-testid="schedule-item-1"]', { state: 'visible' })
+      await page.waitForSelector('[data-testid="schedule-item-1"]', {
+        state: 'visible',
+      })
       expect(await page.getByText('E2E 테스트 회의').isVisible()).toBe(true)
 
       // 5. 일정 상세 보기
       await page.click('[data-testid="schedule-item-1"]')
       await page.waitForSelector('[data-testid="schedule-detail-modal"]')
 
-      const scheduleTitle = await page.locator('[data-testid="schedule-detail-modal"] h2').textContent()
+      const scheduleTitle = await page
+        .locator('[data-testid="schedule-detail-modal"] h2')
+        .textContent()
       expect(scheduleTitle).toBe('E2E 테스트 회의')
 
       // 6. 일정 수정
@@ -106,21 +115,27 @@ describe('캘린더 E2E 테스트', () => {
       await page.click('[data-testid="edit-submit"]')
 
       // 7. 수정된 일정 확인
-      await page.waitForSelector('[data-testid="schedule-detail-modal"]', { state: 'hidden' })
-      expect(await page.getByText('수정된 E2E 테스트 회의').isVisible()).toBe(true)
+      await page.waitForSelector('[data-testid="schedule-detail-modal"]', {
+        state: 'hidden',
+      })
+      expect(await page.getByText('수정된 E2E 테스트 회의').isVisible()).toBe(
+        true
+      )
 
       // 8. 일정 삭제
       await page.click('[data-testid="schedule-item-1"]')
       await page.click('[data-testid="delete-schedule-btn"]')
 
       // 삭제 확인 대화상자 처리
-      page.on('dialog', async dialog => {
+      page.on('dialog', async (dialog) => {
         expect(dialog.type()).toBe('confirm')
         await dialog.accept()
       })
 
       // 9. 삭제 확인
-      await page.waitForSelector('[data-testid="schedule-item-1"]', { state: 'hidden' })
+      await page.waitForSelector('[data-testid="schedule-item-1"]', {
+        state: 'hidden',
+      })
     })
 
     it('팀장이 여러 뷰에서 일정을 관리한다', async () => {
@@ -156,10 +171,15 @@ describe('캘린더 E2E 테스트', () => {
       await page.waitForSelector('[data-testid="create-modal"]')
 
       await page.fill('[data-testid="create-title"]', '매주 팀 회의')
-      await page.fill('[data-testid="create-description"]', '매주 반복되는 팀 회의')
+      await page.fill(
+        '[data-testid="create-description"]',
+        '매주 반복되는 팀 회의'
+      )
 
       // 반복 설정 (실제 구현에서 필요한 경우)
-      if (await page.locator('[data-testid="recurring-checkbox"]').isVisible()) {
+      if (
+        await page.locator('[data-testid="recurring-checkbox"]').isVisible()
+      ) {
         await page.check('[data-testid="recurring-checkbox"]')
         await page.selectOption('[data-testid="recurring-type"]', 'weekly')
         await page.fill('[data-testid="recurring-end-date"]', '2024-03-01')
@@ -169,7 +189,9 @@ describe('캘린더 E2E 테스트', () => {
 
       // 생성된 반복 일정들 확인
       await page.waitForSelector('[data-testid="schedule-item-1"]')
-      const scheduleCount = await page.locator('[data-testid^="schedule-item-"]').count()
+      const scheduleCount = await page
+        .locator('[data-testid^="schedule-item-"]')
+        .count()
       expect(scheduleCount).toBeGreaterThan(1) // 여러 일정이 생성됨
     })
   })
@@ -185,27 +207,37 @@ describe('캘린더 E2E 테스트', () => {
       await page.waitForSelector('[data-testid="calendar-page"]')
 
       // 일정 조회
-      expect(await page.locator('[data-testid="schedule-item-1"]').isVisible()).toBe(true)
+      expect(
+        await page.locator('[data-testid="schedule-item-1"]').isVisible()
+      ).toBe(true)
 
       // 일정 상세 보기
       await page.click('[data-testid="schedule-item-1"]')
       await page.waitForSelector('[data-testid="schedule-detail-modal"]')
 
       // 팀원은 수정/삭제 버튼이 보이지 않음
-      expect(await page.locator('[data-testid="edit-schedule-btn"]').isVisible()).toBe(false)
-      expect(await page.locator('[data-testid="delete-schedule-btn"]').isVisible()).toBe(false)
+      expect(
+        await page.locator('[data-testid="edit-schedule-btn"]').isVisible()
+      ).toBe(false)
+      expect(
+        await page.locator('[data-testid="delete-schedule-btn"]').isVisible()
+      ).toBe(false)
 
       // 참석 상태 변경
       if (await page.locator('[data-testid="accept-button"]').isVisible()) {
         await page.click('[data-testid="accept-button"]')
         await page.waitForSelector('[data-testid="participant-status"]')
 
-        const status = await page.locator('[data-testid="participant-status"]').textContent()
+        const status = await page
+          .locator('[data-testid="participant-status"]')
+          .textContent()
         expect(status).toContain('참석')
       }
 
       // 변경 요청 버튼 확인
-      if (await page.locator('[data-testid="request-change-button"]').isVisible()) {
+      if (
+        await page.locator('[data-testid="request-change-button"]').isVisible()
+      ) {
         await page.click('[data-testid="request-change-button"]')
         // 채팅 모달이나 메시지 전송 확인 (구현에 따라)
       }
@@ -221,13 +253,20 @@ describe('캘린더 E2E 테스트', () => {
       await page.click('[data-testid="request-change-button"]')
 
       // 변경 요청 모달 또는 채팅 연동 확인
-      if (await page.locator('[data-testid="change-request-modal"]').isVisible()) {
-        await page.fill('[data-testid="change-reason"]', '시간 변경이 필요합니다.')
+      if (
+        await page.locator('[data-testid="change-request-modal"]').isVisible()
+      ) {
+        await page.fill(
+          '[data-testid="change-reason"]',
+          '시간 변경이 필요합니다.'
+        )
         await page.click('[data-testid="send-request"]')
 
         // 요청 전송 확인
         await page.waitForSelector('[data-testid="request-sent-message"]')
-        expect(await page.getByText('변경 요청이 전송되었습니다.').isVisible()).toBe(true)
+        expect(
+          await page.getByText('변경 요청이 전송되었습니다.').isVisible()
+        ).toBe(true)
       }
     })
   })
@@ -246,11 +285,15 @@ describe('캘린더 E2E 테스트', () => {
 
       // 충돌 경고 확인
       await page.waitForSelector('[data-testid="conflict-warning"]')
-      expect(await page.getByText('일정 충돌이 감지되었습니다.').isVisible()).toBe(true)
+      expect(
+        await page.getByText('일정 충돌이 감지되었습니다.').isVisible()
+      ).toBe(true)
 
       // 대안 시간 제안 확인
       if (await page.locator('[data-testid="suggested-times"]').isVisible()) {
-        const suggestions = await page.locator('[data-testid="suggestion-item"]').count()
+        const suggestions = await page
+          .locator('[data-testid="suggestion-item"]')
+          .count()
         expect(suggestions).toBeGreaterThan(0)
 
         // 첫 번째 제안 시간 선택
@@ -276,7 +319,9 @@ describe('캘린더 E2E 테스트', () => {
 
       // 충돌 감지 확인
       if (await page.locator('[data-testid="conflict-detected"]').isVisible()) {
-        expect(await page.getByText('다른 일정과 시간이 겹칩니다.').isVisible()).toBe(true)
+        expect(
+          await page.getByText('다른 일정과 시간이 겹칩니다.').isVisible()
+        ).toBe(true)
 
         // 충돌 해결 옵션 선택
         await page.click('[data-testid="resolve-conflict"]')
@@ -320,7 +365,8 @@ describe('캘린더 E2E 테스트', () => {
             window.scrollBy(0, 10)
             frameCount++
 
-            if (frameCount < 60) { // 60프레임 측정
+            if (frameCount < 60) {
+              // 60프레임 측정
               requestAnimationFrame(scroll)
             } else {
               const endTime = performance.now()
@@ -395,8 +441,9 @@ describe('캘린더 E2E 테스트', () => {
 
       // 버튼 설명 확인
       const createButton = page.locator('[data-testid="create-schedule-btn"]')
-      const buttonLabel = await createButton.getAttribute('aria-label') ||
-                         await createButton.textContent()
+      const buttonLabel =
+        (await createButton.getAttribute('aria-label')) ||
+        (await createButton.textContent())
       expect(buttonLabel).toBeTruthy()
     })
 
@@ -412,7 +459,9 @@ describe('캘린더 E2E 테스트', () => {
       await page.click('[data-testid="create-submit"]')
 
       await page.waitForSelector('[data-testid="schedule-item-1"]')
-      expect(await page.getByText('브라우저 호환성 테스트').isVisible()).toBe(true)
+      expect(await page.getByText('브라우저 호환성 테스트').isVisible()).toBe(
+        true
+      )
     })
 
     it('고대비 모드에서 적절히 표시된다', async () => {
@@ -421,11 +470,13 @@ describe('캘린더 E2E 테스트', () => {
       await page.goto('http://localhost:5173/calendar')
 
       // 컬러 대비 확인 (실제로는 접근성 도구 사용)
-      const backgroundColor = await page.locator('[data-testid="calendar-page"]')
-        .evaluate(el => getComputedStyle(el).backgroundColor)
+      const backgroundColor = await page
+        .locator('[data-testid="calendar-page"]')
+        .evaluate((el) => getComputedStyle(el).backgroundColor)
 
-      const textColor = await page.locator('[data-testid="calendar-page"]')
-        .evaluate(el => getComputedStyle(el).color)
+      const textColor = await page
+        .locator('[data-testid="calendar-page"]')
+        .evaluate((el) => getComputedStyle(el).color)
 
       // 충분한 대비가 있는지 확인 (실제로는 WCAG 기준 계산)
       expect(backgroundColor).toBeTruthy()
@@ -441,10 +492,14 @@ describe('캘린더 E2E 테스트', () => {
 
       // 오류 메시지 확인
       await page.waitForSelector('[data-testid="network-error"]')
-      expect(await page.getByText('네트워크 연결을 확인해주세요.').isVisible()).toBe(true)
+      expect(
+        await page.getByText('네트워크 연결을 확인해주세요.').isVisible()
+      ).toBe(true)
 
       // 재시도 버튼 확인
-      expect(await page.locator('[data-testid="retry-button"]').isVisible()).toBe(true)
+      expect(
+        await page.locator('[data-testid="retry-button"]').isVisible()
+      ).toBe(true)
 
       // 네트워크 복구 후 재시도
       await page.context().setOffline(false)
@@ -456,28 +511,32 @@ describe('캘린더 E2E 테스트', () => {
 
     it('서버 오류 시 사용자 친화적인 메시지를 표시한다', async () => {
       // 서버 오류 응답 시뮬레이션 (실제로는 MSW나 네트워크 인터셉션 사용)
-      await page.route('**/api/teams/*/schedules', route => {
+      await page.route('**/api/teams/*/schedules', (route) => {
         route.fulfill({
           status: 500,
-          body: JSON.stringify({ error: '서버 내부 오류' })
+          body: JSON.stringify({ error: '서버 내부 오류' }),
         })
       })
 
       await page.goto('http://localhost:5173/calendar')
 
       await page.waitForSelector('[data-testid="server-error"]')
-      expect(await page.getByText('일시적인 오류가 발생했습니다.').isVisible()).toBe(true)
-      expect(await page.getByText('잠시 후 다시 시도해주세요.').isVisible()).toBe(true)
+      expect(
+        await page.getByText('일시적인 오류가 발생했습니다.').isVisible()
+      ).toBe(true)
+      expect(
+        await page.getByText('잠시 후 다시 시도해주세요.').isVisible()
+      ).toBe(true)
     })
 
     it('세션 만료 시 로그인 페이지로 리다이렉트된다', async () => {
       await page.goto('http://localhost:5173/calendar')
 
       // 세션 만료 응답 시뮬레이션
-      await page.route('**/api/**', route => {
+      await page.route('**/api/**', (route) => {
         route.fulfill({
           status: 401,
-          body: JSON.stringify({ error: '토큰이 만료되었습니다.' })
+          body: JSON.stringify({ error: '토큰이 만료되었습니다.' }),
         })
       })
 
@@ -485,7 +544,9 @@ describe('캘린더 E2E 테스트', () => {
 
       // 로그인 페이지로 리다이렉트 확인
       await page.waitForURL('**/login')
-      expect(await page.locator('[data-testid="login-form"]').isVisible()).toBe(true)
+      expect(await page.locator('[data-testid="login-form"]').isVisible()).toBe(
+        true
+      )
     })
   })
 })

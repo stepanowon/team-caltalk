@@ -48,7 +48,6 @@ export function CreateTeam() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-
   const {
     register,
     handleSubmit,
@@ -160,7 +159,6 @@ export function CreateTeam() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-
             {/* 에러 메시지 */}
             {error && (
               <Alert className="mb-6">

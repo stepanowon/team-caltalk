@@ -66,7 +66,9 @@ const MockChatFlowApp = () => {
   const loadMessages = async (teamId: number, date: string) => {
     setIsLoading(true)
     try {
-      const response = await fetch(`/api/teams/${teamId}/messages?message_date=${date}`)
+      const response = await fetch(
+        `/api/teams/${teamId}/messages?message_date=${date}`
+      )
       const data = await response.json()
 
       if (data.success) {
@@ -80,7 +82,11 @@ const MockChatFlowApp = () => {
   }
 
   // 메시지 전송
-  const sendMessage = async (content: string, messageType = 'text', metadata = null) => {
+  const sendMessage = async (
+    content: string,
+    messageType = 'text',
+    metadata = null
+  ) => {
     if (!selectedTeam || !content.trim()) return
 
     try {
@@ -88,7 +94,7 @@ const MockChatFlowApp = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
         body: JSON.stringify({
           content,
@@ -100,7 +106,7 @@ const MockChatFlowApp = () => {
 
       const data = await response.json()
       if (data.success) {
-        setMessages(prev => [...prev, data.data.message])
+        setMessages((prev) => [...prev, data.data.message])
       }
     } catch (err) {
       setError('메시지 전송에 실패했습니다.')
@@ -113,9 +119,12 @@ const MockChatFlowApp = () => {
 
     // 타이핑 상태 시뮬레이션
     if (isTyping) {
-      setTypingUsers(prev => [...prev, { userId: 999, username: 'other_user' }])
+      setTypingUsers((prev) => [
+        ...prev,
+        { userId: 999, username: 'other_user' },
+      ])
       setTimeout(() => {
-        setTypingUsers(prev => prev.filter(u => u.userId !== 999))
+        setTypingUsers((prev) => prev.filter((u) => u.userId !== 999))
       }, 3000)
     }
   }
@@ -176,7 +185,9 @@ const MockChatFlowApp = () => {
     return (
       <div data-testid="team-selection-screen">
         <h1>팀 선택</h1>
-        <div data-testid="user-info">환영합니다, {currentUser?.full_name}님!</div>
+        <div data-testid="user-info">
+          환영합니다, {currentUser?.full_name}님!
+        </div>
         <div data-testid="team-list">
           <button
             data-testid="team-1-button"
@@ -261,7 +272,8 @@ const MockChatFlowApp = () => {
               </div>
               {message.message_type === 'schedule_change_request' && (
                 <div data-testid="schedule-change-request">
-                  일정 변경 요청: {message.metadata?.requested_start_time} - {message.metadata?.requested_end_time}
+                  일정 변경 요청: {message.metadata?.requested_start_time} -{' '}
+                  {message.metadata?.requested_end_time}
                 </div>
               )}
             </div>
@@ -271,7 +283,7 @@ const MockChatFlowApp = () => {
         {/* 타이핑 인디케이터 */}
         {typingUsers.length > 0 && (
           <div data-testid="typing-indicator">
-            {typingUsers.map(user => user.username).join(', ')}님이 입력 중...
+            {typingUsers.map((user) => user.username).join(', ')}님이 입력 중...
           </div>
         )}
       </div>
@@ -405,7 +417,9 @@ describe('ChatFlow E2E', () => {
       // 3. 팀 선택 화면으로 이동
       await waitFor(() => {
         expect(screen.getByTestId('team-selection-screen')).toBeInTheDocument()
-        expect(screen.getByText('환영합니다, 테스트 사용자님!')).toBeInTheDocument()
+        expect(
+          screen.getByText('환영합니다, 테스트 사용자님!')
+        ).toBeInTheDocument()
       })
 
       // 4. 팀 선택
@@ -414,13 +428,20 @@ describe('ChatFlow E2E', () => {
       // 5. 채팅 화면으로 이동 및 연결 상태 확인
       await waitFor(() => {
         expect(screen.getByTestId('chat-app')).toBeInTheDocument()
-        expect(screen.getByTestId('connection-status')).toHaveTextContent('🟡 연결 중...')
+        expect(screen.getByTestId('connection-status')).toHaveTextContent(
+          '🟡 연결 중...'
+        )
       })
 
       // 6. 연결 완료 대기
-      await waitFor(() => {
-        expect(screen.getByTestId('connection-status')).toHaveTextContent('🟢 연결됨')
-      }, { timeout: 2000 })
+      await waitFor(
+        () => {
+          expect(screen.getByTestId('connection-status')).toHaveTextContent(
+            '🟢 연결됨'
+          )
+        },
+        { timeout: 2000 }
+      )
 
       // 7. 메시지 전송
       await user.type(screen.getByTestId('message-textarea'), '안녕하세요!')
@@ -448,7 +469,9 @@ describe('ChatFlow E2E', () => {
       // 에러 메시지 확인
       await waitFor(() => {
         expect(screen.getByTestId('login-error')).toBeInTheDocument()
-        expect(screen.getByText('이메일 또는 비밀번호가 올바르지 않습니다.')).toBeInTheDocument()
+        expect(
+          screen.getByText('이메일 또는 비밀번호가 올바르지 않습니다.')
+        ).toBeInTheDocument()
       })
     })
 
@@ -501,10 +524,15 @@ describe('ChatFlow E2E', () => {
       })
       await user.click(screen.getByTestId('team-1-button'))
 
-      await waitFor(() => {
-        expect(screen.getByTestId('chat-app')).toBeInTheDocument()
-        expect(screen.getByTestId('connection-status')).toHaveTextContent('🟢 연결됨')
-      }, { timeout: 2000 })
+      await waitFor(
+        () => {
+          expect(screen.getByTestId('chat-app')).toBeInTheDocument()
+          expect(screen.getByTestId('connection-status')).toHaveTextContent(
+            '🟢 연결됨'
+          )
+        },
+        { timeout: 2000 }
+      )
 
       return user
     }
@@ -561,13 +589,20 @@ describe('ChatFlow E2E', () => {
       // 타이핑 인디케이터 확인
       await waitFor(() => {
         expect(screen.getByTestId('typing-indicator')).toBeInTheDocument()
-        expect(screen.getByText(/other_user님이 입력 중.../)).toBeInTheDocument()
+        expect(
+          screen.getByText(/other_user님이 입력 중.../)
+        ).toBeInTheDocument()
       })
 
       // 3초 후 타이핑 인디케이터 사라짐 확인
-      await waitFor(() => {
-        expect(screen.queryByTestId('typing-indicator')).not.toBeInTheDocument()
-      }, { timeout: 4000 })
+      await waitFor(
+        () => {
+          expect(
+            screen.queryByTestId('typing-indicator')
+          ).not.toBeInTheDocument()
+        },
+        { timeout: 4000 }
+      )
     })
 
     it('일정 변경 요청 메시지를 전송할 수 있어야 한다', async () => {
@@ -577,7 +612,10 @@ describe('ChatFlow E2E', () => {
       await user.click(screen.getByTestId('schedule-change-radio'))
 
       // 일정 변경 요청 메시지 작성
-      await user.type(screen.getByTestId('message-textarea'), '회의 시간을 변경하고 싶습니다.')
+      await user.type(
+        screen.getByTestId('message-textarea'),
+        '회의 시간을 변경하고 싶습니다.'
+      )
 
       // 일정 필드 표시 (실제 구현에서는 라디오 버튼에 따라 동적으로 표시)
       const scheduleFields = screen.getByTestId('schedule-fields')
@@ -591,9 +629,15 @@ describe('ChatFlow E2E', () => {
 
       // 일정 변경 요청 메시지 확인
       await waitFor(() => {
-        expect(screen.getByText('회의 시간을 변경하고 싶습니다.')).toBeInTheDocument()
-        expect(screen.getByTestId('schedule-change-request')).toBeInTheDocument()
-        expect(screen.getByText('일정 변경 요청: 14:00 - 15:00')).toBeInTheDocument()
+        expect(
+          screen.getByText('회의 시간을 변경하고 싶습니다.')
+        ).toBeInTheDocument()
+        expect(
+          screen.getByTestId('schedule-change-request')
+        ).toBeInTheDocument()
+        expect(
+          screen.getByText('일정 변경 요청: 14:00 - 15:00')
+        ).toBeInTheDocument()
       })
     })
   })
@@ -619,13 +663,20 @@ describe('ChatFlow E2E', () => {
 
       // 연결 중 상태 확인
       await waitFor(() => {
-        expect(screen.getByTestId('connection-status')).toHaveTextContent('🟡 연결 중...')
+        expect(screen.getByTestId('connection-status')).toHaveTextContent(
+          '🟡 연결 중...'
+        )
       })
 
       // 연결 완료 상태 확인
-      await waitFor(() => {
-        expect(screen.getByTestId('connection-status')).toHaveTextContent('🟢 연결됨')
-      }, { timeout: 2000 })
+      await waitFor(
+        () => {
+          expect(screen.getByTestId('connection-status')).toHaveTextContent(
+            '🟢 연결됨'
+          )
+        },
+        { timeout: 2000 }
+      )
     })
 
     it('네트워크 오류 시 적절한 에러 메시지가 표시되어야 한다', async () => {
@@ -657,7 +708,9 @@ describe('ChatFlow E2E', () => {
       // 에러 메시지 확인
       await waitFor(() => {
         expect(screen.getByTestId('messages-error')).toBeInTheDocument()
-        expect(screen.getByText('메시지를 불러오는데 실패했습니다.')).toBeInTheDocument()
+        expect(
+          screen.getByText('메시지를 불러오는데 실패했습니다.')
+        ).toBeInTheDocument()
       })
     })
   })
@@ -681,9 +734,14 @@ describe('ChatFlow E2E', () => {
       })
       await user.click(screen.getByTestId('team-1-button'))
 
-      await waitFor(() => {
-        expect(screen.getByTestId('connection-status')).toHaveTextContent('🟢 연결됨')
-      }, { timeout: 2000 })
+      await waitFor(
+        () => {
+          expect(screen.getByTestId('connection-status')).toHaveTextContent(
+            '🟢 연결됨'
+          )
+        },
+        { timeout: 2000 }
+      )
 
       // 빠른 연속 메시지 전송
       for (let i = 1; i <= 3; i++) {
@@ -719,9 +777,14 @@ describe('ChatFlow E2E', () => {
       })
       await user.click(screen.getByTestId('team-1-button'))
 
-      await waitFor(() => {
-        expect(screen.getByTestId('connection-status')).toHaveTextContent('🟢 연결됨')
-      }, { timeout: 2000 })
+      await waitFor(
+        () => {
+          expect(screen.getByTestId('connection-status')).toHaveTextContent(
+            '🟢 연결됨'
+          )
+        },
+        { timeout: 2000 }
+      )
 
       // 긴 메시지 전송
       const longMessage = '이것은 매우 긴 메시지입니다. '.repeat(20)
@@ -789,7 +852,10 @@ describe('ChatFlow E2E', () => {
 
       // 로그인 화면에서 ARIA 속성 확인
       expect(screen.getByTestId('email-input')).toHaveAttribute('type', 'email')
-      expect(screen.getByTestId('password-input')).toHaveAttribute('type', 'password')
+      expect(screen.getByTestId('password-input')).toHaveAttribute(
+        'type',
+        'password'
+      )
 
       // 에러 메시지의 role="alert" 확인 (로그인 실패 시)
       await user.type(screen.getByTestId('email-input'), 'wrong@example.com')
@@ -797,7 +863,10 @@ describe('ChatFlow E2E', () => {
       await user.click(screen.getByTestId('login-button'))
 
       await waitFor(() => {
-        expect(screen.getByTestId('login-error')).toHaveAttribute('role', 'alert')
+        expect(screen.getByTestId('login-error')).toHaveAttribute(
+          'role',
+          'alert'
+        )
       })
     })
   })

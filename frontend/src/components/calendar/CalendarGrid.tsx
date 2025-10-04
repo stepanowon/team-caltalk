@@ -71,7 +71,7 @@ export function CalendarGrid({
   const schedulesByDate = useMemo(() => {
     const grouped: { [key: string]: Schedule[] } = {}
 
-    schedules.forEach(schedule => {
+    schedules.forEach((schedule) => {
       const startDate = new Date(schedule.start_time)
       const endDate = new Date(schedule.end_time)
 
@@ -94,9 +94,10 @@ export function CalendarGrid({
     })
 
     // Sort schedules by start time for each date
-    Object.keys(grouped).forEach(dateKey => {
-      grouped[dateKey].sort((a, b) =>
-        new Date(a.start_time).getTime() - new Date(b.start_time).getTime()
+    Object.keys(grouped).forEach((dateKey) => {
+      grouped[dateKey].sort(
+        (a, b) =>
+          new Date(a.start_time).getTime() - new Date(b.start_time).getTime()
       )
     })
 
@@ -166,7 +167,8 @@ export function CalendarGrid({
                 <span
                   className={cn(
                     'text-sm font-medium',
-                    isTodayDate && 'bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs',
+                    isTodayDate &&
+                      'bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs',
                     isWeekendDate && !isTodayDate && 'text-red-500',
                     !isCurrentMonthDate && 'text-gray-400'
                   )}
@@ -183,7 +185,7 @@ export function CalendarGrid({
 
               {/* Schedules */}
               <div className="space-y-1">
-                {daySchedules.slice(0, 3).map(schedule => (
+                {daySchedules.slice(0, 3).map((schedule) => (
                   <ScheduleCard
                     key={schedule.id}
                     schedule={schedule}

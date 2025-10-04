@@ -115,7 +115,7 @@ function checkScheduleConflict(
   const startTime = new Date(start)
   const endTime = new Date(end)
 
-  return mockSchedules.some(schedule => {
+  return mockSchedules.some((schedule) => {
     if (schedule.id === excludeId || schedule.team_id !== teamId) return false
 
     const existingStart = new Date(schedule.start_time)
@@ -145,14 +145,14 @@ export const scheduleHandlers = [
       )
     }
 
-    let filteredSchedules = mockSchedules.filter(s => s.team_id === teamId)
+    let filteredSchedules = mockSchedules.filter((s) => s.team_id === teamId)
 
     // 날짜 필터링
     if (startDate && endDate) {
       const start = new Date(startDate)
       const end = new Date(endDate)
 
-      filteredSchedules = filteredSchedules.filter(schedule => {
+      filteredSchedules = filteredSchedules.filter((schedule) => {
         const scheduleStart = new Date(schedule.start_time)
         return scheduleStart >= start && scheduleStart <= end
       })
@@ -162,12 +162,14 @@ export const scheduleHandlers = [
     const isSlowNetwork = url.searchParams.get('slow') === 'true'
 
     if (isSlowNetwork) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         setTimeout(() => {
-          resolve(HttpResponse.json({
-            success: true,
-            data: { schedules: filteredSchedules },
-          }))
+          resolve(
+            HttpResponse.json({
+              success: true,
+              data: { schedules: filteredSchedules },
+            })
+          )
         }, 3000) // 3초 지연
       })
     }
@@ -190,7 +192,7 @@ export const scheduleHandlers = [
       )
     }
 
-    const schedule = mockSchedules.find(s => s.id === scheduleId)
+    const schedule = mockSchedules.find((s) => s.id === scheduleId)
 
     if (!schedule) {
       return HttpResponse.json(
@@ -206,93 +208,96 @@ export const scheduleHandlers = [
   }),
 
   // 일정 생성
-  http.post(`${API_BASE_URL}/teams/:teamId/schedules`, async ({ request, params }) => {
-    const authorization = request.headers.get('Authorization')
-    const teamId = Number(params.teamId)
+  http.post(
+    `${API_BASE_URL}/teams/:teamId/schedules`,
+    async ({ request, params }) => {
+      const authorization = request.headers.get('Authorization')
+      const teamId = Number(params.teamId)
 
-    if (!authorization?.startsWith('Bearer ')) {
-      return HttpResponse.json(
-        { success: false, error: '인증이 필요합니다.' },
-        { status: 401 }
-      )
-    }
+      if (!authorization?.startsWith('Bearer ')) {
+        return HttpResponse.json(
+          { success: false, error: '인증이 필요합니다.' },
+          { status: 401 }
+        )
+      }
 
-    const token = authorization.slice(7)
-    const userId = getUserIdFromToken(token)
+      const token = authorization.slice(7)
+      const userId = getUserIdFromToken(token)
 
-    // 권한 확인
-    if (!hasLeaderPermission(userId, teamId)) {
-      return HttpResponse.json(
-        { success: false, error: '일정 생성 권한이 없습니다.' },
-        { status: 403 }
-      )
-    }
+      // 권한 확인
+      if (!hasLeaderPermission(userId, teamId)) {
+        return HttpResponse.json(
+          { success: false, error: '일정 생성 권한이 없습니다.' },
+          { status: 403 }
+        )
+      }
 
-    const body = await request.json() as {
-      title: string
-      description?: string
-      start_time: string
-      end_time: string
-      participant_ids?: number[]
-    }
+      const body = (await request.json()) as {
+        title: string
+        description?: string
+        start_time: string
+        end_time: string
+        participant_ids?: number[]
+      }
 
-    // 일정 길이 검증 (최대 7일)
-    const startTime = new Date(body.start_time)
-    const endTime = new Date(body.end_time)
-    const duration = endTime.getTime() - startTime.getTime()
-    const maxDuration = 7 * 24 * 60 * 60 * 1000 // 7일
+      // 일정 길이 검증 (최대 7일)
+      const startTime = new Date(body.start_time)
+      const endTime = new Date(body.end_time)
+      const duration = endTime.getTime() - startTime.getTime()
+      const maxDuration = 7 * 24 * 60 * 60 * 1000 // 7일
 
-    if (duration > maxDuration) {
-      return HttpResponse.json(
-        { success: false, error: '일정 기간은 최대 7일까지 가능합니다.' },
-        { status: 400 }
-      )
-    }
+      if (duration > maxDuration) {
+        return HttpResponse.json(
+          { success: false, error: '일정 기간은 최대 7일까지 가능합니다.' },
+          { status: 400 }
+        )
+      }
 
-    // 충돌 검사
-    if (checkScheduleConflict(body.start_time, body.end_time, teamId)) {
-      return HttpResponse.json(
-        {
-          success: false,
-          error: '해당 시간에 이미 다른 일정이 있습니다.',
-          conflict: true
-        },
-        { status: 409 }
-      )
-    }
-
-    const newSchedule = {
-      id: mockSchedules.length + 1,
-      title: body.title,
-      description: body.description || '',
-      start_time: body.start_time,
-      end_time: body.end_time,
-      team_id: teamId,
-      creator_id: userId,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      participants: [
-        {
-          id: Date.now(),
-          schedule_id: mockSchedules.length + 1,
-          user_id: userId,
-          status: 'accepted' as const,
-          user: {
-            id: userId,
-            username: 'testuser',
-            full_name: '테스트 사용자',
+      // 충돌 검사
+      if (checkScheduleConflict(body.start_time, body.end_time, teamId)) {
+        return HttpResponse.json(
+          {
+            success: false,
+            error: '해당 시간에 이미 다른 일정이 있습니다.',
+            conflict: true,
           },
-        },
-      ],
+          { status: 409 }
+        )
+      }
+
+      const newSchedule = {
+        id: mockSchedules.length + 1,
+        title: body.title,
+        description: body.description || '',
+        start_time: body.start_time,
+        end_time: body.end_time,
+        team_id: teamId,
+        creator_id: userId,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        participants: [
+          {
+            id: Date.now(),
+            schedule_id: mockSchedules.length + 1,
+            user_id: userId,
+            status: 'accepted' as const,
+            user: {
+              id: userId,
+              username: 'testuser',
+              full_name: '테스트 사용자',
+            },
+          },
+        ],
+      }
+
+      mockSchedules.push(newSchedule)
+
+      return HttpResponse.json({
+        success: true,
+        data: { schedule: newSchedule },
+      })
     }
-
-    mockSchedules.push(newSchedule)
-
-    return HttpResponse.json({
-      success: true,
-      data: { schedule: newSchedule },
-    })
-  }),
+  ),
 
   // 일정 수정
   http.patch(`${API_BASE_URL}/schedules/:id`, async ({ request, params }) => {
@@ -309,7 +314,7 @@ export const scheduleHandlers = [
     const token = authorization.slice(7)
     const userId = getUserIdFromToken(token)
 
-    const scheduleIndex = mockSchedules.findIndex(s => s.id === scheduleId)
+    const scheduleIndex = mockSchedules.findIndex((s) => s.id === scheduleId)
     if (scheduleIndex === -1) {
       return HttpResponse.json(
         { success: false, error: '일정을 찾을 수 없습니다.' },
@@ -320,14 +325,17 @@ export const scheduleHandlers = [
     const schedule = mockSchedules[scheduleIndex]
 
     // 권한 확인 (팀장 또는 생성자만)
-    if (!hasLeaderPermission(userId, schedule.team_id) && schedule.creator_id !== userId) {
+    if (
+      !hasLeaderPermission(userId, schedule.team_id) &&
+      schedule.creator_id !== userId
+    ) {
       return HttpResponse.json(
         { success: false, error: '일정 수정 권한이 없습니다.' },
         { status: 403 }
       )
     }
 
-    const body = await request.json() as Partial<{
+    const body = (await request.json()) as Partial<{
       title: string
       description: string
       start_time: string
@@ -336,12 +344,19 @@ export const scheduleHandlers = [
 
     // 시간 변경 시 충돌 검사
     if (body.start_time && body.end_time) {
-      if (checkScheduleConflict(body.start_time, body.end_time, schedule.team_id, scheduleId)) {
+      if (
+        checkScheduleConflict(
+          body.start_time,
+          body.end_time,
+          schedule.team_id,
+          scheduleId
+        )
+      ) {
         return HttpResponse.json(
           {
             success: false,
             error: '해당 시간에 이미 다른 일정이 있습니다.',
-            conflict: true
+            conflict: true,
           },
           { status: 409 }
         )
@@ -377,7 +392,7 @@ export const scheduleHandlers = [
     const token = authorization.slice(7)
     const userId = getUserIdFromToken(token)
 
-    const scheduleIndex = mockSchedules.findIndex(s => s.id === scheduleId)
+    const scheduleIndex = mockSchedules.findIndex((s) => s.id === scheduleId)
     if (scheduleIndex === -1) {
       return HttpResponse.json(
         { success: false, error: '일정을 찾을 수 없습니다.' },
@@ -388,7 +403,10 @@ export const scheduleHandlers = [
     const schedule = mockSchedules[scheduleIndex]
 
     // 권한 확인 (팀장 또는 생성자만)
-    if (!hasLeaderPermission(userId, schedule.team_id) && schedule.creator_id !== userId) {
+    if (
+      !hasLeaderPermission(userId, schedule.team_id) &&
+      schedule.creator_id !== userId
+    ) {
       return HttpResponse.json(
         { success: false, error: '일정 삭제 권한이 없습니다.' },
         { status: 403 }
@@ -414,7 +432,7 @@ export const scheduleHandlers = [
       )
     }
 
-    const body = await request.json() as {
+    const body = (await request.json()) as {
       start_time: string
       end_time: string
       team_id: number
@@ -432,15 +450,22 @@ export const scheduleHandlers = [
     let suggestions: Array<{ start_time: string; end_time: string }> = []
 
     if (hasConflict) {
-      const duration = new Date(body.end_time).getTime() - new Date(body.start_time).getTime()
+      const duration =
+        new Date(body.end_time).getTime() - new Date(body.start_time).getTime()
       const startDate = new Date(body.start_time)
 
       // 1시간 뒤, 2시간 뒤, 다음날 같은 시간 제안
       for (let i = 1; i <= 3; i++) {
-        const newStart = new Date(startDate.getTime() + (i * 60 * 60 * 1000))
+        const newStart = new Date(startDate.getTime() + i * 60 * 60 * 1000)
         const newEnd = new Date(newStart.getTime() + duration)
 
-        if (!checkScheduleConflict(newStart.toISOString(), newEnd.toISOString(), body.team_id)) {
+        if (
+          !checkScheduleConflict(
+            newStart.toISOString(),
+            newEnd.toISOString(),
+            body.team_id
+          )
+        ) {
           suggestions.push({
             start_time: newStart.toISOString(),
             end_time: newEnd.toISOString(),

@@ -21,10 +21,13 @@ class MockScheduleService {
   }
 
   // 일정 목록 조회
-  async getSchedules(teamId: number, params?: {
-    startDate?: string
-    endDate?: string
-  }) {
+  async getSchedules(
+    teamId: number,
+    params?: {
+      startDate?: string
+      endDate?: string
+    }
+  ) {
     const searchParams = new URLSearchParams()
     if (params?.startDate) searchParams.append('start_date', params.startDate)
     if (params?.endDate) searchParams.append('end_date', params.endDate)
@@ -60,13 +63,16 @@ class MockScheduleService {
   }
 
   // 일정 생성
-  async createSchedule(teamId: number, scheduleData: {
-    title: string
-    description?: string
-    start_time: string
-    end_time: string
-    participant_ids?: number[]
-  }) {
+  async createSchedule(
+    teamId: number,
+    scheduleData: {
+      title: string
+      description?: string
+      start_time: string
+      end_time: string
+      participant_ids?: number[]
+    }
+  ) {
     const response = await fetch(`${this.baseURL}/teams/${teamId}/schedules`, {
       method: 'POST',
       headers: this.getHeaders(),
@@ -83,12 +89,15 @@ class MockScheduleService {
   }
 
   // 일정 수정
-  async updateSchedule(scheduleId: number, updateData: {
-    title?: string
-    description?: string
-    start_time?: string
-    end_time?: string
-  }) {
+  async updateSchedule(
+    scheduleId: number,
+    updateData: {
+      title?: string
+      description?: string
+      start_time?: string
+      end_time?: string
+    }
+  ) {
     const response = await fetch(`${this.baseURL}/schedules/${scheduleId}`, {
       method: 'PATCH',
       headers: this.getHeaders(),
@@ -143,13 +152,19 @@ class MockScheduleService {
   }
 
   // 참가자 상태 업데이트
-  async updateParticipantStatus(scheduleId: number, status: 'accepted' | 'declined' | 'pending') {
+  async updateParticipantStatus(
+    scheduleId: number,
+    status: 'accepted' | 'declined' | 'pending'
+  ) {
     // 실제로는 별도 API 엔드포인트가 있을 수 있음
-    const response = await fetch(`${this.baseURL}/schedules/${scheduleId}/participants`, {
-      method: 'PATCH',
-      headers: this.getHeaders(),
-      body: JSON.stringify({ status }),
-    })
+    const response = await fetch(
+      `${this.baseURL}/schedules/${scheduleId}/participants`,
+      {
+        method: 'PATCH',
+        headers: this.getHeaders(),
+        body: JSON.stringify({ status }),
+      }
+    )
 
     if (!response.ok) {
       const errorData = await response.json()
@@ -174,24 +189,28 @@ class MockScheduleService {
   // 일정 검색
   async searchSchedules(teamId: number, query: string) {
     const schedules = await this.getSchedules(teamId)
-    return schedules.filter((schedule: any) =>
-      schedule.title.toLowerCase().includes(query.toLowerCase()) ||
-      schedule.description?.toLowerCase().includes(query.toLowerCase())
+    return schedules.filter(
+      (schedule: any) =>
+        schedule.title.toLowerCase().includes(query.toLowerCase()) ||
+        schedule.description?.toLowerCase().includes(query.toLowerCase())
     )
   }
 
   // 반복 일정 생성 (확장 기능)
-  async createRecurringSchedule(teamId: number, scheduleData: {
-    title: string
-    description?: string
-    start_time: string
-    end_time: string
-    recurrence: {
-      type: 'daily' | 'weekly' | 'monthly'
-      interval: number
-      end_date: string
+  async createRecurringSchedule(
+    teamId: number,
+    scheduleData: {
+      title: string
+      description?: string
+      start_time: string
+      end_time: string
+      recurrence: {
+        type: 'daily' | 'weekly' | 'monthly'
+        interval: number
+        end_date: string
+      }
     }
-  }) {
+  ) {
     // 반복 일정은 여러 개의 단일 일정으로 생성
     const schedules = []
     const startDate = new Date(scheduleData.start_time)
@@ -215,11 +234,17 @@ class MockScheduleService {
 
       // 다음 일정 날짜 계산
       if (scheduleData.recurrence.type === 'daily') {
-        currentDate.setDate(currentDate.getDate() + scheduleData.recurrence.interval)
+        currentDate.setDate(
+          currentDate.getDate() + scheduleData.recurrence.interval
+        )
       } else if (scheduleData.recurrence.type === 'weekly') {
-        currentDate.setDate(currentDate.getDate() + (7 * scheduleData.recurrence.interval))
+        currentDate.setDate(
+          currentDate.getDate() + 7 * scheduleData.recurrence.interval
+        )
       } else if (scheduleData.recurrence.type === 'monthly') {
-        currentDate.setMonth(currentDate.getMonth() + scheduleData.recurrence.interval)
+        currentDate.setMonth(
+          currentDate.getMonth() + scheduleData.recurrence.interval
+        )
       }
     }
 
@@ -251,7 +276,7 @@ describe('ScheduleService', () => {
     it('날짜 범위를 지정하여 일정을 조회한다', async () => {
       const schedules = await scheduleService.getSchedules(1, {
         startDate: '2024-01-01',
-        endDate: '2024-01-31'
+        endDate: '2024-01-31',
       })
 
       expect(schedules).toBeDefined()
@@ -308,7 +333,10 @@ describe('ScheduleService', () => {
         end_time: '2024-01-15T11:00:00Z',
       }
 
-      const createdSchedule = await scheduleService.createSchedule(1, scheduleData)
+      const createdSchedule = await scheduleService.createSchedule(
+        1,
+        scheduleData
+      )
 
       expect(createdSchedule).toBeDefined()
       expect(createdSchedule.title).toBe(scheduleData.title)
@@ -323,7 +351,10 @@ describe('ScheduleService', () => {
         participant_ids: [1, 2, 3],
       }
 
-      const createdSchedule = await scheduleService.createSchedule(1, scheduleData)
+      const createdSchedule = await scheduleService.createSchedule(
+        1,
+        scheduleData
+      )
 
       expect(createdSchedule).toBeDefined()
       expect(createdSchedule.title).toBe(scheduleData.title)
@@ -400,7 +431,10 @@ describe('ScheduleService', () => {
         description: '수정된 설명',
       }
 
-      const updatedSchedule = await scheduleService.updateSchedule(1, updateData)
+      const updatedSchedule = await scheduleService.updateSchedule(
+        1,
+        updateData
+      )
 
       expect(updatedSchedule).toBeDefined()
       expect(updatedSchedule.title).toBe(updateData.title)
@@ -412,7 +446,10 @@ describe('ScheduleService', () => {
         end_time: '2024-01-01T15:00:00Z',
       }
 
-      const updatedSchedule = await scheduleService.updateSchedule(1, updateData)
+      const updatedSchedule = await scheduleService.updateSchedule(
+        1,
+        updateData
+      )
 
       expect(updatedSchedule).toBeDefined()
     })
@@ -508,7 +545,8 @@ describe('ScheduleService', () => {
         team_id: 1,
       }
 
-      const result = await scheduleService.checkScheduleConflict(nonConflictData)
+      const result =
+        await scheduleService.checkScheduleConflict(nonConflictData)
 
       expect(result.hasConflict).toBe(false)
       expect(result.suggestions).toBeDefined()
@@ -574,7 +612,10 @@ describe('ScheduleService', () => {
         })
       )
 
-      const result = await scheduleService.updateParticipantStatus(1, 'accepted')
+      const result = await scheduleService.updateParticipantStatus(
+        1,
+        'accepted'
+      )
 
       expect(result).toBeDefined()
       expect(result.status).toBe('accepted')
@@ -606,7 +647,7 @@ describe('ScheduleService', () => {
       results.forEach((schedule: any) => {
         expect(
           schedule.title.toLowerCase().includes('회의') ||
-          schedule.description?.toLowerCase().includes('회의')
+            schedule.description?.toLowerCase().includes('회의')
         ).toBe(true)
       })
     })
@@ -639,7 +680,10 @@ describe('ScheduleService', () => {
         },
       }
 
-      const schedules = await scheduleService.createRecurringSchedule(1, recurringData)
+      const schedules = await scheduleService.createRecurringSchedule(
+        1,
+        recurringData
+      )
 
       expect(schedules).toHaveLength(5) // 1일부터 5일까지
       schedules.forEach((schedule: any) => {
@@ -659,7 +703,10 @@ describe('ScheduleService', () => {
         },
       }
 
-      const schedules = await scheduleService.createRecurringSchedule(1, recurringData)
+      const schedules = await scheduleService.createRecurringSchedule(
+        1,
+        recurringData
+      )
 
       expect(schedules.length).toBeGreaterThan(1)
       expect(schedules[0].title).toBe(recurringData.title)
@@ -677,7 +724,10 @@ describe('ScheduleService', () => {
         },
       }
 
-      const schedules = await scheduleService.createRecurringSchedule(1, recurringData)
+      const schedules = await scheduleService.createRecurringSchedule(
+        1,
+        recurringData
+      )
 
       expect(schedules.length).toBeGreaterThan(1)
       expect(schedules[0].title).toBe(recurringData.title)
@@ -711,7 +761,7 @@ describe('ScheduleService', () => {
     it('타임아웃을 처리한다', async () => {
       server.use(
         http.get('*/teams/1/schedules', async () => {
-          await new Promise(resolve => setTimeout(resolve, 10000)) // 10초 지연
+          await new Promise((resolve) => setTimeout(resolve, 10000)) // 10초 지연
           return HttpResponse.json({ success: true, data: { schedules: [] } })
         })
       )

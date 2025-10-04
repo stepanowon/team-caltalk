@@ -140,15 +140,15 @@ export function Teams() {
     try {
       await navigator.clipboard.writeText(inviteCode)
       toast({
-        title: "복사 완료",
-        description: "초대 코드가 클립보드에 복사되었습니다.",
+        title: '복사 완료',
+        description: '초대 코드가 클립보드에 복사되었습니다.',
       })
     } catch (error) {
       logger.error('복사 실패:', error)
       toast({
-        title: "복사 실패",
-        description: "복사에 실패했습니다. 직접 선택해서 복사해주세요.",
-        variant: "destructive",
+        title: '복사 실패',
+        description: '복사에 실패했습니다. 직접 선택해서 복사해주세요.',
+        variant: 'destructive',
       })
     }
   }
@@ -156,9 +156,9 @@ export function Teams() {
   // 팀 설정 핸들러
   const handleTeamSettings = () => {
     toast({
-      title: "준비 중",
-      description: "팀 설정 기능은 추후 구현 예정입니다.",
-      variant: "default",
+      title: '준비 중',
+      description: '팀 설정 기능은 추후 구현 예정입니다.',
+      variant: 'default',
     })
   }
 

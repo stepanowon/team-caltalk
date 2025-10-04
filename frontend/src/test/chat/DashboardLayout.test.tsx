@@ -26,7 +26,11 @@ const MockCalendar = ({ onDateSelect, selectedDate }: any) => (
 
 // Mock 채팅 컴포넌트
 const MockChatRoom = ({ teamId, selectedDate }: any) => (
-  <div data-testid="chat-room-component" data-team-id={teamId} data-selected-date={selectedDate}>
+  <div
+    data-testid="chat-room-component"
+    data-team-id={teamId}
+    data-selected-date={selectedDate}
+  >
     <div data-testid="chat-header">채팅 - {selectedDate}</div>
     <div data-testid="chat-messages">메시지 목록</div>
     <div data-testid="chat-input">메시지 입력</div>
@@ -39,7 +43,9 @@ const MockDashboardLayout = () => {
   const [sidebarOpen, setSidebarOpen] = React.useState(true)
   const [currentTeam] = React.useState({ id: 1, name: '개발팀' })
   const [isMobile, setIsMobile] = React.useState(false)
-  const [activeView, setActiveView] = React.useState<'calendar' | 'chat'>('calendar')
+  const [activeView, setActiveView] = React.useState<'calendar' | 'chat'>(
+    'calendar'
+  )
 
   // 화면 크기에 따른 모바일 감지
   React.useEffect(() => {
@@ -72,7 +78,10 @@ const MockDashboardLayout = () => {
   }
 
   return (
-    <div data-testid="dashboard-layout" className={`dashboard-layout ${isMobile ? 'mobile' : 'desktop'}`}>
+    <div
+      data-testid="dashboard-layout"
+      className={`dashboard-layout ${isMobile ? 'mobile' : 'desktop'}`}
+    >
       {/* 헤더 */}
       <header data-testid="dashboard-header" className="dashboard-header">
         <button
@@ -135,7 +144,10 @@ const MockDashboardLayout = () => {
         <main data-testid="dashboard-main" className="dashboard-main">
           {/* 모바일 뷰 토글 버튼 */}
           {isMobile && (
-            <div data-testid="mobile-view-toggle" className="mobile-view-toggle">
+            <div
+              data-testid="mobile-view-toggle"
+              className="mobile-view-toggle"
+            >
               <button
                 data-testid="mobile-calendar-tab"
                 onClick={() => toggleView('calendar')}
@@ -208,7 +220,13 @@ const MockDashboardLayout = () => {
 }
 
 // 테스트 래퍼 컴포넌트
-const TestWrapper = ({ children, initialRoute = '/' }: { children: React.ReactNode; initialRoute?: string }) => {
+const TestWrapper = ({
+  children,
+  initialRoute = '/',
+}: {
+  children: React.ReactNode
+  initialRoute?: string
+}) => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: { retry: false },
@@ -218,9 +236,7 @@ const TestWrapper = ({ children, initialRoute = '/' }: { children: React.ReactNo
 
   return (
     <QueryClientProvider client={queryClient}>
-      <MemoryRouter initialEntries={[initialRoute]}>
-        {children}
-      </MemoryRouter>
+      <MemoryRouter initialEntries={[initialRoute]}>{children}</MemoryRouter>
     </QueryClientProvider>
   )
 }
@@ -285,7 +301,9 @@ describe('DashboardLayout', () => {
       )
 
       expect(screen.getByTestId('sidebar-date-info')).toBeInTheDocument()
-      expect(screen.getByTestId('selected-date-display')).toHaveTextContent('2024-01-15')
+      expect(screen.getByTestId('selected-date-display')).toHaveTextContent(
+        '2024-01-15'
+      )
     })
   })
 
@@ -381,7 +399,9 @@ describe('DashboardLayout', () => {
       await user.click(chatTab)
 
       expect(screen.getByTestId('mobile-chat-view')).toBeInTheDocument()
-      expect(screen.queryByTestId('mobile-calendar-view')).not.toBeInTheDocument()
+      expect(
+        screen.queryByTestId('mobile-calendar-view')
+      ).not.toBeInTheDocument()
       expect(chatTab).toHaveClass('active')
     })
 
@@ -442,7 +462,9 @@ describe('DashboardLayout', () => {
       const dateButton = screen.getByTestId('calendar-date-2024-01-16')
       await user.click(dateButton)
 
-      expect(screen.getByTestId('selected-date-display')).toHaveTextContent('2024-01-16')
+      expect(screen.getByTestId('selected-date-display')).toHaveTextContent(
+        '2024-01-16'
+      )
     })
 
     it('선택된 날짜가 채팅에 반영되어야 한다', async () => {
@@ -483,7 +505,9 @@ describe('DashboardLayout', () => {
       // 채팅 뷰로 자동 전환되었는지 확인
       await waitFor(() => {
         expect(screen.getByTestId('mobile-chat-view')).toBeInTheDocument()
-        expect(screen.queryByTestId('mobile-calendar-view')).not.toBeInTheDocument()
+        expect(
+          screen.queryByTestId('mobile-calendar-view')
+        ).not.toBeInTheDocument()
         expect(screen.getByTestId('mobile-chat-tab')).toHaveClass('active')
       })
     })
@@ -666,7 +690,10 @@ describe('DashboardLayout', () => {
 
       unmount()
 
-      expect(removeEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function))
+      expect(removeEventListenerSpy).toHaveBeenCalledWith(
+        'resize',
+        expect.any(Function)
+      )
     })
 
     it('불필요한 리렌더링이 발생하지 않아야 한다', () => {

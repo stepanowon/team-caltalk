@@ -11,7 +11,12 @@ export interface LongPollingState {
 
 // 실시간 이벤트 타입
 export interface RealtimeEvent {
-  type: 'new_message' | 'schedule_update' | 'user_typing' | 'user_joined' | 'user_left'
+  type:
+    | 'new_message'
+    | 'schedule_update'
+    | 'user_typing'
+    | 'user_joined'
+    | 'user_left'
   data: any
   timestamp: string
 }
@@ -55,7 +60,7 @@ export class MockLongPolling {
   // 이벤트 발생
   private emit(event: string, ...args: any[]) {
     const handlers = this.eventHandlers.get(event) || []
-    handlers.forEach(handler => handler(...args))
+    handlers.forEach((handler) => handler(...args))
   }
 
   // 연결 시작
@@ -122,10 +127,12 @@ export class MockLongPolling {
         const newEvents = this.getNewEvents()
 
         if (newEvents.length > 0) {
-          newEvents.forEach(event => {
+          newEvents.forEach((event) => {
             this.emit(event.type, event.data)
           })
-          this.state.lastMessageId = Math.max(...newEvents.map(e => e.data.id || 0))
+          this.state.lastMessageId = Math.max(
+            ...newEvents.map((e) => e.data.id || 0)
+          )
         }
 
         // 재연결 성공 시 재시도 카운터 초기화
@@ -135,7 +142,6 @@ export class MockLongPolling {
         if (this.state.isConnected) {
           this.pollingTimer = setTimeout(poll, this.state.pollingInterval)
         }
-
       } catch (error) {
         this.handlePollingError(error, teamId, messageDate)
       }
@@ -151,7 +157,10 @@ export class MockLongPolling {
 
     if (this.state.retryCount <= this.state.maxRetries) {
       // 백오프 전략: 재시도 간격을 점진적으로 증가
-      const backoffDelay = Math.min(1000 * Math.pow(2, this.state.retryCount), 30000)
+      const backoffDelay = Math.min(
+        1000 * Math.pow(2, this.state.retryCount),
+        30000
+      )
 
       this.pollingTimer = setTimeout(() => {
         if (this.state.isConnected) {
@@ -159,11 +168,17 @@ export class MockLongPolling {
         }
       }, backoffDelay)
 
-      this.emit('reconnecting', { attempt: this.state.retryCount, delay: backoffDelay })
+      this.emit('reconnecting', {
+        attempt: this.state.retryCount,
+        delay: backoffDelay,
+      })
     } else {
       // 최대 재시도 횟수 초과
       this.state.isConnected = false
-      this.emit('connection_failed', { error, retryCount: this.state.retryCount })
+      this.emit('connection_failed', {
+        error,
+        retryCount: this.state.retryCount,
+      })
     }
   }
 
@@ -242,7 +257,7 @@ export const realtimeTestScenarios = {
       },
     ]
 
-    messages.forEach(msg => mockPolling.addMockEvent(msg))
+    messages.forEach((msg) => mockPolling.addMockEvent(msg))
   },
 
   // 일정 업데이트 알림
@@ -327,7 +342,7 @@ export const realtimeTestScenarios = {
       timestamp: new Date(Date.now() + i * 1000).toISOString(),
     }))
 
-    messages.forEach(msg => mockPolling.addMockEvent(msg))
+    messages.forEach((msg) => mockPolling.addMockEvent(msg))
   },
 }
 
@@ -354,7 +369,10 @@ export const performanceTestHelpers = {
   },
 
   // 스크롤 성능 측정
-  measureScrollPerformance: (container: HTMLElement, scrollDistance: number) => {
+  measureScrollPerformance: (
+    container: HTMLElement,
+    scrollDistance: number
+  ) => {
     const startTime = performance.now()
 
     // 스크롤 애니메이션 시뮬레이션
@@ -381,7 +399,10 @@ export const performanceTestHelpers = {
   },
 
   // 폴링 성능 측정
-  measurePollingPerformance: (mockPolling: MockLongPolling, duration: number) => {
+  measurePollingPerformance: (
+    mockPolling: MockLongPolling,
+    duration: number
+  ) => {
     const startTime = performance.now()
     let eventCount = 0
     let errorCount = 0
@@ -467,7 +488,11 @@ export const createMockChatService = () => ({
 
 // 테스트 데이터 생성기
 export const generateTestData = {
-  messages: (count: number, teamId: string = 'team-1', date: string = '2024-12-25') => {
+  messages: (
+    count: number,
+    teamId: string = 'team-1',
+    date: string = '2024-12-25'
+  ) => {
     return Array.from({ length: count }, (_, i) => ({
       id: i + 1,
       content: `테스트 메시지 ${i + 1}`,
@@ -509,7 +534,7 @@ export const generateTestData = {
   },
 
   typingStates: (userIds: string[]) => {
-    return userIds.map(userId => ({
+    return userIds.map((userId) => ({
       user_id: userId,
       user_name: `사용자${userId}`,
       team_id: 'team-1',

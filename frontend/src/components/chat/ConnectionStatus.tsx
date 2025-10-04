@@ -17,7 +17,7 @@ export default function ConnectionStatus({ className }: ConnectionStatusProps) {
         icon: RotateCcw,
         text: '연결 중...',
         variant: 'secondary' as const,
-        className: 'text-blue-600 bg-blue-50'
+        className: 'text-blue-600 bg-blue-50',
       }
     }
 
@@ -26,7 +26,7 @@ export default function ConnectionStatus({ className }: ConnectionStatusProps) {
         icon: Wifi,
         text: '온라인',
         variant: 'secondary' as const,
-        className: 'text-green-600 bg-green-50'
+        className: 'text-green-600 bg-green-50',
       }
     }
 
@@ -35,7 +35,7 @@ export default function ConnectionStatus({ className }: ConnectionStatusProps) {
         icon: RotateCcw,
         text: '재연결 중...',
         variant: 'secondary' as const,
-        className: 'text-yellow-600 bg-yellow-50'
+        className: 'text-yellow-600 bg-yellow-50',
       }
     }
 
@@ -43,11 +43,16 @@ export default function ConnectionStatus({ className }: ConnectionStatusProps) {
       icon: WifiOff,
       text: '오프라인',
       variant: 'destructive' as const,
-      className: 'text-red-600 bg-red-50'
+      className: 'text-red-600 bg-red-50',
     }
   }
 
-  const { icon: Icon, text, variant, className: statusClassName } = getStatusConfig()
+  const {
+    icon: Icon,
+    text,
+    variant,
+    className: statusClassName,
+  } = getStatusConfig()
 
   return (
     <Badge
@@ -58,10 +63,12 @@ export default function ConnectionStatus({ className }: ConnectionStatusProps) {
         className
       )}
     >
-      <Icon className={cn(
-        'w-3 h-3',
-        (isLoading || connectionStatus.isReconnecting) && 'animate-spin'
-      )} />
+      <Icon
+        className={cn(
+          'w-3 h-3',
+          (isLoading || connectionStatus.isReconnecting) && 'animate-spin'
+        )}
+      />
       {text}
     </Badge>
   )

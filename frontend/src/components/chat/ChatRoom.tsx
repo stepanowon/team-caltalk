@@ -16,15 +16,23 @@ interface ChatRoomProps {
   className?: string
 }
 
-export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomProps) {
-  const { setMessages, setConnected, setLoading, setError, reset } = useChatStore()
+export default function ChatRoom({
+  teamId,
+  selectedDate,
+  className,
+}: ChatRoomProps) {
+  const { setMessages, setConnected, setLoading, setError, reset } =
+    useChatStore()
   const { teams } = useTeamStore()
 
   const teamIdNum = typeof teamId === 'string' ? parseInt(teamId) : teamId
-  const currentTeamById = teams.find(team => team.id === teamIdNum)
-  const currentTeamByString = teams.find(team => team.id == teamId)
-  const currentTeamByStringStrict = teams.find(team => String(team.id) === String(teamId))
-  const currentTeam = currentTeamById || currentTeamByString || currentTeamByStringStrict
+  const currentTeamById = teams.find((team) => team.id === teamIdNum)
+  const currentTeamByString = teams.find((team) => team.id == teamId)
+  const currentTeamByStringStrict = teams.find(
+    (team) => String(team.id) === String(teamId)
+  )
+  const currentTeam =
+    currentTeamById || currentTeamByString || currentTeamByStringStrict
 
   // 오늘 날짜인지 확인
   const isToday = getKoreanDateISO() === selectedDate
@@ -43,8 +51,9 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
   // 메시지 데이터를 Zustand store에 동기화
   useEffect(() => {
     if (messagesData?.success && messagesData.data?.messages) {
-      const sortedMessages = messagesData.data.messages.sort((a, b) =>
-        new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+      const sortedMessages = messagesData.data.messages.sort(
+        (a, b) =>
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
       )
       setMessages(sortedMessages)
       setConnected(true)
@@ -54,9 +63,21 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
       setMessages([])
       setConnected(false)
       setLoading(false)
-      setError(messagesError instanceof Error ? messagesError.message : '메시지를 불러오는데 실패했습니다.')
+      setError(
+        messagesError instanceof Error
+          ? messagesError.message
+          : '메시지를 불러오는데 실패했습니다.'
+      )
     }
-  }, [messagesData, isError, messagesError, setMessages, setConnected, setLoading, setError])
+  }, [
+    messagesData,
+    isError,
+    messagesError,
+    setMessages,
+    setConnected,
+    setLoading,
+    setError,
+  ])
 
   // 로딩 상태 동기화
   useEffect(() => {
@@ -84,17 +105,23 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
         targetDate: selectedDate,
       })
     } catch (error) {
-      setError(error instanceof Error ? error.message : '메시지 전송에 실패했습니다.')
+      setError(
+        error instanceof Error ? error.message : '메시지 전송에 실패했습니다.'
+      )
       throw error
     }
   }
 
   if (!currentTeam) {
     return (
-      <Card className={cn('h-full flex items-center justify-center', className)}>
+      <Card
+        className={cn('h-full flex items-center justify-center', className)}
+      >
         <CardContent className="text-center py-8">
           <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">팀을 찾을 수 없습니다</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">
+            팀을 찾을 수 없습니다
+          </h3>
           <p className="text-gray-500">선택된 팀 정보를 확인할 수 없습니다.</p>
         </CardContent>
       </Card>
@@ -112,7 +139,7 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
                 timeZone: 'Asia/Seoul',
                 month: 'long',
                 day: 'numeric',
-                weekday: 'short'
+                weekday: 'short',
               })}
             </span>
           </div>
@@ -147,7 +174,9 @@ export default function ChatRoom({ teamId, selectedDate, className }: ChatRoomPr
       {messagesError && (
         <div className="flex-shrink-0 bg-red-50 border-t border-red-200 p-3">
           <p className="text-sm text-red-700">
-            {messagesError instanceof Error ? messagesError.message : '오류가 발생했습니다.'}
+            {messagesError instanceof Error
+              ? messagesError.message
+              : '오류가 발생했습니다.'}
           </p>
         </div>
       )}

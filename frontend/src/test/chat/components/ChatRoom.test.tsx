@@ -1,8 +1,16 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { screen, waitFor, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { renderChat, mockMessages, simulateRealtimeEvents, mockChatContext } from '../utils/chat-test-utils'
-import { MockLongPolling, realtimeTestScenarios } from '../utils/realtime-test-helpers'
+import {
+  renderChat,
+  mockMessages,
+  simulateRealtimeEvents,
+  mockChatContext,
+} from '../utils/chat-test-utils'
+import {
+  MockLongPolling,
+  realtimeTestScenarios,
+} from '../utils/realtime-test-helpers'
 import { server } from '@/test/mocks/server'
 import { http, HttpResponse } from 'msw'
 
@@ -10,8 +18,13 @@ import { http, HttpResponse } from 'msw'
 const MockChatRoom = ({ teamId, messageDate, onScheduleClick }: any) => {
   return (
     <div data-testid="chat-room" role="main" aria-label="채팅방">
-      <div data-testid="message-list" role="log" aria-live="polite" aria-label="메시지 목록">
-        {mockMessages.map(msg => (
+      <div
+        data-testid="message-list"
+        role="log"
+        aria-live="polite"
+        aria-label="메시지 목록"
+      >
+        {mockMessages.map((msg) => (
           <div
             key={msg.id}
             data-message-id={msg.id}
@@ -71,34 +84,41 @@ describe('ChatRoom', () => {
 
     // API 모킹
     server.use(
-      http.get('http://localhost:3000/api/teams/:teamId/messages', ({ request, params }) => {
-        const url = new URL(request.url)
-        const date = url.searchParams.get('date')
+      http.get(
+        'http://localhost:3000/api/teams/:teamId/messages',
+        ({ request, params }) => {
+          const url = new URL(request.url)
+          const date = url.searchParams.get('date')
 
-        return HttpResponse.json({
-          success: true,
-          data: mockMessages.filter(msg =>
-            msg.team_id === params.teamId && msg.message_date === date
-          ),
-        })
-      }),
+          return HttpResponse.json({
+            success: true,
+            data: mockMessages.filter(
+              (msg) =>
+                msg.team_id === params.teamId && msg.message_date === date
+            ),
+          })
+        }
+      ),
 
-      http.post('http://localhost:3000/api/teams/:teamId/messages', ({ request, params }) => {
-        return HttpResponse.json({
-          success: true,
-          data: {
-            id: Date.now(),
-            team_id: params.teamId,
-            content: 'Test message',
-            user_id: 'current-user',
-            user_name: '현재 사용자',
-            message_date: '2024-12-25',
-            created_at: new Date().toISOString(),
-            message_type: 'text',
-            related_schedule_id: null,
-          },
-        })
-      })
+      http.post(
+        'http://localhost:3000/api/teams/:teamId/messages',
+        ({ request, params }) => {
+          return HttpResponse.json({
+            success: true,
+            data: {
+              id: Date.now(),
+              team_id: params.teamId,
+              content: 'Test message',
+              user_id: 'current-user',
+              user_name: '현재 사용자',
+              message_date: '2024-12-25',
+              created_at: new Date().toISOString(),
+              message_type: 'text',
+              related_schedule_id: null,
+            },
+          })
+        }
+      )
     )
   })
 
@@ -121,7 +141,7 @@ describe('ChatRoom', () => {
       renderChat(<ChatRoom {...defaultProps} />)
 
       await waitFor(() => {
-        mockMessages.forEach(msg => {
+        mockMessages.forEach((msg) => {
           expect(screen.getByText(msg.content)).toBeInTheDocument()
           expect(screen.getByText(msg.user_name)).toBeInTheDocument()
         })
@@ -134,7 +154,10 @@ describe('ChatRoom', () => {
       const messageInput = screen.getByTestId('message-input')
       expect(messageInput).toBeInTheDocument()
       expect(messageInput).toHaveAttribute('maxLength', '500')
-      expect(messageInput).toHaveAttribute('placeholder', '메시지를 입력하세요...')
+      expect(messageInput).toHaveAttribute(
+        'placeholder',
+        '메시지를 입력하세요...'
+      )
     })
 
     it('전송 버튼이 표시되어야 한다', () => {
@@ -238,10 +261,13 @@ describe('ChatRoom', () => {
     it('일정 업데이트 메시지가 표시되어야 한다', async () => {
       renderChat(<ChatRoom {...defaultProps} />)
 
-      const scheduleUpdateEvent = simulateRealtimeEvents.scheduleUpdate('schedule-1', {
-        title: '팀 회의',
-        start_time: '2024-12-25T15:00:00Z',
-      })
+      const scheduleUpdateEvent = simulateRealtimeEvents.scheduleUpdate(
+        'schedule-1',
+        {
+          title: '팀 회의',
+          start_time: '2024-12-25T15:00:00Z',
+        }
+      )
 
       act(() => {
         mockLongPolling.emit('schedule_update', scheduleUpdateEvent.data)
@@ -254,10 +280,14 @@ describe('ChatRoom', () => {
 
     it('메시지 수신 시 자동 스크롤이 작동해야 한다', async () => {
       const { container } = renderChat(<ChatRoom {...defaultProps} />)
-      const messageList = container.querySelector('[data-testid="message-list"]') as HTMLElement
+      const messageList = container.querySelector(
+        '[data-testid="message-list"]'
+      ) as HTMLElement
 
       // 스크롤 위치 모킹
-      const scrollToBottomSpy = vi.spyOn(messageList, 'scrollTo').mockImplementation()
+      const scrollToBottomSpy = vi
+        .spyOn(messageList, 'scrollTo')
+        .mockImplementation()
 
       const newMessageEvent = simulateRealtimeEvents.newMessage({
         content: '자동 스크롤 테스트',
@@ -293,7 +323,7 @@ describe('ChatRoom', () => {
 
     it('본인의 타이핑 상태는 표시되지 않아야 한다', async () => {
       renderChat(<ChatRoom {...defaultProps} />, {
-        chatContext: { ...mockChatContext, userId: 'user-1' }
+        chatContext: { ...mockChatContext, userId: 'user-1' },
       })
 
       const typingEvent = simulateRealtimeEvents.userTyping('user-1', '김팀장')
@@ -303,7 +333,9 @@ describe('ChatRoom', () => {
       })
 
       await waitFor(() => {
-        expect(screen.queryByText(/김팀장님이 입력 중입니다/)).not.toBeInTheDocument()
+        expect(
+          screen.queryByText(/김팀장님이 입력 중입니다/)
+        ).not.toBeInTheDocument()
       })
     })
 
@@ -327,7 +359,9 @@ describe('ChatRoom', () => {
       })
 
       await waitFor(() => {
-        expect(screen.queryByText(/이개발님이 입력 중입니다/)).not.toBeInTheDocument()
+        expect(
+          screen.queryByText(/이개발님이 입력 중입니다/)
+        ).not.toBeInTheDocument()
       })
 
       vi.useRealTimers()
@@ -384,13 +418,15 @@ describe('ChatRoom', () => {
       act(() => {
         mockLongPolling.emit('connection_failed', {
           error: new Error('Max retries exceeded'),
-          retryCount: 3
+          retryCount: 3,
         })
       })
 
       await waitFor(() => {
         expect(screen.getByText(/연결에 실패했습니다/)).toBeInTheDocument()
-        expect(screen.getByRole('button', { name: /다시 시도/ })).toBeInTheDocument()
+        expect(
+          screen.getByRole('button', { name: /다시 시도/ })
+        ).toBeInTheDocument()
       })
     })
   })
@@ -400,7 +436,9 @@ describe('ChatRoom', () => {
       const onScheduleClick = vi.fn()
       const user = userEvent.setup()
 
-      renderChat(<ChatRoom {...defaultProps} onScheduleClick={onScheduleClick} />)
+      renderChat(
+        <ChatRoom {...defaultProps} onScheduleClick={onScheduleClick} />
+      )
 
       // 일정 관련 메시지 찾기
       const scheduleMessage = screen.getByText(/일정이 변경되었습니다/)
@@ -412,7 +450,10 @@ describe('ChatRoom', () => {
     it('일정 업데이트 메시지에 특별한 스타일이 적용되어야 한다', async () => {
       renderChat(<ChatRoom {...defaultProps} />)
 
-      const scheduleUpdateEvent = simulateRealtimeEvents.scheduleUpdate('schedule-1', {})
+      const scheduleUpdateEvent = simulateRealtimeEvents.scheduleUpdate(
+        'schedule-1',
+        {}
+      )
 
       act(() => {
         mockLongPolling.emit('schedule_update', scheduleUpdateEvent.data)
@@ -420,7 +461,9 @@ describe('ChatRoom', () => {
 
       await waitFor(() => {
         const scheduleMessage = screen.getByText(/일정이 변경되었습니다/)
-        expect(scheduleMessage.closest('[data-message-id]')).toHaveClass('schedule-message')
+        expect(scheduleMessage.closest('[data-message-id]')).toHaveClass(
+          'schedule-message'
+        )
       })
     })
   })
@@ -459,7 +502,9 @@ describe('ChatRoom', () => {
 
     it('스크롤 성능이 원활해야 한다', async () => {
       const { container } = renderChat(<ChatRoom {...defaultProps} />)
-      const messageList = container.querySelector('[data-testid="message-list"]') as HTMLElement
+      const messageList = container.querySelector(
+        '[data-testid="message-list"]'
+      ) as HTMLElement
 
       // 스크롤 이벤트 성능 측정
       const scrollStartTime = performance.now()
@@ -498,7 +543,9 @@ describe('ChatRoom', () => {
       await user.click(sendButton)
 
       await waitFor(() => {
-        expect(screen.getByText(/메시지 전송에 실패했습니다/)).toBeInTheDocument()
+        expect(
+          screen.getByText(/메시지 전송에 실패했습니다/)
+        ).toBeInTheDocument()
       })
     })
 
@@ -510,7 +557,9 @@ describe('ChatRoom', () => {
       })
 
       await waitFor(() => {
-        expect(screen.getByText(/네트워크 연결을 확인해주세요/)).toBeInTheDocument()
+        expect(
+          screen.getByText(/네트워크 연결을 확인해주세요/)
+        ).toBeInTheDocument()
       })
     })
   })
@@ -521,8 +570,14 @@ describe('ChatRoom', () => {
 
       expect(screen.getByTestId('chat-room')).toHaveAttribute('role', 'main')
       expect(screen.getByTestId('message-list')).toHaveAttribute('role', 'log')
-      expect(screen.getByTestId('message-list')).toHaveAttribute('aria-live', 'polite')
-      expect(screen.getByTestId('message-input')).toHaveAttribute('aria-label', '메시지 입력')
+      expect(screen.getByTestId('message-list')).toHaveAttribute(
+        'aria-live',
+        'polite'
+      )
+      expect(screen.getByTestId('message-input')).toHaveAttribute(
+        'aria-label',
+        '메시지 입력'
+      )
     })
 
     it('키보드 네비게이션이 가능해야 한다', async () => {

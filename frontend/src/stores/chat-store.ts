@@ -112,7 +112,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
 
   updateMessage: (messageId, updates) => {
     const state = get()
-    const updatedMessages = state.messages.map(msg =>
+    const updatedMessages = state.messages.map((msg) =>
       msg.id === messageId ? { ...msg, ...updates } : msg
     )
     set({ messages: updatedMessages })
@@ -121,7 +121,9 @@ export const useChatStore = create<ChatState>((set, get) => ({
 
   removeMessage: (messageId) => {
     const state = get()
-    const filteredMessages = state.messages.filter(msg => msg.id !== messageId)
+    const filteredMessages = state.messages.filter(
+      (msg) => msg.id !== messageId
+    )
     set({ messages: filteredMessages })
     get().groupMessagesByDate(filteredMessages)
   },
@@ -143,8 +145,10 @@ export const useChatStore = create<ChatState>((set, get) => ({
   groupMessagesByDate: (messages) => {
     const grouped: { [key: string]: ChatMessage[] } = {}
 
-    messages.forEach(message => {
-      const messageDate = new Date(message.message_date).toISOString().split('T')[0]
+    messages.forEach((message) => {
+      const messageDate = new Date(message.message_date)
+        .toISOString()
+        .split('T')[0]
 
       if (!grouped[messageDate]) {
         grouped[messageDate] = []
@@ -153,9 +157,10 @@ export const useChatStore = create<ChatState>((set, get) => ({
     })
 
     // 각 날짜별로 시간순 정렬
-    Object.keys(grouped).forEach(date => {
-      grouped[date].sort((a, b) =>
-        new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+    Object.keys(grouped).forEach((date) => {
+      grouped[date].sort(
+        (a, b) =>
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
       )
     })
 
@@ -164,32 +169,36 @@ export const useChatStore = create<ChatState>((set, get) => ({
 
   // 연결 상태 관리
   setConnectionStatus: (status) => {
-    set(state => ({
-      connectionStatus: { ...state.connectionStatus, ...status }
+    set((state) => ({
+      connectionStatus: { ...state.connectionStatus, ...status },
     }))
   },
 
   setConnected: (connected) => {
-    set(state => ({
+    set((state) => ({
       connectionStatus: {
         ...state.connectionStatus,
         isConnected: connected,
-        lastConnected: connected ? new Date() : state.connectionStatus.lastConnected,
+        lastConnected: connected
+          ? new Date()
+          : state.connectionStatus.lastConnected,
         reconnecting: false,
-      }
+      },
     }))
   },
 
   setReconnecting: (reconnecting) => {
-    set(state => ({
-      connectionStatus: { ...state.connectionStatus, reconnecting }
+    set((state) => ({
+      connectionStatus: { ...state.connectionStatus, reconnecting },
     }))
   },
 
   // 타이핑 인디케이터
   addTypingUser: ({ userId, username }) => {
     const state = get()
-    const existingIndex = state.typingUsers.findIndex(user => user.userId === userId)
+    const existingIndex = state.typingUsers.findIndex(
+      (user) => user.userId === userId
+    )
 
     if (existingIndex >= 0) {
       // 기존 사용자의 타임스탬프 업데이트
@@ -202,11 +211,14 @@ export const useChatStore = create<ChatState>((set, get) => ({
     } else {
       // 새로운 타이핑 사용자 추가
       set({
-        typingUsers: [...state.typingUsers, {
-          userId,
-          username,
-          timestamp: new Date(),
-        }]
+        typingUsers: [
+          ...state.typingUsers,
+          {
+            userId,
+            username,
+            timestamp: new Date(),
+          },
+        ],
       })
     }
 
@@ -217,8 +229,8 @@ export const useChatStore = create<ChatState>((set, get) => ({
   },
 
   removeTypingUser: (userId) => {
-    set(state => ({
-      typingUsers: state.typingUsers.filter(user => user.userId !== userId)
+    set((state) => ({
+      typingUsers: state.typingUsers.filter((user) => user.userId !== userId),
     }))
   },
 

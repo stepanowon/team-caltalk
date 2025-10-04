@@ -111,7 +111,7 @@ export const mockSchedules = [
 
 // 실시간 이벤트 시뮬레이션
 export const simulateRealtimeEvents = {
-  newMessage: (message: Partial<typeof mockMessages[0]>) => {
+  newMessage: (message: Partial<(typeof mockMessages)[0]>) => {
     const event = new MessageEvent('message', {
       data: JSON.stringify({
         type: 'new_message',
@@ -172,7 +172,10 @@ export const simulateRealtimeEvents = {
 
 // 채팅 성능 측정 헬퍼
 export const performanceHelpers = {
-  measureScrollPerformance: async (container: HTMLElement, messageCount: number) => {
+  measureScrollPerformance: async (
+    container: HTMLElement,
+    messageCount: number
+  ) => {
     const startTime = performance.now()
 
     // 메시지 로딩 시뮬레이션
@@ -273,8 +276,9 @@ export const responsiveHelpers = {
     const container = renderFn()
 
     return {
-      isMobileLayout: container.classList.contains('mobile') ||
-                     window.getComputedStyle(container).display === 'block',
+      isMobileLayout:
+        container.classList.contains('mobile') ||
+        window.getComputedStyle(container).display === 'block',
       chatHeight: container.offsetHeight,
       inputHeight: container.querySelector('.message-input')?.clientHeight || 0,
     }

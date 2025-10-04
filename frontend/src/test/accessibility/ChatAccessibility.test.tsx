@@ -44,7 +44,7 @@ const MockAccessibleChatRoom = () => {
         message_type: 'text',
       }
 
-      setMessages(prev => [...prev, message])
+      setMessages((prev) => [...prev, message])
       setNewMessage('')
 
       // 스크린 리더를 위한 알림
@@ -136,7 +136,8 @@ const MockAccessibleChatRoom = () => {
                 >
                   <div className="schedule-info">
                     <span className="sr-only">요청된 일정:</span>
-                    {message.metadata?.requested_start_time} - {message.metadata?.requested_end_time}
+                    {message.metadata?.requested_start_time} -{' '}
+                    {message.metadata?.requested_end_time}
                   </div>
                   <div role="group" aria-label="일정 변경 요청 응답">
                     <button
@@ -182,7 +183,9 @@ const MockAccessibleChatRoom = () => {
           aria-labelledby="message-input-heading"
           data-testid="message-input-section"
         >
-          <h2 id="message-input-heading" className="sr-only">메시지 작성</h2>
+          <h2 id="message-input-heading" className="sr-only">
+            메시지 작성
+          </h2>
 
           <div className="input-container">
             <label htmlFor="message-input" className="sr-only">
@@ -228,7 +231,9 @@ const MockAccessibleChatRoom = () => {
             </button>
 
             <div id="send-button-help" className="sr-only">
-              {newMessage.trim() ? '메시지를 전송합니다' : '메시지를 입력한 후 전송할 수 있습니다'}
+              {newMessage.trim()
+                ? '메시지를 전송합니다'
+                : '메시지를 입력한 후 전송할 수 있습니다'}
             </div>
           </div>
         </section>
@@ -324,7 +329,9 @@ describe('ChatAccessibility', () => {
       )
 
       // h1 제목 확인
-      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('팀 채팅방')
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+        '팀 채팅방'
+      )
 
       // h2 제목들 확인 (스크린 리더 전용 포함)
       const headings = screen.getAllByRole('heading', { level: 2 })
@@ -349,7 +356,9 @@ describe('ChatAccessibility', () => {
 
       // aria-describedby 확인
       expect(messageInput).toHaveAttribute('aria-describedby', 'input-help')
-      expect(screen.getByText('Enter 키로 전송, Shift+Enter로 줄바꿈')).toHaveAttribute('id', 'input-help')
+      expect(
+        screen.getByText('Enter 키로 전송, Shift+Enter로 줄바꿈')
+      ).toHaveAttribute('id', 'input-help')
     })
   })
 
@@ -379,7 +388,10 @@ describe('ChatAccessibility', () => {
 
       expect(connectionStatus).toHaveAttribute('role', 'status')
       expect(connectionStatus).toHaveAttribute('aria-live', 'polite')
-      expect(connectionStatus).toHaveAttribute('aria-label', '연결 상태: 연결됨')
+      expect(connectionStatus).toHaveAttribute(
+        'aria-label',
+        '연결 상태: 연결됨'
+      )
     })
 
     it('타이핑 인디케이터가 스크린 리더에 알려져야 한다', () => {
@@ -394,7 +406,10 @@ describe('ChatAccessibility', () => {
       expect(typingIndicator).toHaveAttribute('role', 'status')
       expect(typingIndicator).toHaveAttribute('aria-live', 'polite')
       expect(typingIndicator).toHaveAttribute('aria-atomic', 'true')
-      expect(typingIndicator).toHaveAttribute('aria-label', '사용자 3님이 입력 중입니다')
+      expect(typingIndicator).toHaveAttribute(
+        'aria-label',
+        '사용자 3님이 입력 중입니다'
+      )
     })
 
     it('메시지 전송 후 알림이 스크린 리더에 전달되어야 한다', async () => {
@@ -417,7 +432,9 @@ describe('ChatAccessibility', () => {
       await user.click(sendButton)
 
       await waitFor(() => {
-        expect(statusAnnouncements).toHaveTextContent('메시지가 전송되었습니다: 테스트 메시지')
+        expect(statusAnnouncements).toHaveTextContent(
+          '메시지가 전송되었습니다: 테스트 메시지'
+        )
       })
     })
   })
@@ -537,13 +554,22 @@ describe('ChatAccessibility', () => {
       const scheduleChangeSection = screen.getByTestId('schedule-change-2')
 
       expect(scheduleChangeSection).toHaveAttribute('role', 'region')
-      expect(scheduleChangeSection).toHaveAttribute('aria-label', '일정 변경 요청')
+      expect(scheduleChangeSection).toHaveAttribute(
+        'aria-label',
+        '일정 변경 요청'
+      )
 
       const approveButton = screen.getByTestId('approve-2')
       const rejectButton = screen.getByTestId('reject-2')
 
-      expect(approveButton).toHaveAttribute('aria-label', '사용자 2의 일정 변경 요청 승인')
-      expect(rejectButton).toHaveAttribute('aria-label', '사용자 2의 일정 변경 요청 거절')
+      expect(approveButton).toHaveAttribute(
+        'aria-label',
+        '사용자 2의 일정 변경 요청 승인'
+      )
+      expect(rejectButton).toHaveAttribute(
+        'aria-label',
+        '사용자 2의 일정 변경 요청 거절'
+      )
     })
 
     it('버튼 상태가 적절히 전달되어야 한다', () => {
@@ -558,7 +584,9 @@ describe('ChatAccessibility', () => {
       // 초기 상태 (비활성화)
       expect(sendButton).toBeDisabled()
       expect(sendButton).toHaveAttribute('aria-describedby', 'send-button-help')
-      expect(screen.getByText('메시지를 입력한 후 전송할 수 있습니다')).toBeInTheDocument()
+      expect(
+        screen.getByText('메시지를 입력한 후 전송할 수 있습니다')
+      ).toBeInTheDocument()
     })
 
     it('글자 수 정보가 스크린 리더에 전달되어야 한다', async () => {
@@ -603,7 +631,7 @@ describe('ChatAccessibility', () => {
 
       const timeElements = screen.getAllByRole('time')
 
-      timeElements.forEach(timeElement => {
+      timeElements.forEach((timeElement) => {
         expect(timeElement).toHaveAttribute('dateTime')
         expect(timeElement).toHaveAttribute('aria-label')
         expect(timeElement.getAttribute('aria-label')).toMatch(/전송 시간:/)
@@ -618,10 +646,14 @@ describe('ChatAccessibility', () => {
       )
 
       // 메시지 입력 도움말
-      expect(screen.getByText('Enter 키로 전송, Shift+Enter로 줄바꿈')).toBeInTheDocument()
+      expect(
+        screen.getByText('Enter 키로 전송, Shift+Enter로 줄바꿈')
+      ).toBeInTheDocument()
 
       // 전송 버튼 도움말
-      expect(screen.getByText('메시지를 입력한 후 전송할 수 있습니다')).toBeInTheDocument()
+      expect(
+        screen.getByText('메시지를 입력한 후 전송할 수 있습니다')
+      ).toBeInTheDocument()
     })
   })
 
@@ -659,7 +691,9 @@ describe('ChatAccessibility', () => {
 
       // 승인 후 알림이 스크린 리더에 전달되는지 확인
       await waitFor(() => {
-        expect(screen.getByTestId('status-announcements')).toHaveTextContent('일정 변경이 승인되었습니다.')
+        expect(screen.getByTestId('status-announcements')).toHaveTextContent(
+          '일정 변경이 승인되었습니다.'
+        )
       })
     })
   })
@@ -712,7 +746,7 @@ describe('ChatAccessibility', () => {
       // 버튼들이 최소 44x44px 타겟 크기를 가져야 함 (실제 구현에서 CSS로 확인)
       const buttons = screen.getAllByRole('button')
 
-      buttons.forEach(button => {
+      buttons.forEach((button) => {
         expect(button).toBeInTheDocument()
         // 실제 구현에서는 getComputedStyle을 사용하여 크기 확인
       })

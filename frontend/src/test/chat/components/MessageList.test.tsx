@@ -5,7 +5,14 @@ import { renderChat, mockMessages } from '../utils/chat-test-utils'
 import { generateTestData } from '../utils/realtime-test-helpers'
 
 // MessageList 컴포넌트 모킹 (실제 구현 전까지)
-const MockMessageList = ({ messages, currentUserId, onMessageClick, onLoadMore, isLoading, hasMore }: any) => {
+const MockMessageList = ({
+  messages,
+  currentUserId,
+  onMessageClick,
+  onLoadMore,
+  isLoading,
+  hasMore,
+}: any) => {
   return (
     <div
       data-testid="message-list"
@@ -52,14 +59,16 @@ const MockMessageList = ({ messages, currentUserId, onMessageClick, onLoadMore, 
               >
                 {new Date(msg.created_at).toLocaleTimeString('ko-KR', {
                   hour: '2-digit',
-                  minute: '2-digit'
+                  minute: '2-digit',
                 })}
               </time>
             </div>
 
             <div data-testid="message-content" className="content">
               {msg.message_type === 'schedule_update' && (
-                <span data-testid="schedule-icon" aria-label="일정 업데이트">📅</span>
+                <span data-testid="schedule-icon" aria-label="일정 업데이트">
+                  📅
+                </span>
               )}
               {msg.content}
             </div>
@@ -118,7 +127,7 @@ describe('MessageList', () => {
       expect(screen.getByTestId('messages-container')).toBeInTheDocument()
 
       // 모든 메시지가 렌더링되는지 확인
-      mockMessages.forEach(msg => {
+      mockMessages.forEach((msg) => {
         expect(screen.getByTestId(`message-${msg.id}`)).toBeInTheDocument()
         expect(screen.getByText(msg.content)).toBeInTheDocument()
         expect(screen.getByText(msg.user_name)).toBeInTheDocument()
@@ -140,7 +149,7 @@ describe('MessageList', () => {
       expect(timeElements).toHaveLength(mockMessages.length)
 
       // 한국 시간 형식 확인 (HH:MM)
-      timeElements.forEach(timeElement => {
+      timeElements.forEach((timeElement) => {
         expect(timeElement.textContent).toMatch(/^\d{2}:\d{2}$/)
       })
     })
@@ -158,7 +167,9 @@ describe('MessageList', () => {
 
   describe('메시지 타입별 렌더링', () => {
     it('일반 텍스트 메시지가 올바르게 표시되어야 한다', () => {
-      const textMessage = mockMessages.find(msg => msg.message_type === 'text')!
+      const textMessage = mockMessages.find(
+        (msg) => msg.message_type === 'text'
+      )!
       renderChat(<MessageList {...defaultProps} messages={[textMessage]} />)
 
       const messageElement = screen.getByTestId(`message-${textMessage.id}`)
@@ -167,7 +178,9 @@ describe('MessageList', () => {
     })
 
     it('일정 업데이트 메시지가 특별하게 표시되어야 한다', () => {
-      const scheduleMessage = mockMessages.find(msg => msg.message_type === 'schedule_update')!
+      const scheduleMessage = mockMessages.find(
+        (msg) => msg.message_type === 'schedule_update'
+      )!
       renderChat(<MessageList {...defaultProps} messages={[scheduleMessage]} />)
 
       const messageElement = screen.getByTestId(`message-${scheduleMessage.id}`)
@@ -177,7 +190,9 @@ describe('MessageList', () => {
     })
 
     it('시스템 메시지가 구분되어 표시되어야 한다', () => {
-      const systemMessage = mockMessages.find(msg => msg.user_id === 'system')!
+      const systemMessage = mockMessages.find(
+        (msg) => msg.user_id === 'system'
+      )!
       renderChat(<MessageList {...defaultProps} messages={[systemMessage]} />)
 
       const messageElement = screen.getByTestId(`message-${systemMessage.id}`)
@@ -191,7 +206,9 @@ describe('MessageList', () => {
       const onMessageClick = vi.fn()
       const user = userEvent.setup()
 
-      renderChat(<MessageList {...defaultProps} onMessageClick={onMessageClick} />)
+      renderChat(
+        <MessageList {...defaultProps} onMessageClick={onMessageClick} />
+      )
 
       const message = screen.getByTestId('message-1')
       await user.click(message)
@@ -203,8 +220,16 @@ describe('MessageList', () => {
       const onMessageClick = vi.fn()
       const user = userEvent.setup()
 
-      const scheduleMessage = mockMessages.find(msg => msg.related_schedule_id)!
-      renderChat(<MessageList {...defaultProps} messages={[scheduleMessage]} onMessageClick={onMessageClick} />)
+      const scheduleMessage = mockMessages.find(
+        (msg) => msg.related_schedule_id
+      )!
+      renderChat(
+        <MessageList
+          {...defaultProps}
+          messages={[scheduleMessage]}
+          onMessageClick={onMessageClick}
+        />
+      )
 
       const scheduleLink = screen.getByTestId('schedule-link')
       await user.click(scheduleLink)
@@ -216,8 +241,16 @@ describe('MessageList', () => {
       const onMessageClick = vi.fn()
       const user = userEvent.setup()
 
-      const scheduleMessage = mockMessages.find(msg => msg.related_schedule_id)!
-      renderChat(<MessageList {...defaultProps} messages={[scheduleMessage]} onMessageClick={onMessageClick} />)
+      const scheduleMessage = mockMessages.find(
+        (msg) => msg.related_schedule_id
+      )!
+      renderChat(
+        <MessageList
+          {...defaultProps}
+          messages={[scheduleMessage]}
+          onMessageClick={onMessageClick}
+        />
+      )
 
       const scheduleLink = screen.getByTestId('schedule-link')
       await user.click(scheduleLink)
@@ -247,7 +280,9 @@ describe('MessageList', () => {
       const onLoadMore = vi.fn()
       const user = userEvent.setup()
 
-      renderChat(<MessageList {...defaultProps} hasMore={true} onLoadMore={onLoadMore} />)
+      renderChat(
+        <MessageList {...defaultProps} hasMore={true} onLoadMore={onLoadMore} />
+      )
 
       const loadMoreButton = screen.getByTestId('load-more-button')
       await user.click(loadMoreButton)
@@ -256,7 +291,9 @@ describe('MessageList', () => {
     })
 
     it('로딩 중일 때 로드 더 버튼이 비활성화되어야 한다', () => {
-      renderChat(<MessageList {...defaultProps} hasMore={true} isLoading={true} />)
+      renderChat(
+        <MessageList {...defaultProps} hasMore={true} isLoading={true} />
+      )
 
       const loadMoreButton = screen.getByTestId('load-more-button')
       expect(loadMoreButton).toBeDisabled()
@@ -265,25 +302,32 @@ describe('MessageList', () => {
 
   describe('스크롤 동작', () => {
     it('새 메시지 추가 시 자동 스크롤이 작동해야 한다', async () => {
-      const { rerender, container } = renderChat(<MessageList {...defaultProps} />)
-      const messageList = container.querySelector('[data-testid="message-list"]') as HTMLElement
+      const { rerender, container } = renderChat(
+        <MessageList {...defaultProps} />
+      )
+      const messageList = container.querySelector(
+        '[data-testid="message-list"]'
+      ) as HTMLElement
 
       // 스크롤 모킹
       const scrollIntoViewSpy = vi.fn()
       Element.prototype.scrollIntoView = scrollIntoViewSpy
 
       // 새 메시지 추가
-      const newMessages = [...mockMessages, {
-        id: 4,
-        content: '새로운 메시지',
-        user_id: 'user-2',
-        user_name: '사용자2',
-        team_id: 'team-1',
-        message_date: '2024-12-25',
-        created_at: new Date().toISOString(),
-        message_type: 'text' as const,
-        related_schedule_id: null,
-      }]
+      const newMessages = [
+        ...mockMessages,
+        {
+          id: 4,
+          content: '새로운 메시지',
+          user_id: 'user-2',
+          user_name: '사용자2',
+          team_id: 'team-1',
+          message_date: '2024-12-25',
+          created_at: new Date().toISOString(),
+          message_type: 'text' as const,
+          related_schedule_id: null,
+        },
+      ]
 
       rerender(<MessageList {...defaultProps} messages={newMessages} />)
 
@@ -292,29 +336,45 @@ describe('MessageList', () => {
     })
 
     it('사용자가 스크롤을 위로 올린 상태에서는 자동 스크롤이 작동하지 않아야 한다', async () => {
-      const { rerender, container } = renderChat(<MessageList {...defaultProps} />)
-      const messageList = container.querySelector('[data-testid="message-list"]') as HTMLElement
+      const { rerender, container } = renderChat(
+        <MessageList {...defaultProps} />
+      )
+      const messageList = container.querySelector(
+        '[data-testid="message-list"]'
+      ) as HTMLElement
 
       // 스크롤을 위로 올린 상태 시뮬레이션
-      Object.defineProperty(messageList, 'scrollTop', { value: 100, writable: true })
-      Object.defineProperty(messageList, 'scrollHeight', { value: 800, writable: true })
-      Object.defineProperty(messageList, 'clientHeight', { value: 400, writable: true })
+      Object.defineProperty(messageList, 'scrollTop', {
+        value: 100,
+        writable: true,
+      })
+      Object.defineProperty(messageList, 'scrollHeight', {
+        value: 800,
+        writable: true,
+      })
+      Object.defineProperty(messageList, 'clientHeight', {
+        value: 400,
+        writable: true,
+      })
 
       const scrollIntoViewSpy = vi.fn()
       Element.prototype.scrollIntoView = scrollIntoViewSpy
 
       // 새 메시지 추가
-      const newMessages = [...mockMessages, {
-        id: 4,
-        content: '새로운 메시지',
-        user_id: 'user-2',
-        user_name: '사용자2',
-        team_id: 'team-1',
-        message_date: '2024-12-25',
-        created_at: new Date().toISOString(),
-        message_type: 'text' as const,
-        related_schedule_id: null,
-      }]
+      const newMessages = [
+        ...mockMessages,
+        {
+          id: 4,
+          content: '새로운 메시지',
+          user_id: 'user-2',
+          user_name: '사용자2',
+          team_id: 'team-1',
+          message_date: '2024-12-25',
+          created_at: new Date().toISOString(),
+          message_type: 'text' as const,
+          related_schedule_id: null,
+        },
+      ]
 
       rerender(<MessageList {...defaultProps} messages={newMessages} />)
 
@@ -353,7 +413,7 @@ describe('MessageList', () => {
 
   describe('읽음 상태', () => {
     it('본인 메시지에 읽음 상태가 표시되어야 한다', () => {
-      const ownMessage = mockMessages.find(msg => msg.user_id === 'user-1')!
+      const ownMessage = mockMessages.find((msg) => msg.user_id === 'user-1')!
       renderChat(<MessageList {...defaultProps} messages={[ownMessage]} />)
 
       expect(screen.getByTestId('message-status')).toBeInTheDocument()
@@ -361,7 +421,7 @@ describe('MessageList', () => {
     })
 
     it('다른 사용자 메시지에는 읽음 상태가 표시되지 않아야 한다', () => {
-      const otherMessage = mockMessages.find(msg => msg.user_id === 'user-2')!
+      const otherMessage = mockMessages.find((msg) => msg.user_id === 'user-2')!
       renderChat(<MessageList {...defaultProps} messages={[otherMessage]} />)
 
       expect(screen.queryByTestId('message-status')).not.toBeInTheDocument()
@@ -378,10 +438,13 @@ describe('MessageList', () => {
       expect(messageList).toHaveAttribute('aria-label', '메시지 목록')
 
       // 각 메시지의 접근성 속성 확인
-      mockMessages.forEach(msg => {
+      mockMessages.forEach((msg) => {
         const messageElement = screen.getByTestId(`message-${msg.id}`)
         expect(messageElement).toHaveAttribute('role', 'listitem')
-        expect(messageElement).toHaveAttribute('aria-label', `${msg.user_name}: ${msg.content}`)
+        expect(messageElement).toHaveAttribute(
+          'aria-label',
+          `${msg.user_name}: ${msg.content}`
+        )
       })
     })
 
@@ -406,11 +469,13 @@ describe('MessageList', () => {
       renderChat(<MessageList {...defaultProps} />)
 
       const timeElements = screen.getAllByTestId('message-time')
-      timeElements.forEach(timeElement => {
+      timeElements.forEach((timeElement) => {
         expect(timeElement).toHaveAttribute('dateTime')
       })
 
-      const scheduleMessage = mockMessages.find(msg => msg.message_type === 'schedule_update')
+      const scheduleMessage = mockMessages.find(
+        (msg) => msg.message_type === 'schedule_update'
+      )
       if (scheduleMessage) {
         const scheduleIcon = screen.getByTestId('schedule-icon')
         expect(scheduleIcon).toHaveAttribute('aria-label', '일정 업데이트')
@@ -422,11 +487,18 @@ describe('MessageList', () => {
     it('잘못된 메시지 데이터가 있어도 크래시하지 않아야 한다', () => {
       const invalidMessages = [
         ...mockMessages,
-        { id: 999, content: null, user_name: undefined, created_at: 'invalid-date' }
+        {
+          id: 999,
+          content: null,
+          user_name: undefined,
+          created_at: 'invalid-date',
+        },
       ]
 
       expect(() => {
-        renderChat(<MessageList {...defaultProps} messages={invalidMessages as any} />)
+        renderChat(
+          <MessageList {...defaultProps} messages={invalidMessages as any} />
+        )
       }).not.toThrow()
     })
 
@@ -434,7 +506,11 @@ describe('MessageList', () => {
       // 에러를 발생시키는 메시지 데이터
       const errorMessage = {
         ...mockMessages[0],
-        content: { toString: () => { throw new Error('Render error') } }
+        content: {
+          toString: () => {
+            throw new Error('Render error')
+          },
+        },
       }
 
       // 에러 바운더리로 감싸서 테스트

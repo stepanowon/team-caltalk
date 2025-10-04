@@ -1,14 +1,13 @@
-import React from 'react';
-import { useTeamStore } from '@/stores/team-store';
-import { ChatRoom } from '@/components/chat/ChatRoom';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { MessageSquare, Calendar } from 'lucide-react';
-import { getKoreanDate, getKoreanDateISO } from '@/utils/dateUtils';
+import React from 'react'
+import { useTeamStore } from '@/stores/team-store'
+import { ChatRoom } from '@/components/chat/ChatRoom'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { MessageSquare, Calendar } from 'lucide-react'
+import { getKoreanDate, getKoreanDateISO } from '@/utils/dateUtils'
 
 export function Chat() {
-  const { currentTeam } = useTeamStore();
-  const currentDate = getKoreanDateISO();
-
+  const { currentTeam } = useTeamStore()
+  const currentDate = getKoreanDateISO()
 
   if (!currentTeam) {
     return (
@@ -25,7 +24,7 @@ export function Chat() {
           </CardContent>
         </Card>
       </div>
-    );
+    )
   }
 
   return (
@@ -48,7 +47,7 @@ export function Chat() {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
-              weekday: 'long'
+              weekday: 'long',
             })}
           </p>
         </div>
@@ -60,7 +59,7 @@ export function Chat() {
         />
       </div>
     </div>
-  );
+  )
 }
 
-export default Chat;
+export default Chat

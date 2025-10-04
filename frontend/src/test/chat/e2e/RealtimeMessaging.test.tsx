@@ -12,7 +12,7 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
   const [currentUser] = React.useState({
     id: 'user-1',
     name: '김팀장',
-    role: 'leader'
+    role: 'leader',
   })
   const [teamMembers] = React.useState([
     { id: 'user-1', name: '김팀장', role: 'leader' },
@@ -38,7 +38,7 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
               user_id: 'user-2',
               user_name: '이개발',
               created_at: '2024-12-25T09:00:00Z',
-              message_type: 'text'
+              message_type: 'text',
             },
             {
               id: 2,
@@ -47,8 +47,8 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
               user_name: 'System',
               created_at: '2024-12-25T09:30:00Z',
               message_type: 'schedule_update',
-              related_schedule_id: 'schedule-1'
-            }
+              related_schedule_id: 'schedule-1',
+            },
           ]
           setMessages(existingMessages)
         }
@@ -64,10 +64,9 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
         } else if (scenario === 'connection-issues') {
           setTimeout(() => simulateConnectionIssues(), 2000)
         }
-
       } catch (error) {
         setConnectionState('error')
-        setErrors(prev => [...prev, 'Failed to initialize chat'])
+        setErrors((prev) => [...prev, 'Failed to initialize chat'])
       }
     }
 
@@ -83,33 +82,39 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
     // 타이핑 중지 및 메시지 수신
     setTimeout(() => {
       setTypingUsers([])
-      setMessages(prev => [...prev, {
-        id: Date.now(),
-        content: '실시간 메시지 테스트입니다!',
-        user_id: 'user-2',
-        user_name: '이개발',
-        created_at: new Date().toISOString(),
-        message_type: 'text'
-      }])
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now(),
+          content: '실시간 메시지 테스트입니다!',
+          user_id: 'user-2',
+          user_name: '이개발',
+          created_at: new Date().toISOString(),
+          message_type: 'text',
+        },
+      ])
     }, 2000)
 
     // 추가 사용자 활동
     setTimeout(() => {
-      setMessages(prev => [...prev, {
-        id: Date.now() + 1,
-        content: '저도 확인했습니다.',
-        user_id: 'user-3',
-        user_name: '박디자인',
-        created_at: new Date().toISOString(),
-        message_type: 'text'
-      }])
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          content: '저도 확인했습니다.',
+          user_id: 'user-3',
+          user_name: '박디자인',
+          created_at: new Date().toISOString(),
+          message_type: 'text',
+        },
+      ])
     }, 3500)
   }
 
   const simulateConnectionIssues = () => {
     // 연결 끊김
     setConnectionState('disconnected')
-    setErrors(prev => [...prev, 'Connection lost'])
+    setErrors((prev) => [...prev, 'Connection lost'])
 
     // 재연결 시도
     setTimeout(() => {
@@ -119,7 +124,7 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
     // 재연결 성공
     setTimeout(() => {
       setConnectionState('connected')
-      setErrors(prev => prev.filter(e => e !== 'Connection lost'))
+      setErrors((prev) => prev.filter((e) => e !== 'Connection lost'))
     }, 3000)
   }
 
@@ -135,13 +140,13 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
       user_id: currentUser.id,
       user_name: currentUser.name,
       created_at: new Date().toISOString(),
-      message_type: 'text' as const
+      message_type: 'text' as const,
     }
 
-    setMessages(prev => [...prev, newMessage])
+    setMessages((prev) => [...prev, newMessage])
 
     // 서버 응답 시뮬레이션
-    return new Promise(resolve => setTimeout(resolve, 200))
+    return new Promise((resolve) => setTimeout(resolve, 200))
   }
 
   const handleMessageSubmit = async (e: React.FormEvent) => {
@@ -156,18 +161,24 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
       await sendMessage(content)
       input.value = ''
     } catch (error) {
-      setErrors(prev => [...prev, 'Failed to send message'])
+      setErrors((prev) => [...prev, 'Failed to send message'])
     }
   }
 
   const getConnectionStatusText = () => {
     switch (connectionState) {
-      case 'connected': return '✅ 연결됨'
-      case 'connecting': return '🔄 연결 중...'
-      case 'disconnected': return '❌ 연결 끊김'
-      case 'reconnecting': return '🔄 재연결 중...'
-      case 'error': return '⚠️ 연결 오류'
-      default: return '❓ 알 수 없음'
+      case 'connected':
+        return '✅ 연결됨'
+      case 'connecting':
+        return '🔄 연결 중...'
+      case 'disconnected':
+        return '❌ 연결 끊김'
+      case 'reconnecting':
+        return '🔄 재연결 중...'
+      case 'error':
+        return '⚠️ 연결 오류'
+      default:
+        return '❓ 알 수 없음'
     }
   }
 
@@ -176,7 +187,10 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
       {/* 헤더 */}
       <div data-testid="chat-header" className="chat-header">
         <h2>팀 채팅 - 2024년 12월 25일</h2>
-        <div data-testid="connection-indicator" className={`connection ${connectionState}`}>
+        <div
+          data-testid="connection-indicator"
+          className={`connection ${connectionState}`}
+        >
           {getConnectionStatusText()}
         </div>
       </div>
@@ -184,8 +198,12 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
       {/* 팀 멤버 목록 */}
       <div data-testid="team-members" className="team-members">
         <h3>팀 멤버 ({teamMembers.length}명)</h3>
-        {teamMembers.map(member => (
-          <div key={member.id} data-testid={`member-${member.id}`} className="member">
+        {teamMembers.map((member) => (
+          <div
+            key={member.id}
+            data-testid={`member-${member.id}`}
+            className="member"
+          >
             <span className="name">{member.name}</span>
             <span className="role">({member.role})</span>
             {member.id === currentUser.id && <span className="you">(나)</span>}
@@ -213,7 +231,7 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
           aria-label="채팅 메시지"
           className="message-list"
         >
-          {messages.map(msg => (
+          {messages.map((msg) => (
             <div
               key={msg.id}
               data-testid={`message-${msg.id}`}
@@ -234,9 +252,11 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
                   data-testid={`schedule-link-${msg.id}`}
                   className="schedule-link"
                   onClick={() => {
-                    window.dispatchEvent(new CustomEvent('schedule-clicked', {
-                      detail: { scheduleId: msg.related_schedule_id }
-                    }))
+                    window.dispatchEvent(
+                      new CustomEvent('schedule-clicked', {
+                        detail: { scheduleId: msg.related_schedule_id },
+                      })
+                    )
                   }}
                 >
                   📅 일정 보기
@@ -249,16 +269,24 @@ const ChatE2EScenario = ({ scenario = 'normal' }: { scenario?: string }) => {
         {/* 타이핑 인디케이터 */}
         {typingUsers.length > 0 && (
           <div data-testid="typing-indicator" className="typing-indicator">
-            {typingUsers.map(userId => {
-              const user = teamMembers.find(m => m.id === userId)
-              return user?.name
-            }).filter(Boolean).join(', ')}님이 입력 중입니다...
+            {typingUsers
+              .map((userId) => {
+                const user = teamMembers.find((m) => m.id === userId)
+                return user?.name
+              })
+              .filter(Boolean)
+              .join(', ')}
+            님이 입력 중입니다...
           </div>
         )}
       </div>
 
       {/* 메시지 입력 */}
-      <form onSubmit={handleMessageSubmit} data-testid="message-form" className="message-form">
+      <form
+        onSubmit={handleMessageSubmit}
+        data-testid="message-form"
+        className="message-form"
+      >
         <div className="input-group">
           <textarea
             name="message"
@@ -301,51 +329,60 @@ describe('Realtime Messaging E2E Tests', () => {
 
     // 실제 API 응답 모킹
     server.use(
-      http.get('http://localhost:3000/api/teams/:teamId/messages', ({ params, request }) => {
-        const url = new URL(request.url)
-        const date = url.searchParams.get('date')
+      http.get(
+        'http://localhost:3000/api/teams/:teamId/messages',
+        ({ params, request }) => {
+          const url = new URL(request.url)
+          const date = url.searchParams.get('date')
 
-        return HttpResponse.json({
-          success: true,
-          data: [],
-          pagination: {
-            page: 1,
-            limit: 50,
-            total: 0,
-            hasMore: false
-          }
-        })
-      }),
+          return HttpResponse.json({
+            success: true,
+            data: [],
+            pagination: {
+              page: 1,
+              limit: 50,
+              total: 0,
+              hasMore: false,
+            },
+          })
+        }
+      ),
 
-      http.post('http://localhost:3000/api/teams/:teamId/messages', async ({ request, params }) => {
-        const body = await request.json()
+      http.post(
+        'http://localhost:3000/api/teams/:teamId/messages',
+        async ({ request, params }) => {
+          const body = await request.json()
 
-        return HttpResponse.json({
-          success: true,
-          data: {
-            id: Date.now(),
-            content: (body as any).content,
-            user_id: 'user-1',
-            user_name: '김팀장',
-            team_id: params.teamId,
-            message_date: (body as any).message_date || '2024-12-25',
-            created_at: new Date().toISOString(),
-            message_type: 'text',
-            related_schedule_id: null
-          }
-        })
-      }),
+          return HttpResponse.json({
+            success: true,
+            data: {
+              id: Date.now(),
+              content: (body as any).content,
+              user_id: 'user-1',
+              user_name: '김팀장',
+              team_id: params.teamId,
+              message_date: (body as any).message_date || '2024-12-25',
+              created_at: new Date().toISOString(),
+              message_type: 'text',
+              related_schedule_id: null,
+            },
+          })
+        }
+      ),
 
-      http.get('http://localhost:3000/api/teams/:teamId/members', ({ params }) => {
-        return HttpResponse.json({
-          success: true,
-          data: [
-            { id: 'user-1', name: '김팀장', role: 'leader' },
-            { id: 'user-2', name: '이개발', role: 'member' },
-            { id: 'user-3', name: '박디자인', role: 'member' }
-          ]
-        })
-      })
+      http.get(
+        'http://localhost:3000/api/teams/:teamId/members',
+        ({ params }) => {
+          return HttpResponse.json({
+            success: true,
+            data: [
+              { id: 'user-1', name: '김팀장', role: 'leader' },
+              { id: 'user-2', name: '이개발', role: 'member' },
+              { id: 'user-3', name: '박디자인', role: 'member' },
+            ],
+          })
+        }
+      )
     )
   })
 
@@ -367,9 +404,12 @@ describe('Realtime Messaging E2E Tests', () => {
       expect(screen.getByText('🔄 연결 중...')).toBeInTheDocument()
 
       // 3. 연결 완료 대기
-      await waitFor(() => {
-        expect(screen.getByText('✅ 연결됨')).toBeInTheDocument()
-      }, { timeout: 2000 })
+      await waitFor(
+        () => {
+          expect(screen.getByText('✅ 연결됨')).toBeInTheDocument()
+        },
+        { timeout: 2000 }
+      )
 
       // 4. 팀 멤버 목록 확인
       expect(screen.getByText('팀 멤버 (3명)')).toBeInTheDocument()
@@ -388,7 +428,9 @@ describe('Realtime Messaging E2E Tests', () => {
 
       // 6. 메시지 전송 확인
       await waitFor(() => {
-        expect(screen.getByText('안녕하세요! 첫 번째 메시지입니다.')).toBeInTheDocument()
+        expect(
+          screen.getByText('안녕하세요! 첫 번째 메시지입니다.')
+        ).toBeInTheDocument()
         expect(messageInput).toHaveValue('')
       })
 
@@ -397,7 +439,9 @@ describe('Realtime Messaging E2E Tests', () => {
       await user.keyboard('{Enter}')
 
       await waitFor(() => {
-        expect(screen.getByText('두 번째 메시지 (Enter로 전송)')).toBeInTheDocument()
+        expect(
+          screen.getByText('두 번째 메시지 (Enter로 전송)')
+        ).toBeInTheDocument()
       })
 
       // 8. 줄바꿈 테스트 (Shift+Enter)
@@ -424,7 +468,9 @@ describe('Realtime Messaging E2E Tests', () => {
 
       // 기존 메시지 확인
       expect(screen.getByText('오늘 회의는 몇 시인가요?')).toBeInTheDocument()
-      expect(screen.getByText('📅 팀 회의가 15:00로 변경되었습니다')).toBeInTheDocument()
+      expect(
+        screen.getByText('📅 팀 회의가 15:00로 변경되었습니다')
+      ).toBeInTheDocument()
 
       // 일정 관련 메시지의 링크 확인
       const scheduleLink = screen.getByTestId('schedule-link-2')
@@ -440,7 +486,7 @@ describe('Realtime Messaging E2E Tests', () => {
       await waitFor(() => {
         expect(scheduleClickHandler).toHaveBeenCalledWith(
           expect.objectContaining({
-            detail: { scheduleId: 'schedule-1' }
+            detail: { scheduleId: 'schedule-1' },
           })
         )
       })
@@ -464,7 +510,9 @@ describe('Realtime Messaging E2E Tests', () => {
       // 타이핑 상태 확인
       await waitFor(() => {
         expect(screen.getByTestId('typing-indicator')).toBeInTheDocument()
-        expect(screen.getByText('이개발님이 입력 중입니다...')).toBeInTheDocument()
+        expect(
+          screen.getByText('이개발님이 입력 중입니다...')
+        ).toBeInTheDocument()
       })
 
       // 메시지 수신 (2초 후)
@@ -474,7 +522,9 @@ describe('Realtime Messaging E2E Tests', () => {
 
       await waitFor(() => {
         expect(screen.queryByTestId('typing-indicator')).not.toBeInTheDocument()
-        expect(screen.getByText('실시간 메시지 테스트입니다!')).toBeInTheDocument()
+        expect(
+          screen.getByText('실시간 메시지 테스트입니다!')
+        ).toBeInTheDocument()
       })
 
       // 추가 메시지 수신 (3.5초 후)
@@ -571,7 +621,7 @@ describe('Realtime Messaging E2E Tests', () => {
       const messages = [
         '첫 번째 빠른 메시지',
         '두 번째 빠른 메시지',
-        '세 번째 빠른 메시지'
+        '세 번째 빠른 메시지',
       ]
 
       for (const message of messages) {
@@ -586,7 +636,7 @@ describe('Realtime Messaging E2E Tests', () => {
       }
 
       // 모든 메시지가 순서대로 표시되는지 확인
-      messages.forEach(message => {
+      messages.forEach((message) => {
         expect(screen.getByText(message)).toBeInTheDocument()
       })
     })
@@ -792,9 +842,12 @@ describe('Realtime Messaging E2E Tests', () => {
       renderChat(<ChatE2EScenario scenario="normal" />)
 
       // 연결 오류 상태 확인
-      await waitFor(() => {
-        expect(screen.getByText('⚠️ 연결 오류')).toBeInTheDocument()
-      }, { timeout: 2000 })
+      await waitFor(
+        () => {
+          expect(screen.getByText('⚠️ 연결 오류')).toBeInTheDocument()
+        },
+        { timeout: 2000 }
+      )
 
       // 모든 상호작용 요소가 비활성화되는지 확인
       const messageInput = screen.getByTestId('message-input')
@@ -828,7 +881,9 @@ describe('Realtime Messaging E2E Tests', () => {
         await user.keyboard('{Enter}')
 
         await waitFor(() => {
-          expect(screen.getByText(`성능 테스트 메시지 ${i}`)).toBeInTheDocument()
+          expect(
+            screen.getByText(`성능 테스트 메시지 ${i}`)
+          ).toBeInTheDocument()
         })
       }
 
@@ -869,7 +924,9 @@ describe('Realtime Messaging E2E Tests', () => {
 
       // 실시간 메시지가 수신되어도 현재 입력이 방해받지 않는지 확인
       await waitFor(() => {
-        expect(screen.getByText('실시간 메시지 테스트입니다!')).toBeInTheDocument()
+        expect(
+          screen.getByText('실시간 메시지 테스트입니다!')
+        ).toBeInTheDocument()
         expect(messageInput).toHaveValue('동시 활동 테스트 중...')
       })
 

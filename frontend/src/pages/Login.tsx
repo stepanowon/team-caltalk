@@ -34,9 +34,13 @@ export const Login = () => {
       const result = await AuthService.login({ email, password })
 
       if (result.success && result.data && result.data.tokens) {
-        setAuth(result.data.user, result.data.tokens.accessToken, result.data.tokens.refreshToken)
+        setAuth(
+          result.data.user,
+          result.data.tokens.accessToken,
+          result.data.tokens.refreshToken
+        )
 
-        await new Promise(resolve => setTimeout(resolve, 100))
+        await new Promise((resolve) => setTimeout(resolve, 100))
         navigate(ROUTES.DASHBOARD, { replace: true })
       } else {
         setError(

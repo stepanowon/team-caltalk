@@ -35,7 +35,10 @@ const joinTeamSchema = z.object({
     .min(1, '초대 코드를 입력해주세요')
     .min(6, '초대 코드는 최소 6자리여야 합니다')
     .max(6, '초대 코드는 최대 6자리여야 합니다')
-    .regex(/^[A-Z0-9]+$/, '초대 코드는 영문 대문자와 숫자로만 구성되어야 합니다')
+    .regex(
+      /^[A-Z0-9]+$/,
+      '초대 코드는 영문 대문자와 숫자로만 구성되어야 합니다'
+    )
     .transform((val) => val.toUpperCase().trim()),
 })
 
@@ -67,7 +70,6 @@ export function JoinTeam() {
   const watchedInviteCode = watch('inviteCode')
 
   const onSubmit = async (data: JoinTeamFormData) => {
-
     if (!token) {
       setError('로그인이 필요합니다.')
       return
@@ -210,7 +212,8 @@ export function JoinTeam() {
                   </p>
                 )}
                 <p className="text-xs text-gray-500 mt-2">
-                  * 초대 코드는 6자리 영문 대문자와 숫자로 구성됩니다 (예: JJD3XD)
+                  * 초대 코드는 6자리 영문 대문자와 숫자로 구성됩니다 (예:
+                  JJD3XD)
                 </p>
               </div>
 

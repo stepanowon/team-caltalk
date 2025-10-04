@@ -33,128 +33,144 @@ const generateLargeMessageList = (count: number) => {
     },
     created_at: new Date(Date.now() - (count - index) * 60000).toISOString(),
     message_type: index % 20 === 0 ? 'schedule_change_request' : 'text',
-    metadata: index % 20 === 0 ? {
-      schedule_id: Math.floor(index / 20) + 1,
-      requested_start_time: '14:00',
-      requested_end_time: '15:00',
-    } : null,
+    metadata:
+      index % 20 === 0
+        ? {
+            schedule_id: Math.floor(index / 20) + 1,
+            requested_start_time: '14:00',
+            requested_end_time: '15:00',
+          }
+        : null,
   }))
 }
 
 // 성능 테스트용 최적화된 메시지 리스트 컴포넌트
-const OptimizedMessageList = React.memo(({
-  messages,
-  onLoadMore,
-  isLoading = false,
-  hasMore = true
-}: {
-  messages: any[]
-  onLoadMore?: () => void
-  isLoading?: boolean
-  hasMore?: boolean
-}) => {
-  const [visibleMessages, setVisibleMessages] = React.useState(messages.slice(0, 50))
-  const [page, setPage] = React.useState(1)
-  const containerRef = React.useRef<HTMLDivElement>(null)
-
-  // 가상화를 위한 Intersection Observer
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && hasMore && !isLoading) {
-          const nextPage = page + 1
-          const nextMessages = messages.slice(0, nextPage * 50)
-          setVisibleMessages(nextMessages)
-          setPage(nextPage)
-          onLoadMore?.()
-        }
-      },
-      { threshold: 1.0 }
+const OptimizedMessageList = React.memo(
+  ({
+    messages,
+    onLoadMore,
+    isLoading = false,
+    hasMore = true,
+  }: {
+    messages: any[]
+    onLoadMore?: () => void
+    isLoading?: boolean
+    hasMore?: boolean
+  }) => {
+    const [visibleMessages, setVisibleMessages] = React.useState(
+      messages.slice(0, 50)
     )
+    const [page, setPage] = React.useState(1)
+    const containerRef = React.useRef<HTMLDivElement>(null)
 
-    const sentinel = document.getElementById('load-more-sentinel')
-    if (sentinel) {
-      observer.observe(sentinel)
-    }
+    // 가상화를 위한 Intersection Observer
+    React.useEffect(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && hasMore && !isLoading) {
+            const nextPage = page + 1
+            const nextMessages = messages.slice(0, nextPage * 50)
+            setVisibleMessages(nextMessages)
+            setPage(nextPage)
+            onLoadMore?.()
+          }
+        },
+        { threshold: 1.0 }
+      )
 
-    return () => observer.disconnect()
-  }, [messages, page, hasMore, isLoading, onLoadMore])
+      const sentinel = document.getElementById('load-more-sentinel')
+      if (sentinel) {
+        observer.observe(sentinel)
+      }
 
-  return (
-    <div
-      ref={containerRef}
-      data-testid="optimized-message-list"
-      style={{ height: '400px', overflowY: 'auto' }}
-    >
-      {visibleMessages.map((message) => (
-        <div
-          key={message.id}
-          data-testid={`message-${message.id}`}
-          style={{ padding: '8px', borderBottom: '1px solid #eee' }}
-        >
-          <div data-testid="message-user">{message.user.full_name}</div>
-          <div data-testid="message-content">{message.content}</div>
-          <div data-testid="message-time">
-            {new Date(message.created_at).toLocaleTimeString()}
+      return () => observer.disconnect()
+    }, [messages, page, hasMore, isLoading, onLoadMore])
+
+    return (
+      <div
+        ref={containerRef}
+        data-testid="optimized-message-list"
+        style={{ height: '400px', overflowY: 'auto' }}
+      >
+        {visibleMessages.map((message) => (
+          <div
+            key={message.id}
+            data-testid={`message-${message.id}`}
+            style={{ padding: '8px', borderBottom: '1px solid #eee' }}
+          >
+            <div data-testid="message-user">{message.user.full_name}</div>
+            <div data-testid="message-content">{message.content}</div>
+            <div data-testid="message-time">
+              {new Date(message.created_at).toLocaleTimeString()}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
 
-      {hasMore && (
-        <div
-          id="load-more-sentinel"
-          data-testid="load-more-sentinel"
-          style={{ height: '20px', background: 'transparent' }}
-        >
-          {isLoading && <div data-testid="loading-indicator">로딩 중...</div>}
-        </div>
-      )}
-    </div>
-  )
-})
+        {hasMore && (
+          <div
+            id="load-more-sentinel"
+            data-testid="load-more-sentinel"
+            style={{ height: '20px', background: 'transparent' }}
+          >
+            {isLoading && <div data-testid="loading-indicator">로딩 중...</div>}
+          </div>
+        )}
+      </div>
+    )
+  }
+)
 
 // 성능 테스트용 채팅 앱
-const PerformanceChatApp = ({ initialMessageCount = 100 }: { initialMessageCount?: number }) => {
-  const [messages, setMessages] = React.useState(() => generateLargeMessageList(initialMessageCount))
+const PerformanceChatApp = ({
+  initialMessageCount = 100,
+}: {
+  initialMessageCount?: number
+}) => {
+  const [messages, setMessages] = React.useState(() =>
+    generateLargeMessageList(initialMessageCount)
+  )
   const [isLoading, setIsLoading] = React.useState(false)
   const [connectionCount, setConnectionCount] = React.useState(0)
   const [renderCount, setRenderCount] = React.useState(0)
 
   // 렌더링 횟수 추적
   React.useEffect(() => {
-    setRenderCount(prev => prev + 1)
+    setRenderCount((prev) => prev + 1)
   })
 
   // 새 메시지 추가 (실시간 시뮬레이션)
-  const addMessage = React.useCallback((content: string) => {
-    const newMessage = {
-      id: messages.length + 1,
-      content,
-      user: { id: 999, username: 'current', full_name: '현재 사용자' },
-      created_at: new Date().toISOString(),
-      message_type: 'text',
-      metadata: null,
-    }
+  const addMessage = React.useCallback(
+    (content: string) => {
+      const newMessage = {
+        id: messages.length + 1,
+        content,
+        user: { id: 999, username: 'current', full_name: '현재 사용자' },
+        created_at: new Date().toISOString(),
+        message_type: 'text',
+        metadata: null,
+      }
 
-    setMessages(prev => [...prev, newMessage])
-  }, [messages.length])
+      setMessages((prev) => [...prev, newMessage])
+    },
+    [messages.length]
+  )
 
   // 대량 메시지 로드
   const loadMoreMessages = React.useCallback(async () => {
     setIsLoading(true)
 
     // 네트워크 지연 시뮬레이션
-    await new Promise(resolve => setTimeout(resolve, 100))
+    await new Promise((resolve) => setTimeout(resolve, 100))
 
     const newMessages = generateLargeMessageList(50)
-    setMessages(prev => [...prev, ...newMessages])
+    setMessages((prev) => [...prev, ...newMessages])
     setIsLoading(false)
   }, [])
 
   // Long Polling 시뮬레이션
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setConnectionCount(prev => prev + 1)
+      setConnectionCount((prev) => prev + 1)
 
       // 가끔 새 메시지 수신 시뮬레이션
       if (Math.random() < 0.1) {
@@ -244,7 +260,9 @@ describe('ChatPerformance', () => {
       })
 
       expect(renderTime).toBeLessThan(500)
-      expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 1000')
+      expect(screen.getByTestId('message-count')).toHaveTextContent(
+        '메시지 수: 1000'
+      )
     })
 
     it('대량 메시지에서도 가상화가 작동해야 한다', async () => {
@@ -323,14 +341,24 @@ describe('ChatPerformance', () => {
         messageList.scrollTop = messageList.scrollHeight
 
         // Intersection Observer가 트리거되기를 기다림
-        await waitFor(() => {
-          expect(screen.queryByTestId('loading-indicator')).toBeInTheDocument()
-        }, { timeout: 1000 })
+        await waitFor(
+          () => {
+            expect(
+              screen.queryByTestId('loading-indicator')
+            ).toBeInTheDocument()
+          },
+          { timeout: 1000 }
+        )
 
         // 로딩 완료 대기
-        await waitFor(() => {
-          expect(screen.queryByTestId('loading-indicator')).not.toBeInTheDocument()
-        }, { timeout: 2000 })
+        await waitFor(
+          () => {
+            expect(
+              screen.queryByTestId('loading-indicator')
+            ).not.toBeInTheDocument()
+          },
+          { timeout: 2000 }
+        )
       })
 
       expect(scrollTime).toBeLessThan(1000)
@@ -404,7 +432,9 @@ describe('ChatPerformance', () => {
       expect(batchUpdateTime).toBeLessThan(500)
 
       // 모든 메시지가 추가되었는지 확인
-      expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 20')
+      expect(screen.getByTestId('message-count')).toHaveTextContent(
+        '메시지 수: 20'
+      )
     })
 
     it('Long Polling이 성능에 영향을 주지 않아야 한다', async () => {
@@ -425,7 +455,8 @@ describe('ChatPerformance', () => {
 
       await waitFor(() => {
         const connectionCount = parseInt(
-          screen.getByTestId('connection-count').textContent?.split(': ')[1] || '0'
+          screen.getByTestId('connection-count').textContent?.split(': ')[1] ||
+            '0'
         )
         expect(connectionCount).toBeGreaterThan(5)
       })
@@ -446,7 +477,9 @@ describe('ChatPerformance', () => {
       let requestCount = 0
       const mockFetch = vi.fn().mockImplementation(() => {
         requestCount++
-        return Promise.resolve({ json: () => Promise.resolve({ messages: [] }) })
+        return Promise.resolve({
+          json: () => Promise.resolve({ messages: [] }),
+        })
       })
 
       global.fetch = mockFetch
@@ -476,7 +509,8 @@ describe('ChatPerformance', () => {
       const compressed = serialized.replace(/\s+/g, ' ').trim()
 
       // 압축률이 10% 이상이어야 함
-      const compressionRatio = (serialized.length - compressed.length) / serialized.length
+      const compressionRatio =
+        (serialized.length - compressed.length) / serialized.length
       expect(compressionRatio).toBeGreaterThan(0.1)
     })
   })
@@ -634,7 +668,7 @@ describe('ChatPerformance', () => {
             <MemoizedComponent message={message} />
             <button
               data-testid="update-other-state"
-              onClick={() => setOtherState(prev => prev + 1)}
+              onClick={() => setOtherState((prev) => prev + 1)}
             >
               Update
             </button>

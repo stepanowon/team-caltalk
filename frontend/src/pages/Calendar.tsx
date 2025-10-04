@@ -60,7 +60,8 @@ export function Calendar() {
   // Dialog state for schedule change request
   const [changeRequestDialogOpen, setChangeRequestDialogOpen] = useState(false)
   const [changeRequestMessage, setChangeRequestMessage] = useState('')
-  const [selectedScheduleForChange, setSelectedScheduleForChange] = useState<Schedule | null>(null)
+  const [selectedScheduleForChange, setSelectedScheduleForChange] =
+    useState<Schedule | null>(null)
 
   const { user, token } = useAuthStore()
   const { currentTeam, teamMembers, setTeamMembers } = useTeamStore()
@@ -199,11 +200,13 @@ export function Calendar() {
           teamId: currentTeam.id,
           scheduleId: selectedScheduleForChange.id,
           content: changeRequestMessage,
-          targetDate: new Date(selectedScheduleForChange.start_time).toISOString().split('T')[0],
+          targetDate: new Date(selectedScheduleForChange.start_time)
+            .toISOString()
+            .split('T')[0],
         })
         toast({
-          title: "요청 완료",
-          description: "일정 변경 요청이 전송되었습니다."
+          title: '요청 완료',
+          description: '일정 변경 요청이 전송되었습니다.',
         })
         setChangeRequestDialogOpen(false)
         setChangeRequestMessage('')
@@ -211,9 +214,12 @@ export function Calendar() {
       } catch (error) {
         logger.error('Schedule change request error:', error)
         toast({
-          title: "오류",
-          description: error instanceof Error ? error.message : '일정 변경 요청 중 오류가 발생했습니다.',
-          variant: "destructive"
+          title: '오류',
+          description:
+            error instanceof Error
+              ? error.message
+              : '일정 변경 요청 중 오류가 발생했습니다.',
+          variant: 'destructive',
         })
       }
     }
@@ -445,7 +451,10 @@ export function Calendar() {
       />
 
       {/* Schedule Change Request Dialog */}
-      <Dialog open={changeRequestDialogOpen} onOpenChange={setChangeRequestDialogOpen}>
+      <Dialog
+        open={changeRequestDialogOpen}
+        onOpenChange={setChangeRequestDialogOpen}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>일정 변경 요청</DialogTitle>
@@ -462,10 +471,16 @@ export function Calendar() {
             />
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setChangeRequestDialogOpen(false)}>
+            <Button
+              variant="outline"
+              onClick={() => setChangeRequestDialogOpen(false)}
+            >
               취소
             </Button>
-            <Button onClick={handleSubmitChangeRequest} disabled={!changeRequestMessage.trim()}>
+            <Button
+              onClick={handleSubmitChangeRequest}
+              disabled={!changeRequestMessage.trim()}
+            >
               요청 전송
             </Button>
           </DialogFooter>

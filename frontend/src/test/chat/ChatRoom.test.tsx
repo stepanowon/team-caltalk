@@ -6,7 +6,13 @@ import { BrowserRouter } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 // Mock ChatRoom 컴포넌트 (실제 구현 전까지 사용)
-const MockChatRoom = ({ teamId, selectedDate }: { teamId: number; selectedDate: string }) => {
+const MockChatRoom = ({
+  teamId,
+  selectedDate,
+}: {
+  teamId: number
+  selectedDate: string
+}) => {
   const [messages, setMessages] = React.useState([
     {
       id: 1,
@@ -34,7 +40,11 @@ const MockChatRoom = ({ teamId, selectedDate }: { teamId: number; selectedDate: 
   }
 
   return (
-    <div data-testid="chat-room" data-team-id={teamId} data-selected-date={selectedDate}>
+    <div
+      data-testid="chat-room"
+      data-team-id={teamId}
+      data-selected-date={selectedDate}
+    >
       <div data-testid="chat-header">
         <h3>팀 채팅 - {selectedDate}</h3>
         <div data-testid="connection-status">연결됨</div>
@@ -206,7 +216,10 @@ describe('ChatRoom', () => {
 
       const messageInput = screen.getByTestId('message-input')
       expect(messageInput).toBeInTheDocument()
-      expect(messageInput).toHaveAttribute('placeholder', '메시지를 입력하세요...')
+      expect(messageInput).toHaveAttribute(
+        'placeholder',
+        '메시지를 입력하세요...'
+      )
     })
 
     it('전송 버튼이 렌더링되어야 한다', () => {
@@ -371,7 +384,9 @@ describe('ChatRoom', () => {
       )
 
       expect(screen.getByTestId('error-message')).toBeInTheDocument()
-      expect(screen.getByText('네트워크 연결에 실패했습니다. 다시 시도해주세요.')).toBeInTheDocument()
+      expect(
+        screen.getByText('네트워크 연결에 실패했습니다. 다시 시도해주세요.')
+      ).toBeInTheDocument()
     })
 
     it('메시지 전송 실패 시 재시도 옵션이 제공되어야 한다', () => {
@@ -390,7 +405,9 @@ describe('ChatRoom', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByText('메시지 전송에 실패했습니다.')).toBeInTheDocument()
+      expect(
+        screen.getByText('메시지 전송에 실패했습니다.')
+      ).toBeInTheDocument()
       expect(screen.getByTestId('retry-button')).toBeInTheDocument()
     })
   })
@@ -404,7 +421,10 @@ describe('ChatRoom', () => {
       )
 
       const messageInput = screen.getByTestId('message-input')
-      expect(messageInput).toHaveAttribute('placeholder', '메시지를 입력하세요...')
+      expect(messageInput).toHaveAttribute(
+        'placeholder',
+        '메시지를 입력하세요...'
+      )
     })
 
     it('전송 버튼에 적절한 텍스트가 있어야 한다', () => {

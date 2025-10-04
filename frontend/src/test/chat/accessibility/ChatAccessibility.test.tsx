@@ -1,7 +1,11 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { screen, waitFor, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { renderChat, mockMessages, accessibilityHelpers } from '../utils/chat-test-utils'
+import {
+  renderChat,
+  mockMessages,
+  accessibilityHelpers,
+} from '../utils/chat-test-utils'
 
 // 접근성 테스트를 위한 완전한 채팅 시스템 모킹
 const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
@@ -13,9 +17,11 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
 
   // 새 메시지 수신 시뮬레이션
   const simulateNewMessage = (message: any) => {
-    setMessages(prev => [...prev, message])
+    setMessages((prev) => [...prev, message])
     setHasNewMessages(true)
-    setAnnouncement(`새 메시지: ${message.user_name}님이 "${message.content}"라고 말했습니다.`)
+    setAnnouncement(
+      `새 메시지: ${message.user_name}님이 "${message.content}"라고 말했습니다.`
+    )
 
     // 3초 후 새 메시지 알림 제거
     setTimeout(() => {
@@ -44,7 +50,7 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
       related_schedule_id: null,
     }
 
-    setMessages(prev => [...prev, newMessage])
+    setMessages((prev) => [...prev, newMessage])
     input.value = ''
 
     // 스크린 리더 공지
@@ -66,7 +72,13 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
         aria-live="polite"
         aria-atomic="true"
         className="sr-only"
-        style={{ position: 'absolute', left: '-10000px', width: '1px', height: '1px', overflow: 'hidden' }}
+        style={{
+          position: 'absolute',
+          left: '-10000px',
+          width: '1px',
+          height: '1px',
+          overflow: 'hidden',
+        }}
       >
         {announcement}
       </div>
@@ -78,7 +90,11 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
           role="alert"
           aria-live="assertive"
           className="new-message-alert"
-          style={{ padding: '8px', backgroundColor: '#e3f2fd', border: '1px solid #2196f3' }}
+          style={{
+            padding: '8px',
+            backgroundColor: '#e3f2fd',
+            border: '1px solid #2196f3',
+          }}
         >
           💬 새로운 메시지가 도착했습니다
         </div>
@@ -95,9 +111,7 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
         <span aria-hidden="true">
           {connectionStatus === 'connected' ? '🟢' : '🔴'}
         </span>
-        <span>
-          {connectionStatus === 'connected' ? '연결됨' : '연결 끊김'}
-        </span>
+        <span>{connectionStatus === 'connected' ? '연결됨' : '연결 끊김'}</span>
       </div>
 
       {/* 메인 채팅 영역 */}
@@ -121,7 +135,7 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
             overflowY: 'auto',
             border: '1px solid #ccc',
             padding: '10px',
-            marginBottom: '10px'
+            marginBottom: '10px',
           }}
         >
           <div id="message-list-description" className="sr-only">
@@ -143,8 +157,12 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
                 margin: '8px 0',
                 padding: '8px',
                 borderRadius: '8px',
-                backgroundColor: msg.user_id === currentUserId ? '#e3f2fd' : '#f5f5f5',
-                border: msg.message_type === 'schedule_update' ? '2px solid #ff9800' : '1px solid transparent'
+                backgroundColor:
+                  msg.user_id === currentUserId ? '#e3f2fd' : '#f5f5f5',
+                border:
+                  msg.message_type === 'schedule_update'
+                    ? '2px solid #ff9800'
+                    : '1px solid transparent',
               }}
             >
               <div className="message-header">
@@ -163,7 +181,7 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
                 >
                   {new Date(msg.created_at).toLocaleTimeString('ko-KR', {
                     hour: '2-digit',
-                    minute: '2-digit'
+                    minute: '2-digit',
                   })}
                 </time>
               </div>
@@ -183,7 +201,9 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
                 <button
                   data-testid={`schedule-link-${msg.id}`}
                   onClick={() => {
-                    setAnnouncement(`관련 일정을 확인합니다: ${msg.related_schedule_id}`)
+                    setAnnouncement(
+                      `관련 일정을 확인합니다: ${msg.related_schedule_id}`
+                    )
                   }}
                   aria-label="관련 일정 상세 보기"
                   aria-describedby={`schedule-desc-${msg.id}`}
@@ -195,7 +215,7 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
                     color: 'white',
                     border: 'none',
                     borderRadius: '4px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
                   }}
                 >
                   📅 관련 일정 보기
@@ -218,7 +238,8 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
             className="typing-indicator"
             style={{ padding: '8px', fontStyle: 'italic', color: '#666' }}
           >
-            {typingUsers.map(user => user.user_name).join(', ')}님이 입력 중입니다...
+            {typingUsers.map((user) => user.user_name).join(', ')}님이 입력
+            중입니다...
           </div>
         )}
       </div>
@@ -258,7 +279,7 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
                   border: '2px solid #ccc',
                   borderRadius: '4px',
                   resize: 'vertical',
-                  fontFamily: 'inherit'
+                  fontFamily: 'inherit',
                 }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
@@ -294,12 +315,14 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
               aria-describedby="send-button-help"
               style={{
                 padding: '8px 16px',
-                backgroundColor: connectionStatus === 'connected' ? '#1976d2' : '#ccc',
+                backgroundColor:
+                  connectionStatus === 'connected' ? '#1976d2' : '#ccc',
                 color: 'white',
                 border: 'none',
                 borderRadius: '4px',
-                cursor: connectionStatus === 'connected' ? 'pointer' : 'not-allowed',
-                minWidth: '60px'
+                cursor:
+                  connectionStatus === 'connected' ? 'pointer' : 'not-allowed',
+                minWidth: '60px',
               }}
             >
               전송
@@ -314,29 +337,40 @@ const AccessibleChatSystem = ({ teamId, messageDate, currentUserId }: any) => {
       </form>
 
       {/* 테스트용 버튼들 */}
-      <div data-testid="test-controls" style={{ marginTop: '10px', display: 'none' }}>
+      <div
+        data-testid="test-controls"
+        style={{ marginTop: '10px', display: 'none' }}
+      >
         <button
-          onClick={() => simulateNewMessage({
-            id: Date.now(),
-            content: '접근성 테스트 메시지',
-            user_id: 'test-user',
-            user_name: '테스트 사용자',
-            team_id: teamId,
-            message_date: messageDate,
-            created_at: new Date().toISOString(),
-            message_type: 'text',
-            related_schedule_id: null,
-          })}
+          onClick={() =>
+            simulateNewMessage({
+              id: Date.now(),
+              content: '접근성 테스트 메시지',
+              user_id: 'test-user',
+              user_name: '테스트 사용자',
+              team_id: teamId,
+              message_date: messageDate,
+              created_at: new Date().toISOString(),
+              message_type: 'text',
+              related_schedule_id: null,
+            })
+          }
         >
           새 메시지 시뮬레이션
         </button>
         <button
-          onClick={() => setTypingUsers([{ user_id: 'user-2', user_name: '이개발' }])}
+          onClick={() =>
+            setTypingUsers([{ user_id: 'user-2', user_name: '이개발' }])
+          }
         >
           타이핑 상태 시뮬레이션
         </button>
         <button
-          onClick={() => setConnectionStatus(connectionStatus === 'connected' ? 'disconnected' : 'connected')}
+          onClick={() =>
+            setConnectionStatus(
+              connectionStatus === 'connected' ? 'disconnected' : 'connected'
+            )
+          }
         >
           연결 상태 토글
         </button>
@@ -395,12 +429,20 @@ describe('Chat Accessibility Tests', () => {
         const messageElement = screen.getByTestId(`message-${msg.id}`)
 
         expect(messageElement).toHaveAttribute('role', 'listitem')
-        expect(messageElement).toHaveAttribute('aria-posinset', String(index + 1))
-        expect(messageElement).toHaveAttribute('aria-setsize', String(mockMessages.length))
+        expect(messageElement).toHaveAttribute(
+          'aria-posinset',
+          String(index + 1)
+        )
+        expect(messageElement).toHaveAttribute(
+          'aria-setsize',
+          String(mockMessages.length)
+        )
         expect(messageElement).toHaveAttribute('aria-label')
 
         // 시간 정보 접근성
-        const timeElement = messageElement.querySelector('[data-testid="message-time"]')
+        const timeElement = messageElement.querySelector(
+          '[data-testid="message-time"]'
+        )
         expect(timeElement).toHaveAttribute('dateTime')
         expect(timeElement).toHaveAttribute('aria-label')
       })
@@ -432,7 +474,9 @@ describe('Chat Accessibility Tests', () => {
       renderChat(<AccessibleChatSystem {...defaultProps} />)
 
       const testControls = screen.getByTestId('test-controls')
-      const newMessageButton = testControls.querySelector('button') as HTMLButtonElement
+      const newMessageButton = testControls.querySelector(
+        'button'
+      ) as HTMLButtonElement
 
       // 새 메시지 추가
       act(() => {
@@ -444,7 +488,9 @@ describe('Chat Accessibility Tests', () => {
         const announcement = screen.getByTestId('sr-announcements')
         expect(announcement).toHaveAttribute('role', 'status')
         expect(announcement).toHaveAttribute('aria-live', 'polite')
-        expect(announcement.textContent).toContain('새 메시지: 테스트 사용자님이')
+        expect(announcement.textContent).toContain(
+          '새 메시지: 테스트 사용자님이'
+        )
       })
 
       // 새 메시지 알림 확인
@@ -459,7 +505,9 @@ describe('Chat Accessibility Tests', () => {
       renderChat(<AccessibleChatSystem {...defaultProps} />)
 
       const testControls = screen.getByTestId('test-controls')
-      const typingButton = testControls.querySelectorAll('button')[1] as HTMLButtonElement
+      const typingButton = testControls.querySelectorAll(
+        'button'
+      )[1] as HTMLButtonElement
 
       // 타이핑 상태 시작
       act(() => {
@@ -478,7 +526,9 @@ describe('Chat Accessibility Tests', () => {
       renderChat(<AccessibleChatSystem {...defaultProps} />)
 
       const testControls = screen.getByTestId('test-controls')
-      const connectionButton = testControls.querySelectorAll('button')[2] as HTMLButtonElement
+      const connectionButton = testControls.querySelectorAll(
+        'button'
+      )[2] as HTMLButtonElement
 
       // 연결 상태 변경
       act(() => {
@@ -602,7 +652,9 @@ describe('Chat Accessibility Tests', () => {
 
       const messageInput = screen.getByTestId('message-input')
       const testControls = screen.getByTestId('test-controls')
-      const connectionButton = testControls.querySelectorAll('button')[2] as HTMLButtonElement
+      const connectionButton = testControls.querySelectorAll(
+        'button'
+      )[2] as HTMLButtonElement
 
       // 입력 필드에 포커스
       await user.click(messageInput)
@@ -625,7 +677,9 @@ describe('Chat Accessibility Tests', () => {
 
       const messageInput = screen.getByTestId('message-input')
       const testControls = screen.getByTestId('test-controls')
-      const newMessageButton = testControls.querySelector('button') as HTMLButtonElement
+      const newMessageButton = testControls.querySelector(
+        'button'
+      ) as HTMLButtonElement
 
       // 사용자가 메시지 입력 중
       await user.click(messageInput)
@@ -650,7 +704,7 @@ describe('Chat Accessibility Tests', () => {
     it('메시지 내용이 스크린 리더에게 의미있게 전달되어야 한다', () => {
       renderChat(<AccessibleChatSystem {...defaultProps} />)
 
-      mockMessages.forEach(msg => {
+      mockMessages.forEach((msg) => {
         const messageElement = screen.getByTestId(`message-${msg.id}`)
         const ariaLabel = messageElement.getAttribute('aria-label')
 
@@ -673,7 +727,9 @@ describe('Chat Accessibility Tests', () => {
       expect(connectionStatus.textContent).toContain('연결됨')
 
       // 일정 관련 메시지의 아이콘
-      const scheduleMessage = mockMessages.find(msg => msg.message_type === 'schedule_update')
+      const scheduleMessage = mockMessages.find(
+        (msg) => msg.message_type === 'schedule_update'
+      )
       if (scheduleMessage) {
         const scheduleIcon = screen.getByLabelText('일정 업데이트 메시지')
         expect(scheduleIcon).toBeInTheDocument()
@@ -687,19 +743,27 @@ describe('Chat Accessibility Tests', () => {
       const sendButton = screen.getByTestId('send-button')
 
       // 입력 필드 설명
-      const inputHelp = screen.getByText('키보드 단축키: Enter로 전송, Shift+Enter로 줄바꿈')
+      const inputHelp = screen.getByText(
+        '키보드 단축키: Enter로 전송, Shift+Enter로 줄바꿈'
+      )
       expect(inputHelp).toHaveAttribute('id', 'message-input-help')
-      expect(messageInput.getAttribute('aria-describedby')).toContain('message-input-help')
+      expect(messageInput.getAttribute('aria-describedby')).toContain(
+        'message-input-help'
+      )
 
       // 문자 수 제한 정보
       const charCount = screen.getByText('최대 500자')
       expect(charCount).toHaveAttribute('id', 'message-input-count')
-      expect(messageInput.getAttribute('aria-describedby')).toContain('message-input-count')
+      expect(messageInput.getAttribute('aria-describedby')).toContain(
+        'message-input-count'
+      )
 
       // 버튼 설명
       const buttonHelp = screen.getByText('메시지를 전송합니다')
       expect(buttonHelp).toHaveAttribute('id', 'send-button-help')
-      expect(sendButton.getAttribute('aria-describedby')).toBe('send-button-help')
+      expect(sendButton.getAttribute('aria-describedby')).toBe(
+        'send-button-help'
+      )
     })
   })
 
@@ -722,9 +786,13 @@ describe('Chat Accessibility Tests', () => {
     it('일정 관련 메시지가 시각적 구분자와 의미적 표시를 모두 가져야 한다', () => {
       renderChat(<AccessibleChatSystem {...defaultProps} />)
 
-      const scheduleMessage = mockMessages.find(msg => msg.message_type === 'schedule_update')
+      const scheduleMessage = mockMessages.find(
+        (msg) => msg.message_type === 'schedule_update'
+      )
       if (scheduleMessage) {
-        const messageElement = screen.getByTestId(`message-${scheduleMessage.id}`)
+        const messageElement = screen.getByTestId(
+          `message-${scheduleMessage.id}`
+        )
 
         // 시각적 구분 (CSS 클래스)
         expect(messageElement).toHaveClass('schedule_update')
@@ -745,7 +813,9 @@ describe('Chat Accessibility Tests', () => {
       renderChat(<AccessibleChatSystem {...defaultProps} />)
 
       const testControls = screen.getByTestId('test-controls')
-      const connectionButton = testControls.querySelectorAll('button')[2] as HTMLButtonElement
+      const connectionButton = testControls.querySelectorAll(
+        'button'
+      )[2] as HTMLButtonElement
 
       // 연결 끊김
       act(() => {
@@ -764,7 +834,9 @@ describe('Chat Accessibility Tests', () => {
         expect(sendButton).toBeDisabled()
 
         // 버튼의 도움말 텍스트가 업데이트됨
-        const buttonHelp = screen.getByText('연결이 끊어져 메시지를 전송할 수 없습니다')
+        const buttonHelp = screen.getByText(
+          '연결이 끊어져 메시지를 전송할 수 없습니다'
+        )
         expect(buttonHelp).toBeInTheDocument()
       })
     })
@@ -801,7 +873,7 @@ describe('Chat Accessibility Tests', () => {
       expect(parseInt(buttonStyle.minWidth)).toBeGreaterThanOrEqual(60)
 
       // 일정 링크 버튼들도 적절한 크기여야 함
-      scheduleLinks.forEach(link => {
+      scheduleLinks.forEach((link) => {
         const linkStyle = window.getComputedStyle(link)
         expect(parseInt(linkStyle.padding)).toBeGreaterThan(0)
       })
@@ -813,7 +885,7 @@ describe('Chat Accessibility Tests', () => {
       // 200% 확대 시뮬레이션
       Object.defineProperty(document.documentElement, 'style', {
         value: { zoom: '200%' },
-        writable: true
+        writable: true,
       })
 
       const messageInput = screen.getByTestId('message-input')
@@ -832,7 +904,7 @@ describe('Chat Accessibility Tests', () => {
       // prefers-reduced-motion 시뮬레이션
       Object.defineProperty(window, 'matchMedia', {
         writable: true,
-        value: vi.fn().mockImplementation(query => ({
+        value: vi.fn().mockImplementation((query) => ({
           matches: query === '(prefers-reduced-motion: reduce)',
           media: query,
           onchange: null,
@@ -856,7 +928,7 @@ describe('Chat Accessibility Tests', () => {
       // 고대비 모드 시뮬레이션
       Object.defineProperty(window, 'matchMedia', {
         writable: true,
-        value: vi.fn().mockImplementation(query => ({
+        value: vi.fn().mockImplementation((query) => ({
           matches: query === '(prefers-contrast: high)',
           media: query,
           onchange: null,
@@ -872,7 +944,7 @@ describe('Chat Accessibility Tests', () => {
 
       // 고대비 모드에서도 모든 요소가 구분되어야 함
       const messages = screen.getAllByTestId(/message-\d+/)
-      messages.forEach(message => {
+      messages.forEach((message) => {
         const style = window.getComputedStyle(message)
         expect(style.border).toBeTruthy() // 테두리가 있어야 함
       })

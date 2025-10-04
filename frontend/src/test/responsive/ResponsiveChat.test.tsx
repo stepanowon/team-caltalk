@@ -21,7 +21,9 @@ const ResponsiveChatComponent = () => {
   })
 
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(true)
-  const [activeTab, setActiveTab] = React.useState<'calendar' | 'chat'>('calendar')
+  const [activeTab, setActiveTab] = React.useState<'calendar' | 'chat'>(
+    'calendar'
+  )
 
   // 화면 크기 감지
   React.useEffect(() => {
@@ -44,7 +46,9 @@ const ResponsiveChatComponent = () => {
   }, [])
 
   const isMobile = windowSize.width < BREAKPOINTS.tablet
-  const isTablet = windowSize.width >= BREAKPOINTS.tablet && windowSize.width < BREAKPOINTS.desktop
+  const isTablet =
+    windowSize.width >= BREAKPOINTS.tablet &&
+    windowSize.width < BREAKPOINTS.desktop
   const isDesktop = windowSize.width >= BREAKPOINTS.desktop
 
   const getDeviceType = () => {
@@ -56,7 +60,9 @@ const ResponsiveChatComponent = () => {
   const getLayoutClasses = () => {
     const baseClass = 'chat-layout'
     const deviceClass = `${baseClass}--${getDeviceType()}`
-    const sidebarClass = isSidebarOpen ? `${baseClass}--sidebar-open` : `${baseClass}--sidebar-closed`
+    const sidebarClass = isSidebarOpen
+      ? `${baseClass}--sidebar-open`
+      : `${baseClass}--sidebar-closed`
 
     return `${baseClass} ${deviceClass} ${sidebarClass}`
   }
@@ -117,26 +123,17 @@ const ResponsiveChatComponent = () => {
               <nav data-testid="sidebar-nav">
                 <ul>
                   <li>
-                    <button
-                      data-testid="nav-dashboard"
-                      className="nav-button"
-                    >
+                    <button data-testid="nav-dashboard" className="nav-button">
                       대시보드
                     </button>
                   </li>
                   <li>
-                    <button
-                      data-testid="nav-calendar"
-                      className="nav-button"
-                    >
+                    <button data-testid="nav-calendar" className="nav-button">
                       캘린더
                     </button>
                   </li>
                   <li>
-                    <button
-                      data-testid="nav-chat"
-                      className="nav-button"
-                    >
+                    <button data-testid="nav-chat" className="nav-button">
                       채팅
                     </button>
                   </li>
@@ -177,7 +174,10 @@ const ResponsiveChatComponent = () => {
               >
                 <header className="panel-header">
                   <h2>캘린더</h2>
-                  <button data-testid="calendar-settings" className="settings-button">
+                  <button
+                    data-testid="calendar-settings"
+                    className="settings-button"
+                  >
                     ⚙️
                   </button>
                 </header>
@@ -215,7 +215,10 @@ const ResponsiveChatComponent = () => {
               >
                 <header className="panel-header">
                   <h2>채팅</h2>
-                  <div data-testid="connection-status" className="connection-status">
+                  <div
+                    data-testid="connection-status"
+                    className="connection-status"
+                  >
                     🟢 연결됨
                   </div>
                 </header>
@@ -228,11 +231,16 @@ const ResponsiveChatComponent = () => {
                     </div>
                     <div data-testid="message-2" className="message">
                       <div className="message-user">사용자 2</div>
-                      <div className="message-content">회의 시간 변경 가능한가요?</div>
+                      <div className="message-content">
+                        회의 시간 변경 가능한가요?
+                      </div>
                     </div>
                   </div>
 
-                  <div data-testid="message-input-area" className="message-input-area">
+                  <div
+                    data-testid="message-input-area"
+                    className="message-input-area"
+                  >
                     <input
                       data-testid="message-input"
                       type="text"
@@ -255,7 +263,10 @@ const ResponsiveChatComponent = () => {
                   </header>
 
                   <div className="mobile-calendar-content">
-                    <div data-testid="mobile-calendar-grid" className="mobile-calendar-grid">
+                    <div
+                      data-testid="mobile-calendar-grid"
+                      className="mobile-calendar-grid"
+                    >
                       {Array.from({ length: 31 }, (_, i) => (
                         <button
                           key={i + 1}
@@ -267,7 +278,10 @@ const ResponsiveChatComponent = () => {
                       ))}
                     </div>
 
-                    <div data-testid="mobile-schedule-list" className="mobile-schedule-list">
+                    <div
+                      data-testid="mobile-schedule-list"
+                      className="mobile-schedule-list"
+                    >
                       <div className="schedule-item">
                         <div className="schedule-title">팀 회의</div>
                         <div className="schedule-time">14:00 - 15:00</div>
@@ -281,27 +295,42 @@ const ResponsiveChatComponent = () => {
                 <section data-testid="mobile-chat" className="mobile-panel">
                   <header className="mobile-panel-header">
                     <h2>채팅</h2>
-                    <div data-testid="mobile-connection-status" className="connection-status">
+                    <div
+                      data-testid="mobile-connection-status"
+                      className="connection-status"
+                    >
                       🟢
                     </div>
                   </header>
 
                   <div className="mobile-chat-content">
-                    <div data-testid="mobile-message-list" className="mobile-message-list">
-                      <div data-testid="mobile-message-1" className="mobile-message">
+                    <div
+                      data-testid="mobile-message-list"
+                      className="mobile-message-list"
+                    >
+                      <div
+                        data-testid="mobile-message-1"
+                        className="mobile-message"
+                      >
                         <div className="message-user">사용자 1</div>
                         <div className="message-content">안녕하세요!</div>
                       </div>
                     </div>
 
-                    <div data-testid="mobile-message-input-area" className="mobile-message-input-area">
+                    <div
+                      data-testid="mobile-message-input-area"
+                      className="mobile-message-input-area"
+                    >
                       <input
                         data-testid="mobile-message-input"
                         type="text"
                         placeholder="메시지 입력..."
                         className="mobile-message-input"
                       />
-                      <button data-testid="mobile-send-button" className="mobile-send-button">
+                      <button
+                        data-testid="mobile-send-button"
+                        className="mobile-send-button"
+                      >
                         📤
                       </button>
                     </div>
@@ -376,13 +405,15 @@ const ResponsiveChatComponent = () => {
           height: 100%;
         }
 
-        .calendar-panel, .chat-panel {
+        .calendar-panel,
+        .chat-panel {
           flex: 1;
           display: flex;
           flex-direction: column;
         }
 
-        .calendar-panel--tablet, .chat-panel--tablet {
+        .calendar-panel--tablet,
+        .chat-panel--tablet {
           min-width: 300px;
         }
 
@@ -478,8 +509,14 @@ describe('ResponsiveChat', () => {
       )
 
       await waitFor(() => {
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'mobile')
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-window-width', BREAKPOINTS.mobile.toString())
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'mobile'
+        )
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-window-width',
+          BREAKPOINTS.mobile.toString()
+        )
       })
     })
 
@@ -493,8 +530,14 @@ describe('ResponsiveChat', () => {
       )
 
       await waitFor(() => {
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'tablet')
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-window-width', BREAKPOINTS.tablet.toString())
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'tablet'
+        )
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-window-width',
+          BREAKPOINTS.tablet.toString()
+        )
       })
     })
 
@@ -508,8 +551,14 @@ describe('ResponsiveChat', () => {
       )
 
       await waitFor(() => {
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'desktop')
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-window-width', BREAKPOINTS.desktop.toString())
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'desktop'
+        )
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-window-width',
+          BREAKPOINTS.desktop.toString()
+        )
       })
     })
   })
@@ -544,7 +593,9 @@ describe('ResponsiveChat', () => {
         expect(screen.getByTestId('tab-view')).toBeInTheDocument()
         expect(screen.getByTestId('mobile-calendar')).toBeInTheDocument()
         expect(screen.queryByTestId('mobile-chat')).not.toBeInTheDocument()
-        expect(screen.getByTestId('mobile-calendar-tab')).toHaveClass('tab--active')
+        expect(screen.getByTestId('mobile-calendar-tab')).toHaveClass(
+          'tab--active'
+        )
       })
     })
 
@@ -579,7 +630,9 @@ describe('ResponsiveChat', () => {
 
       await waitFor(() => {
         expect(screen.queryByTestId('sidebar')).not.toBeInTheDocument()
-        expect(screen.getByTestId('responsive-chat')).toHaveClass('chat-layout--sidebar-closed')
+        expect(screen.getByTestId('responsive-chat')).toHaveClass(
+          'chat-layout--sidebar-closed'
+        )
       })
     })
 
@@ -675,8 +728,12 @@ describe('ResponsiveChat', () => {
       )
 
       await waitFor(() => {
-        expect(screen.getByTestId('calendar-section')).toHaveClass('calendar-panel--tablet')
-        expect(screen.getByTestId('chat-section')).toHaveClass('chat-panel--tablet')
+        expect(screen.getByTestId('calendar-section')).toHaveClass(
+          'calendar-panel--tablet'
+        )
+        expect(screen.getByTestId('chat-section')).toHaveClass(
+          'chat-panel--tablet'
+        )
       })
     })
 
@@ -764,7 +821,10 @@ describe('ResponsiveChat', () => {
       // 초기 데스크톱 상태 확인
       await waitFor(() => {
         expect(screen.getByTestId('split-view')).toBeInTheDocument()
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'desktop')
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'desktop'
+        )
       })
 
       // 모바일 크기로 변경
@@ -772,7 +832,10 @@ describe('ResponsiveChat', () => {
 
       await waitFor(() => {
         expect(screen.getByTestId('tab-view')).toBeInTheDocument()
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'mobile')
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'mobile'
+        )
         expect(screen.queryByTestId('split-view')).not.toBeInTheDocument()
       })
     })
@@ -789,7 +852,10 @@ describe('ResponsiveChat', () => {
       // 초기 모바일 상태 확인
       await waitFor(() => {
         expect(screen.getByTestId('mobile-tabs')).toBeInTheDocument()
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'mobile')
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'mobile'
+        )
       })
 
       // 태블릿 크기로 변경
@@ -797,7 +863,10 @@ describe('ResponsiveChat', () => {
 
       await waitFor(() => {
         expect(screen.getByTestId('split-view')).toBeInTheDocument()
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'tablet')
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'tablet'
+        )
         expect(screen.queryByTestId('mobile-tabs')).not.toBeInTheDocument()
       })
     })
@@ -812,15 +881,24 @@ describe('ResponsiveChat', () => {
       )
 
       await waitFor(() => {
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-window-height', '800')
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-window-height',
+          '800'
+        )
       })
 
       // 가로 모드로 회전
       resizeWindow(800, BREAKPOINTS.mobile)
 
       await waitFor(() => {
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-window-width', '800')
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-window-height', BREAKPOINTS.mobile.toString())
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-window-width',
+          '800'
+        )
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-window-height',
+          BREAKPOINTS.mobile.toString()
+        )
       })
     })
   })
@@ -838,7 +916,7 @@ describe('ResponsiveChat', () => {
       await waitFor(() => {
         // 큰 터치 타겟 확인 (CSS로 구현된 경우)
         const tabs = screen.getAllByRole('button')
-        tabs.forEach(tab => {
+        tabs.forEach((tab) => {
           expect(tab).toBeInTheDocument()
           // 실제 구현에서는 getComputedStyle로 최소 크기 확인
         })
@@ -898,11 +976,17 @@ describe('ResponsiveChat', () => {
         </TestWrapper>
       )
 
-      expect(addEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function))
+      expect(addEventListenerSpy).toHaveBeenCalledWith(
+        'resize',
+        expect.any(Function)
+      )
 
       unmount()
 
-      expect(removeEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function))
+      expect(removeEventListenerSpy).toHaveBeenCalledWith(
+        'resize',
+        expect.any(Function)
+      )
     })
   })
 
@@ -990,28 +1074,40 @@ describe('ResponsiveChat', () => {
       )
 
       await waitFor(() => {
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'mobile')
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'mobile'
+        )
       })
 
       // 태블릿 브레이크포인트 정확히
       resizeWindow(BREAKPOINTS.tablet)
 
       await waitFor(() => {
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'tablet')
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'tablet'
+        )
       })
 
       // 데스크톱 브레이크포인트 직전
       resizeWindow(BREAKPOINTS.desktop - 1)
 
       await waitFor(() => {
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'tablet')
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'tablet'
+        )
       })
 
       // 데스크톱 브레이크포인트 정확히
       resizeWindow(BREAKPOINTS.desktop)
 
       await waitFor(() => {
-        expect(screen.getByTestId('responsive-chat')).toHaveAttribute('data-device-type', 'desktop')
+        expect(screen.getByTestId('responsive-chat')).toHaveAttribute(
+          'data-device-type',
+          'desktop'
+        )
       })
     })
   })

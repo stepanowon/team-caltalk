@@ -15,8 +15,8 @@ interface MessageInputProps {
 export default function MessageInput({
   onSendMessage,
   disabled = false,
-  placeholder = "메시지를 입력하세요...",
-  className
+  placeholder = '메시지를 입력하세요...',
+  className,
 }: MessageInputProps) {
   const [message, setMessage] = useState('')
   const [isSending, setIsSending] = useState(false)
@@ -82,9 +82,11 @@ export default function MessageInput({
         />
         <div className="mt-1 text-xs text-gray-500 flex justify-between">
           <span>Enter로 전송, Shift+Enter로 줄바꿈</span>
-          <span className={cn(
-            message.length > 450 ? 'text-red-500' : 'text-gray-400'
-          )}>
+          <span
+            className={cn(
+              message.length > 450 ? 'text-red-500' : 'text-gray-400'
+            )}
+          >
             {message.length}/500
           </span>
         </div>
@@ -92,7 +94,9 @@ export default function MessageInput({
 
       <Button
         type="submit"
-        disabled={!message.trim() || isSending || disabled || message.length > 500}
+        disabled={
+          !message.trim() || isSending || disabled || message.length > 500
+        }
         size="lg"
         className="h-auto px-4 py-3"
       >

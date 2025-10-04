@@ -22,7 +22,8 @@ const MockScheduleCard = ({
   ...props
 }: any) => {
   const isLeader = userRole === 'leader'
-  const canEdit = isLeader || schedule.creator_id === currentUserId || isEditable
+  const canEdit =
+    isLeader || schedule.creator_id === currentUserId || isEditable
   const hasConflict = conflictWarning || schedule.hasConflict
 
   return (
@@ -117,11 +118,17 @@ const MockScheduleCard = ({
                   className={`participant-status status-${participant.status}`}
                   data-testid={`participant-status-${participant.user_id}`}
                 >
-                  {participant.status === 'accepted' ? '참석' :
-                   participant.status === 'declined' ? '불참' : '대기'}
+                  {participant.status === 'accepted'
+                    ? '참석'
+                    : participant.status === 'declined'
+                      ? '불참'
+                      : '대기'}
                 </span>
                 {!isLeader && currentUserId === participant.user_id && (
-                  <div className="participant-actions" data-testid="participant-actions">
+                  <div
+                    className="participant-actions"
+                    data-testid="participant-actions"
+                  >
                     {participant.status !== 'accepted' && (
                       <button
                         data-testid="accept-button"
@@ -177,8 +184,11 @@ const MockScheduleCard = ({
           data-testid="priority-indicator"
           aria-label={`우선순위: ${schedule.priority}`}
         >
-          {schedule.priority === 'high' ? '🔴' :
-           schedule.priority === 'medium' ? '🟡' : '🟢'}
+          {schedule.priority === 'high'
+            ? '🔴'
+            : schedule.priority === 'medium'
+              ? '🟡'
+              : '🟢'}
         </div>
       )}
 
@@ -294,9 +304,7 @@ const TestWrapper = ({ children }: { children: React.ReactNode }) => {
   })
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   )
 }
 
@@ -326,7 +334,9 @@ describe('ScheduleCard 컴포넌트', () => {
 
       expect(screen.getByTestId('schedule-card')).toBeInTheDocument()
       expect(screen.getByTestId('schedule-title')).toHaveTextContent('팀 회의')
-      expect(screen.getByTestId('schedule-description')).toHaveTextContent('주간 개발팀 회의입니다.')
+      expect(screen.getByTestId('schedule-description')).toHaveTextContent(
+        '주간 개발팀 회의입니다.'
+      )
     })
 
     it('시간 정보가 표시된다', () => {
@@ -349,7 +359,9 @@ describe('ScheduleCard 컴포넌트', () => {
       )
 
       expect(screen.getByTestId('schedule-location')).toBeInTheDocument()
-      expect(screen.getByTestId('schedule-location')).toHaveTextContent('📍 회의실 A')
+      expect(screen.getByTestId('schedule-location')).toHaveTextContent(
+        '📍 회의실 A'
+      )
     })
 
     it('참가자 정보가 표시된다', () => {
@@ -383,7 +395,9 @@ describe('ScheduleCard 컴포넌트', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByTestId('schedule-creator')).toHaveTextContent('생성자: 팀장')
+      expect(screen.getByTestId('schedule-creator')).toHaveTextContent(
+        '생성자: 팀장'
+      )
     })
 
     it('생성일이 표시된다', () => {
@@ -415,7 +429,9 @@ describe('ScheduleCard 컴포넌트', () => {
       )
 
       expect(screen.getByTestId('reminder-indicator')).toBeInTheDocument()
-      expect(screen.getByTestId('reminder-indicator')).toHaveTextContent('🔔 15분 전 알림')
+      expect(screen.getByTestId('reminder-indicator')).toHaveTextContent(
+        '🔔 15분 전 알림'
+      )
     })
   })
 
@@ -702,10 +718,7 @@ describe('ScheduleCard 컴포넌트', () => {
     it('hasConflict 속성에 의해서도 충돌이 표시된다', () => {
       render(
         <TestWrapper>
-          <MockScheduleCard
-            {...defaultProps}
-            schedule={conflictSchedule}
-          />
+          <MockScheduleCard {...defaultProps} schedule={conflictSchedule} />
         </TestWrapper>
       )
 
@@ -735,10 +748,7 @@ describe('ScheduleCard 컴포넌트', () => {
     it('상세 변형이 적용된다', () => {
       render(
         <TestWrapper>
-          <MockScheduleCard
-            {...defaultProps}
-            variant="detailed"
-          />
+          <MockScheduleCard {...defaultProps} variant="detailed" />
         </TestWrapper>
       )
 
@@ -804,10 +814,7 @@ describe('ScheduleCard 컴포넌트', () => {
 
       render(
         <TestWrapper>
-          <MockScheduleCard
-            {...defaultProps}
-            schedule={scheduleWithDeclined}
-          />
+          <MockScheduleCard {...defaultProps} schedule={scheduleWithDeclined} />
         </TestWrapper>
       )
 
@@ -822,8 +829,12 @@ describe('ScheduleCard 컴포넌트', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByTestId('participant-status-1')).toHaveTextContent('참석')
-      expect(screen.getByTestId('participant-status-2')).toHaveTextContent('대기')
+      expect(screen.getByTestId('participant-status-1')).toHaveTextContent(
+        '참석'
+      )
+      expect(screen.getByTestId('participant-status-2')).toHaveTextContent(
+        '대기'
+      )
     })
   })
 
@@ -831,15 +842,14 @@ describe('ScheduleCard 컴포넌트', () => {
     it('반복 일정 표시기가 렌더링된다', () => {
       render(
         <TestWrapper>
-          <MockScheduleCard
-            {...defaultProps}
-            schedule={recurringSchedule}
-          />
+          <MockScheduleCard {...defaultProps} schedule={recurringSchedule} />
         </TestWrapper>
       )
 
       expect(screen.getByTestId('recurring-indicator')).toBeInTheDocument()
-      expect(screen.getByTestId('recurring-indicator')).toHaveTextContent('🔄 반복 일정')
+      expect(screen.getByTestId('recurring-indicator')).toHaveTextContent(
+        '🔄 반복 일정'
+      )
     })
 
     it('일반 일정에서는 반복 표시기가 보이지 않는다', () => {
@@ -849,7 +859,9 @@ describe('ScheduleCard 컴포넌트', () => {
         </TestWrapper>
       )
 
-      expect(screen.queryByTestId('recurring-indicator')).not.toBeInTheDocument()
+      expect(
+        screen.queryByTestId('recurring-indicator')
+      ).not.toBeInTheDocument()
     })
 
     it('우선순위별로 다른 아이콘이 표시된다', () => {
@@ -858,7 +870,10 @@ describe('ScheduleCard 컴포넌트', () => {
 
       const { rerender } = render(
         <TestWrapper>
-          <MockScheduleCard {...defaultProps} schedule={mediumPrioritySchedule} />
+          <MockScheduleCard
+            {...defaultProps}
+            schedule={mediumPrioritySchedule}
+          />
         </TestWrapper>
       )
 
@@ -878,7 +893,10 @@ describe('ScheduleCard 컴포넌트', () => {
 
       render(
         <TestWrapper>
-          <MockScheduleCard {...defaultProps} schedule={normalPrioritySchedule} />
+          <MockScheduleCard
+            {...defaultProps}
+            schedule={normalPrioritySchedule}
+          />
         </TestWrapper>
       )
 
@@ -914,10 +932,7 @@ describe('ScheduleCard 컴포넌트', () => {
     it('충돌 경고가 스크린 리더에 알려진다', () => {
       render(
         <TestWrapper>
-          <MockScheduleCard
-            {...defaultProps}
-            schedule={conflictSchedule}
-          />
+          <MockScheduleCard {...defaultProps} schedule={conflictSchedule} />
         </TestWrapper>
       )
 
@@ -933,8 +948,14 @@ describe('ScheduleCard 컴포넌트', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByTestId('edit-button')).toHaveAttribute('aria-label', '일정 수정')
-      expect(screen.getByTestId('delete-button')).toHaveAttribute('aria-label', '일정 삭제')
+      expect(screen.getByTestId('edit-button')).toHaveAttribute(
+        'aria-label',
+        '일정 수정'
+      )
+      expect(screen.getByTestId('delete-button')).toHaveAttribute(
+        'aria-label',
+        '일정 삭제'
+      )
     })
 
     it('참가자 액션 버튼들이 적절한 aria-label을 가진다', () => {
@@ -948,8 +969,14 @@ describe('ScheduleCard 컴포넌트', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByTestId('accept-button')).toHaveAttribute('aria-label', '참석 확인')
-      expect(screen.getByTestId('decline-button')).toHaveAttribute('aria-label', '참석 거부')
+      expect(screen.getByTestId('accept-button')).toHaveAttribute(
+        'aria-label',
+        '참석 확인'
+      )
+      expect(screen.getByTestId('decline-button')).toHaveAttribute(
+        'aria-label',
+        '참석 거부'
+      )
     })
 
     it('참가자 목록이 적절한 role을 가진다', () => {
@@ -974,7 +1001,10 @@ describe('ScheduleCard 컴포넌트', () => {
       )
 
       const timeElements = screen.getAllByRole('time')
-      expect(timeElements[0]).toHaveAttribute('dateTime', mockSchedule.start_time)
+      expect(timeElements[0]).toHaveAttribute(
+        'dateTime',
+        mockSchedule.start_time
+      )
       expect(timeElements[1]).toHaveAttribute('dateTime', mockSchedule.end_time)
     })
 
@@ -1027,7 +1057,9 @@ describe('ScheduleCard 컴포넌트', () => {
         </TestWrapper>
       )
 
-      expect(screen.queryByTestId('schedule-description')).not.toBeInTheDocument()
+      expect(
+        screen.queryByTestId('schedule-description')
+      ).not.toBeInTheDocument()
       expect(screen.getByTestId('schedule-title')).toHaveTextContent('팀 회의')
     })
 
@@ -1046,7 +1078,9 @@ describe('ScheduleCard 컴포넌트', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByTestId('schedule-creator')).toHaveTextContent('생성자: 알 수 없음')
+      expect(screen.getByTestId('schedule-creator')).toHaveTextContent(
+        '생성자: 알 수 없음'
+      )
     })
 
     it('위치 정보가 없는 경우 위치 표시기가 보이지 않는다', () => {
@@ -1070,15 +1104,14 @@ describe('ScheduleCard 컴포넌트', () => {
     it('최소한의 정보만 있는 일정도 렌더링된다', () => {
       render(
         <TestWrapper>
-          <MockScheduleCard
-            {...defaultProps}
-            schedule={minimalSchedule}
-          />
+          <MockScheduleCard {...defaultProps} schedule={minimalSchedule} />
         </TestWrapper>
       )
 
       expect(screen.getByTestId('schedule-card')).toBeInTheDocument()
-      expect(screen.getByTestId('schedule-title')).toHaveTextContent('최소 정보 일정')
+      expect(screen.getByTestId('schedule-title')).toHaveTextContent(
+        '최소 정보 일정'
+      )
     })
 
     it('매우 긴 제목을 적절히 처리한다', () => {
@@ -1089,10 +1122,7 @@ describe('ScheduleCard 컴포넌트', () => {
 
       render(
         <TestWrapper>
-          <MockScheduleCard
-            {...defaultProps}
-            schedule={longTitleSchedule}
-          />
+          <MockScheduleCard {...defaultProps} schedule={longTitleSchedule} />
         </TestWrapper>
       )
 
@@ -1108,10 +1138,7 @@ describe('ScheduleCard 컴포넌트', () => {
 
       render(
         <TestWrapper>
-          <MockScheduleCard
-            {...defaultProps}
-            schedule={invalidDateSchedule}
-          />
+          <MockScheduleCard {...defaultProps} schedule={invalidDateSchedule} />
         </TestWrapper>
       )
 
@@ -1127,7 +1154,8 @@ describe('ScheduleCard 컴포넌트', () => {
           id: i + 1,
           schedule_id: 1,
           user_id: i + 1,
-          status: i % 3 === 0 ? 'accepted' : i % 3 === 1 ? 'pending' : 'declined',
+          status:
+            i % 3 === 0 ? 'accepted' : i % 3 === 1 ? 'pending' : 'declined',
           user: {
             id: i + 1,
             username: `user${i + 1}`,

@@ -105,228 +105,258 @@ export const chatHandlers = [
   }),
 
   // Long Polling - 새 메시지 대기
-  http.get(`${API_BASE_URL}/teams/:teamId/messages/poll`, ({ params, request }) => {
-    const { teamId } = params
-    const url = new URL(request.url)
-    const lastMessageId = url.searchParams.get('last_message_id')
-    const timeout = url.searchParams.get('timeout') || '30000'
+  http.get(
+    `${API_BASE_URL}/teams/:teamId/messages/poll`,
+    ({ params, request }) => {
+      const { teamId } = params
+      const url = new URL(request.url)
+      const lastMessageId = url.searchParams.get('last_message_id')
+      const timeout = url.searchParams.get('timeout') || '30000'
 
-    // 새 메시지가 있는지 확인
-    const newMessages = currentMessages.filter(
-      (msg) =>
-        msg.team_id === Number(teamId) &&
-        msg.id > Number(lastMessageId || 0)
-    )
+      // 새 메시지가 있는지 확인
+      const newMessages = currentMessages.filter(
+        (msg) =>
+          msg.team_id === Number(teamId) && msg.id > Number(lastMessageId || 0)
+      )
 
-    if (newMessages.length > 0) {
+      if (newMessages.length > 0) {
+        return HttpResponse.json({
+          success: true,
+          data: {
+            messages: newMessages,
+            has_new_messages: true,
+          },
+        })
+      }
+
+      // 타임아웃 시뮬레이션 (실제로는 서버에서 처리)
       return HttpResponse.json({
         success: true,
         data: {
-          messages: newMessages,
-          has_new_messages: true,
+          messages: [],
+          has_new_messages: false,
         },
       })
     }
-
-    // 타임아웃 시뮬레이션 (실제로는 서버에서 처리)
-    return HttpResponse.json({
-      success: true,
-      data: {
-        messages: [],
-        has_new_messages: false,
-      },
-    })
-  }),
+  ),
 
   // 메시지 전송
-  http.post(`${API_BASE_URL}/teams/:teamId/messages`, async ({ params, request }) => {
-    const { teamId } = params
-    const { content, message_type, message_date, parent_message_id, metadata } =
-      (await request.json()) as any
+  http.post(
+    `${API_BASE_URL}/teams/:teamId/messages`,
+    async ({ params, request }) => {
+      const { teamId } = params
+      const {
+        content,
+        message_type,
+        message_date,
+        parent_message_id,
+        metadata,
+      } = (await request.json()) as any
 
-    const authorization = request.headers.get('Authorization')
-    const token = authorization?.slice(7)
+      const authorization = request.headers.get('Authorization')
+      const token = authorization?.slice(7)
 
-    // 토큰에서 사용자 정보 추출 (실제로는 JWT 디코딩)
-    const userId = token === 'mock-jwt-token' ? 1 : 2
-    const user = mockUsers.find(u => u.id === userId) || mockUsers[0]
+      // 토큰에서 사용자 정보 추출 (실제로는 JWT 디코딩)
+      const userId = token === 'mock-jwt-token' ? 1 : 2
+      const user = mockUsers.find((u) => u.id === userId) || mockUsers[0]
 
-    const newMessage = {
-      id: nextMessageId++,
-      team_id: Number(teamId),
-      user_id: userId,
-      content,
-      message_type: message_type || 'text',
-      message_date: message_date || new Date().toISOString().split('T')[0],
-      parent_message_id: parent_message_id || null,
-      metadata: metadata || null,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      user,
+      const newMessage = {
+        id: nextMessageId++,
+        team_id: Number(teamId),
+        user_id: userId,
+        content,
+        message_type: message_type || 'text',
+        message_date: message_date || new Date().toISOString().split('T')[0],
+        parent_message_id: parent_message_id || null,
+        metadata: metadata || null,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        user,
+      }
+
+      currentMessages.push(newMessage)
+
+      return HttpResponse.json({
+        success: true,
+        data: { message: newMessage },
+      })
     }
-
-    currentMessages.push(newMessage)
-
-    return HttpResponse.json({
-      success: true,
-      data: { message: newMessage },
-    })
-  }),
+  ),
 
   // 메시지 삭제 (본인만 가능)
-  http.delete(`${API_BASE_URL}/teams/:teamId/messages/:messageId`, ({ params, request }) => {
-    const { teamId, messageId } = params
-    const authorization = request.headers.get('Authorization')
-    const token = authorization?.slice(7)
-    const userId = token === 'mock-jwt-token' ? 1 : 2
+  http.delete(
+    `${API_BASE_URL}/teams/:teamId/messages/:messageId`,
+    ({ params, request }) => {
+      const { teamId, messageId } = params
+      const authorization = request.headers.get('Authorization')
+      const token = authorization?.slice(7)
+      const userId = token === 'mock-jwt-token' ? 1 : 2
 
-    const messageIndex = currentMessages.findIndex(
-      (msg) =>
-        msg.id === Number(messageId) &&
-        msg.team_id === Number(teamId) &&
-        msg.user_id === userId
-    )
-
-    if (messageIndex === -1) {
-      return HttpResponse.json(
-        {
-          success: false,
-          error: '메시지를 찾을 수 없거나 권한이 없습니다.',
-        },
-        { status: 404 }
+      const messageIndex = currentMessages.findIndex(
+        (msg) =>
+          msg.id === Number(messageId) &&
+          msg.team_id === Number(teamId) &&
+          msg.user_id === userId
       )
+
+      if (messageIndex === -1) {
+        return HttpResponse.json(
+          {
+            success: false,
+            error: '메시지를 찾을 수 없거나 권한이 없습니다.',
+          },
+          { status: 404 }
+        )
+      }
+
+      currentMessages.splice(messageIndex, 1)
+
+      return HttpResponse.json({
+        success: true,
+        message: '메시지가 삭제되었습니다.',
+      })
     }
-
-    currentMessages.splice(messageIndex, 1)
-
-    return HttpResponse.json({
-      success: true,
-      message: '메시지가 삭제되었습니다.',
-    })
-  }),
+  ),
 
   // 메시지 수정 (본인만 가능)
-  http.put(`${API_BASE_URL}/teams/:teamId/messages/:messageId`, async ({ params, request }) => {
-    const { teamId, messageId } = params
-    const { content } = (await request.json()) as any
-    const authorization = request.headers.get('Authorization')
-    const token = authorization?.slice(7)
-    const userId = token === 'mock-jwt-token' ? 1 : 2
+  http.put(
+    `${API_BASE_URL}/teams/:teamId/messages/:messageId`,
+    async ({ params, request }) => {
+      const { teamId, messageId } = params
+      const { content } = (await request.json()) as any
+      const authorization = request.headers.get('Authorization')
+      const token = authorization?.slice(7)
+      const userId = token === 'mock-jwt-token' ? 1 : 2
 
-    const messageIndex = currentMessages.findIndex(
-      (msg) =>
-        msg.id === Number(messageId) &&
-        msg.team_id === Number(teamId) &&
-        msg.user_id === userId
-    )
-
-    if (messageIndex === -1) {
-      return HttpResponse.json(
-        {
-          success: false,
-          error: '메시지를 찾을 수 없거나 권한이 없습니다.',
-        },
-        { status: 404 }
+      const messageIndex = currentMessages.findIndex(
+        (msg) =>
+          msg.id === Number(messageId) &&
+          msg.team_id === Number(teamId) &&
+          msg.user_id === userId
       )
-    }
 
-    currentMessages[messageIndex] = {
-      ...currentMessages[messageIndex],
-      content,
-      updated_at: new Date().toISOString(),
-    }
+      if (messageIndex === -1) {
+        return HttpResponse.json(
+          {
+            success: false,
+            error: '메시지를 찾을 수 없거나 권한이 없습니다.',
+          },
+          { status: 404 }
+        )
+      }
 
-    return HttpResponse.json({
-      success: true,
-      data: { message: currentMessages[messageIndex] },
-    })
-  }),
+      currentMessages[messageIndex] = {
+        ...currentMessages[messageIndex],
+        content,
+        updated_at: new Date().toISOString(),
+      }
+
+      return HttpResponse.json({
+        success: true,
+        data: { message: currentMessages[messageIndex] },
+      })
+    }
+  ),
 
   // 타이핑 인디케이터
-  http.post(`${API_BASE_URL}/teams/:teamId/typing`, async ({ params, request }) => {
-    const { teamId } = params
-    const { is_typing } = (await request.json()) as any
-    const authorization = request.headers.get('Authorization')
-    const token = authorization?.slice(7)
-    const userId = token === 'mock-jwt-token' ? 1 : 2
+  http.post(
+    `${API_BASE_URL}/teams/:teamId/typing`,
+    async ({ params, request }) => {
+      const { teamId } = params
+      const { is_typing } = (await request.json()) as any
+      const authorization = request.headers.get('Authorization')
+      const token = authorization?.slice(7)
+      const userId = token === 'mock-jwt-token' ? 1 : 2
 
-    return HttpResponse.json({
-      success: true,
-      data: {
-        user_id: userId,
-        is_typing,
-        timestamp: new Date().toISOString(),
-      },
-    })
-  }),
+      return HttpResponse.json({
+        success: true,
+        data: {
+          user_id: userId,
+          is_typing,
+          timestamp: new Date().toISOString(),
+        },
+      })
+    }
+  ),
 
   // 일정 변경 요청 (채팅을 통한)
-  http.post(`${API_BASE_URL}/teams/:teamId/schedule-change-request`, async ({ params, request }) => {
-    const { teamId } = params
-    const { schedule_id, requested_start_time, requested_end_time, message_date } =
-      (await request.json()) as any
-    const authorization = request.headers.get('Authorization')
-    const token = authorization?.slice(7)
-    const userId = token === 'mock-jwt-token' ? 1 : 2
-    const user = mockUsers.find(u => u.id === userId) || mockUsers[0]
-
-    const changeRequestMessage = {
-      id: nextMessageId++,
-      team_id: Number(teamId),
-      user_id: userId,
-      content: `일정 변경을 요청합니다: ${requested_start_time} - ${requested_end_time}`,
-      message_type: 'schedule_change_request',
-      message_date: message_date || new Date().toISOString().split('T')[0],
-      parent_message_id: null,
-      metadata: {
+  http.post(
+    `${API_BASE_URL}/teams/:teamId/schedule-change-request`,
+    async ({ params, request }) => {
+      const { teamId } = params
+      const {
         schedule_id,
         requested_start_time,
         requested_end_time,
-        status: 'pending',
-      },
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-      user,
-    }
+        message_date,
+      } = (await request.json()) as any
+      const authorization = request.headers.get('Authorization')
+      const token = authorization?.slice(7)
+      const userId = token === 'mock-jwt-token' ? 1 : 2
+      const user = mockUsers.find((u) => u.id === userId) || mockUsers[0]
 
-    currentMessages.push(changeRequestMessage)
+      const changeRequestMessage = {
+        id: nextMessageId++,
+        team_id: Number(teamId),
+        user_id: userId,
+        content: `일정 변경을 요청합니다: ${requested_start_time} - ${requested_end_time}`,
+        message_type: 'schedule_change_request',
+        message_date: message_date || new Date().toISOString().split('T')[0],
+        parent_message_id: null,
+        metadata: {
+          schedule_id,
+          requested_start_time,
+          requested_end_time,
+          status: 'pending',
+        },
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        user,
+      }
 
-    return HttpResponse.json({
-      success: true,
-      data: { message: changeRequestMessage },
-    })
-  }),
+      currentMessages.push(changeRequestMessage)
 
-  // 메시지 검색
-  http.get(`${API_BASE_URL}/teams/:teamId/messages/search`, ({ params, request }) => {
-    const { teamId } = params
-    const url = new URL(request.url)
-    const query = url.searchParams.get('q')
-    const limit = Number(url.searchParams.get('limit')) || 20
-
-    if (!query) {
       return HttpResponse.json({
         success: true,
-        data: { messages: [], total_count: 0 },
+        data: { message: changeRequestMessage },
       })
     }
+  ),
 
-    const searchResults = currentMessages
-      .filter((msg) =>
-        msg.team_id === Number(teamId) &&
-        msg.content.toLowerCase().includes(query.toLowerCase())
-      )
-      .slice(0, limit)
+  // 메시지 검색
+  http.get(
+    `${API_BASE_URL}/teams/:teamId/messages/search`,
+    ({ params, request }) => {
+      const { teamId } = params
+      const url = new URL(request.url)
+      const query = url.searchParams.get('q')
+      const limit = Number(url.searchParams.get('limit')) || 20
 
-    return HttpResponse.json({
-      success: true,
-      data: {
-        messages: searchResults,
-        total_count: searchResults.length,
-        query,
-      },
-    })
-  }),
+      if (!query) {
+        return HttpResponse.json({
+          success: true,
+          data: { messages: [], total_count: 0 },
+        })
+      }
+
+      const searchResults = currentMessages
+        .filter(
+          (msg) =>
+            msg.team_id === Number(teamId) &&
+            msg.content.toLowerCase().includes(query.toLowerCase())
+        )
+        .slice(0, limit)
+
+      return HttpResponse.json({
+        success: true,
+        data: {
+          messages: searchResults,
+          total_count: searchResults.length,
+          query,
+        },
+      })
+    }
+  ),
 ]
 
 // 테스트용 유틸리티 함수들
@@ -347,5 +377,5 @@ export const chatTestUtils = {
 
   // 특정 팀의 메시지만 조회 (테스트용)
   getTeamMessages: (teamId: number) =>
-    currentMessages.filter(msg => msg.team_id === teamId),
+    currentMessages.filter((msg) => msg.team_id === teamId),
 }

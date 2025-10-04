@@ -1,6 +1,9 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { ChatService } from '@/services/chat-service'
-import type { SendMessageRequest, ScheduleChangeRequest } from '@/services/chat-service'
+import type {
+  SendMessageRequest,
+  ScheduleChangeRequest,
+} from '@/services/chat-service'
 
 // Query Keys
 export const chatKeys = {
@@ -12,7 +15,11 @@ export const chatKeys = {
 }
 
 // 메시지 조회 hook
-export function useMessages(teamId: number | null, targetDate: string, enabled = true) {
+export function useMessages(
+  teamId: number | null,
+  targetDate: string,
+  enabled = true
+) {
   return useQuery({
     queryKey: chatKeys.messages(teamId || 0, targetDate),
     queryFn: () => {
@@ -83,8 +90,7 @@ export function useApproveRequest(teamId: number | null) {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (messageId: number) =>
-      ChatService.approveRequest(messageId),
+    mutationFn: (messageId: number) => ChatService.approveRequest(messageId),
     onSuccess: () => {
       // 일정 변경 요청 목록 재조회
       if (teamId) {
@@ -101,8 +107,7 @@ export function useRejectRequest(teamId: number | null) {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (messageId: number) =>
-      ChatService.rejectRequest(messageId),
+    mutationFn: (messageId: number) => ChatService.rejectRequest(messageId),
     onSuccess: () => {
       // 일정 변경 요청 목록 재조회
       if (teamId) {
@@ -115,7 +120,10 @@ export function useRejectRequest(teamId: number | null) {
 }
 
 // 응답 확인 hook
-export function useAcknowledgeResponse(teamId: number | null, targetDate: string) {
+export function useAcknowledgeResponse(
+  teamId: number | null,
+  targetDate: string
+) {
   const queryClient = useQueryClient()
 
   return useMutation({

@@ -67,7 +67,9 @@ const MockMessageList = ({
   onApproveScheduleChange?: (messageId: number) => void
   onRejectScheduleChange?: (messageId: number) => void
 }) => {
-  const [editingMessageId, setEditingMessageId] = React.useState<number | null>(null)
+  const [editingMessageId, setEditingMessageId] = React.useState<number | null>(
+    null
+  )
   const [editContent, setEditContent] = React.useState('')
 
   const handleStartEdit = (message: any) => {
@@ -132,7 +134,10 @@ const MockMessageList = ({
 
           <div data-testid="message-body" className="message-body">
             {editingMessageId === message.id ? (
-              <div data-testid="message-edit-form" className="message-edit-form">
+              <div
+                data-testid="message-edit-form"
+                className="message-edit-form"
+              >
                 <textarea
                   data-testid="edit-textarea"
                   value={editContent}
@@ -162,12 +167,19 @@ const MockMessageList = ({
             )}
 
             {message.message_type === 'schedule_change_request' && (
-              <div data-testid="schedule-change-info" className="schedule-change-info">
+              <div
+                data-testid="schedule-change-info"
+                className="schedule-change-info"
+              >
                 <div data-testid="schedule-change-details">
-                  요청 시간: {message.metadata?.requested_start_time} - {message.metadata?.requested_end_time}
+                  요청 시간: {message.metadata?.requested_start_time} -{' '}
+                  {message.metadata?.requested_end_time}
                 </div>
                 {currentUserId !== message.user.id && (
-                  <div data-testid="schedule-change-actions" className="schedule-change-actions">
+                  <div
+                    data-testid="schedule-change-actions"
+                    className="schedule-change-actions"
+                  >
                     <button
                       data-testid="approve-schedule-button"
                       onClick={() => onApproveScheduleChange?.(message.id)}
@@ -188,24 +200,25 @@ const MockMessageList = ({
             )}
           </div>
 
-          {message.user.id === currentUserId && editingMessageId !== message.id && (
-            <div data-testid="message-actions" className="message-actions">
-              <button
-                data-testid="edit-message-button"
-                onClick={() => handleStartEdit(message)}
-                className="edit-button"
-              >
-                수정
-              </button>
-              <button
-                data-testid="delete-message-button"
-                onClick={() => onDeleteMessage?.(message.id)}
-                className="delete-button"
-              >
-                삭제
-              </button>
-            </div>
-          )}
+          {message.user.id === currentUserId &&
+            editingMessageId !== message.id && (
+              <div data-testid="message-actions" className="message-actions">
+                <button
+                  data-testid="edit-message-button"
+                  onClick={() => handleStartEdit(message)}
+                  className="edit-button"
+                >
+                  수정
+                </button>
+                <button
+                  data-testid="delete-message-button"
+                  onClick={() => onDeleteMessage?.(message.id)}
+                  className="delete-button"
+                >
+                  삭제
+                </button>
+              </div>
+            )}
         </div>
       ))}
     </div>
@@ -279,7 +292,9 @@ describe('MessageList', () => {
 
       expect(screen.getByText('첫 번째 메시지입니다.')).toBeInTheDocument()
       expect(screen.getByText('일정 변경을 요청합니다.')).toBeInTheDocument()
-      expect(screen.getByText('안녕하세요! 새로운 팀원입니다.')).toBeInTheDocument()
+      expect(
+        screen.getByText('안녕하세요! 새로운 팀원입니다.')
+      ).toBeInTheDocument()
     })
 
     it('사용자 정보가 올바르게 표시되어야 한다', () => {
@@ -318,7 +333,10 @@ describe('MessageList', () => {
 
       const messageItems = screen.getAllByTestId('message-item')
       expect(messageItems[0]).toHaveAttribute('data-message-type', 'text')
-      expect(messageItems[1]).toHaveAttribute('data-message-type', 'schedule_change_request')
+      expect(messageItems[1]).toHaveAttribute(
+        'data-message-type',
+        'schedule_change_request'
+      )
       expect(messageItems[2]).toHaveAttribute('data-message-type', 'text')
     })
 
@@ -368,7 +386,9 @@ describe('MessageList', () => {
         </TestWrapper>
       )
 
-      expect(screen.queryByTestId('schedule-change-actions')).not.toBeInTheDocument()
+      expect(
+        screen.queryByTestId('schedule-change-actions')
+      ).not.toBeInTheDocument()
     })
 
     it('승인 버튼 클릭 시 콜백이 호출되어야 한다', async () => {
@@ -423,12 +443,18 @@ describe('MessageList', () => {
       const messageItems = screen.getAllByTestId('message-item')
 
       // 첫 번째 메시지 (내 메시지)에는 액션 버튼이 있어야 함
-      const firstMessageActions = messageItems[0].querySelector('[data-testid="message-actions"]')
+      const firstMessageActions = messageItems[0].querySelector(
+        '[data-testid="message-actions"]'
+      )
       expect(firstMessageActions).toBeInTheDocument()
 
       // 두 번째, 세 번째 메시지 (다른 사용자)에는 액션 버튼이 없어야 함
-      const secondMessageActions = messageItems[1].querySelector('[data-testid="message-actions"]')
-      const thirdMessageActions = messageItems[2].querySelector('[data-testid="message-actions"]')
+      const secondMessageActions = messageItems[1].querySelector(
+        '[data-testid="message-actions"]'
+      )
+      const thirdMessageActions = messageItems[2].querySelector(
+        '[data-testid="message-actions"]'
+      )
       expect(secondMessageActions).not.toBeInTheDocument()
       expect(thirdMessageActions).not.toBeInTheDocument()
     })

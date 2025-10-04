@@ -2,7 +2,13 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { ChevronLeft, ChevronRight, Calendar, Plus, RefreshCw } from 'lucide-react'
+import {
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
+  Plus,
+  RefreshCw,
+} from 'lucide-react'
 
 interface CalendarHeaderProps {
   currentDate: Date
@@ -55,7 +61,12 @@ export function CalendarHeader({
   }
 
   return (
-    <div className={cn('flex items-center justify-between p-4 bg-white border-b', className)}>
+    <div
+      className={cn(
+        'flex items-center justify-between p-4 bg-white border-b',
+        className
+      )}
+    >
       {/* Left section: Navigation */}
       <div className="flex items-center space-x-4">
         <div className="flex items-center space-x-2">

@@ -7,7 +7,7 @@ import {
   realtimeTestScenarios,
   performanceTestHelpers,
   errorSimulation,
-  generateTestData
+  generateTestData,
 } from '../utils/realtime-test-helpers'
 
 // useRealtime 훅 모킹 (실제 구현 전까지)
@@ -25,7 +25,7 @@ const useRealtimeMock = (teamId: string, messageDate: string) => {
   const mockLongPolling = React.useRef<MockLongPolling | null>(null)
 
   const connect = React.useCallback(async () => {
-    setState(prev => ({ ...prev, isLoading: true, error: null }))
+    setState((prev) => ({ ...prev, isLoading: true, error: null }))
 
     try {
       if (!mockLongPolling.current) {
@@ -36,24 +36,31 @@ const useRealtimeMock = (teamId: string, messageDate: string) => {
 
       // 이벤트 리스너 등록
       polling.on('connect', () => {
-        setState(prev => ({ ...prev, isConnected: true, isLoading: false, retryCount: 0 }))
+        setState((prev) => ({
+          ...prev,
+          isConnected: true,
+          isLoading: false,
+          retryCount: 0,
+        }))
       })
 
       polling.on('disconnect', () => {
-        setState(prev => ({ ...prev, isConnected: false }))
+        setState((prev) => ({ ...prev, isConnected: false }))
       })
 
       polling.on('new_message', (message: any) => {
-        setState(prev => ({
+        setState((prev) => ({
           ...prev,
           messages: [...prev.messages, message],
-          lastMessageId: Math.max(prev.lastMessageId, message.id)
+          lastMessageId: Math.max(prev.lastMessageId, message.id),
         }))
       })
 
       polling.on('user_typing', (data: any) => {
-        setState(prev => {
-          const typingUsers = prev.typingUsers.filter(u => u.user_id !== data.user_id)
+        setState((prev) => {
+          const typingUsers = prev.typingUsers.filter(
+            (u) => u.user_id !== data.user_id
+          )
           if (data.is_typing) {
             typingUsers.push(data)
           }
@@ -62,27 +69,30 @@ const useRealtimeMock = (teamId: string, messageDate: string) => {
       })
 
       polling.on('error', (error: Error) => {
-        setState(prev => ({ ...prev, error, isLoading: false }))
+        setState((prev) => ({ ...prev, error, isLoading: false }))
       })
 
       polling.on('reconnecting', (data: any) => {
-        setState(prev => ({ ...prev, retryCount: data.attempt, isLoading: true }))
+        setState((prev) => ({
+          ...prev,
+          retryCount: data.attempt,
+          isLoading: true,
+        }))
       })
 
       polling.on('connection_failed', (data: any) => {
-        setState(prev => ({
+        setState((prev) => ({
           ...prev,
           error: data.error,
           isConnected: false,
           isLoading: false,
-          retryCount: data.retryCount
+          retryCount: data.retryCount,
         }))
       })
 
       await polling.connect(teamId, messageDate)
-
     } catch (error) {
-      setState(prev => ({ ...prev, error: error as Error, isLoading: false }))
+      setState((prev) => ({ ...prev, error: error as Error, isLoading: false }))
     }
   }, [teamId, messageDate])
 
@@ -92,26 +102,29 @@ const useRealtimeMock = (teamId: string, messageDate: string) => {
     }
   }, [])
 
-  const sendMessage = React.useCallback(async (content: string) => {
-    if (!mockLongPolling.current || !state.isConnected) {
-      throw new Error('Not connected')
-    }
+  const sendMessage = React.useCallback(
+    async (content: string) => {
+      if (!mockLongPolling.current || !state.isConnected) {
+        throw new Error('Not connected')
+      }
 
-    try {
-      await mockLongPolling.current.sendMessage(teamId, messageDate, content)
-    } catch (error) {
-      setState(prev => ({ ...prev, error: error as Error }))
-      throw error
-    }
-  }, [teamId, messageDate, state.isConnected])
+      try {
+        await mockLongPolling.current.sendMessage(teamId, messageDate, content)
+      } catch (error) {
+        setState((prev) => ({ ...prev, error: error as Error }))
+        throw error
+      }
+    },
+    [teamId, messageDate, state.isConnected]
+  )
 
   const retry = React.useCallback(async () => {
-    setState(prev => ({ ...prev, error: null, retryCount: 0 }))
+    setState((prev) => ({ ...prev, error: null, retryCount: 0 }))
     await connect()
   }, [connect])
 
   const clearError = React.useCallback(() => {
-    setState(prev => ({ ...prev, error: null }))
+    setState((prev) => ({ ...prev, error: null }))
   }, [])
 
   // 자동 재연결 로직
@@ -154,9 +167,8 @@ const createWrapper = () => {
     },
   })
 
-  return ({ children }: { children: React.ReactNode }) => (
+  return ({ children }: { children: React.ReactNode }) =>
     React.createElement(QueryClientProvider, { client: queryClient }, children)
-  )
 }
 
 describe('useRealtime', () => {
@@ -176,7 +188,9 @@ describe('useRealtime', () => {
 
   describe('초기 상태', () => {
     it('올바른 초기값을 가져야 한다', () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       expect(result.current.isConnected).toBe(false)
       expect(result.current.messages).toEqual([])
@@ -188,7 +202,9 @@ describe('useRealtime', () => {
     })
 
     it('연결 관련 함수들이 제공되어야 한다', () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       expect(typeof result.current.connect).toBe('function')
       expect(typeof result.current.disconnect).toBe('function')
@@ -200,7 +216,9 @@ describe('useRealtime', () => {
 
   describe('연결 관리', () => {
     it('연결이 성공적으로 이루어져야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       act(() => {
         result.current.connect()
@@ -220,7 +238,9 @@ describe('useRealtime', () => {
     })
 
     it('연결 해제가 올바르게 작동해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       // 연결
       await act(async () => {
@@ -242,7 +262,9 @@ describe('useRealtime', () => {
     })
 
     it('중복 연결 시도가 올바르게 처리되어야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       // 동시에 여러 번 연결 시도
       await act(async () => {
@@ -262,7 +284,9 @@ describe('useRealtime', () => {
 
   describe('메시지 송신', () => {
     it('연결된 상태에서 메시지를 전송할 수 있어야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       // 연결
       await act(async () => {
@@ -286,7 +310,9 @@ describe('useRealtime', () => {
     })
 
     it('연결되지 않은 상태에서 메시지 전송 시 에러가 발생해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await expect(
         act(async () => {
@@ -296,7 +322,9 @@ describe('useRealtime', () => {
     })
 
     it('빈 메시지 전송이 방지되어야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -317,7 +345,9 @@ describe('useRealtime', () => {
 
   describe('메시지 수신', () => {
     it('실시간으로 새 메시지를 수신해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -353,7 +383,9 @@ describe('useRealtime', () => {
     })
 
     it('일정 업데이트 메시지를 수신해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -384,12 +416,16 @@ describe('useRealtime', () => {
       await waitFor(() => {
         expect(result.current.messages).toHaveLength(1)
         expect(result.current.messages[0].message_type).toBe('schedule_update')
-        expect(result.current.messages[0].related_schedule_id).toBe('schedule-1')
+        expect(result.current.messages[0].related_schedule_id).toBe(
+          'schedule-1'
+        )
       })
     })
 
     it('메시지 순서가 올바르게 유지되어야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -403,12 +439,24 @@ describe('useRealtime', () => {
 
       // 여러 메시지를 순차적으로 전송
       const messages = [
-        { id: 1, content: '첫 번째 메시지', created_at: '2024-12-25T09:00:00Z' },
-        { id: 2, content: '두 번째 메시지', created_at: '2024-12-25T09:01:00Z' },
-        { id: 3, content: '세 번째 메시지', created_at: '2024-12-25T09:02:00Z' },
+        {
+          id: 1,
+          content: '첫 번째 메시지',
+          created_at: '2024-12-25T09:00:00Z',
+        },
+        {
+          id: 2,
+          content: '두 번째 메시지',
+          created_at: '2024-12-25T09:01:00Z',
+        },
+        {
+          id: 3,
+          content: '세 번째 메시지',
+          created_at: '2024-12-25T09:02:00Z',
+        },
       ]
 
-      messages.forEach(msg => {
+      messages.forEach((msg) => {
         act(() => {
           mockPolling.emit('new_message', {
             ...msg,
@@ -433,7 +481,9 @@ describe('useRealtime', () => {
 
   describe('타이핑 상태 관리', () => {
     it('다른 사용자의 타이핑 상태를 추적해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -477,7 +527,9 @@ describe('useRealtime', () => {
     })
 
     it('여러 사용자의 타이핑 상태를 동시에 관리해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -524,7 +576,9 @@ describe('useRealtime', () => {
 
   describe('에러 처리 및 재연결', () => {
     it('네트워크 에러 시 적절한 에러 상태를 설정해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -544,7 +598,9 @@ describe('useRealtime', () => {
     })
 
     it('자동 재연결이 작동해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -572,7 +628,9 @@ describe('useRealtime', () => {
     })
 
     it('최대 재시도 횟수 초과 시 재연결을 중단해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -584,7 +642,7 @@ describe('useRealtime', () => {
       act(() => {
         mockPolling.emit('connection_failed', {
           error: new Error('Max retries exceeded'),
-          retryCount: 3
+          retryCount: 3,
         })
       })
 
@@ -603,11 +661,13 @@ describe('useRealtime', () => {
     })
 
     it('수동 재시도가 가능해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       // 에러 상태로 설정
       act(() => {
-        (result.current as any)._mockLongPolling = new MockLongPolling()
+        ;(result.current as any)._mockLongPolling = new MockLongPolling()
       })
 
       const mockPolling = (result.current as any)._mockLongPolling
@@ -631,7 +691,9 @@ describe('useRealtime', () => {
     })
 
     it('에러 상태를 수동으로 클리어할 수 있어야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       const mockPolling = new MockLongPolling()
       ;(result.current as any)._mockLongPolling = mockPolling
@@ -656,7 +718,9 @@ describe('useRealtime', () => {
 
   describe('성능 및 메모리 관리', () => {
     it('대량 메시지 처리 성능이 적절해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -668,7 +732,7 @@ describe('useRealtime', () => {
       // 100개 메시지 동시 수신
       act(() => {
         const messages = generateTestData.messages(100)
-        messages.forEach(msg => {
+        messages.forEach((msg) => {
           mockPolling.emit('new_message', msg)
         })
       })
@@ -685,7 +749,10 @@ describe('useRealtime', () => {
     })
 
     it('컴포넌트 언마운트 시 리소스가 정리되어야 한다', () => {
-      const { result, unmount } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result, unmount } = renderHook(
+        () => useRealtime('team-1', '2024-12-25'),
+        { wrapper }
+      )
 
       const disconnectSpy = vi.spyOn(result.current, 'disconnect')
 
@@ -697,7 +764,9 @@ describe('useRealtime', () => {
     })
 
     it('메모리 누수가 발생하지 않아야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -708,7 +777,7 @@ describe('useRealtime', () => {
       // 많은 메시지 추가 후 제거
       act(() => {
         const messages = generateTestData.messages(1000)
-        messages.forEach(msg => {
+        messages.forEach((msg) => {
           mockPolling.emit('new_message', msg)
         })
       })
@@ -733,7 +802,7 @@ describe('useRealtime', () => {
         ({ teamId, messageDate }) => useRealtime(teamId, messageDate),
         {
           wrapper,
-          initialProps: { teamId: 'team-1', messageDate: '2024-12-25' }
+          initialProps: { teamId: 'team-1', messageDate: '2024-12-25' },
         }
       )
 
@@ -761,7 +830,7 @@ describe('useRealtime', () => {
         ({ teamId, messageDate }) => useRealtime(teamId, messageDate),
         {
           wrapper,
-          initialProps: { teamId: 'team-1', messageDate: '2024-12-25' }
+          initialProps: { teamId: 'team-1', messageDate: '2024-12-25' },
         }
       )
 
@@ -791,7 +860,9 @@ describe('useRealtime', () => {
 
   describe('동시성 및 경합 상태', () => {
     it('동시에 여러 메시지가 도착해도 올바르게 처리되어야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       await act(async () => {
         await result.current.connect()
@@ -802,7 +873,7 @@ describe('useRealtime', () => {
       // 동시에 여러 메시지 전송
       const messages = generateTestData.messages(10)
       act(() => {
-        messages.forEach(msg => {
+        messages.forEach((msg) => {
           mockPolling.emit('new_message', msg)
         })
       })
@@ -819,12 +890,16 @@ describe('useRealtime', () => {
     })
 
     it('연결과 메시지 전송이 동시에 발생해도 안전해야 한다', async () => {
-      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), { wrapper })
+      const { result } = renderHook(() => useRealtime('team-1', '2024-12-25'), {
+        wrapper,
+      })
 
       // 연결과 메시지 전송을 동시에 시도
       await act(async () => {
         const connectPromise = result.current.connect()
-        const sendPromise = result.current.sendMessage('동시 전송 테스트').catch(() => {})
+        const sendPromise = result.current
+          .sendMessage('동시 전송 테스트')
+          .catch(() => {})
 
         await Promise.all([connectPromise, sendPromise])
       })

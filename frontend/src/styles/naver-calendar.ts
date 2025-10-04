@@ -20,7 +20,8 @@ export const naverStyles = {
     right: 'flex items-center gap-3',
     iconButton: 'naver-icon-button',
     bellContainer: 'relative',
-    badge: 'absolute -top-1 -right-1 w-4 h-4 bg-naver-red text-white text-xs rounded-full flex items-center justify-center',
+    badge:
+      'absolute -top-1 -right-1 w-4 h-4 bg-naver-red text-white text-xs rounded-full flex items-center justify-center',
     userInfo: 'flex items-center gap-2',
     avatar: 'w-8 h-8 bg-naver-gray-300 rounded-full',
     userName: 'text-sm text-naver-gray-700',
@@ -46,7 +47,8 @@ export const naverStyles = {
     calendarSection: 'px-4 py-2 border-t border-naver-gray-200',
     calendarToggle: 'w-full flex items-center justify-between py-2 text-sm',
     calendarList: 'ml-6 space-y-1 mt-2',
-    calendarItem: 'flex items-center gap-2 py-1 cursor-pointer hover:bg-naver-gray-50 rounded px-2',
+    calendarItem:
+      'flex items-center gap-2 py-1 cursor-pointer hover:bg-naver-gray-50 rounded px-2',
     checkbox: 'w-4 h-4',
     menuList: 'px-4 py-2 border-t border-naver-gray-200 mt-4',
     menuItem: 'naver-menu-item',
@@ -59,18 +61,22 @@ export const naverStyles = {
   // 메인 캘린더
   calendar: {
     container: 'flex-1 bg-white',
-    control: 'flex items-center justify-between px-6 py-4 border-b border-naver-gray-200',
+    control:
+      'flex items-center justify-between px-6 py-4 border-b border-naver-gray-200',
     controlLeft: 'flex items-center gap-4',
     navigation: 'flex items-center gap-2',
     title: 'text-xl font-bold',
-    todayButton: 'px-3 py-1.5 text-sm border border-naver-gray-300 rounded hover:bg-naver-gray-50',
+    todayButton:
+      'px-3 py-1.5 text-sm border border-naver-gray-300 rounded hover:bg-naver-gray-50',
     controlRight: 'flex items-center gap-2',
     viewButton: 'px-4 py-2 text-sm rounded hover:bg-naver-gray-100',
     viewButtonActive: 'bg-naver-gray-200',
-    select: 'px-3 py-2 text-sm border border-naver-gray-300 rounded hover:bg-naver-gray-50',
+    select:
+      'px-3 py-2 text-sm border border-naver-gray-300 rounded hover:bg-naver-gray-50',
     gridContainer: 'p-4',
     weekdayHeader: 'grid grid-cols-7 border-t border-l border-naver-gray-200',
-    weekdayCell: 'border-r border-b border-naver-gray-200 py-3 text-center text-sm font-semibold',
+    weekdayCell:
+      'border-r border-b border-naver-gray-200 py-3 text-center text-sm font-semibold',
     weekdaySunday: 'text-naver-red',
     weekdaySaturday: 'text-naver-blue',
     weekRow: 'grid grid-cols-7 border-l border-naver-gray-200',
@@ -133,7 +139,7 @@ export const naverStyles = {
     flexCenter: 'flex items-center justify-center',
     flexBetween: 'flex items-center justify-between',
   },
-} as const;
+} as const
 
 /**
  * 색상 타입별 일정 스타일 반환
@@ -141,15 +147,15 @@ export const naverStyles = {
 export const getScheduleStyle = (color: 'red' | 'purple' | 'blue' | string) => {
   switch (color) {
     case 'red':
-      return naverStyles.schedule.itemRed;
+      return naverStyles.schedule.itemRed
     case 'purple':
-      return naverStyles.schedule.itemPurple;
+      return naverStyles.schedule.itemPurple
     case 'blue':
-      return naverStyles.schedule.itemBlue;
+      return naverStyles.schedule.itemBlue
     default:
-      return naverStyles.schedule.itemBlue;
+      return naverStyles.schedule.itemBlue
   }
-};
+}
 
 /**
  * 날짜 스타일 반환 (요일별)
@@ -159,22 +165,22 @@ export const getDateStyle = (
   isCurrentMonth: boolean,
   isToday: boolean
 ): string => {
-  if (isToday) return '';
+  if (isToday) return ''
 
-  const styles: string[] = [naverStyles.calendar.dateNumber];
+  const styles: string[] = [naverStyles.calendar.dateNumber]
 
   if (!isCurrentMonth) {
-    styles.push(naverStyles.calendar.dateOtherMonth);
+    styles.push(naverStyles.calendar.dateOtherMonth)
   } else {
     if (dayOfWeek === 0) {
-      styles.push(naverStyles.calendar.dateSunday);
+      styles.push(naverStyles.calendar.dateSunday)
     } else if (dayOfWeek === 6) {
-      styles.push(naverStyles.calendar.dateSaturday);
+      styles.push(naverStyles.calendar.dateSaturday)
     }
   }
 
-  return styles.join(' ');
-};
+  return styles.join(' ')
+}
 
 /**
  * 미니 캘린더 날짜 스타일 반환
@@ -185,45 +191,45 @@ export const getMiniCalendarDateStyle = (
   isSunday: boolean,
   isSaturday: boolean
 ): string => {
-  const styles: string[] = [naverStyles.sidebar.miniCalendar.date];
+  const styles: string[] = [naverStyles.sidebar.miniCalendar.date]
 
   if (isToday) {
-    styles.push(naverStyles.sidebar.miniCalendar.dateToday);
+    styles.push(naverStyles.sidebar.miniCalendar.dateToday)
   } else if (!isCurrentMonth) {
-    styles.push(naverStyles.sidebar.miniCalendar.dateOtherMonth);
+    styles.push(naverStyles.sidebar.miniCalendar.dateOtherMonth)
   } else {
     if (isSunday) {
-      styles.push(naverStyles.sidebar.miniCalendar.dateSunday);
+      styles.push(naverStyles.sidebar.miniCalendar.dateSunday)
     } else if (isSaturday) {
-      styles.push(naverStyles.sidebar.miniCalendar.dateSaturday);
+      styles.push(naverStyles.sidebar.miniCalendar.dateSaturday)
     }
   }
 
-  return styles.join(' ');
-};
+  return styles.join(' ')
+}
 
 /**
  * 뷰 버튼 스타일 반환
  */
 export const getViewButtonStyle = (isActive: boolean): string => {
-  const styles: string[] = [naverStyles.calendar.viewButton];
+  const styles: string[] = [naverStyles.calendar.viewButton]
   if (isActive) {
-    styles.push(naverStyles.calendar.viewButtonActive);
+    styles.push(naverStyles.calendar.viewButtonActive)
   }
-  return styles.join(' ');
-};
+  return styles.join(' ')
+}
 
 /**
  * 요일 헤더 스타일 반환
  */
 export const getWeekdayStyle = (dayIndex: number): string => {
-  const styles: string[] = [naverStyles.calendar.weekdayCell];
+  const styles: string[] = [naverStyles.calendar.weekdayCell]
 
   if (dayIndex === 0) {
-    styles.push(naverStyles.calendar.weekdaySunday);
+    styles.push(naverStyles.calendar.weekdaySunday)
   } else if (dayIndex === 6) {
-    styles.push(naverStyles.calendar.weekdaySaturday);
+    styles.push(naverStyles.calendar.weekdaySaturday)
   }
 
-  return styles.join(' ');
-};
+  return styles.join(' ')
+}

@@ -12,7 +12,11 @@ const MockMessageInput = ({
   placeholder = '메시지를 입력하세요...',
   maxLength = 500,
 }: {
-  onSendMessage?: (content: string, messageType?: string, metadata?: any) => Promise<void>
+  onSendMessage?: (
+    content: string,
+    messageType?: string,
+    metadata?: any
+  ) => Promise<void>
   onTyping?: (isTyping: boolean) => void
   disabled?: boolean
   placeholder?: string
@@ -27,7 +31,9 @@ const MockMessageInput = ({
     requested_end_time: '',
   })
   const [isSending, setIsSending] = React.useState(false)
-  const [typingTimer, setTypingTimer] = React.useState<NodeJS.Timeout | null>(null)
+  const [typingTimer, setTypingTimer] = React.useState<NodeJS.Timeout | null>(
+    null
+  )
 
   const handleContentChange = (value: string) => {
     setContent(value)
@@ -97,9 +103,15 @@ const MockMessageInput = ({
   }, [typingTimer])
 
   return (
-    <div data-testid="message-input-container" className="message-input-container">
+    <div
+      data-testid="message-input-container"
+      className="message-input-container"
+    >
       {/* 메시지 타입 선택 */}
-      <div data-testid="message-type-selector" className="message-type-selector">
+      <div
+        data-testid="message-type-selector"
+        className="message-type-selector"
+      >
         <button
           data-testid="text-message-button"
           onClick={() => {
@@ -123,7 +135,10 @@ const MockMessageInput = ({
 
       {/* 일정 변경 요청 폼 */}
       {isScheduleChangeMode && (
-        <div data-testid="schedule-change-form" className="schedule-change-form">
+        <div
+          data-testid="schedule-change-form"
+          className="schedule-change-form"
+        >
           <div data-testid="schedule-inputs" className="schedule-inputs">
             <input
               data-testid="schedule-id-input"
@@ -131,7 +146,10 @@ const MockMessageInput = ({
               placeholder="일정 ID"
               value={scheduleData.schedule_id}
               onChange={(e) =>
-                setScheduleData((prev) => ({ ...prev, schedule_id: e.target.value }))
+                setScheduleData((prev) => ({
+                  ...prev,
+                  schedule_id: e.target.value,
+                }))
               }
               disabled={disabled}
             />
@@ -141,7 +159,10 @@ const MockMessageInput = ({
               placeholder="시작 시간"
               value={scheduleData.requested_start_time}
               onChange={(e) =>
-                setScheduleData((prev) => ({ ...prev, requested_start_time: e.target.value }))
+                setScheduleData((prev) => ({
+                  ...prev,
+                  requested_start_time: e.target.value,
+                }))
               }
               disabled={disabled}
             />
@@ -151,7 +172,10 @@ const MockMessageInput = ({
               placeholder="종료 시간"
               value={scheduleData.requested_end_time}
               onChange={(e) =>
-                setScheduleData((prev) => ({ ...prev, requested_end_time: e.target.value }))
+                setScheduleData((prev) => ({
+                  ...prev,
+                  requested_end_time: e.target.value,
+                }))
               }
               disabled={disabled}
             />
@@ -160,7 +184,10 @@ const MockMessageInput = ({
       )}
 
       {/* 메시지 입력 영역 */}
-      <div data-testid="message-input-wrapper" className="message-input-wrapper">
+      <div
+        data-testid="message-input-wrapper"
+        className="message-input-wrapper"
+      >
         <textarea
           data-testid="message-textarea"
           value={content}
@@ -205,7 +232,11 @@ const MockMessageInput = ({
       </div>
 
       {/* 첨부 파일 영역 (향후 확장) */}
-      <div data-testid="attachment-area" className="attachment-area" style={{ display: 'none' }}>
+      <div
+        data-testid="attachment-area"
+        className="attachment-area"
+        style={{ display: 'none' }}
+      >
         <input
           data-testid="file-input"
           type="file"
@@ -456,9 +487,11 @@ describe('MessageInput', () => {
     it('전송 중일 때 버튼이 비활성화되어야 한다', async () => {
       const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
       let resolvePromise: (value: any) => void
-      const onSendMessage = vi.fn().mockImplementation(
-        () => new Promise((resolve) => (resolvePromise = resolve))
-      )
+      const onSendMessage = vi
+        .fn()
+        .mockImplementation(
+          () => new Promise((resolve) => (resolvePromise = resolve))
+        )
 
       render(
         <TestWrapper>
@@ -485,7 +518,9 @@ describe('MessageInput', () => {
 
     it('전송 실패 시 에러가 처리되어야 한다', async () => {
       const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
-      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+      const consoleErrorSpy = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => {})
       const onSendMessage = vi.fn().mockRejectedValue(new Error('전송 실패'))
 
       render(
@@ -501,7 +536,10 @@ describe('MessageInput', () => {
       await user.click(sendButton)
 
       await waitFor(() => {
-        expect(consoleErrorSpy).toHaveBeenCalledWith('메시지 전송 실패:', expect.any(Error))
+        expect(consoleErrorSpy).toHaveBeenCalledWith(
+          '메시지 전송 실패:',
+          expect.any(Error)
+        )
       })
 
       consoleErrorSpy.mockRestore()
@@ -693,7 +731,9 @@ describe('MessageInput', () => {
         expect(scheduleIdInput).toHaveValue('')
         expect(startTimeInput).toHaveValue('')
         expect(endTimeInput).toHaveValue('')
-        expect(screen.queryByTestId('schedule-change-form')).not.toBeInTheDocument()
+        expect(
+          screen.queryByTestId('schedule-change-form')
+        ).not.toBeInTheDocument()
       })
     })
 
@@ -713,7 +753,9 @@ describe('MessageInput', () => {
       expect(screen.getByTestId('schedule-change-form')).toBeInTheDocument()
 
       await user.click(textMessageButton)
-      expect(screen.queryByTestId('schedule-change-form')).not.toBeInTheDocument()
+      expect(
+        screen.queryByTestId('schedule-change-form')
+      ).not.toBeInTheDocument()
     })
   })
 

@@ -38,7 +38,11 @@ const MockChatCalendarIntegration = () => {
     setMessages(filteredMessages)
   }
 
-  const handleScheduleChangeRequest = async (scheduleId: number, newStartTime: string, newEndTime: string) => {
+  const handleScheduleChangeRequest = async (
+    scheduleId: number,
+    newStartTime: string,
+    newEndTime: string
+  ) => {
     // 일정 변경 요청 메시지 생성
     const changeRequestMessage = {
       id: messages.length + 1,
@@ -227,7 +231,11 @@ const MockChatCalendarIntegration = () => {
         <div data-testid="selected-date-info">선택된 날짜: {selectedDate}</div>
         <div data-testid="message-count">메시지 수: {messages.length}</div>
         <div data-testid="schedule-count">
-          일정 수: {schedules.filter((s) => s.start_time.startsWith(selectedDate)).length}
+          일정 수:{' '}
+          {
+            schedules.filter((s) => s.start_time.startsWith(selectedDate))
+              .length
+          }
         </div>
       </div>
     </div>
@@ -268,7 +276,9 @@ describe('ChatCalendarIntegration', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByTestId('chat-calendar-integration')).toBeInTheDocument()
+      expect(
+        screen.getByTestId('chat-calendar-integration')
+      ).toBeInTheDocument()
       expect(screen.getByTestId('calendar-section')).toBeInTheDocument()
       expect(screen.getByTestId('chat-section')).toBeInTheDocument()
       expect(screen.getByTestId('integration-stats')).toBeInTheDocument()
@@ -281,7 +291,9 @@ describe('ChatCalendarIntegration', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByTestId('selected-date-info')).toHaveTextContent('선택된 날짜: 2024-01-15')
+      expect(screen.getByTestId('selected-date-info')).toHaveTextContent(
+        '선택된 날짜: 2024-01-15'
+      )
     })
 
     it('초기 메시지와 일정이 표시되어야 한다', () => {
@@ -291,10 +303,16 @@ describe('ChatCalendarIntegration', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByText('오늘 회의 일정을 변경하고 싶습니다.')).toBeInTheDocument()
+      expect(
+        screen.getByText('오늘 회의 일정을 변경하고 싶습니다.')
+      ).toBeInTheDocument()
       expect(screen.getByText('팀 회의')).toBeInTheDocument()
-      expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 1')
-      expect(screen.getByTestId('schedule-count')).toHaveTextContent('일정 수: 1')
+      expect(screen.getByTestId('message-count')).toHaveTextContent(
+        '메시지 수: 1'
+      )
+      expect(screen.getByTestId('schedule-count')).toHaveTextContent(
+        '일정 수: 1'
+      )
     })
   })
 
@@ -311,7 +329,9 @@ describe('ChatCalendarIntegration', () => {
       await user.click(dateButton)
 
       expect(screen.getByText('채팅 - 2024-01-16')).toBeInTheDocument()
-      expect(screen.getByTestId('selected-date-info')).toHaveTextContent('선택된 날짜: 2024-01-16')
+      expect(screen.getByTestId('selected-date-info')).toHaveTextContent(
+        '선택된 날짜: 2024-01-16'
+      )
     })
 
     it('날짜 선택 시 해당 날짜의 메시지만 표시되어야 한다', async () => {
@@ -327,8 +347,12 @@ describe('ChatCalendarIntegration', () => {
       await user.click(dateButton)
 
       // 기존 메시지가 필터링되어 보이지 않아야 함
-      expect(screen.queryByText('오늘 회의 일정을 변경하고 싶습니다.')).not.toBeInTheDocument()
-      expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 0')
+      expect(
+        screen.queryByText('오늘 회의 일정을 변경하고 싶습니다.')
+      ).not.toBeInTheDocument()
+      expect(screen.getByTestId('message-count')).toHaveTextContent(
+        '메시지 수: 0'
+      )
     })
 
     it('날짜 선택 시 해당 날짜의 일정만 표시되어야 한다', async () => {
@@ -344,7 +368,9 @@ describe('ChatCalendarIntegration', () => {
       await user.click(dateButton)
 
       // 해당 날짜에는 일정이 없으므로 일정 수가 0이어야 함
-      expect(screen.getByTestId('schedule-count')).toHaveTextContent('일정 수: 0')
+      expect(screen.getByTestId('schedule-count')).toHaveTextContent(
+        '일정 수: 0'
+      )
     })
   })
 
@@ -361,8 +387,12 @@ describe('ChatCalendarIntegration', () => {
       await user.click(changeRequestButton)
 
       await waitFor(() => {
-        expect(screen.getByText('일정 변경 요청: 15:00 - 16:00')).toBeInTheDocument()
-        expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 2')
+        expect(
+          screen.getByText('일정 변경 요청: 15:00 - 16:00')
+        ).toBeInTheDocument()
+        expect(screen.getByTestId('message-count')).toHaveTextContent(
+          '메시지 수: 2'
+        )
       })
     })
 
@@ -378,7 +408,9 @@ describe('ChatCalendarIntegration', () => {
       await user.click(changeRequestButton)
 
       await waitFor(() => {
-        expect(screen.getByTestId('schedule-change-actions')).toBeInTheDocument()
+        expect(
+          screen.getByTestId('schedule-change-actions')
+        ).toBeInTheDocument()
         expect(screen.getByTestId('approve-2')).toBeInTheDocument()
         expect(screen.getByTestId('reject-2')).toBeInTheDocument()
       })
@@ -404,11 +436,17 @@ describe('ChatCalendarIntegration', () => {
 
       await waitFor(() => {
         // 일정 시간이 변경되었는지 확인
-        expect(screen.getByTestId('schedule-time')).toHaveTextContent('15:00 - 16:00')
+        expect(screen.getByTestId('schedule-time')).toHaveTextContent(
+          '15:00 - 16:00'
+        )
         // 승인 메시지가 추가되었는지 확인
-        expect(screen.getByText('일정 변경이 승인되었습니다.')).toBeInTheDocument()
+        expect(
+          screen.getByText('일정 변경이 승인되었습니다.')
+        ).toBeInTheDocument()
         // 원래 요청 메시지에 승인 표시가 되었는지 확인
-        expect(screen.getByText('일정 변경 요청: 15:00 - 16:00 (승인됨)')).toBeInTheDocument()
+        expect(
+          screen.getByText('일정 변경 요청: 15:00 - 16:00 (승인됨)')
+        ).toBeInTheDocument()
       })
     })
 
@@ -421,7 +459,9 @@ describe('ChatCalendarIntegration', () => {
       )
 
       // 원래 일정 시간 확인
-      expect(screen.getByTestId('schedule-time')).toHaveTextContent('14:00 - 15:00')
+      expect(screen.getByTestId('schedule-time')).toHaveTextContent(
+        '14:00 - 15:00'
+      )
 
       // 일정 변경 요청
       const changeRequestButton = screen.getByTestId('request-change-1')
@@ -435,11 +475,17 @@ describe('ChatCalendarIntegration', () => {
 
       await waitFor(() => {
         // 일정 시간이 변경되지 않았는지 확인
-        expect(screen.getByTestId('schedule-time')).toHaveTextContent('14:00 - 15:00')
+        expect(screen.getByTestId('schedule-time')).toHaveTextContent(
+          '14:00 - 15:00'
+        )
         // 거절 메시지가 추가되었는지 확인
-        expect(screen.getByText('일정 변경이 거절되었습니다.')).toBeInTheDocument()
+        expect(
+          screen.getByText('일정 변경이 거절되었습니다.')
+        ).toBeInTheDocument()
         // 원래 요청 메시지에 거절 표시가 되었는지 확인
-        expect(screen.getByText('일정 변경 요청: 15:00 - 16:00 (거절됨)')).toBeInTheDocument()
+        expect(
+          screen.getByText('일정 변경 요청: 15:00 - 16:00 (거절됨)')
+        ).toBeInTheDocument()
       })
     })
   })
@@ -464,7 +510,9 @@ describe('ChatCalendarIntegration', () => {
 
       // 캘린더의 일정이 즉시 업데이트되는지 확인
       await waitFor(() => {
-        expect(screen.getByTestId('schedule-time')).toHaveTextContent('15:00 - 16:00')
+        expect(screen.getByTestId('schedule-time')).toHaveTextContent(
+          '15:00 - 16:00'
+        )
       })
     })
 
@@ -477,7 +525,9 @@ describe('ChatCalendarIntegration', () => {
       )
 
       // 초기 메시지 수 확인
-      expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 1')
+      expect(screen.getByTestId('message-count')).toHaveTextContent(
+        '메시지 수: 1'
+      )
 
       // 일정 변경 요청 (메시지 추가)
       const changeRequestButton = screen.getByTestId('request-change-1')
@@ -485,7 +535,9 @@ describe('ChatCalendarIntegration', () => {
 
       // 메시지 수가 증가했는지 확인
       await waitFor(() => {
-        expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 2')
+        expect(screen.getByTestId('message-count')).toHaveTextContent(
+          '메시지 수: 2'
+        )
       })
 
       // 승인 (시스템 메시지 추가)
@@ -496,7 +548,9 @@ describe('ChatCalendarIntegration', () => {
 
       // 메시지 수가 다시 증가했는지 확인
       await waitFor(() => {
-        expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 3')
+        expect(screen.getByTestId('message-count')).toHaveTextContent(
+          '메시지 수: 3'
+        )
       })
     })
   })
@@ -519,8 +573,12 @@ describe('ChatCalendarIntegration', () => {
 
       await waitFor(() => {
         // 두 개의 변경 요청 메시지가 있어야 함
-        expect(screen.getAllByText(/일정 변경 요청: 15:00 - 16:00/)).toHaveLength(2)
-        expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 3')
+        expect(
+          screen.getAllByText(/일정 변경 요청: 15:00 - 16:00/)
+        ).toHaveLength(2)
+        expect(screen.getByTestId('message-count')).toHaveTextContent(
+          '메시지 수: 3'
+        )
       })
     })
 
@@ -546,8 +604,12 @@ describe('ChatCalendarIntegration', () => {
 
       // 상태가 유지되어야 함
       await waitFor(() => {
-        expect(screen.getByText('일정 변경 요청: 15:00 - 16:00')).toBeInTheDocument()
-        expect(screen.getByTestId('message-count')).toHaveTextContent('메시지 수: 2')
+        expect(
+          screen.getByText('일정 변경 요청: 15:00 - 16:00')
+        ).toBeInTheDocument()
+        expect(screen.getByTestId('message-count')).toHaveTextContent(
+          '메시지 수: 2'
+        )
       })
     })
   })
@@ -585,7 +647,9 @@ describe('ChatCalendarIntegration', () => {
       )
 
       // 기본 렌더링이 성공하는지만 확인 (에러 처리는 실제 구현에서 추가)
-      expect(screen.getByTestId('chat-calendar-integration')).toBeInTheDocument()
+      expect(
+        screen.getByTestId('chat-calendar-integration')
+      ).toBeInTheDocument()
     })
   })
 
@@ -598,7 +662,9 @@ describe('ChatCalendarIntegration', () => {
         </TestWrapper>
       )
 
-      expect(screen.getByTestId('chat-calendar-integration')).toBeInTheDocument()
+      expect(
+        screen.getByTestId('chat-calendar-integration')
+      ).toBeInTheDocument()
       // 실제로는 100개 이상의 메시지/일정으로 테스트
     })
 
@@ -620,7 +686,9 @@ describe('ChatCalendarIntegration', () => {
       }
 
       // 마지막 상태가 올바른지 확인
-      expect(screen.getByTestId('selected-date-info')).toHaveTextContent('선택된 날짜: 2024-01-15')
+      expect(screen.getByTestId('selected-date-info')).toHaveTextContent(
+        '선택된 날짜: 2024-01-15'
+      )
     })
   })
 
@@ -640,7 +708,9 @@ describe('ChatCalendarIntegration', () => {
       // 새로운 메시지가 추가되었을 때 적절한 ARIA 속성이 있는지 확인
       // 실제 구현에서는 role="alert" 또는 aria-live 속성 추가 필요
       await waitFor(() => {
-        expect(screen.getByText('일정 변경 요청: 15:00 - 16:00')).toBeInTheDocument()
+        expect(
+          screen.getByText('일정 변경 요청: 15:00 - 16:00')
+        ).toBeInTheDocument()
       })
     })
 
