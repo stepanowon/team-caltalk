@@ -6,7 +6,13 @@ import { http, HttpResponse } from 'msw'
 
 // Mock useSchedules 훅 (실제 구현이 완성되면 이 부분을 제거하고 실제 훅 사용)
 const mockUseSchedules = (teamId: number, options: any = {}) => {
-  const { enabled = true, startDate, endDate, refetchInterval, staleTime } = options
+  const {
+    enabled = true,
+    startDate,
+    endDate,
+    refetchInterval,
+    staleTime,
+  } = options
 
   // Mock 상태 관리
   const [schedules, setSchedules] = React.useState<any[]>([])
@@ -64,171 +70,211 @@ const mockUseSchedules = (teamId: number, options: any = {}) => {
   }, [teamId, enabled, startDate, endDate, refetchInterval])
 
   // Mock 뮤테이션 함수들
-  const createSchedule = vi.fn().mockImplementation(async (scheduleData: any) => {
-    // 낙관적 업데이트
-    const tempId = Date.now()
-    const optimisticSchedule = { ...scheduleData, id: tempId, temp: true }
-    setOptimisticUpdates(prev => [...prev, optimisticSchedule])
+  const createSchedule = vi
+    .fn()
+    .mockImplementation(async (scheduleData: any) => {
+      // 낙관적 업데이트
+      const tempId = Date.now()
+      const optimisticSchedule = { ...scheduleData, id: tempId, temp: true }
+      setOptimisticUpdates((prev) => [...prev, optimisticSchedule])
 
-    try {
-      const response = await fetch(`http://localhost:3000/api/teams/${teamId}/schedules`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer mock-jwt-token',
-        },
-        body: JSON.stringify(scheduleData),
-      })
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/teams/${teamId}/schedules`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer mock-jwt-token',
+            },
+            body: JSON.stringify(scheduleData),
+          }
+        )
 
-      if (!response.ok) {
-        throw new Error('일정 생성에 실패했습니다.')
+        if (!response.ok) {
+          throw new Error('일정 생성에 실패했습니다.')
+        }
+
+        const data = await response.json()
+
+        // 낙관적 업데이트 제거 및 실제 데이터로 교체
+        setOptimisticUpdates((prev) => prev.filter((s) => s.id !== tempId))
+        setSchedules((prev) => [...prev, data.data.schedule])
+
+        return { success: true, data: data.data.schedule }
+      } catch (err) {
+        // 낙관적 업데이트 롤백
+        setOptimisticUpdates((prev) => prev.filter((s) => s.id !== tempId))
+        throw err
       }
+    })
 
-      const data = await response.json()
+  const updateSchedule = vi
+    .fn()
+    .mockImplementation(async (scheduleId: number, updateData: any) => {
+      // 낙관적 업데이트
+      const originalSchedule = schedules.find((s) => s.id === scheduleId)
+      const optimisticSchedule = { ...originalSchedule, ...updateData }
+      setSchedules((prev) =>
+        prev.map((s) => (s.id === scheduleId ? optimisticSchedule : s))
+      )
 
-      // 낙관적 업데이트 제거 및 실제 데이터로 교체
-      setOptimisticUpdates(prev => prev.filter(s => s.id !== tempId))
-      setSchedules(prev => [...prev, data.data.schedule])
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/schedules/${scheduleId}`,
+          {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer mock-jwt-token',
+            },
+            body: JSON.stringify(updateData),
+          }
+        )
 
-      return { success: true, data: data.data.schedule }
-    } catch (err) {
-      // 낙관적 업데이트 롤백
-      setOptimisticUpdates(prev => prev.filter(s => s.id !== tempId))
-      throw err
-    }
-  })
+        if (!response.ok) {
+          throw new Error('일정 수정에 실패했습니다.')
+        }
 
-  const updateSchedule = vi.fn().mockImplementation(async (scheduleId: number, updateData: any) => {
-    // 낙관적 업데이트
-    const originalSchedule = schedules.find(s => s.id === scheduleId)
-    const optimisticSchedule = { ...originalSchedule, ...updateData }
-    setSchedules(prev => prev.map(s => s.id === scheduleId ? optimisticSchedule : s))
+        const data = await response.json()
+        setSchedules((prev) =>
+          prev.map((s) => (s.id === scheduleId ? data.data.schedule : s))
+        )
 
-    try {
-      const response = await fetch(`http://localhost:3000/api/schedules/${scheduleId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer mock-jwt-token',
-        },
-        body: JSON.stringify(updateData),
-      })
-
-      if (!response.ok) {
-        throw new Error('일정 수정에 실패했습니다.')
+        return { success: true, data: data.data.schedule }
+      } catch (err) {
+        // 롤백
+        setSchedules((prev) =>
+          prev.map((s) => (s.id === scheduleId ? originalSchedule : s))
+        )
+        throw err
       }
+    })
 
-      const data = await response.json()
-      setSchedules(prev => prev.map(s => s.id === scheduleId ? data.data.schedule : s))
+  const deleteSchedule = vi
+    .fn()
+    .mockImplementation(async (scheduleId: number) => {
+      // 낙관적 업데이트
+      const originalSchedules = schedules
+      setSchedules((prev) => prev.filter((s) => s.id !== scheduleId))
 
-      return { success: true, data: data.data.schedule }
-    } catch (err) {
-      // 롤백
-      setSchedules(prev => prev.map(s => s.id === scheduleId ? originalSchedule : s))
-      throw err
-    }
-  })
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/schedules/${scheduleId}`,
+          {
+            method: 'DELETE',
+            headers: { Authorization: 'Bearer mock-jwt-token' },
+          }
+        )
 
-  const deleteSchedule = vi.fn().mockImplementation(async (scheduleId: number) => {
-    // 낙관적 업데이트
-    const originalSchedules = schedules
-    setSchedules(prev => prev.filter(s => s.id !== scheduleId))
+        if (!response.ok) {
+          throw new Error('일정 삭제에 실패했습니다.')
+        }
 
-    try {
-      const response = await fetch(`http://localhost:3000/api/schedules/${scheduleId}`, {
-        method: 'DELETE',
-        headers: { Authorization: 'Bearer mock-jwt-token' },
-      })
-
-      if (!response.ok) {
-        throw new Error('일정 삭제에 실패했습니다.')
+        return { success: true }
+      } catch (err) {
+        // 롤백
+        setSchedules(originalSchedules)
+        throw err
       }
+    })
 
-      return { success: true }
-    } catch (err) {
-      // 롤백
-      setSchedules(originalSchedules)
-      throw err
-    }
-  })
+  const updateParticipantStatus = vi
+    .fn()
+    .mockImplementation(async (scheduleId: number, status: string) => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/schedules/${scheduleId}/participants`,
+          {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer mock-jwt-token',
+            },
+            body: JSON.stringify({ status }),
+          }
+        )
 
-  const updateParticipantStatus = vi.fn().mockImplementation(async (scheduleId: number, status: string) => {
-    try {
-      const response = await fetch(`http://localhost:3000/api/schedules/${scheduleId}/participants`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer mock-jwt-token',
-        },
-        body: JSON.stringify({ status }),
-      })
+        if (!response.ok) {
+          throw new Error('참가자 상태 업데이트에 실패했습니다.')
+        }
 
-      if (!response.ok) {
-        throw new Error('참가자 상태 업데이트에 실패했습니다.')
+        const data = await response.json()
+        setSchedules((prev) =>
+          prev.map((s) =>
+            s.id === scheduleId
+              ? { ...s, participants: data.data.participants }
+              : s
+          )
+        )
+
+        return { success: true, data: data.data }
+      } catch (err) {
+        throw err
       }
+    })
 
-      const data = await response.json()
-      setSchedules(prev => prev.map(s =>
-        s.id === scheduleId ? { ...s, participants: data.data.participants } : s
-      ))
+  const checkConflict = vi
+    .fn()
+    .mockImplementation(async (conflictData: any) => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/teams/${teamId}/schedules/check-conflict`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer mock-jwt-token',
+            },
+            body: JSON.stringify(conflictData),
+          }
+        )
 
-      return { success: true, data: data.data }
-    } catch (err) {
-      throw err
-    }
-  })
+        if (!response.ok) {
+          throw new Error('충돌 검사에 실패했습니다.')
+        }
 
-  const checkConflict = vi.fn().mockImplementation(async (conflictData: any) => {
-    try {
-      const response = await fetch(`http://localhost:3000/api/teams/${teamId}/schedules/check-conflict`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer mock-jwt-token',
-        },
-        body: JSON.stringify(conflictData),
-      })
-
-      if (!response.ok) {
-        throw new Error('충돌 검사에 실패했습니다.')
+        const data = await response.json()
+        return data.data
+      } catch (err) {
+        throw err
       }
+    })
 
-      const data = await response.json()
-      return data.data
-    } catch (err) {
-      throw err
-    }
-  })
+  const bulkUpdateSchedules = vi
+    .fn()
+    .mockImplementation(async (updates: any[]) => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/teams/${teamId}/schedules/bulk`,
+          {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer mock-jwt-token',
+            },
+            body: JSON.stringify({ updates }),
+          }
+        )
 
-  const bulkUpdateSchedules = vi.fn().mockImplementation(async (updates: any[]) => {
-    try {
-      const response = await fetch(`http://localhost:3000/api/teams/${teamId}/schedules/bulk`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer mock-jwt-token',
-        },
-        body: JSON.stringify({ updates }),
-      })
+        if (!response.ok) {
+          throw new Error('일괄 업데이트에 실패했습니다.')
+        }
 
-      if (!response.ok) {
-        throw new Error('일괄 업데이트에 실패했습니다.')
+        const data = await response.json()
+        setSchedules(data.data.schedules)
+        return { success: true, data: data.data }
+      } catch (err) {
+        throw err
       }
-
-      const data = await response.json()
-      setSchedules(data.data.schedules)
-      return { success: true, data: data.data }
-    } catch (err) {
-      throw err
-    }
-  })
+    })
 
   // 유틸리티 함수들
   const refetch = vi.fn().mockImplementation(async () => {
     setLoading(true)
     setError(null)
     // 실제 refetch 로직 시뮬레이션
-    await new Promise(resolve => setTimeout(resolve, 100))
+    await new Promise((resolve) => setTimeout(resolve, 100))
     setLoading(false)
     return { success: true }
   })
@@ -245,14 +291,14 @@ const mockUseSchedules = (teamId: number, options: any = {}) => {
 
   // 필터링 및 정렬 함수들
   const getSchedulesByDate = vi.fn((date: string) => {
-    return schedules.filter(schedule => {
+    return schedules.filter((schedule) => {
       const scheduleDate = new Date(schedule.start_time).toDateString()
       return scheduleDate === new Date(date).toDateString()
     })
   })
 
   const getSchedulesByDateRange = vi.fn((start: string, end: string) => {
-    return schedules.filter(schedule => {
+    return schedules.filter((schedule) => {
       const scheduleStart = new Date(schedule.start_time)
       const rangeStart = new Date(start)
       const rangeEnd = new Date(end)
@@ -261,7 +307,7 @@ const mockUseSchedules = (teamId: number, options: any = {}) => {
   })
 
   const getConflictingSchedules = vi.fn((targetSchedule: any) => {
-    return schedules.filter(schedule => {
+    return schedules.filter((schedule) => {
       if (schedule.id === targetSchedule.id) return false
 
       const targetStart = new Date(targetSchedule.start_time)
@@ -269,20 +315,23 @@ const mockUseSchedules = (teamId: number, options: any = {}) => {
       const scheduleStart = new Date(schedule.start_time)
       const scheduleEnd = new Date(schedule.end_time)
 
-      return (targetStart < scheduleEnd && targetEnd > scheduleStart)
+      return targetStart < scheduleEnd && targetEnd > scheduleStart
     })
   })
 
   // 통계 함수들
   const getScheduleStats = vi.fn(() => {
     const total = schedules.length
-    const upcoming = schedules.filter(s => new Date(s.start_time) > new Date()).length
+    const upcoming = schedules.filter(
+      (s) => new Date(s.start_time) > new Date()
+    ).length
     const past = total - upcoming
     const byPriority = {
-      high: schedules.filter(s => s.priority === 'high').length,
-      medium: schedules.filter(s => s.priority === 'medium').length,
-      low: schedules.filter(s => s.priority === 'low').length,
-      normal: schedules.filter(s => s.priority === 'normal' || !s.priority).length,
+      high: schedules.filter((s) => s.priority === 'high').length,
+      medium: schedules.filter((s) => s.priority === 'medium').length,
+      low: schedules.filter((s) => s.priority === 'low').length,
+      normal: schedules.filter((s) => s.priority === 'normal' || !s.priority)
+        .length,
     }
 
     return { total, upcoming, past, byPriority }
@@ -368,9 +417,9 @@ const mockSchedulesResponse = {
             id: 1,
             user_id: 1,
             status: 'accepted',
-            user: { id: 1, full_name: '팀장' }
-          }
-        ]
+            user: { id: 1, full_name: '팀장' },
+          },
+        ],
       },
       {
         id: 2,
@@ -381,10 +430,10 @@ const mockSchedulesResponse = {
         team_id: 1,
         creator_id: 1,
         priority: 'medium',
-        participants: []
-      }
-    ]
-  }
+        participants: [],
+      },
+    ],
+  },
 }
 
 describe('useSchedules 훅', () => {
@@ -401,7 +450,10 @@ describe('useSchedules 훅', () => {
     ]
 
     React.useState.mockImplementation((initial) => {
-      const state = defaultStates[stateIndex] !== undefined ? defaultStates[stateIndex] : initial
+      const state =
+        defaultStates[stateIndex] !== undefined
+          ? defaultStates[stateIndex]
+          : initial
       const setState = vi.fn()
       stateIndex++
       return [state, setState]
@@ -415,7 +467,7 @@ describe('useSchedules 훅', () => {
     // global fetch mock
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
-      json: () => Promise.resolve(mockSchedulesResponse)
+      json: () => Promise.resolve(mockSchedulesResponse),
     })
   })
 
@@ -426,10 +478,9 @@ describe('useSchedules 훅', () => {
 
   describe('일정 조회', () => {
     it('팀 일정을 성공적으로 조회한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await waitFor(() => {
         expect(result.current.schedules).toBeDefined()
@@ -441,10 +492,11 @@ describe('useSchedules 훅', () => {
 
     it('날짜 범위로 일정을 필터링한다', async () => {
       const { result } = renderHook(
-        () => mockUseSchedules(1, {
-          startDate: '2024-01-01',
-          endDate: '2024-01-31'
-        }),
+        () =>
+          mockUseSchedules(1, {
+            startDate: '2024-01-01',
+            endDate: '2024-01-31',
+          }),
         { wrapper: createWrapper() }
       )
 
@@ -478,10 +530,9 @@ describe('useSchedules 훅', () => {
       // 에러 응답 설정
       global.fetch = vi.fn().mockRejectedValue(new Error('Network Error'))
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await waitFor(() => {
         expect(result.current.error).toBeTruthy()
@@ -490,10 +541,9 @@ describe('useSchedules 훅', () => {
     })
 
     it('로딩 상태를 올바르게 관리한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       // 초기 로딩 상태는 mock 설정에 따라 달라질 수 있음
       await waitFor(() => {
@@ -521,12 +571,13 @@ describe('useSchedules 훅', () => {
 
     it('복잡한 쿼리 옵션으로 일정을 조회한다', async () => {
       const { result } = renderHook(
-        () => mockUseSchedules(1, {
-          startDate: '2024-01-01',
-          endDate: '2024-01-31',
-          staleTime: 5000,
-          refetchInterval: 30000
-        }),
+        () =>
+          mockUseSchedules(1, {
+            startDate: '2024-01-01',
+            endDate: '2024-01-31',
+            staleTime: 5000,
+            refetchInterval: 30000,
+          }),
         { wrapper: createWrapper() }
       )
 
@@ -538,10 +589,9 @@ describe('useSchedules 훅', () => {
 
   describe('일정 생성', () => {
     it('새 일정을 성공적으로 생성한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const scheduleData = {
         title: '새 회의',
@@ -558,10 +608,9 @@ describe('useSchedules 훅', () => {
     })
 
     it('충돌 검사를 수행한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const conflictData = {
         start_time: '2024-01-01T10:30:00Z',
@@ -580,25 +629,25 @@ describe('useSchedules 훅', () => {
       // 충돌 있는 응답 mock
       global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: () => Promise.resolve({
-          success: true,
-          data: {
-            hasConflict: true,
-            conflicts: [{ id: 1, title: '기존 회의' }],
-            suggestions: [
-              {
-                start_time: '2024-01-01T12:00:00Z',
-                end_time: '2024-01-01T13:00:00Z',
-              }
-            ]
-          }
-        })
+        json: () =>
+          Promise.resolve({
+            success: true,
+            data: {
+              hasConflict: true,
+              conflicts: [{ id: 1, title: '기존 회의' }],
+              suggestions: [
+                {
+                  start_time: '2024-01-01T12:00:00Z',
+                  end_time: '2024-01-01T13:00:00Z',
+                },
+              ],
+            },
+          }),
       })
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const conflictData = {
         start_time: '2024-01-01T10:30:00Z',
@@ -615,10 +664,9 @@ describe('useSchedules 훅', () => {
     })
 
     it('낙관적 업데이트를 수행한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const scheduleData = {
         title: '낙관적 업데이트 일정',
@@ -636,10 +684,9 @@ describe('useSchedules 훅', () => {
     it('생성 실패 시 낙관적 업데이트를 롤백한다', async () => {
       global.fetch = vi.fn().mockRejectedValue(new Error('생성 실패'))
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const scheduleData = {
         title: '실패할 일정',
@@ -660,10 +707,9 @@ describe('useSchedules 훅', () => {
 
   describe('일정 수정', () => {
     it('일정을 성공적으로 수정한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const updateData = {
         title: '수정된 회의',
@@ -678,10 +724,9 @@ describe('useSchedules 훅', () => {
     })
 
     it('낙관적 업데이트를 수행한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const updateData = { title: '낙관적 업데이트 제목' }
 
@@ -696,10 +741,9 @@ describe('useSchedules 훅', () => {
     it('수정 실패 시 이전 상태로 롤백한다', async () => {
       global.fetch = vi.fn().mockRejectedValue(new Error('수정 실패'))
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const updateData = { title: '실패할 수정' }
 
@@ -713,14 +757,13 @@ describe('useSchedules 훅', () => {
     })
 
     it('일괄 업데이트를 지원한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const updates = [
         { id: 1, title: '수정된 제목 1' },
-        { id: 2, title: '수정된 제목 2' }
+        { id: 2, title: '수정된 제목 2' },
       ]
 
       await act(async () => {
@@ -733,10 +776,9 @@ describe('useSchedules 훅', () => {
 
   describe('일정 삭제', () => {
     it('일정을 성공적으로 삭제한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await act(async () => {
         await result.current.deleteSchedule(1)
@@ -746,12 +788,13 @@ describe('useSchedules 훅', () => {
     })
 
     it('삭제 실패 시 적절한 에러를 반환한다', async () => {
-      global.fetch = vi.fn().mockRejectedValue(new Error('삭제 권한이 없습니다.'))
+      global.fetch = vi
+        .fn()
+        .mockRejectedValue(new Error('삭제 권한이 없습니다.'))
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       try {
         await act(async () => {
@@ -763,10 +806,9 @@ describe('useSchedules 훅', () => {
     })
 
     it('낙관적 삭제를 수행한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await act(async () => {
         result.current.deleteSchedule(1)
@@ -779,10 +821,9 @@ describe('useSchedules 훅', () => {
 
   describe('참가자 상태 업데이트', () => {
     it('참가자 상태를 업데이트한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await act(async () => {
         await result.current.updateParticipantStatus(1, 'accepted')
@@ -795,10 +836,9 @@ describe('useSchedules 훅', () => {
     })
 
     it('여러 참가자 상태를 동시에 업데이트할 수 있다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await act(async () => {
         await Promise.all([
@@ -811,12 +851,13 @@ describe('useSchedules 훅', () => {
     })
 
     it('잘못된 상태값으로 업데이트 시 에러가 발생한다', async () => {
-      global.fetch = vi.fn().mockRejectedValue(new Error('잘못된 상태값입니다.'))
+      global.fetch = vi
+        .fn()
+        .mockRejectedValue(new Error('잘못된 상태값입니다.'))
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       try {
         await act(async () => {
@@ -830,10 +871,9 @@ describe('useSchedules 훅', () => {
 
   describe('캐시 관리', () => {
     it('데이터를 다시 fetch할 수 있다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await act(async () => {
         await result.current.refetch()
@@ -843,10 +883,9 @@ describe('useSchedules 훅', () => {
     })
 
     it('캐시를 무효화할 수 있다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       act(() => {
         result.current.invalidate()
@@ -856,18 +895,18 @@ describe('useSchedules 훅', () => {
     })
 
     it('관련된 쿼리들을 함께 무효화한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       act(() => {
         result.current.invalidateRelated(['teams', 'messages'])
       })
 
-      expect(result.current.invalidateRelated).toHaveBeenCalledWith(
-        ['teams', 'messages']
-      )
+      expect(result.current.invalidateRelated).toHaveBeenCalledWith([
+        'teams',
+        'messages',
+      ])
     })
 
     it('staleTime 설정에 따라 캐시 동작이 달라진다', async () => {
@@ -882,10 +921,9 @@ describe('useSchedules 훅', () => {
 
   describe('데이터 필터링 및 조작', () => {
     it('특정 날짜의 일정을 필터링한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const targetDate = '2024-01-01'
       const filteredSchedules = result.current.getSchedulesByDate(targetDate)
@@ -894,23 +932,27 @@ describe('useSchedules 훅', () => {
     })
 
     it('날짜 범위의 일정을 필터링한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const startDate = '2024-01-01'
       const endDate = '2024-01-31'
-      const filteredSchedules = result.current.getSchedulesByDateRange(startDate, endDate)
+      const filteredSchedules = result.current.getSchedulesByDateRange(
+        startDate,
+        endDate
+      )
 
-      expect(result.current.getSchedulesByDateRange).toHaveBeenCalledWith(startDate, endDate)
+      expect(result.current.getSchedulesByDateRange).toHaveBeenCalledWith(
+        startDate,
+        endDate
+      )
     })
 
     it('충돌하는 일정을 찾는다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const targetSchedule = {
         id: 999,
@@ -920,14 +962,15 @@ describe('useSchedules 훅', () => {
 
       const conflicts = result.current.getConflictingSchedules(targetSchedule)
 
-      expect(result.current.getConflictingSchedules).toHaveBeenCalledWith(targetSchedule)
+      expect(result.current.getConflictingSchedules).toHaveBeenCalledWith(
+        targetSchedule
+      )
     })
 
     it('일정 통계를 계산한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const stats = result.current.getScheduleStats()
 
@@ -944,13 +987,14 @@ describe('useSchedules 훅', () => {
       // 네트워크 오류 시뮬레이션
       global.fetch = vi.fn().mockRejectedValue(new Error('Network Error'))
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await waitFor(() => {
-        expect(result.current.error).toContain('일정을 불러오는데 실패했습니다.')
+        expect(result.current.error).toContain(
+          '일정을 불러오는데 실패했습니다.'
+        )
       })
     })
 
@@ -958,13 +1002,12 @@ describe('useSchedules 훅', () => {
       global.fetch = vi.fn().mockResolvedValue({
         ok: false,
         status: 401,
-        json: () => Promise.resolve({ error: '인증이 필요합니다.' })
+        json: () => Promise.resolve({ error: '인증이 필요합니다.' }),
       })
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await waitFor(() => {
         expect(result.current.error).toBeTruthy()
@@ -972,12 +1015,13 @@ describe('useSchedules 훅', () => {
     })
 
     it('권한 오류 시 적절한 메시지를 반환한다', async () => {
-      global.fetch = vi.fn().mockRejectedValue(new Error('일정 생성 권한이 없습니다.'))
+      global.fetch = vi
+        .fn()
+        .mockRejectedValue(new Error('일정 생성 권한이 없습니다.'))
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       try {
         await act(async () => {
@@ -992,13 +1036,12 @@ describe('useSchedules 훅', () => {
       global.fetch = vi.fn().mockResolvedValue({
         ok: false,
         status: 500,
-        json: () => Promise.resolve({ error: '서버 내부 오류' })
+        json: () => Promise.resolve({ error: '서버 내부 오류' }),
       })
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await waitFor(() => {
         expect(result.current.error).toBeTruthy()
@@ -1006,20 +1049,25 @@ describe('useSchedules 훅', () => {
     })
 
     it('타임아웃 오류를 처리한다', async () => {
-      global.fetch = vi.fn().mockImplementation(() =>
-        new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Request timeout')), 100)
+      global.fetch = vi
+        .fn()
+        .mockImplementation(
+          () =>
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('Request timeout')), 100)
+            )
         )
-      )
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
-      await waitFor(() => {
-        expect(result.current.error).toBeTruthy()
-      }, { timeout: 1000 })
+      await waitFor(
+        () => {
+          expect(result.current.error).toBeTruthy()
+        },
+        { timeout: 1000 }
+      )
     })
   })
 
@@ -1029,7 +1077,7 @@ describe('useSchedules 훅', () => {
         ({ teamId }) => mockUseSchedules(teamId),
         {
           wrapper: createWrapper(),
-          initialProps: { teamId: 1 }
+          initialProps: { teamId: 1 },
         }
       )
 
@@ -1044,10 +1092,9 @@ describe('useSchedules 훅', () => {
     })
 
     it('메모리 사용량을 최적화한다', () => {
-      const { result, unmount } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result, unmount } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       // 메모리 누수 방지를 위한 클린업 함수 확인
       expect(result.current).toBeDefined()
@@ -1067,22 +1114,21 @@ describe('useSchedules 훅', () => {
             start_time: `2024-01-${String((i % 31) + 1).padStart(2, '0')}T10:00:00Z`,
             end_time: `2024-01-${String((i % 31) + 1).padStart(2, '0')}T11:00:00Z`,
             team_id: 1,
-            priority: 'normal'
-          }))
-        }
+            priority: 'normal',
+          })),
+        },
       }
 
       global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: () => Promise.resolve(largeDataResponse)
+        json: () => Promise.resolve(largeDataResponse),
       })
 
       const startTime = performance.now()
 
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       await waitFor(() => {
         expect(result.current.schedules).toBeDefined()
@@ -1098,10 +1144,9 @@ describe('useSchedules 훅', () => {
 
   describe('실시간 업데이트 시뮬레이션', () => {
     it('외부 변경사항을 감지하고 갱신한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       // 외부 변경사항 시뮬레이션
       act(() => {
@@ -1112,15 +1157,14 @@ describe('useSchedules 훅', () => {
     })
 
     it('낙관적 업데이트와 서버 동기화가 조화롭게 작동한다', async () => {
-      const { result } = renderHook(
-        () => mockUseSchedules(1),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => mockUseSchedules(1), {
+        wrapper: createWrapper(),
+      })
 
       const newSchedule = {
         title: '새로운 일정',
         start_time: '2024-01-15T10:00:00Z',
-        end_time: '2024-01-15T11:00:00Z'
+        end_time: '2024-01-15T11:00:00Z',
       }
 
       await act(async () => {
@@ -1137,9 +1181,10 @@ describe('useSchedules 훅', () => {
   describe('고급 기능', () => {
     it('조건부 쿼리 실행이 작동한다', async () => {
       const { result } = renderHook(
-        () => mockUseSchedules(1, {
-          enabled: false // 조건부로 비활성화
-        }),
+        () =>
+          mockUseSchedules(1, {
+            enabled: false, // 조건부로 비활성화
+          }),
         { wrapper: createWrapper() }
       )
 
@@ -1151,9 +1196,10 @@ describe('useSchedules 훅', () => {
       global.fetch = vi.fn().mockRejectedValue(new Error('Custom error'))
 
       const { result } = renderHook(
-        () => mockUseSchedules(1, {
-          onError: customErrorHandler
-        }),
+        () =>
+          mockUseSchedules(1, {
+            onError: customErrorHandler,
+          }),
         { wrapper: createWrapper() }
       )
 
@@ -1166,9 +1212,10 @@ describe('useSchedules 훅', () => {
       const successCallback = vi.fn()
 
       const { result } = renderHook(
-        () => mockUseSchedules(1, {
-          onSuccess: successCallback
-        }),
+        () =>
+          mockUseSchedules(1, {
+            onSuccess: successCallback,
+          }),
         { wrapper: createWrapper() }
       )
 
@@ -1179,10 +1226,11 @@ describe('useSchedules 훅', () => {
 
     it('쿼리 키 생성이 올바르게 작동한다', () => {
       const { result } = renderHook(
-        () => mockUseSchedules(1, {
-          startDate: '2024-01-01',
-          endDate: '2024-01-31'
-        }),
+        () =>
+          mockUseSchedules(1, {
+            startDate: '2024-01-01',
+            endDate: '2024-01-31',
+          }),
         { wrapper: createWrapper() }
       )
 

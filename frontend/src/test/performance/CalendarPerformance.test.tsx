@@ -8,7 +8,7 @@ import { http, HttpResponse } from 'msw'
 const MockPerformanceCalendar = ({
   scheduleCount = 100,
   enableVirtualization = false,
-  loadTime = 0
+  loadTime = 0,
 }: {
   scheduleCount?: number
   enableVirtualization?: boolean
@@ -30,12 +30,15 @@ const MockPerformanceCalendar = ({
         start_time: new Date(2024, 0, (i % 31) + 1, 10, 0).toISOString(),
         end_time: new Date(2024, 0, (i % 31) + 1, 11, 0).toISOString(),
         team_id: 1,
-        participants: Array.from({ length: Math.min(5, i % 10 + 1) }, (_, j) => ({
-          id: j + 1,
-          user_id: j + 1,
-          status: 'accepted',
-          user: { id: j + 1, full_name: `사용자 ${j + 1}` }
-        }))
+        participants: Array.from(
+          { length: Math.min(5, (i % 10) + 1) },
+          (_, j) => ({
+            id: j + 1,
+            user_id: j + 1,
+            status: 'accepted',
+            user: { id: j + 1, full_name: `사용자 ${j + 1}` },
+          })
+        ),
       }))
     }
 
@@ -53,7 +56,7 @@ const MockPerformanceCalendar = ({
     const startTime = performance.now()
 
     // 대량 작업 시뮬레이션
-    await new Promise(resolve => setTimeout(resolve, 10))
+    await new Promise((resolve) => setTimeout(resolve, 10))
 
     const endTime = performance.now()
     console.log(`${action} 실행 시간:`, endTime - startTime, 'ms')
@@ -96,7 +99,7 @@ const MockPerformanceCalendar = ({
         {enableVirtualization ? (
           // 가상화된 리스트 (실제로는 react-window 등 사용)
           <div style={{ height: '400px', overflow: 'auto' }}>
-            {schedules.slice(0, 50).map(schedule => (
+            {schedules.slice(0, 50).map((schedule) => (
               <div
                 key={schedule.id}
                 data-testid={`schedule-${schedule.id}`}
@@ -108,7 +111,7 @@ const MockPerformanceCalendar = ({
           </div>
         ) : (
           // 일반 리스트
-          schedules.map(schedule => (
+          schedules.map((schedule) => (
             <div
               key={schedule.id}
               data-testid={`schedule-${schedule.id}`}
@@ -149,9 +152,7 @@ const TestWrapper = ({ children }: { children: React.ReactNode }) => {
   })
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   )
 }
 
@@ -204,7 +205,9 @@ describe('캘린더 성능 테스트', () => {
       const renderTime = endTime - startTime
 
       expect(renderTime).toBeLessThan(100) // 100ms 이내
-      expect(screen.getByTestId('schedule-count')).toHaveTextContent('100개 일정')
+      expect(screen.getByTestId('schedule-count')).toHaveTextContent(
+        '100개 일정'
+      )
     })
 
     it('1000개 일정 렌더링이 500ms 이내에 완료된다', async () => {
@@ -224,7 +227,9 @@ describe('캘린더 성능 테스트', () => {
       const renderTime = endTime - startTime
 
       expect(renderTime).toBeLessThan(500) // 500ms 이내
-      expect(screen.getByTestId('schedule-count')).toHaveTextContent('1000개 일정')
+      expect(screen.getByTestId('schedule-count')).toHaveTextContent(
+        '1000개 일정'
+      )
     })
 
     it('가상화를 사용하면 대량 데이터도 빠르게 렌더링된다', async () => {
@@ -232,7 +237,10 @@ describe('캘린더 성능 테스트', () => {
 
       const { unmount } = render(
         <TestWrapper>
-          <MockPerformanceCalendar scheduleCount={1000} enableVirtualization={false} />
+          <MockPerformanceCalendar
+            scheduleCount={1000}
+            enableVirtualization={false}
+          />
         </TestWrapper>
       )
 
@@ -249,7 +257,10 @@ describe('캘린더 성능 테스트', () => {
 
       render(
         <TestWrapper>
-          <MockPerformanceCalendar scheduleCount={1000} enableVirtualization={true} />
+          <MockPerformanceCalendar
+            scheduleCount={1000}
+            enableVirtualization={true}
+          />
         </TestWrapper>
       )
 
@@ -269,9 +280,7 @@ describe('캘린더 성능 테스트', () => {
 
       const RenderCountCalendar = () => {
         renderCount++
-        return (
-          <MockPerformanceCalendar scheduleCount={10} />
-        )
+        return <MockPerformanceCalendar scheduleCount={10} />
       }
 
       const { rerender } = render(
@@ -299,10 +308,10 @@ describe('캘린더 성능 테스트', () => {
       // 느린 응답 시뮬레이션
       server.use(
         http.get('*/teams/1/schedules', async () => {
-          await new Promise(resolve => setTimeout(resolve, 1000)) // 1초 지연
+          await new Promise((resolve) => setTimeout(resolve, 1000)) // 1초 지연
           return HttpResponse.json({
             success: true,
-            data: { schedules: [] }
+            data: { schedules: [] },
           })
         })
       )
@@ -315,9 +324,12 @@ describe('캘린더 성능 테스트', () => {
         </TestWrapper>
       )
 
-      await waitFor(() => {
-        expect(screen.getByTestId('performance-calendar')).toBeInTheDocument()
-      }, { timeout: 3000 })
+      await waitFor(
+        () => {
+          expect(screen.getByTestId('performance-calendar')).toBeInTheDocument()
+        },
+        { timeout: 3000 }
+      )
 
       const endTime = performance.now()
       const loadTime = endTime - startTime
@@ -327,7 +339,7 @@ describe('캘린더 성능 테스트', () => {
 
     it('병렬 API 호출이 순차 호출보다 빠르다', async () => {
       const mockApiCall = (delay: number) =>
-        new Promise(resolve => setTimeout(resolve, delay))
+        new Promise((resolve) => setTimeout(resolve, delay))
 
       // 순차 호출
       const startSequential = performance.now()
@@ -339,11 +351,7 @@ describe('캘린더 성능 테스트', () => {
 
       // 병렬 호출
       const startParallel = performance.now()
-      await Promise.all([
-        mockApiCall(100),
-        mockApiCall(100),
-        mockApiCall(100)
-      ])
+      await Promise.all([mockApiCall(100), mockApiCall(100), mockApiCall(100)])
       const endParallel = performance.now()
       const parallelTime = endParallel - startParallel
 
@@ -358,7 +366,7 @@ describe('캘린더 성능 테스트', () => {
           requestCount++
           return HttpResponse.json({
             success: true,
-            data: { schedules: [] }
+            data: { schedules: [] },
           })
         })
       )
@@ -409,7 +417,7 @@ describe('캘린더 성능 테스트', () => {
       // 가비지 컬렉션 강제 실행 (테스트 환경에서만)
       if (global.gc) global.gc()
 
-      await new Promise(resolve => setTimeout(resolve, 100))
+      await new Promise((resolve) => setTimeout(resolve, 100))
 
       const unmountedMemory = (performance as any).memory?.usedJSHeapSize || 0
 
@@ -469,7 +477,8 @@ describe('캘린더 성능 테스트', () => {
             lastTime = currentTime
             frameCount++
 
-            if (frameCount < 60) { // 1초간 측정
+            if (frameCount < 60) {
+              // 1초간 측정
               requestAnimationFrame(countFrames)
             } else {
               resolve(maxFrameTime)
@@ -489,7 +498,10 @@ describe('캘린더 성능 테스트', () => {
     it('스크롤 성능이 원활하다', async () => {
       render(
         <TestWrapper>
-          <MockPerformanceCalendar scheduleCount={1000} enableVirtualization={true} />
+          <MockPerformanceCalendar
+            scheduleCount={1000}
+            enableVirtualization={true}
+          />
         </TestWrapper>
       )
 
@@ -563,9 +575,9 @@ describe('캘린더 성능 테스트', () => {
     it('코드 스플리팅이 효과적으로 적용되었다', () => {
       // 실제로는 번들 분석기나 웹팩 통계 사용
       const mockBundleSize = {
-        main: 250000,      // 250KB
-        calendar: 150000,  // 150KB (캘린더 청크)
-        vendor: 500000,    // 500KB (라이브러리)
+        main: 250000, // 250KB
+        calendar: 150000, // 150KB (캘린더 청크)
+        vendor: 500000, // 500KB (라이브러리)
       }
 
       // 메인 번들이 적절한 크기인지 확인
@@ -600,7 +612,7 @@ describe('캘린더 성능 테스트', () => {
 
       // 지연 로딩이 적절한 시간 내에 완료되는지 확인
       expect(totalLoadTime).toBeGreaterThan(100) // 최소 지연 시간
-      expect(totalLoadTime).toBeLessThan(500)    // 최대 허용 시간
+      expect(totalLoadTime).toBeLessThan(500) // 최대 허용 시간
     })
   })
 
