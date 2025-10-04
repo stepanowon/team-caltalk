@@ -58,6 +58,13 @@ export function ScheduleDetailModal({
   const startTime = schedule.start_datetime || schedule.start_time
   const endTime = schedule.end_datetime || schedule.end_time
 
+  // 현재 사용자가 일정 참가자인지 확인
+  const userStr = localStorage.getItem('user')
+  const currentUser = userStr ? JSON.parse(userStr) : null
+  const isParticipant = schedule.participants?.some(
+    (p) => p.user_id === currentUser?.id
+  ) || false
+
   const formatDateTime = (dateString: string) => {
     const date = new Date(dateString)
     return date.toLocaleString('ko-KR', {
@@ -207,8 +214,8 @@ export function ScheduleDetailModal({
         </div>
 
         <DialogFooter className="flex gap-2">
-          {/* 팀원은 일정 변경 요청 버튼만 표시 */}
-          {!isLeader && onRequestChange && (
+          {/* 일정 참가자이면서 팀장이 아닌 경우에만 변경 요청 버튼 표시 */}
+          {!isLeader && isParticipant && onRequestChange && (
             <Button
               variant="outline"
               onClick={() => {
