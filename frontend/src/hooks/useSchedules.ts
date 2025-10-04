@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { logger } from '@/utils/logger'
 import { useTeamStore } from '@/stores/team-store'
+import api from '@/services/api'
 import type { Schedule, ScheduleParticipant, ApiResponse } from '@/types'
 
 interface CreateScheduleRequest {
@@ -39,53 +40,12 @@ interface UseSchedulesReturn {
   refetch: () => Promise<void>
 }
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
-
 export function useSchedules(): UseSchedulesReturn {
   const [schedules, setSchedules] = useState<ScheduleWithParticipants[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   const { currentTeam } = useTeamStore()
-
-  // Helper function for API calls
-  const apiCall = async <T>(
-    endpoint: string,
-    options: RequestInit = {}
-  ): Promise<T> => {
-    const token = localStorage.getItem('access_token')
-
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-        ...options.headers,
-      },
-    })
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}))
-      const error: any = new Error(errorData.error || errorData.message || `HTTP error! status: ${response.status}`)
-      // Attach additional error data for conflict handling
-      if (errorData.conflicts) {
-        error.conflicts = errorData.conflicts
-      }
-      throw error
-    }
-
-    const data: ApiResponse<T> = await response.json()
-    if (!data.success) {
-      const error: any = new Error(data.message || data.error || 'API call failed')
-      // Attach additional error data
-      if ((data as any).conflicts) {
-        error.conflicts = (data as any).conflicts
-      }
-      throw error
-    }
-
-    return data.data!
-  }
 
   // Normalize schedule data (convert start_datetime/end_datetime to start_time/end_time)
   const normalizeSchedule = (schedule: any): ScheduleWithParticipants => {
@@ -108,11 +68,14 @@ export function useSchedules(): UseSchedulesReturn {
 
     try {
       logger.log('Fetching schedules for team:', currentTeam.id)
-      const response = await apiCall<{ schedules: ScheduleWithParticipants[] }>(
-        `/schedules?teamId=${currentTeam.id}`
+      const response = await api.get<ApiResponse<{ schedules: ScheduleWithParticipants[] }>>(
+        '/schedules',
+        {
+          params: { teamId: currentTeam.id },
+        }
       )
-      logger.log('Schedules API response:', response)
-      const normalizedSchedules = (response.schedules || []).map(normalizeSchedule)
+      logger.log('Schedules API response:', response.data)
+      const normalizedSchedules = (response.data.data?.schedules || []).map(normalizeSchedule)
       logger.log('Normalized schedules:', normalizedSchedules)
       setSchedules(normalizedSchedules)
     } catch (err) {
@@ -134,25 +97,22 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const response = await apiCall<{ schedule: ScheduleWithParticipants }>(
-        `/schedules`,
+      const response = await api.post<ApiResponse<{ schedule: ScheduleWithParticipants }>>(
+        '/schedules',
         {
-          method: 'POST',
-          body: JSON.stringify({
-            ...data,
-            teamId: currentTeam.id,
-          }),
+          ...data,
+          teamId: currentTeam.id,
         }
       )
 
-      const newSchedule = response.schedule
+      const newSchedule = response.data.data?.schedule
       if (newSchedule) {
         setSchedules(prev => [...prev, normalizeSchedule(newSchedule)])
       }
     } catch (err: any) {
       // Handle schedule conflicts
-      if (err.message === '일정 충돌이 발생했습니다' && err.conflicts) {
-        const conflictDetails = err.conflicts.map((c: any) =>
+      if (err.response?.data?.message === '일정 충돌이 발생했습니다' && err.response?.data?.conflicts) {
+        const conflictDetails = err.response.data.conflicts.map((c: any) =>
           `${c.userName}: ${c.conflictingSchedule.title} (${new Date(c.conflictingSchedule.startDatetime).toLocaleString('ko-KR')})`
         ).join('\n')
         const conflictError = new Error(`일정 충돌이 발생했습니다:\n\n${conflictDetails}\n\n다른 시간을 선택해주세요.`)
@@ -160,7 +120,7 @@ export function useSchedules(): UseSchedulesReturn {
         throw conflictError
       }
 
-      setError(err instanceof Error ? err.message : '일정 생성에 실패했습니다.')
+      setError(err.response?.data?.message || err.message || '일정 생성에 실패했습니다.')
       throw err
     } finally {
       setLoading(false)
@@ -177,15 +137,12 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      const response = await apiCall<{ schedule: ScheduleWithParticipants }>(
+      const response = await api.put<ApiResponse<{ schedule: ScheduleWithParticipants }>>(
         `/schedules/${data.id}`,
-        {
-          method: 'PUT',
-          body: JSON.stringify(data),
-        }
+        data
       )
 
-      const updatedSchedule = response.schedule
+      const updatedSchedule = response.data.data?.schedule
       if (updatedSchedule) {
         setSchedules(prev =>
           prev.map(schedule =>
@@ -193,8 +150,8 @@ export function useSchedules(): UseSchedulesReturn {
           )
         )
       }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : '일정 수정에 실패했습니다.')
+    } catch (err: any) {
+      setError(err.response?.data?.message || err.message || '일정 수정에 실패했습니다.')
       throw err
     } finally {
       setLoading(false)
@@ -211,13 +168,10 @@ export function useSchedules(): UseSchedulesReturn {
     setError(null)
 
     try {
-      await apiCall(`/schedules/${scheduleId}`, {
-        method: 'DELETE',
-      })
-
+      await api.delete(`/schedules/${scheduleId}`)
       setSchedules(prev => prev.filter(schedule => schedule.id !== scheduleId))
-    } catch (err) {
-      setError(err instanceof Error ? err.message : '일정 삭제에 실패했습니다.')
+    } catch (err: any) {
+      setError(err.response?.data?.message || err.message || '일정 삭제에 실패했습니다.')
       throw err
     } finally {
       setLoading(false)

@@ -3,9 +3,9 @@ import { logger } from '@/utils/logger'
 import { useTeamStore } from '@/stores/team-store'
 import { useAuthStore } from '@/stores/authStore'
 import { useSchedules } from '@/hooks/useSchedules'
+import { useSendScheduleRequest } from '@/hooks/useChat'
 import CalendarHeader from '@/components/calendar/CalendarHeader'
 import CalendarGrid from '@/components/calendar/CalendarGrid'
-import ScheduleCard from '@/components/calendar/ScheduleCard'
 import ChatRoom from '@/components/chat/ChatRoom'
 import { ScheduleModal } from '@/components/calendar/ScheduleModal'
 import { ScheduleDetailModal } from '@/components/calendar/ScheduleDetailModal'
@@ -21,8 +21,6 @@ import {
 } from 'lucide-react'
 import { TeamService } from '@/services/team-service'
 import { getKoreanDateISO } from '@/utils/dateUtils'
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
 
 interface Schedule {
   id: number
@@ -61,6 +59,9 @@ export function Calendar() {
     getSchedulesForDate,
     refetch,
   } = useSchedules()
+
+  // 일정 변경 요청 mutation
+  const sendScheduleRequestMutation = useSendScheduleRequest()
 
   // Load team members when currentTeam changes
   useEffect(() => {
@@ -165,6 +166,25 @@ export function Calendar() {
       await createSchedule(data)
     }
     await refetch()
+  }
+
+  // 일정 변경 요청 핸들러
+  const handleRequestChange = async (schedule: Schedule) => {
+    const message = prompt('일정 변경 요청 사유를 입력하세요:')
+    if (message && currentTeam) {
+      try {
+        await sendScheduleRequestMutation.mutateAsync({
+          teamId: currentTeam.id,
+          scheduleId: schedule.id,
+          content: message,
+          targetDate: new Date(schedule.start_time).toISOString().split('T')[0],
+        })
+        alert('일정 변경 요청이 전송되었습니다.')
+      } catch (error) {
+        logger.error('Schedule change request error:', error)
+        alert(error instanceof Error ? error.message : '일정 변경 요청 중 오류가 발생했습니다.')
+      }
+    }
   }
 
   const selectedDateSchedules = selectedDate
@@ -387,36 +407,7 @@ export function Calendar() {
         schedule={selectedSchedule}
         onEdit={() => handleScheduleEdit()}
         onDelete={() => handleScheduleDelete()}
-        onRequestChange={async (schedule) => {
-          const message = prompt('일정 변경 요청 사유를 입력하세요:')
-          if (message && currentTeam) {
-            try {
-              const response = await fetch(`${API_BASE_URL}/chat/schedule-request`, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                  teamId: currentTeam.id,
-                  scheduleId: schedule.id,
-                  content: message,
-                  targetDate: new Date(schedule.start_time).toISOString().split('T')[0],
-                }),
-              })
-
-              if (!response.ok) {
-                const error = await response.json()
-                throw new Error(error.error || '요청 실패')
-              }
-
-              alert('일정 변경 요청이 전송되었습니다.')
-            } catch (error) {
-              logger.error('Schedule change request error:', error)
-              alert(error instanceof Error ? error.message : '일정 변경 요청 중 오류가 발생했습니다.')
-            }
-          }
-        }}
+        onRequestChange={handleRequestChange}
         canEdit={canEditSchedules}
         isLeader={canEditSchedules}
       />

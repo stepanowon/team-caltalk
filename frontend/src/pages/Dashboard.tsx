@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { logger } from '@/utils/logger'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { format, formatDistanceToNow } from 'date-fns'
 import { ko } from 'date-fns/locale'
@@ -22,29 +21,24 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 
 import { useAuthStore } from '@/stores/authStore'
 import { useTeamStore, type Team } from '@/stores/team-store'
+import { useActivities } from '@/hooks/useActivities'
 import { ROUTES } from '@/utils/constants'
-
-interface Activity {
-  id: string
-  type: string
-  icon: string
-  title: string
-  description: string
-  actor: string
-  teamName: string
-  timestamp: string
-  metadata: any
-}
 
 export function Dashboard() {
   const navigate = useNavigate()
   const location = useLocation()
-  const { user, token } = useAuthStore()
+  const { user } = useAuthStore()
   const { currentTeam, teams, setCurrentTeam } = useTeamStore()
 
   const [message, setMessage] = useState<string | null>(null)
-  const [activities, setActivities] = useState<Activity[]>([])
-  const [loadingActivities, setLoadingActivities] = useState(false)
+
+  // 활동 내역 조회
+  const {
+    data: activitiesData,
+    isLoading: loadingActivities,
+  } = useActivities(currentTeam?.id, 5)
+
+  const activities = activitiesData?.data?.activities || []
 
   // 페이지 로드 시 메시지 표시 (팀 생성/참여 완료 시)
   useEffect(() => {
@@ -59,39 +53,6 @@ export function Dashboard() {
       return () => clearTimeout(timer)
     }
   }, [location.state])
-
-  // 활동 내역 조회
-  useEffect(() => {
-    const fetchActivities = async () => {
-      if (!token) return
-
-      try {
-        setLoadingActivities(true)
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
-        const response = await fetch(
-          currentTeam
-            ? `${API_BASE_URL}/activities?teamId=${currentTeam.id}&limit=5`
-            : `${API_BASE_URL}/activities?limit=5`,
-          {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-            },
-          }
-        )
-
-        if (response.ok) {
-          const data = await response.json()
-          setActivities(data.data.activities || [])
-        }
-      } catch (error) {
-        logger.error('Failed to fetch activities:', error)
-      } finally {
-        setLoadingActivities(false)
-      }
-    }
-
-    fetchActivities()
-  }, [currentTeam, token])
 
   // 팀 선택 핸들러
   const handleSelectTeam = (team: Team) => {

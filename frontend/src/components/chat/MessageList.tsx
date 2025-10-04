@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { logger } from '@/utils/logger'
+import React, { useEffect, useRef } from 'react'
 import { useChatStore } from '@/stores/chat-store'
 import { useAuthStore } from '@/stores/authStore'
 import { useTeamStore } from '@/stores/team-store'
@@ -7,182 +6,70 @@ import { cn } from '@/lib/utils'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { ScheduleRequestMessage } from './ScheduleRequestMessage'
+import {
+  useScheduleRequests,
+  useApproveRequest,
+  useRejectRequest,
+  useAcknowledgeResponse,
+} from '@/hooks/useChat'
 
 interface MessageListProps {
   className?: string
 }
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
-
 export default function MessageList({ className }: MessageListProps) {
   const { messages, isLoading } = useChatStore()
-  const { user, token } = useAuthStore()
+  const { user } = useAuthStore()
   const { currentTeam } = useTeamStore()
   const scrollRef = useRef<HTMLDivElement>(null)
-  const [processingRequests, setProcessingRequests] = useState<Set<number>>(new Set())
-  const [scheduleRequests, setScheduleRequests] = useState<any[]>([])
-  const [loadingRequests, setLoadingRequests] = useState(false)
 
   const isLeader = currentTeam?.role === 'leader'
 
-  // 일정 변경 요청 메시지 조회
-  useEffect(() => {
-    const fetchScheduleRequests = async () => {
-      if (!currentTeam?.id || !token) return
+  // 일정 변경 요청 조회
+  const {
+    data: requestsData,
+    isLoading: loadingRequests,
+  } = useScheduleRequests(currentTeam?.id || null, !!currentTeam?.id)
 
-      try {
-        setLoadingRequests(true)
-        const response = await fetch(
-          `${API_BASE_URL}/chat/teams/${currentTeam.id}/schedule-requests`,
-          {
-            headers: {
-              'Authorization': `Bearer ${token}`,
-            },
-          }
-        )
+  const scheduleRequests = requestsData?.data?.requests || []
 
-        if (response.ok) {
-          const data = await response.json()
-          setScheduleRequests(data.data.requests || [])
-        }
-      } catch (error) {
-        logger.error('Failed to fetch schedule requests:', error)
-      } finally {
-        setLoadingRequests(false)
-      }
-    }
+  // Mutations
+  const approveRequestMutation = useApproveRequest(currentTeam?.id || null)
+  const rejectRequestMutation = useRejectRequest(currentTeam?.id || null)
+  const acknowledgeResponseMutation = useAcknowledgeResponse(
+    currentTeam?.id || null,
+    new Date().toISOString().split('T')[0]
+  )
 
-    fetchScheduleRequests()
-
-    // 30초마다 갱신
-    const interval = setInterval(fetchScheduleRequests, 30000)
-    return () => clearInterval(interval)
-  }, [currentTeam?.id, token])
-
+  // 승인 핸들러
   const handleApproveRequest = async (messageId: number, scheduleId: number) => {
-    if (processingRequests.has(messageId)) return
-
     try {
-      setProcessingRequests(prev => new Set(prev).add(messageId))
-
-      const response = await fetch(`${API_BASE_URL}/chat/approve-request/${messageId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      })
-
-      if (!response.ok) {
-        const error = await response.json()
-        throw new Error(error.error || '승인 실패')
-      }
-
-      // 요청 목록 새로고침
-      const refreshResponse = await fetch(
-        `${API_BASE_URL}/chat/teams/${currentTeam?.id}/schedule-requests`,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        }
-      )
-      if (refreshResponse.ok) {
-        const data = await refreshResponse.json()
-        setScheduleRequests(data.data.requests || [])
-      }
-
+      await approveRequestMutation.mutateAsync(messageId)
       alert('일정 변경 요청이 승인되었습니다.')
     } catch (error) {
-      logger.error('Approve request error:', error)
       alert(error instanceof Error ? error.message : '요청 승인 중 오류가 발생했습니다.')
-    } finally {
-      setProcessingRequests(prev => {
-        const next = new Set(prev)
-        next.delete(messageId)
-        return next
-      })
     }
   }
 
+  // 거절 핸들러
   const handleRejectRequest = async (messageId: number, scheduleId: number) => {
-    if (processingRequests.has(messageId)) return
-
     try {
-      setProcessingRequests(prev => new Set(prev).add(messageId))
-
-      const response = await fetch(`${API_BASE_URL}/chat/reject-request/${messageId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      })
-
-      if (!response.ok) {
-        const error = await response.json()
-        throw new Error(error.error || '거절 실패')
-      }
-
-      // 요청 목록 새로고침
-      const refreshResponse = await fetch(
-        `${API_BASE_URL}/chat/teams/${currentTeam?.id}/schedule-requests`,
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-          },
-        }
-      )
-      if (refreshResponse.ok) {
-        const data = await refreshResponse.json()
-        setScheduleRequests(data.data.requests || [])
-      }
-
+      await rejectRequestMutation.mutateAsync(messageId)
       alert('일정 변경 요청이 거절되었습니다.')
     } catch (error) {
-      logger.error('Reject request error:', error)
       alert(error instanceof Error ? error.message : '요청 거절 중 오류가 발생했습니다.')
-    } finally {
-      setProcessingRequests(prev => {
-        const next = new Set(prev)
-        next.delete(messageId)
-        return next
-      })
     }
   }
 
+  // 확인 핸들러
   const handleAcknowledgeResponse = async (messageId: number) => {
-    if (processingRequests.has(messageId)) return
-
     try {
-      setProcessingRequests(prev => new Set(prev).add(messageId))
-
-      const response = await fetch(`${API_BASE_URL}/chat/acknowledge-response/${messageId}`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      })
-
-      if (!response.ok) {
-        const error = await response.json()
-        throw new Error(error.error || '확인 실패')
-      }
-
-      // 메시지 목록 새로고침
+      await acknowledgeResponseMutation.mutateAsync(messageId)
       window.location.reload()
     } catch (error) {
-      logger.error('Acknowledge error:', error)
       alert(error instanceof Error ? error.message : '확인 중 오류가 발생했습니다.')
-    } finally {
-      setProcessingRequests(prev => {
-        const next = new Set(prev)
-        next.delete(messageId)
-        return next
-      })
     }
   }
-
 
   // 새 메시지가 있을 때 자동 스크롤
   useEffect(() => {
@@ -265,6 +152,11 @@ export default function MessageList({ className }: MessageListProps) {
 
           const isResponseMessage = ['schedule_approved', 'schedule_rejected'].includes(message.message_type)
 
+          const processingRequests =
+            approveRequestMutation.isPending ||
+            rejectRequestMutation.isPending ||
+            acknowledgeResponseMutation.isPending
+
           return (
             <div
               key={message.id}
@@ -317,16 +209,16 @@ export default function MessageList({ className }: MessageListProps) {
                   {isResponseMessage && !isOwn && (
                     <button
                       onClick={() => handleAcknowledgeResponse(message.id)}
-                      disabled={processingRequests.has(message.id)}
+                      disabled={processingRequests}
                       className={cn(
                         'ml-2 px-2 py-1 text-xs rounded',
                         message.message_type === 'schedule_approved'
                           ? 'bg-green-200 hover:bg-green-300 text-green-900'
                           : 'bg-red-200 hover:bg-red-300 text-red-900',
-                        processingRequests.has(message.id) && 'opacity-50 cursor-not-allowed'
+                        processingRequests && 'opacity-50 cursor-not-allowed'
                       )}
                     >
-                      {processingRequests.has(message.id) ? '처리 중...' : '확인'}
+                      {processingRequests ? '처리 중...' : '확인'}
                     </button>
                   )}
                 </div>
