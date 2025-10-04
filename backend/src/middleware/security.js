@@ -119,12 +119,18 @@ const corsOptions = {
       return callback(null, true);
     }
 
-    // 허용된 origin 목록 확인
-    if (!origin || config.cors.origin.includes(origin)) {
+    // 허용된 origin 목록 정규화 (공백 제거)
+    const allowedOrigins = config.cors.origin.map(o => o.trim());
+
+    logger.info('[CORS] Request Origin:', origin, 'Allowed Origins:', allowedOrigins);
+
+    // origin이 없거나(Postman 등) 허용된 목록에 포함되면 허용
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       logger.audit('CORS_VIOLATION', {
         origin,
+        allowedOrigins,
         timestamp: new Date().toISOString(),
       });
       callback(new Error('CORS 정책에 의해 차단되었습니다'));
