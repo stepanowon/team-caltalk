@@ -10,6 +10,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Calendar, Clock, Users, User, Edit, Trash2, MessageSquare } from 'lucide-react'
+import { useAuthStore } from '@/stores/authStore'
 
 interface Schedule {
   id: number
@@ -58,9 +59,8 @@ export function ScheduleDetailModal({
   const startTime = schedule.start_datetime || schedule.start_time
   const endTime = schedule.end_datetime || schedule.end_time
 
-  // 현재 사용자가 일정 참가자인지 확인
-  const userStr = localStorage.getItem('user')
-  const currentUser = userStr ? JSON.parse(userStr) : null
+  // authStore에서 현재 사용자 정보 가져오기
+  const currentUser = useAuthStore((state) => state.user)
 
   // 디버깅 로그
   console.log('[ScheduleDetailModal] Debug Info:', {
