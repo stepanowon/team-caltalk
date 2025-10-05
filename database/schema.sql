@@ -80,7 +80,7 @@ CREATE TABLE messages (
     target_date DATE NOT NULL,
     related_schedule_id BIGINT REFERENCES schedules(id) ON DELETE SET NULL,
     message_type VARCHAR(50) NOT NULL DEFAULT 'normal'
-        CHECK (message_type IN ('normal', 'schedule_request')),
+        CHECK (message_type IN ('normal', 'schedule_request', 'schedule_approved', 'schedule_rejected')),
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -119,6 +119,7 @@ CREATE INDEX idx_messages_team_date ON messages(team_id, target_date, sent_at);
 CREATE INDEX idx_messages_sender ON messages(sender_id);
 CREATE INDEX idx_messages_schedule ON messages(related_schedule_id) WHERE related_schedule_id IS NOT NULL;
 CREATE INDEX idx_messages_type ON messages(team_id, message_type);
+CREATE INDEX idx_messages_sent_at ON messages(sent_at);
 
 -- ============================================================================
 -- TRIGGERS FOR AUTOMATIC TIMESTAMP UPDATES
@@ -260,4 +261,4 @@ COMMENT ON COLUMN schedule_participants.participation_status IS '참가 상태: 
 
 COMMENT ON TABLE messages IS '팀 채팅 메시지 테이블';
 COMMENT ON COLUMN messages.target_date IS '채팅 날짜별 분리용';
-COMMENT ON COLUMN messages.message_type IS '메시지 유형: normal(일반), schedule_request(일정 요청)';
+COMMENT ON COLUMN messages.message_type IS '메시지 유형: normal(일반), schedule_request(일정 요청), schedule_approved(일정 승인), schedule_rejected(일정 거절)';
