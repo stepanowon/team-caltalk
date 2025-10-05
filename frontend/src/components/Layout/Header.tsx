@@ -101,7 +101,7 @@ export const Header = () => {
                   to={ROUTES.REGISTER}
                   className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-md transition-colors no-underline"
                 >
-                  회원가입
+                  회원등록
                 </Link>
               </>
             )}
