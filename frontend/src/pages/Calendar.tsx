@@ -438,17 +438,21 @@ export function Calendar() {
               📋 이번 달 일정: {Array.isArray(schedules) ? schedules.length : 0}개
             </span>
             <span className="text-blue-600">
-              📅 보기 모드: {currentView === 'month' ? '월' : currentView === 'week' ? '주' : '일'}
+              📅 보기: {currentView === 'month' ? '월' : currentView === 'week' ? '주' : '일'}
             </span>
           </div>
           <div className="text-blue-600">
-            {new Date().toLocaleDateString('ko-KR', {
-              timeZone: 'Asia/Seoul',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-              weekday: 'long',
-            })}
+            {(() => {
+              const today = new Date();
+              const year = today.getFullYear();
+              const month = String(today.getMonth() + 1).padStart(2, '0');
+              const day = String(today.getDate()).padStart(2, '0');
+              const weekday = today.toLocaleDateString('ko-KR', {
+                timeZone: 'Asia/Seoul',
+                weekday: 'short',
+              });
+              return `${year}-${month}-${day}(${weekday})`;
+            })()}
           </div>
         </div>
       </div>
