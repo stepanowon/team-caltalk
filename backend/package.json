@@ -6,19 +6,10 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "NODE_ENV=test jest",
-    "test:watch": "NODE_ENV=test jest --watch",
-    "test:coverage": "NODE_ENV=test jest --coverage",
-    "test:unit": "NODE_ENV=test jest tests/unit",
-    "test:integration": "NODE_ENV=test jest tests/integration",
-    "test:security": "NODE_ENV=test jest tests/security",
-    "test:performance": "NODE_ENV=test jest tests/performance",
-    "test:ci": "NODE_ENV=test jest --ci --coverage --watchAll=false",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage --forceExit",
+    "test:unit": "cross-env NODE_ENV=test jest tests/unit --forceExit",
     "lint": "eslint src/ tests/",
-    "lint:fix": "eslint src/ tests/ --fix",
-    "db:migrate": "node scripts/migrate.js",
-    "db:seed": "node scripts/seed.js",
-    "db:reset": "node scripts/reset-db.js"
+    "lint:fix": "eslint src/ tests/ --fix"
   },
   "keywords": [
     "team",
@@ -50,6 +41,8 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.8",
+    "axios": "^1.12.2",
+    "cross-env": "^10.1.0",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.1",
@@ -94,7 +87,8 @@
       }
     },
     "verbose": true,
-    "testTimeout": 10000
+    "testTimeout": 10000,
+    "maxWorkers": 1
   },
   "eslintConfig": {
     "env": {

@@ -161,6 +161,17 @@ class DatabaseConfig {
       logger.info('데이터베이스 연결 풀 종료됨');
     }
   }
+
+  /**
+   * 테스트용 pool 주입 (테스트 환경에서만 사용)
+   */
+  setTestPool(testPool) {
+    if (process.env.NODE_ENV === 'test') {
+      this.pool = testPool;
+      this.isConnected = true;
+      logger.info('테스트용 데이터베이스 풀 설정 완료');
+    }
+  }
 }
 
 // 싱글톤 인스턴스

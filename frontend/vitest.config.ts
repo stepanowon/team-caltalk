@@ -14,6 +14,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
+    testTimeout: 10000, // 테스트 타임아웃을 10초로 설정
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],

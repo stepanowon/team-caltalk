@@ -18,3 +18,8 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .vercel
+
+# Test coverage
+coverage/
+*/coverage/
+**/coverage/
