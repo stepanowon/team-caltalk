@@ -1236,3 +1236,4492 @@ Error: listen EADDRINUSE: address already in use ::1:3000
   "ip": "::1",
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
 }
+2025-10-04 16:22:04.053 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:04.053 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:04.061 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:04.061 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:10.232 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:10.232 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:10.238 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:10.239 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:13.008 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:13.008 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:13.012 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:13.013 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:13.101 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:13.101 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:13.104 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:13.104 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:14.063 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:14.063 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:14.069 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:14.070 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:14.152 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:14.153 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:14.157 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:14.157 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:14.962 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:14.962 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:14.967 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:14.967 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:15.061 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:15.061 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:22:15.065 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-04 16:22:15.065 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-04 16:24:36.222 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-04 16:24:36.222 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-04 16:24:36.224 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-04 16:24:36.225 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-05 10:50:09.763 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629009761@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.763 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629009761@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.764 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629009761@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.764 [ERROR]: User.createUser 오류: {
+  "email": "user1759629009761@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.808 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629009807@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.808 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629009807@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.808 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629009807@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.808 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629009807@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.826 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629009825@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.826 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629009825@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.826 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629009825@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.826 [ERROR]: User.createUser 오류: {
+  "email": "user1759629009825@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.842 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629009841@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.842 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629009841@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.842 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629009841@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.842 [ERROR]: User.createUser 오류: {
+  "email": "user1759629009841@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.858 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user11759629009858@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.858 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user11759629009858@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.858 [ERROR]: User.findByEmail 오류: {
+  "email": "user11759629009858@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.858 [ERROR]: User.createUser 오류: {
+  "email": "user11759629009858@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.878 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629009877@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.878 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629009877@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.878 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629009877@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.878 [ERROR]: User.createUser 오류: {
+  "email": "user1759629009877@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.895 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user11759629009894@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.895 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user11759629009894@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.896 [ERROR]: User.findByEmail 오류: {
+  "email": "user11759629009894@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.896 [ERROR]: User.createUser 오류: {
+  "email": "user11759629009894@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.911 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629009911@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.911 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629009911@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.911 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629009911@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.911 [ERROR]: User.createUser 오류: {
+  "email": "user1759629009911@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.925 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user11759629009924@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.925 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user11759629009924@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.925 [ERROR]: User.findByEmail 오류: {
+  "email": "user11759629009924@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.925 [ERROR]: User.createUser 오류: {
+  "email": "user11759629009924@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.938 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629009938@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.938 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629009938@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.939 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629009938@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.939 [ERROR]: User.createUser 오류: {
+  "email": "user1759629009938@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.952 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629009951@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.952 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629009951@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.952 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629009951@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.952 [ERROR]: User.createUser 오류: {
+  "email": "user1759629009951@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.965 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629009964@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.965 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629009964@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.965 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629009964@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.965 [ERROR]: User.createUser 오류: {
+  "email": "user1759629009964@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.977 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629009977@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.978 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629009977@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.978 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629009977@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.978 [ERROR]: User.createUser 오류: {
+  "email": "user1759629009977@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.991 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629009990@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:09.991 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629009990@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.991 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629009990@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:09.991 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629009990@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.524 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010523@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.525 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010523@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.525 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010523@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.525 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010523@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.562 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010562@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.562 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010562@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.563 [ERROR]: User.findByEmail 오류: {
+  "email": "TEST1759629010562@EXAMPLE.COM",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.563 [ERROR]: User.createUser 오류: {
+  "email": "TEST1759629010562@EXAMPLE.COM",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.576 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "duplicate1759629010575@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.576 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "duplicate1759629010575@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.576 [ERROR]: User.findByEmail 오류: {
+  "email": "duplicate1759629010575@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.576 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629010575@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.590 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010589@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.590 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010589@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.590 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010589@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.590 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010589@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.605 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010604@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.605 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010604@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.605 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010604@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.605 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010604@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.621 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010620@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.621 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010620@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.621 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010620@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.621 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010620@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.635 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010635@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.635 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010635@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.636 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010635@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.636 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010635@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.650 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "nonexistent@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.650 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "nonexistent@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.650 [ERROR]: User.findByEmail 오류: {
+  "email": "nonexistent@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.663 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010663@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.664 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010663@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.664 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010663@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.664 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010663@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.675 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010675@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.676 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010675@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.676 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010675@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.676 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010675@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.689 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1",
+  "params": [
+    "nonexistent@example.com"
+  ]
+}
+2025-10-05 10:50:10.689 [ERROR]: User.authenticate 오류: {
+  "email": "nonexistent@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.703 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010702@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.703 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010702@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.703 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010702@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.703 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010702@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.718 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010717@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.718 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010717@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.718 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010717@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.718 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010717@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.730 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010730@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.730 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010730@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.730 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010730@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.730 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010730@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.742 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010742@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.743 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010742@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.743 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010742@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.743 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010742@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.757 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629010757@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:10.757 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629010757@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.757 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629010757@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:10.757 [ERROR]: User.createUser 오류: {
+  "email": "test1759629010757@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.891 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629011890@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:11.891 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629011890@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.892 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629011890@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.892 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629011890@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.935 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629011935@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:11.935 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629011935@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.935 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629011935@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.936 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629011935@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.956 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629011956@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:11.957 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629011956@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.957 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629011956@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.957 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629011956@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.973 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629011972@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:11.973 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629011972@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.973 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629011972@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.973 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629011972@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.991 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629011990@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:11.991 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629011990@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.991 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629011990@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:11.991 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629011990@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.007 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012007@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.007 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012007@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.008 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012007@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.008 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012007@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.025 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012025@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.025 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012025@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.026 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012025@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.026 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012025@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.040 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012039@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.040 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012039@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.040 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012039@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.040 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012039@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.053 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012052@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.053 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012052@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.053 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012052@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.053 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012052@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.065 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012064@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.065 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012064@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.065 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012064@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.065 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012064@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.576 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012575@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.576 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012575@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.577 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012575@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.577 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012575@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.617 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012616@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.617 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012616@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.617 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012616@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.617 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012616@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.634 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012633@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.634 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012633@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.634 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012633@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.634 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012633@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.646 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012646@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.647 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012646@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.647 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012646@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.647 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012646@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.660 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012659@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.660 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012659@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.660 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012659@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.660 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012659@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.674 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012674@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.675 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012674@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.675 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012674@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.675 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012674@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.688 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012687@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.688 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012687@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.688 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012687@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.688 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012687@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.702 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012702@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.702 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012702@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.702 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012702@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.702 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012702@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.719 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM teams WHERE invite_code = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "INVALID123",
+    1
+  ]
+}
+2025-10-05 10:50:12.719 [ERROR]: teams.findWhere 오류: {
+  "conditions": {
+    "invite_code": "INVALID123"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.720 [ERROR]: Team.findByInviteCode 오류: {
+  "inviteCode": "INVALID123",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.737 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012737@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.737 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012737@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.737 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012737@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.738 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012737@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.753 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629012753@example.com",
+    1
+  ]
+}
+2025-10-05 10:50:12.754 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629012753@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.754 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629012753@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:50:12.754 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629012753@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.268 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629080268@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.269 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629080268@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.269 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629080268@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.269 [ERROR]: User.createUser 오류: {
+  "email": "user1759629080268@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.301 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629080300@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.301 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629080300@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.301 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629080300@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.301 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629080300@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.315 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629080314@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.315 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629080314@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.315 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629080314@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.315 [ERROR]: User.createUser 오류: {
+  "email": "user1759629080314@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.326 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629080326@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.326 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629080326@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.326 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629080326@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.326 [ERROR]: User.createUser 오류: {
+  "email": "user1759629080326@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.337 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user11759629080337@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.337 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user11759629080337@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.337 [ERROR]: User.findByEmail 오류: {
+  "email": "user11759629080337@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.337 [ERROR]: User.createUser 오류: {
+  "email": "user11759629080337@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.350 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629080349@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.350 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629080349@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.350 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629080349@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.350 [ERROR]: User.createUser 오류: {
+  "email": "user1759629080349@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.361 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user11759629080361@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.362 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user11759629080361@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.362 [ERROR]: User.findByEmail 오류: {
+  "email": "user11759629080361@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.362 [ERROR]: User.createUser 오류: {
+  "email": "user11759629080361@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.382 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629080382@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.383 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629080382@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.383 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629080382@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.383 [ERROR]: User.createUser 오류: {
+  "email": "user1759629080382@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.417 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user11759629080416@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.417 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user11759629080416@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.417 [ERROR]: User.findByEmail 오류: {
+  "email": "user11759629080416@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.417 [ERROR]: User.createUser 오류: {
+  "email": "user11759629080416@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.430 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629080430@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.430 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629080430@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.431 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629080430@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.431 [ERROR]: User.createUser 오류: {
+  "email": "user1759629080430@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.443 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629080443@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.443 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629080443@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.443 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629080443@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.443 [ERROR]: User.createUser 오류: {
+  "email": "user1759629080443@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.456 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629080456@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.456 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629080456@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.456 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629080456@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.456 [ERROR]: User.createUser 오류: {
+  "email": "user1759629080456@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.469 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "user1759629080469@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.469 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "user1759629080469@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.469 [ERROR]: User.findByEmail 오류: {
+  "email": "user1759629080469@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.470 [ERROR]: User.createUser 오류: {
+  "email": "user1759629080469@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.482 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629080481@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:20.482 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629080481@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.482 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629080481@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:20.482 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629080481@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.417 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081416@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.417 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081416@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.417 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081416@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.417 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081416@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.448 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081447@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.448 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081447@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.448 [ERROR]: User.findByEmail 오류: {
+  "email": "TEST1759629081447@EXAMPLE.COM",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.448 [ERROR]: User.createUser 오류: {
+  "email": "TEST1759629081447@EXAMPLE.COM",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.460 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "duplicate1759629081460@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.460 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "duplicate1759629081460@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.460 [ERROR]: User.findByEmail 오류: {
+  "email": "duplicate1759629081460@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.460 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629081460@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.472 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081471@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.472 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081471@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.472 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081471@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.472 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081471@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.485 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081485@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.485 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081485@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.485 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081485@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.485 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081485@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.499 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081498@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.499 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081498@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.499 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081498@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.499 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081498@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.509 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081509@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.509 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081509@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.509 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081509@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.509 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081509@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.519 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "nonexistent@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.519 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "nonexistent@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.519 [ERROR]: User.findByEmail 오류: {
+  "email": "nonexistent@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.531 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081531@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.531 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081531@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.531 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081531@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.532 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081531@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.541 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081541@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.541 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081541@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.541 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081541@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.541 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081541@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.553 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1",
+  "params": [
+    "nonexistent@example.com"
+  ]
+}
+2025-10-05 10:51:21.553 [ERROR]: User.authenticate 오류: {
+  "email": "nonexistent@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.564 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081564@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.564 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081564@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.564 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081564@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.564 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081564@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.575 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081575@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.575 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081575@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.575 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081575@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.575 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081575@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.587 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081587@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.587 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081587@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.587 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081587@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.587 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081587@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.599 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081599@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.599 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081599@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.599 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081599@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.599 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081599@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.610 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "test1759629081610@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:21.610 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "test1759629081610@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.610 [ERROR]: User.findByEmail 오류: {
+  "email": "test1759629081610@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:21.610 [ERROR]: User.createUser 오류: {
+  "email": "test1759629081610@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.005 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082005@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.006 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082005@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.006 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082005@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.006 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082005@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.034 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082034@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.035 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082034@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.035 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082034@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.035 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082034@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.049 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082049@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.049 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082049@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.050 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082049@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.050 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082049@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.061 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082061@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.061 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082061@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.061 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082061@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.061 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082061@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.072 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082071@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.072 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082071@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.072 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082071@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.072 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082071@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.083 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082083@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.083 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082083@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.083 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082083@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.083 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082083@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.094 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082094@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.094 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082094@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.094 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082094@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.094 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082094@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.104 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082104@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.104 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082104@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.104 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082104@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.104 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082104@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.115 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM teams WHERE invite_code = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "INVALID123",
+    1
+  ]
+}
+2025-10-05 10:51:22.115 [ERROR]: teams.findWhere 오류: {
+  "conditions": {
+    "invite_code": "INVALID123"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.115 [ERROR]: Team.findByInviteCode 오류: {
+  "inviteCode": "INVALID123",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.127 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082127@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.127 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082127@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.127 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082127@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.127 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082127@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.137 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629082137@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:22.137 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629082137@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.137 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629082137@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:22.137 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629082137@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.173 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083172@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.173 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083172@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.173 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083172@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.173 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083172@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.201 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083200@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.201 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083200@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.201 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083200@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.201 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083200@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.213 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083213@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.214 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083213@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.214 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083213@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.214 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083213@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.223 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083223@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.223 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083223@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.223 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083223@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.223 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083223@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.239 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083239@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.239 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083239@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.239 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083239@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.239 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083239@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.251 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083251@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.251 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083251@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.251 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083251@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.252 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083251@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.263 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083263@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.263 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083263@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.263 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083263@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.263 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083263@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.280 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083279@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.280 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083279@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.280 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083279@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.280 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083279@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.295 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083295@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.295 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083295@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.295 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083295@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.295 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083295@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.311 [ERROR]: 쿼리 실행 오류: {
+  "error": "Cannot read properties of null (reading 'query')",
+  "query": "SELECT * FROM users WHERE email = $1 ORDER BY id DESC LIMIT $2",
+  "params": [
+    "leader1759629083310@example.com",
+    1
+  ]
+}
+2025-10-05 10:51:23.311 [ERROR]: users.findWhere 오류: {
+  "conditions": {
+    "email": "leader1759629083310@example.com"
+  },
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.311 [ERROR]: User.findByEmail 오류: {
+  "email": "leader1759629083310@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:51:23.311 [ERROR]: User.createUser 오류: {
+  "email": "leader1759629083310@example.com",
+  "error": "Cannot read properties of null (reading 'query')"
+}
+2025-10-05 10:52:48.010 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Test Schedule 1759629168009",
+    "description": "Test description",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T10:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:48.109 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629168101, null, 3U6Q0D, null, 2025-10-05 10:52:48.104703, 2025-10-05 10:52:48.104703)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Schedule.integration.test.js:90:20)
+2025-10-05 10:52:48.109 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629168101",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:48.182 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "startTime": "2025-10-01T09:00:00.000Z",
+    "endTime": "2025-10-10T09:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:48.262 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Invalid Schedule",
+    "startTime": "2025-10-10T10:00:00.000Z",
+    "endTime": "2025-10-10T09:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:48.394 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Test Schedule 1759629168394",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T10:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:48.469 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Test Schedule 1759629168468",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T10:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:48.596 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Test Schedule 1759629168596",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T10:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:48.673 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Schedule 1",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T10:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:48.803 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "User1 Schedule",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T10:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:48.875 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Schedule 1",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T11:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:48.947 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Schedule 1",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T11:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:49.026 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Original Title",
+    "description": "Original description",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T10:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:49.103 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Test Schedule",
+    "startTime": "2025-10-10T09:00:00.000Z",
+    "endTime": "2025-10-10T10:00:00.000Z",
+    "createdBy": "1",
+    "isTeamSchedule": false
+  },
+  "error": "올바른 날짜 시간 형식이 아닙니다"
+}
+2025-10-05 10:52:49.180 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629169177, null, X68Y4Q, null, 2025-10-05 10:52:49.179777, 2025-10-05 10:52:49.179777)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Schedule.integration.test.js:492:20)
+2025-10-05 10:52:49.180 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629169177",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:49.847 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629169835, null, BT8U8B, null, 2025-10-05 10:52:49.839911, 2025-10-05 10:52:49.839911)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:54:20)
+2025-10-05 10:52:49.848 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629169835",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:49.931 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629169929, null, EDRHBP, null, 2025-10-05 10:52:49.931819, 2025-10-05 10:52:49.931819)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:89:20)
+2025-10-05 10:52:49.931 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629169929",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:50.021 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629170018, null, UPIX5X, null, 2025-10-05 10:52:50.021193, 2025-10-05 10:52:50.021193)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:137:20)
+2025-10-05 10:52:50.021 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629170018",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:50.105 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629170103, null, CG8H1U, null, 2025-10-05 10:52:50.105822, 2025-10-05 10:52:50.105822)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:166:20)
+2025-10-05 10:52:50.105 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629170103",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:50.182 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 321,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629170179, null, Y9PSZW, null, 2025-10-05 10:52:50.18197, 2025-10-05 10:52:50.18197)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:197:20)
+2025-10-05 10:52:50.182 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629170179",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:50.255 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629170253, null, EVVU4D, null, 2025-10-05 10:52:50.255978, 2025-10-05 10:52:50.255978)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:239:20)
+2025-10-05 10:52:50.255 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629170253",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:50.326 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629170324, null, PI5XK1, null, 2025-10-05 10:52:50.326637, 2025-10-05 10:52:50.326637)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:264:20)
+2025-10-05 10:52:50.326 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629170324",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:50.398 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629170396, null, UDTSQW, null, 2025-10-05 10:52:50.398272, 2025-10-05 10:52:50.398272)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:312:20)
+2025-10-05 10:52:50.398 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629170396",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:50.469 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629170467, null, 6VXJOO, null, 2025-10-05 10:52:50.469978, 2025-10-05 10:52:50.469978)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:344:20)
+2025-10-05 10:52:50.469 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629170467",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:50.538 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629170536, null, KOXVE1, null, 2025-10-05 10:52:50.539196, 2025-10-05 10:52:50.539196)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:381:20)
+2025-10-05 10:52:50.539 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629170536",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:51.337 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629171277@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 10:52:52.952 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 338,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629172939, Test team description, 8R1Y37, null, 2025-10-05 10:52:52.94343, 2025-10-05 10:52:52.94343)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:53:20)
+2025-10-05 10:52:52.952 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629172939",
+    "description": "Test team description",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:53.028 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 319,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Team1 1759629173026, null, X6JGT0, null, 2025-10-05 10:52:53.028763, 2025-10-05 10:52:53.028763)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:75:21)
+2025-10-05 10:52:53.028 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Team1 1759629173026",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:53.114 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629173111, null, LNVJLO, null, 2025-10-05 10:52:53.113958, 2025-10-05 10:52:53.113958)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:102:20)
+2025-10-05 10:52:53.114 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629173111",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:53.198 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629173196, null, DTDFZH, null, 2025-10-05 10:52:53.198895, 2025-10-05 10:52:53.198895)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:135:20)
+2025-10-05 10:52:53.199 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629173196",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:53.328 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629173325, null, BZHSIS, null, 2025-10-05 10:52:53.327997, 2025-10-05 10:52:53.327997)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:171:20)
+2025-10-05 10:52:53.328 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629173325",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:53.401 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 321,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629173399, null, MS2QGJ, null, 2025-10-05 10:52:53.40183, 2025-10-05 10:52:53.40183)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:195:20)
+2025-10-05 10:52:53.401 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629173399",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:53.531 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629173528, null, DK8149, null, 2025-10-05 10:52:53.531648, 2025-10-05 10:52:53.531648)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:225:20)
+2025-10-05 10:52:53.531 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629173528",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:53.602 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629173600, null, 8WGHMG, null, 2025-10-05 10:52:53.602983, 2025-10-05 10:52:53.602983)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:260:20)
+2025-10-05 10:52:53.603 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629173600",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:53.687 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 339,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629173685, Original description, OD5HS6, null, 2025-10-05 10:52:53.687614, 2025-10-05 10:52:53.687614)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:290:20)
+2025-10-05 10:52:53.687 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629173685",
+    "description": "Original description",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:53.759 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 319,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Team1 1759629173757, null, L3UIHZ, null, 2025-10-05 10:52:53.760032, 2025-10-05 10:52:53.760032)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Team.integration.test.js:318:21)
+2025-10-05 10:52:53.760 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Team1 1759629173757",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:52:54.499 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 10:53:18.545 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629198529, null, A4X717, null, 2025-10-05 10:53:18.534354, 2025-10-05 10:53:18.534354)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:54:20)
+2025-10-05 10:53:18.545 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629198529",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:18.626 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629198623, null, L7OQ7B, null, 2025-10-05 10:53:18.625511, 2025-10-05 10:53:18.625511)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:89:20)
+2025-10-05 10:53:18.626 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629198623",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:18.698 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629198695, null, 6MKZF5, null, 2025-10-05 10:53:18.697804, 2025-10-05 10:53:18.697804)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:137:20)
+2025-10-05 10:53:18.698 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629198695",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:18.771 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629198769, null, SZKW6M, null, 2025-10-05 10:53:18.770833, 2025-10-05 10:53:18.770833)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:166:20)
+2025-10-05 10:53:18.771 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629198769",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:18.843 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629198841, null, HUB7JD, null, 2025-10-05 10:53:18.842403, 2025-10-05 10:53:18.842403)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:197:20)
+2025-10-05 10:53:18.843 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629198841",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:18.922 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629198916, null, JLPZJB, null, 2025-10-05 10:53:18.921446, 2025-10-05 10:53:18.921446)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:239:20)
+2025-10-05 10:53:18.922 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629198916",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:19.006 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629199004, null, K9GI6W, null, 2025-10-05 10:53:19.006027, 2025-10-05 10:53:19.006027)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:264:20)
+2025-10-05 10:53:19.006 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629199004",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:19.102 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629199100, null, LP54LV, null, 2025-10-05 10:53:19.102096, 2025-10-05 10:53:19.102096)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:312:20)
+2025-10-05 10:53:19.102 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629199100",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:19.173 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629199171, null, 9U5AV1, null, 2025-10-05 10:53:19.172536, 2025-10-05 10:53:19.172536)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:344:20)
+2025-10-05 10:53:19.173 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629199171",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:19.250 [ERROR]: 트랜잭션 롤백: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다. {
+  "length": 323,
+  "name": "error",
+  "severity": "오류",
+  "code": "23502",
+  "detail": "실패한 자료: (1, Test Team 1759629199247, null, 9DQMSK, null, 2025-10-05 10:53:19.249327, 2025-10-05 10:53:19.249327)",
+  "schema": "public",
+  "table": "teams",
+  "column": "creator_id",
+  "file": "execMain.c",
+  "line": "1987",
+  "routine": "ExecConstraints"
+}
+error: "creator_id" 칼럼(해당 릴레이션 "teams")의 null 값이 not null 제약조건을 위반했습니다.
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg\lib\client.js:545:17
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:62:28
+    at DatabaseConfig.transaction (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:94:22)
+    at Team.transaction (D:\dev\workspace_test\team-caltalk\backend\src\models\BaseModel.js:296:12)
+    at Team.createTeam (D:\dev\workspace_test\team-caltalk\backend\src\models\Team.js:60:22)
+    at Object.<anonymous> (D:\dev\workspace_test\team-caltalk\backend\tests\integration\models\Message.integration.test.js:381:20)
+2025-10-05 10:53:19.250 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "Test Team 1759629199247",
+    "leaderId": "1"
+  },
+  "error": "\"creator_id\" 칼럼(해당 릴레이션 \"teams\")의 null 값이 not null 제약조건을 위반했습니다."
+}
+2025-10-05 10:53:20.522 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629200460@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 10:53:22.331 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 10:53:38.342 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629218279@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 10:53:40.189 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 10:53:52.721 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629232664@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 10:53:54.525 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 10:54:30.177 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629270100@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 10:54:32.156 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 10:54:56.541 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629296476@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 10:54:58.542 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 10:59:44.684 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T01:59:44.684Z",
+    "endDatetime": "2025-10-13T01:59:44.684Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 10:59:44.770 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Invalid Schedule",
+    "content": "Invalid time range",
+    "startDatetime": "2025-10-05T03:59:44.770Z",
+    "endDatetime": "2025-10-05T02:59:44.770Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "종료 시간은 시작 시간보다 늦어야 합니다"
+}
+2025-10-05 10:59:46.239 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 500자를 초과할 수 없습니다"
+}
+2025-10-05 10:59:46.331 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "   ",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 필수입니다"
+}
+2025-10-05 10:59:46.431 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-10-10"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 10:59:46.510 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-12-31"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 10:59:46.673 [ERROR]: 쿼리 실행 오류: {
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음",
+  "query": "\n        UPDATE messages\n        SET content = $2, updated_at = CURRENT_TIMESTAMP\n        WHERE id =...",
+  "params": [
+    "1",
+    "수정된 메시지"
+  ]
+}
+2025-10-05 10:59:46.674 [ERROR]: messages.update 오류: {
+  "id": "1",
+  "data": {
+    "content": "수정된 메시지"
+  },
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음"
+}
+2025-10-05 10:59:47.448 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 10:59:47.753 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 10:59:50.164 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629590105@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 10:59:52.116 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:00:05.556 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:00:05.556Z",
+    "endDatetime": "2025-10-13T02:00:05.556Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:00:05.639 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Invalid Schedule",
+    "content": "Invalid time range",
+    "startDatetime": "2025-10-05T04:00:05.639Z",
+    "endDatetime": "2025-10-05T03:00:05.639Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "종료 시간은 시작 시간보다 늦어야 합니다"
+}
+2025-10-05 11:00:06.956 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:00:07.277 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:00:09.609 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 500자를 초과할 수 없습니다"
+}
+2025-10-05 11:00:09.693 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "   ",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 필수입니다"
+}
+2025-10-05 11:00:09.775 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-10-10"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:00:09.853 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-12-31"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:00:10.031 [ERROR]: 쿼리 실행 오류: {
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음",
+  "query": "\n        UPDATE messages\n        SET content = $2, updated_at = CURRENT_TIMESTAMP\n        WHERE id =...",
+  "params": [
+    "1",
+    "수정된 메시지"
+  ]
+}
+2025-10-05 11:00:10.031 [ERROR]: messages.update 오류: {
+  "id": "1",
+  "data": {
+    "content": "수정된 메시지"
+  },
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음"
+}
+2025-10-05 11:00:10.813 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629610752@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:00:12.756 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:00:26.104 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:00:26.432 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:01:19.050 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:01:19.050Z",
+    "endDatetime": "2025-10-13T02:01:19.050Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:01:19.158 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Invalid Schedule",
+    "content": "Invalid time range",
+    "startDatetime": "2025-10-05T04:01:19.157Z",
+    "endDatetime": "2025-10-05T03:01:19.157Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "종료 시간은 시작 시간보다 늦어야 합니다"
+}
+2025-10-05 11:01:20.662 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:01:20.968 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:01:23.363 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 500자를 초과할 수 없습니다"
+}
+2025-10-05 11:01:23.452 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "   ",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 필수입니다"
+}
+2025-10-05 11:01:23.532 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-10-10"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:01:23.606 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-12-31"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:01:23.773 [ERROR]: 쿼리 실행 오류: {
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음",
+  "query": "\n        UPDATE messages\n        SET content = $2, updated_at = CURRENT_TIMESTAMP\n        WHERE id =...",
+  "params": [
+    "1",
+    "수정된 메시지"
+  ]
+}
+2025-10-05 11:01:23.773 [ERROR]: messages.update 오류: {
+  "id": "1",
+  "data": {
+    "content": "수정된 메시지"
+  },
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음"
+}
+2025-10-05 11:01:24.592 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629684533@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:01:26.569 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:02:08.741 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:02:08.740Z",
+    "endDatetime": "2025-10-13T02:02:08.740Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:02:08.852 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Invalid Schedule",
+    "content": "Invalid time range",
+    "startDatetime": "2025-10-05T04:02:08.852Z",
+    "endDatetime": "2025-10-05T03:02:08.852Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "종료 시간은 시작 시간보다 늦어야 합니다"
+}
+2025-10-05 11:02:11.808 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 500자를 초과할 수 없습니다"
+}
+2025-10-05 11:02:11.906 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "   ",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 필수입니다"
+}
+2025-10-05 11:02:12.000 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-10-10"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:02:12.097 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-12-31"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:02:12.289 [ERROR]: 쿼리 실행 오류: {
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음",
+  "query": "\n        UPDATE messages\n        SET content = $2, updated_at = CURRENT_TIMESTAMP\n        WHERE id =...",
+  "params": [
+    "1",
+    "수정된 메시지"
+  ]
+}
+2025-10-05 11:02:12.290 [ERROR]: messages.update 오류: {
+  "id": "1",
+  "data": {
+    "content": "수정된 메시지"
+  },
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음"
+}
+2025-10-05 11:02:19.656 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629739588@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:02:21.804 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:02:22.196 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:02:23.540 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:04:34.165 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:04:34.164Z",
+    "endDatetime": "2025-10-13T02:04:34.164Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:04:34.279 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Invalid Schedule",
+    "content": "Invalid time range",
+    "startDatetime": "2025-10-05T04:04:34.279Z",
+    "endDatetime": "2025-10-05T03:04:34.279Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "종료 시간은 시작 시간보다 늦어야 합니다"
+}
+2025-10-05 11:04:37.201 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 500자를 초과할 수 없습니다"
+}
+2025-10-05 11:04:37.304 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "   ",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 필수입니다"
+}
+2025-10-05 11:04:37.407 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-10-10"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:04:37.489 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-12-31"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:04:37.704 [ERROR]: 쿼리 실행 오류: {
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음",
+  "query": "\n        UPDATE messages\n        SET content = $2, updated_at = CURRENT_TIMESTAMP\n        WHERE id =...",
+  "params": [
+    "1",
+    "수정된 메시지"
+  ]
+}
+2025-10-05 11:04:37.704 [ERROR]: messages.update 오류: {
+  "id": "1",
+  "data": {
+    "content": "수정된 메시지"
+  },
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음"
+}
+2025-10-05 11:04:44.892 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629884834@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:04:46.618 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:04:46.932 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:04:48.044 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:05:18.826 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:05:18.826Z",
+    "endDatetime": "2025-10-13T02:05:18.826Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:05:18.906 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Invalid Schedule",
+    "content": "Invalid time range",
+    "startDatetime": "2025-10-05T04:05:18.905Z",
+    "endDatetime": "2025-10-05T03:05:18.905Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "종료 시간은 시작 시간보다 늦어야 합니다"
+}
+2025-10-05 11:05:21.463 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 500자를 초과할 수 없습니다"
+}
+2025-10-05 11:05:21.546 [ERROR]: Message.sendMessage 오류: {
+  "messageData": {
+    "teamId": "1",
+    "senderId": "1",
+    "content": "   ",
+    "targetDate": "2025-10-10",
+    "messageType": "normal"
+  },
+  "error": "메시지 내용은 필수입니다"
+}
+2025-10-05 11:05:21.624 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-10-10"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:05:21.695 [ERROR]: Message.getTeamMessages 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "filters": {
+    "targetDate": "2025-12-31"
+  },
+  "error": "targetDate.toISOString is not a function"
+}
+2025-10-05 11:05:21.860 [ERROR]: 쿼리 실행 오류: {
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음",
+  "query": "\n        UPDATE messages\n        SET content = $2, updated_at = CURRENT_TIMESTAMP\n        WHERE id =...",
+  "params": [
+    "1",
+    "수정된 메시지"
+  ]
+}
+2025-10-05 11:05:21.861 [ERROR]: messages.update 오류: {
+  "id": "1",
+  "data": {
+    "content": "수정된 메시지"
+  },
+  "error": "\"updated_at\" 칼럼은 \"messages\" 릴레이션(relation)에 없음"
+}
+2025-10-05 11:05:22.587 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759629922534@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:05:24.342 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:05:24.639 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:05:25.788 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:06:45.029 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:06:45.029Z",
+    "endDatetime": "2025-10-13T02:06:45.029Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:06:46.739 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759630006687@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:06:48.636 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:06:48.945 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:06:50.114 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:07:13.900 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759630033843@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:07:15.684 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:07:15.683Z",
+    "endDatetime": "2025-10-13T02:07:15.683Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:07:16.651 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:07:16.963 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:07:18.093 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:08:47.408 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759630127355@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:08:49.156 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:08:49.481 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:08:50.703 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:08:50.702Z",
+    "endDatetime": "2025-10-13T02:08:50.702Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:08:51.757 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:26:16.585 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759631176531@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:26:18.266 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:26:18.574 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:26:19.636 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:26:19.636Z",
+    "endDatetime": "2025-10-13T02:26:19.636Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:26:20.705 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:27:19.544 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759631239493@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:27:21.303 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:27:21.617 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:27:22.728 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:27:22.728Z",
+    "endDatetime": "2025-10-13T02:27:22.728Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:27:23.697 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:27:46.199 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759631266143@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:27:47.835 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:27:48.137 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:27:49.318 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:27:49.318Z",
+    "endDatetime": "2025-10-13T02:27:49.318Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:27:50.366 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 11:28:26.940 [ERROR]: User.createUser 오류: {
+  "email": "duplicate1759631306868@example.com",
+  "error": "이미 등록된 이메일입니다"
+}
+2025-10-05 11:28:29.084 [ERROR]: Team.createTeam 오류: {
+  "teamData": {
+    "name": "   ",
+    "description": "Test description",
+    "creatorId": "1"
+  },
+  "error": "팀 이름은 2-30자여야 합니다"
+}
+2025-10-05 11:28:29.481 [ERROR]: Team.addMember 오류: {
+  "teamId": "1",
+  "userId": "1",
+  "role": "member",
+  "error": "이미 팀의 멤버입니다"
+}
+2025-10-05 11:28:30.742 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "Long Schedule",
+    "content": "Too long",
+    "startDatetime": "2025-10-05T02:28:30.742Z",
+    "endDatetime": "2025-10-13T02:28:30.742Z",
+    "scheduleType": "personal",
+    "creatorId": "1",
+    "participantIds": [
+      "1"
+    ]
+  },
+  "error": "일정 기간은 최대 7일을 초과할 수 없습니다"
+}
+2025-10-05 11:28:31.831 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 12:39:02.264 [ERROR]: AuthService.login 오류: {
+  "email": "stepanowon@hotmail.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-05 12:39:02.265 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-05 13:07:36.185 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 13:07:36.185 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-05 13:07:36.190 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 13:07:36.190 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-05 13:41:28.010 [ERROR]: AuthService.login 오류: {
+  "email": "leader@test.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-05 13:41:28.010 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "leader@test.com"
+}
+2025-10-05 13:42:30.627 [ERROR]: AuthService.login 오류: {
+  "email": "member@test.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-05 13:42:30.627 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "member@test.com"
+}
+2025-10-05 13:42:31.173 [ERROR]: AuthService.login 오류: {
+  "email": "member@test.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-05 13:42:31.173 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "member@test.com"
+}
+2025-10-05 13:43:33.807 [ERROR]: AuthService.login 오류: {
+  "email": "leader@test.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-05 13:43:33.807 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "leader@test.com"
+}
+2025-10-05 14:12:31.420 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 14:12:31.420 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-05 14:26:42.493 [ERROR]: Schedule.createSchedule 오류: {
+  "scheduleData": {
+    "title": "데이터베이스 마이그레이션",
+    "content": "신규 테이블 추가 및 스키마 변경",
+    "startDatetime": "2025-10-07T06:00:00.000Z",
+    "endDatetime": "2025-10-07T08:00:00.000Z",
+    "scheduleType": "team",
+    "creatorId": "120",
+    "teamId": 61,
+    "participantIds": [
+      121
+    ],
+    "category": "other",
+    "priority": "medium"
+  },
+  "error": "일정 충돌이 발생했습니다"
+}
+2025-10-05 14:26:42.494 [ERROR]: 일정 생성 오류: {
+  "error": "일정 충돌이 발생했습니다",
+  "userId": "120",
+  "scheduleData": {
+    "title": "데이터베이스 마이그레이션",
+    "content": "신규 테이블 추가 및 스키마 변경",
+    "startDatetime": "2025-10-07T06:00:00.000Z",
+    "endDatetime": "2025-10-07T08:00:00.000Z",
+    "scheduleType": "team",
+    "participantIds": [
+      121
+    ],
+    "teamId": 61
+  }
+}
+2025-10-05 14:43:56.382 [ERROR]: AuthService.login 오류: {
+  "email": "kim.dev@company.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-05 14:43:56.382 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "kim.dev@company.com"
+}
+2025-10-05 14:44:16.178 [ERROR]: AuthService.login 오류: {
+  "email": "kim.dev@company.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-05 14:44:16.179 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "kim.dev@company.com"
+}
+2025-10-05 14:50:58.170 [ERROR]: AuthService.login 오류: {
+  "email": "kim.dev@company.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-05 14:50:58.170 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "kim.dev@company.com"
+}
+2025-10-05 14:51:15.337 [ERROR]: 애플리케이션 오류: {
+  "error": "Bad escaped character in JSON at position 51 (line 1 column 52)",
+  "method": "POST",
+  "url": "/api/auth/login",
+  "ip": "::1",
+  "userAgent": "curl/8.15.0"
+}
+SyntaxError: Bad escaped character in JSON at position 51 (line 1 column 52)
+    at JSON.parse (<anonymous>)
+    at parse (D:\dev\workspace_test\team-caltalk\backend\node_modules\body-parser\lib\types\json.js:92:19)
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (D:\dev\workspace_test\team-caltalk\backend\node_modules\raw-body\index.js:238:16)
+    at done (D:\dev\workspace_test\team-caltalk\backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (D:\dev\workspace_test\team-caltalk\backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:508:28)
+    at endReadableNT (node:internal/streams/readable:1701:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-10-05 15:01:24.366 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-05 15:01:24.367 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "axios/1.12.2"
+}
+2025-10-05 15:01:24.374 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-05 15:01:24.374 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "axios/1.12.2"
+}
+2025-10-05 15:01:24.626 [ERROR]: AuthService.login 오류: {
+  "email": "kim.dev@company.com",
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다"
+}
+2025-10-05 15:01:24.626 [ERROR]: 로그인 오류: {
+  "error": "이메일 또는 비밀번호가 올바르지 않습니다",
+  "email": "kim.dev@company.com"
+}
+2025-10-05 15:01:25.062 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-05 15:01:25.062 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "axios/1.12.2"
+}
+2025-10-05 15:01:25.064 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-05 15:01:25.064 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "axios/1.12.2"
+}
+2025-10-05 15:01:25.066 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-05 15:01:25.066 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "axios/1.12.2"
+}
+2025-10-05 15:01:25.151 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "유효하지 않은 토큰입니다"
+}
+2025-10-05 15:01:25.151 [ERROR]: 인증 미들웨어 오류: {
+  "error": "유효하지 않은 토큰입니다",
+  "ip": "::1",
+  "userAgent": "axios/1.12.2"
+}
+2025-10-05 15:26:48.435 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 15:26:48.435 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-05 15:26:48.436 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 15:26:48.436 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
+2025-10-05 15:26:48.440 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "사용자를 찾을 수 없습니다"
+}
+2025-10-05 15:26:48.440 [ERROR]: 인증 미들웨어 오류: {
+  "error": "사용자를 찾을 수 없습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
+}
