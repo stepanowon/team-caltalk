@@ -51,12 +51,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: frontend-build-22.x
-          path: ./frontend/dist
-
       - name: Deploy to Vercel Preview
         uses: amondnet/vercel-action@v25
         with:
@@ -64,4 +58,3 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_FRONTEND }}
           working-directory: ./frontend
-          vercel-args: '--prebuilt'
