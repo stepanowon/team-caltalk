@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { logger } from '@/utils/logger'
+
+type View = 'month' | 'week' | 'day' | 'agenda';
 import { useTeamStore } from '@/stores/team-store'
 import { useAuthStore } from '@/stores/authStore'
 import { useSchedules } from '@/hooks/useSchedules'
 import { useSendScheduleRequest } from '@/hooks/useChat'
-import CalendarHeader from '@/components/calendar/CalendarHeader'
-import CalendarGrid from '@/components/calendar/CalendarGrid'
+import BigCalendar from '@/components/calendar/BigCalendar'
 import ChatRoom from '@/components/chat/ChatRoom'
 import { ScheduleModal } from '@/components/calendar/ScheduleModal'
 import { ScheduleDetailModal } from '@/components/calendar/ScheduleDetailModal'
@@ -28,6 +29,7 @@ import {
   Calendar as CalendarIcon,
   Users,
   MessageSquare,
+  RefreshCw,
 } from 'lucide-react'
 import { TeamService } from '@/services/team-service'
 import { getKoreanDateISO } from '@/utils/dateUtils'
@@ -46,16 +48,23 @@ interface Schedule {
   participant_count: number
 }
 
+interface CalendarEvent {
+  id: number
+  title: string
+  start: Date
+  end: Date
+  resource: Schedule
+}
+
 export function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date())
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-  const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(
-    null
-  )
+  const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null)
   const [isChatOpen, setIsChatOpen] = useState(false)
   const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false)
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false)
   const [editingSchedule, setEditingSchedule] = useState<Schedule | null>(null)
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
+  const [currentView, setCurrentView] = useState<View>('month')
 
   // Dialog state for schedule change request
   const [changeRequestDialogOpen, setChangeRequestDialogOpen] = useState(false)
@@ -72,7 +81,6 @@ export function Calendar() {
     createSchedule,
     updateSchedule,
     deleteSchedule,
-    getSchedulesForDate,
     refetch,
   } = useSchedules()
 
@@ -80,6 +88,18 @@ export function Calendar() {
 
   // 일정 변경 요청 mutation
   const sendScheduleRequestMutation = useSendScheduleRequest()
+
+  // Convert schedules to BigCalendar event format
+  const events: CalendarEvent[] = useMemo(() => {
+    if (!Array.isArray(schedules)) return []
+    return schedules.map((schedule) => ({
+      id: schedule.id,
+      title: schedule.title,
+      start: new Date(schedule.start_time),
+      end: new Date(schedule.end_time),
+      resource: schedule,
+    }))
+  }, [schedules])
 
   // Load team members when currentTeam changes
   useEffect(() => {
@@ -115,25 +135,25 @@ export function Calendar() {
   // Check if current user can edit schedules (team leader)
   const canEditSchedules = React.useMemo(() => {
     if (!user || !currentTeam) return false
-    const currentMember = teamMembers.find(
-      (member) => member.user_id === user.id
-    )
+    const currentMember = teamMembers.find((member) => member.user_id === user.id)
     return currentMember?.role === 'leader'
   }, [user, currentTeam, teamMembers])
 
-  const handleTodayClick = () => {
-    setCurrentDate(new Date())
-    setSelectedDate(null)
-  }
-
-  const handleDateClick = (date: Date) => {
-    setSelectedDate(date)
-    setSelectedSchedule(null)
-  }
-
-  const handleScheduleClick = (schedule: Schedule) => {
-    setSelectedSchedule(schedule)
+  const handleSelectEvent = (event: CalendarEvent) => {
+    setSelectedSchedule(event.resource)
     setIsDetailModalOpen(true)
+  }
+
+  const handleSelectSlot = (slotInfo: { start: Date; end: Date; slots: Date[] }) => {
+    if (canEditSchedules) {
+      setSelectedDate(slotInfo.start)
+      setEditingSchedule(null)
+      setIsScheduleModalOpen(true)
+    }
+  }
+
+  const handleNavigate = (date: Date) => {
+    setCurrentDate(date)
   }
 
   const handleScheduleEdit = (schedule?: Schedule) => {
@@ -155,19 +175,30 @@ export function Calendar() {
         setSelectedSchedule(null)
       }
       setIsDetailModalOpen(false)
+      toast({
+        title: '삭제 완료',
+        description: '일정이 삭제되었습니다.',
+      })
     } catch (error) {
       logger.error('Delete schedule failed:', error)
+      toast({
+        title: '오류',
+        description: '일정 삭제 중 오류가 발생했습니다.',
+        variant: 'destructive',
+      })
     }
   }
 
   const handleCreateSchedule = () => {
     setEditingSchedule(null)
+    setSelectedDate(new Date())
     setIsScheduleModalOpen(true)
   }
 
   const handleScheduleModalClose = () => {
     setIsScheduleModalOpen(false)
     setEditingSchedule(null)
+    setSelectedDate(null)
   }
 
   const handleScheduleSubmit = async (data: {
@@ -178,12 +209,29 @@ export function Calendar() {
     scheduleType: 'personal' | 'team'
     participantIds?: number[]
   }) => {
-    if (editingSchedule) {
-      await updateSchedule({ ...data, id: editingSchedule.id })
-    } else {
-      await createSchedule(data)
+    try {
+      if (editingSchedule) {
+        await updateSchedule({ ...data, id: editingSchedule.id })
+        toast({
+          title: '수정 완료',
+          description: '일정이 수정되었습니다.',
+        })
+      } else {
+        await createSchedule(data)
+        toast({
+          title: '생성 완료',
+          description: '일정이 생성되었습니다.',
+        })
+      }
+      await refetch()
+    } catch (error) {
+      logger.error('Schedule submit failed:', error)
+      toast({
+        title: '오류',
+        description: '일정 저장 중 오류가 발생했습니다.',
+        variant: 'destructive',
+      })
     }
-    await refetch()
   }
 
   // 일정 변경 요청 핸들러 - Dialog 열기
@@ -225,10 +273,6 @@ export function Calendar() {
     }
   }
 
-  const selectedDateSchedules = selectedDate
-    ? getSchedulesForDate(selectedDate.toISOString())
-    : []
-
   // Show team selection message if no team is selected
   if (!currentTeam) {
     return (
@@ -243,10 +287,7 @@ export function Calendar() {
               캘린더를 사용하려면 먼저 팀을 선택해야 합니다.
             </p>
             <div className="text-center">
-              <Button
-                variant="outline"
-                onClick={() => (window.location.href = '/teams')}
-              >
+              <Button variant="outline" onClick={() => (window.location.href = '/teams')}>
                 팀 관리로 이동
               </Button>
             </div>
@@ -272,8 +313,14 @@ export function Calendar() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" onClick={handleTodayClick}>
-              오늘로 이동
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => refetch()}
+              disabled={loading}
+            >
+              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+              새로고침
             </Button>
             {canEditSchedules && (
               <Button size="sm" onClick={handleCreateSchedule}>
@@ -302,39 +349,22 @@ export function Calendar() {
             isChatOpen ? 'hidden md:flex md:flex-[7]' : 'flex-1 md:flex-[7]'
           }`}
         >
-          <CalendarHeader
-            currentDate={currentDate}
-            onDateChange={setCurrentDate}
-            onTodayClick={handleTodayClick}
-            onCreateSchedule={
-              canEditSchedules ? handleCreateSchedule : undefined
-            }
-            onRefresh={refetch}
-            scheduleCount={Array.isArray(schedules) ? schedules.length : 0}
-            loading={loading}
-            canCreateSchedule={canEditSchedules}
-          />
-
           {error && (
             <Alert className="m-4 border-red-200 bg-red-50">
               <AlertCircle className="h-4 w-4" />
-              <AlertDescription className="text-red-800">
-                {error}
-              </AlertDescription>
+              <AlertDescription className="text-red-800">{error}</AlertDescription>
             </Alert>
           )}
 
-          <div className="flex-1 p-4 overflow-auto">
-            <CalendarGrid
-              currentDate={currentDate}
-              schedules={schedules}
-              onDateClick={handleDateClick}
-              onScheduleClick={handleScheduleClick}
-              onScheduleEdit={canEditSchedules ? handleScheduleEdit : undefined}
-              onScheduleDelete={
-                canEditSchedules ? handleScheduleDelete : undefined
-              }
-              canEditSchedules={canEditSchedules}
+          <div className="flex-1 p-4 overflow-hidden">
+            <BigCalendar
+              events={events}
+              onSelectEvent={handleSelectEvent}
+              onSelectSlot={handleSelectSlot}
+              onNavigate={handleNavigate}
+              defaultView={currentView}
+              views={['month', 'week', 'day']}
+              teamMembers={teamMembers}
             />
           </div>
         </div>
@@ -405,17 +435,11 @@ export function Calendar() {
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
             <span className="text-blue-700">
-              📋 이번 달 일정: {Array.isArray(schedules) ? schedules.length : 0}
-              개
+              📋 이번 달 일정: {Array.isArray(schedules) ? schedules.length : 0}개
             </span>
-            {selectedDate && (
-              <span className="text-blue-600">
-                📅 선택된 날짜:{' '}
-                {selectedDate.toLocaleDateString('ko-KR', {
-                  timeZone: 'Asia/Seoul',
-                })}
-              </span>
-            )}
+            <span className="text-blue-600">
+              📅 보기 모드: {currentView === 'month' ? '월' : currentView === 'week' ? '주' : '일'}
+            </span>
           </div>
           <div className="text-blue-600">
             {new Date().toLocaleDateString('ko-KR', {
@@ -451,16 +475,11 @@ export function Calendar() {
       />
 
       {/* Schedule Change Request Dialog */}
-      <Dialog
-        open={changeRequestDialogOpen}
-        onOpenChange={setChangeRequestDialogOpen}
-      >
+      <Dialog open={changeRequestDialogOpen} onOpenChange={setChangeRequestDialogOpen}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>일정 변경 요청</DialogTitle>
-            <DialogDescription>
-              일정 변경이 필요한 사유를 입력해주세요.
-            </DialogDescription>
+            <DialogDescription>일정 변경이 필요한 사유를 입력해주세요.</DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <Textarea
@@ -471,10 +490,7 @@ export function Calendar() {
             />
           </div>
           <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setChangeRequestDialogOpen(false)}
-            >
+            <Button variant="outline" onClick={() => setChangeRequestDialogOpen(false)}>
               취소
             </Button>
             <Button
