@@ -2,9 +2,9 @@ name: Frontend Preview
 
 on:
   push:
+    branches: [preview]
+  pull_request:
     branches: [main]
-#  pull_request:
-#    branches: [main]
 
 jobs:
   test-and-build:
