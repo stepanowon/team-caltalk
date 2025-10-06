@@ -19,6 +19,7 @@ import {
   MessageSquare,
 } from 'lucide-react'
 import { useAuthStore } from '@/stores/authStore'
+import { logger } from '@/utils/logger'
 
 interface Schedule {
   id: number
@@ -71,7 +72,7 @@ export function ScheduleDetailModal({
   const currentUser = useAuthStore((state) => state.user)
 
   // 디버깅 로그
-  console.log('[ScheduleDetailModal] Debug Info:', {
+  logger.log('[ScheduleDetailModal] Debug Info:', {
     currentUser,
     currentUserId: currentUser?.id,
     scheduleId: schedule.id,
@@ -82,7 +83,7 @@ export function ScheduleDetailModal({
   const isParticipant =
     schedule.participants?.some((p) => p.user_id === currentUser?.id) || false
 
-  console.log(
+  logger.log(
     '[ScheduleDetailModal] isParticipant:',
     isParticipant,
     'isLeader:',
