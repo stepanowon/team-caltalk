@@ -1,4 +1,4 @@
-name: Frontend Preview
+name: Frontend Production
 
 on:
   push:
