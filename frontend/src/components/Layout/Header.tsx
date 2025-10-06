@@ -37,7 +37,7 @@ export const Header = () => {
             className="flex items-center gap-2 text-decoration-none"
             onClick={closeMobileMenu}
           >
-            <span className="font-bold text-xl text-gray-900">팀캘린더톡</span>
+            <span className="font-bold text-xl text-gray-900">팀캘톡</span>
           </Link>
         </div>
 
