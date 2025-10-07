@@ -52180,3 +52180,18 @@ SyntaxError: Bad escaped character in JSON at position 51 (line 1 column 52)
   "query": "SELECT * FROM users WHERE id = $1",
   "rowCount": 1
 }
+2025-10-06 11:15:20.469 [WARN]: 404 요청: {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-06 11:15:20.470 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "status": 404,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}

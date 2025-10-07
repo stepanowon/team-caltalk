@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp"
+    },
+    "postgresql-mcp": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "@henkey/postgres-mcp-server"]
+    }
+  }
+}

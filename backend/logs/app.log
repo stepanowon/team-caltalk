@@ -13286,3 +13286,2679 @@
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
   "userId": "123"
 }
+2025-10-05 20:45:40.534 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:45:40.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:45:40.537 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:45:40.537 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "4ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:46:11.532 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:46:11.534 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:46:11.537 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:46:11.537 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:46:42.538 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:46:42.539 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:46:42.540 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:46:42.541 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:47:13.535 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:47:13.537 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:47:13.539 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:47:13.540 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:47:44.541 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:47:44.542 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:47:44.544 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:47:44.545 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:48:15.547 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:48:15.548 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:48:15.550 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:48:15.551 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:48:46.541 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:48:46.542 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:48:46.544 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:48:46.545 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:49:17.539 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:49:17.540 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:49:17.543 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:49:17.543 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:49:48.539 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:49:48.540 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:49:48.542 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:49:48.543 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:50:19.534 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:50:19.536 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:50:19.539 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:50:19.539 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:50:50.534 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "2ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:50:50.536 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:50:50.538 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:50:50.539 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:51:21.542 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:51:21.544 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:51:21.546 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:51:21.547 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:51:52.536 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:51:52.538 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:51:52.541 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:51:52.542 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:52:23.535 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:52:23.537 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "2ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:52:23.540 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:52:23.540 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:52:54.545 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:52:54.546 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:52:54.548 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:52:54.549 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:53:25.546 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:53:25.548 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:53:25.550 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:53:25.551 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:53:56.544 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:53:56.545 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:53:56.547 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:53:56.548 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:54:27.530 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:54:27.531 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:54:27.533 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:54:27.533 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:54:58.549 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:54:58.550 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:54:58.552 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:54:58.553 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:55:29.537 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:55:29.539 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:55:29.541 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:55:29.541 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:56:00.531 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:56:00.532 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:56:00.534 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:56:00.535 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:56:31.532 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:56:31.533 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:56:31.535 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:56:31.535 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "4ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:57:02.547 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:57:02.548 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:57:02.550 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:57:02.551 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:57:33.533 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:57:33.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:57:33.537 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:57:33.538 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:58:04.536 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:58:04.537 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:58:04.539 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:58:04.540 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:58:35.534 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:58:35.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:58:35.537 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:58:35.538 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:59:06.531 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:59:06.533 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:59:06.536 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:59:06.537 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 20:59:37.536 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 20:59:37.537 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 20:59:37.539 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 20:59:37.540 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "4ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:00:08.536 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:00:08.538 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:00:08.540 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:00:08.541 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:00:39.535 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:00:39.537 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:00:39.540 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:00:39.541 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:01:10.531 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:01:10.533 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:01:10.536 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:01:10.538 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "8ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:01:41.537 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:01:41.539 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:01:41.542 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:01:41.543 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "8ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:02:12.538 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:02:12.539 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:02:12.542 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:02:12.544 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:02:43.531 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:02:43.532 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:02:43.534 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:02:43.535 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:03:14.545 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:03:14.546 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:03:14.548 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:03:14.549 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:03:45.534 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:03:45.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:03:45.539 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:03:45.540 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:04:16.539 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:04:16.540 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:04:16.542 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:04:16.543 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:04:47.533 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:04:47.534 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:04:47.537 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:04:47.538 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:05:18.542 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:05:18.544 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:05:18.546 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:05:18.547 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:05:49.543 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:05:49.544 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:05:49.547 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:05:49.548 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:06:20.545 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:06:20.547 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:06:20.549 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:06:20.550 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:06:51.539 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:06:51.540 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:06:51.542 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:06:51.543 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:07:22.538 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:07:22.539 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:07:22.541 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:07:22.542 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:07:53.537 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:07:53.538 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:07:53.541 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:07:53.541 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:08:24.547 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:08:24.549 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:08:24.551 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:08:24.552 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:08:55.535 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:08:55.536 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:08:55.539 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:08:55.539 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:09:26.539 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:09:26.540 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:09:26.542 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:09:26.543 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:09:57.532 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:09:57.534 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:09:57.536 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:09:57.536 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:10:28.533 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:10:28.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:10:28.539 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:10:28.539 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:10:59.543 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:10:59.544 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:10:59.545 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:10:59.546 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:11:30.537 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:11:30.538 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:11:30.540 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:11:30.541 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "4ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:12:01.532 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:12:01.533 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:12:01.536 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:12:01.537 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:12:32.539 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:12:32.540 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:12:32.542 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:12:32.542 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:13:03.535 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:13:03.537 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:13:03.540 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:13:03.541 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:13:34.536 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:13:34.537 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:13:34.539 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:13:34.540 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:14:05.533 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:14:05.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:14:05.537 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:14:05.538 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:14:36.540 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:14:36.542 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:14:36.544 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:14:36.544 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:15:07.538 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:15:07.540 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:15:07.542 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:15:07.542 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:15:38.535 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:15:38.536 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:15:38.538 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:15:38.539 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:16:09.546 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:16:09.547 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:16:09.548 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:16:09.549 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "4ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:16:40.537 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:16:40.538 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:16:40.540 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:16:40.540 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:17:11.540 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:17:11.541 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:17:11.543 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:17:11.543 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:17:42.534 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:17:42.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:17:42.538 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:17:42.538 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:18:13.543 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:18:13.545 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:18:13.546 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "1ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:18:13.547 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:18:44.549 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:18:44.550 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:18:44.552 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:18:44.553 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:19:15.536 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:19:15.538 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:19:15.540 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:19:15.541 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:19:46.545 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:19:46.546 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:19:46.548 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:19:46.549 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:20:17.550 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:20:17.552 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:20:17.554 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:20:17.555 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:20:48.541 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:20:48.542 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:20:48.544 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:20:48.545 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:21:19.535 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:21:19.536 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:21:19.538 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:21:19.538 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:21:50.534 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:21:50.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:21:50.538 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:21:50.539 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:22:21.529 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:22:21.531 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:22:21.533 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:22:21.534 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:22:52.533 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:22:52.534 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:22:52.537 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:22:52.537 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:23:23.534 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:23:23.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:23:23.538 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:23:23.538 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:23:54.533 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:23:54.535 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:23:54.537 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:23:54.538 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:24:25.542 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:24:25.543 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:24:25.546 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "3ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:24:25.547 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:24:56.536 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:24:56.537 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:24:56.540 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:24:56.541 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:25:27.533 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "0ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:25:27.534 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "1ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:25:27.537 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:25:27.537 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-05 21:25:58.535 [INFO]: PERFORMANCE {
+  "operation": "users.findById",
+  "duration": "1ms",
+  "id": "123",
+  "found": true
+}
+2025-10-05 21:25:58.537 [INFO]: PERFORMANCE {
+  "operation": "Team.getMember",
+  "duration": "0ms",
+  "teamId": 62,
+  "userId": "123",
+  "found": true
+}
+2025-10-05 21:25:58.539 [INFO]: PERFORMANCE {
+  "operation": "Schedule.getUserSchedules",
+  "duration": "2ms",
+  "userId": "123",
+  "scheduleCount": 2,
+  "filters": {
+    "startDate": null,
+    "endDate": null,
+    "teamId": 62
+  }
+}
+2025-10-05 21:25:58.539 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/schedules?teamId=62",
+  "status": 304,
+  "duration": "5ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "123"
+}
+2025-10-06 11:15:20.156 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs",
+  "status": 301,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-06 11:15:20.166 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/",
+  "status": 200,
+  "duration": "9ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-06 11:15:20.213 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-init.js",
+  "status": 200,
+  "duration": "6ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-06 11:15:20.250 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui.css",
+  "status": 200,
+  "duration": "50ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-06 11:15:20.304 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-standalone-preset.js",
+  "status": 200,
+  "duration": "98ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-06 11:15:20.323 [INFO]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/docs/swagger-ui-bundle.js",
+  "status": 200,
+  "duration": "117ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-06 11:15:20.469 [WARN]: 404 요청: {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+}
+2025-10-06 11:15:20.470 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/favicon.ico",
+  "status": 404,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
