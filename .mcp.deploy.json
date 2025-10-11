@@ -1,5 +1,9 @@
 {
   "mcpServers": {
+    "kubernetes": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "mcp-server-kubernetes"]
+    },
     "supabase": {
       "type": "http",
       "url": "https://mcp.supabase.com/mcp"
