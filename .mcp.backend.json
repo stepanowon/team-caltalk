@@ -1,13 +1,5 @@
 {
   "mcpServers": {
-    "context7": {
-      "command": "cmd",
-      "args": ["/c", "npx", "-y", "@upstash/context7-mcp"]
-    },
-    "sequential-thinking": {
-      "command": "cmd",
-      "args": ["/c", "npx", "-y", "@modelcontextprotocol/server-sequential-thinking"]
-    },
     "postgresql-mcp": {
       "command": "cmd",
       "args": ["/c", "npx", "-y", "@henkey/postgres-mcp-server"]
