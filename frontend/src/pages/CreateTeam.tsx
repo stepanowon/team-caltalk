@@ -125,27 +125,27 @@ export function CreateTeam() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="max-w-2xl mx-auto px-4">
         {/* 헤더 */}
         <div className="mb-8">
           <Button
             variant="ghost"
             onClick={handleCancel}
-            className="mb-4 text-gray-600 hover:text-gray-900"
+            className="mb-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             대시보드로 돌아가기
           </Button>
 
           <div className="text-center">
-            <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-              <Users className="h-8 w-8 text-blue-600" />
+            <div className="mx-auto w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-4">
+              <Users className="h-8 w-8 text-blue-600 dark:text-blue-400" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
               새 팀 생성
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-400">
               팀원들과 함께 일정을 관리할 새로운 팀을 만들어보세요
             </p>
           </div>
@@ -182,11 +182,11 @@ export function CreateTeam() {
                   disabled={isSubmitting}
                 />
                 {errors.name && (
-                  <p className="text-sm text-red-600 mt-1">
+                  <p className="text-sm text-red-600 dark:text-red-400 mt-1">
                     {errors.name.message}
                   </p>
                 )}
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                   {watchedName.length}/50자
                 </p>
               </div>
@@ -205,21 +205,21 @@ export function CreateTeam() {
                   disabled={isSubmitting}
                 />
                 {errors.description && (
-                  <p className="text-sm text-red-600 mt-1">
+                  <p className="text-sm text-red-600 dark:text-red-400 mt-1">
                     {errors.description.message}
                   </p>
                 )}
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                   {watchedDescription.length}/200자
                 </p>
               </div>
 
               {/* 안내 정보 */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h3 className="font-medium text-blue-900 mb-2">
+              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+                <h3 className="font-medium text-blue-900 dark:text-blue-300 mb-2">
                   📋 팀 생성 후 안내사항
                 </h3>
-                <ul className="text-sm text-blue-800 space-y-1">
+                <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
                   <li>
                     • 팀이 생성되면 고유한 초대 코드가 자동으로 발급됩니다
                   </li>
@@ -268,11 +268,11 @@ export function CreateTeam() {
 
         {/* 도움말 */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             팀 생성에 문제가 있거나 궁금한 점이 있으시면{' '}
             <a
               href="/help"
-              className="text-blue-600 hover:text-blue-800 underline"
+              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
             >
               도움말
             </a>

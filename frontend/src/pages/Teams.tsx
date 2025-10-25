@@ -169,26 +169,26 @@ export function Teams() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">팀 목록을 불러오는 중...</p>
+          <p className="text-gray-600 dark:text-gray-400">팀 목록을 불러오는 중...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-4 md:py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-4 md:py-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* 헤더 */}
         <div className="mb-6 md:mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
                 내 팀 목록
               </h1>
-              <p className="text-sm md:text-base text-gray-600">
+              <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
                 참여 중인 팀을 확인하고 새로운 팀을 생성하거나 참여해보세요
               </p>
             </div>
@@ -243,13 +243,13 @@ export function Teams() {
           <Card>
             <CardContent className="py-12 md:py-16">
               <div className="text-center">
-                <div className="mx-auto w-20 h-20 md:w-24 md:h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4 md:mb-6">
-                  <Users className="h-10 w-10 md:h-12 md:w-12 text-gray-400" />
+                <div className="mx-auto w-20 h-20 md:w-24 md:h-24 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4 md:mb-6">
+                  <Users className="h-10 w-10 md:h-12 md:w-12 text-gray-400 dark:text-gray-600" />
                 </div>
-                <h2 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2">
                   참여 중인 팀이 없습니다
                 </h2>
-                <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8 max-w-md mx-auto px-4">
+                <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 md:mb-8 max-w-md mx-auto px-4">
                   새로운 팀을 생성하거나 기존 팀에 참여하여 팀원들과 함께 일정을
                   관리해보세요.
                 </p>
@@ -286,12 +286,12 @@ export function Teams() {
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1 min-w-0">
                       <CardTitle className="text-base md:text-lg mb-1 flex items-center gap-2 flex-wrap">
-                        <span className="truncate">{team.name}</span>
+                        <span className="truncate dark:text-white">{team.name}</span>
                         {team.userRole === 'leader' && (
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger>
-                                <Crown className="h-4 w-4 text-yellow-600 flex-shrink-0" />
+                                <Crown className="h-4 w-4 text-yellow-600 dark:text-yellow-500 flex-shrink-0" />
                               </TooltipTrigger>
                               <TooltipContent>
                                 <p>팀장</p>
@@ -300,7 +300,7 @@ export function Teams() {
                           </TooltipProvider>
                         )}
                       </CardTitle>
-                      <p className="text-xs md:text-sm text-gray-600 line-clamp-2">
+                      <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
                         {team.description}
                       </p>
                     </div>
@@ -319,12 +319,12 @@ export function Teams() {
                 <CardContent>
                   {/* 팀 정보 */}
                   <div className="space-y-2 md:space-y-3 mb-3 md:mb-4">
-                    <div className="flex items-center gap-2 text-xs md:text-sm text-gray-600">
+                    <div className="flex items-center gap-2 text-xs md:text-sm text-gray-600 dark:text-gray-400">
                       <Users className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
                       <span>멤버 {team.memberCount || 0}명</span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-xs md:text-sm text-gray-600">
+                    <div className="flex items-center gap-2 text-xs md:text-sm text-gray-600 dark:text-gray-400">
                       <Calendar className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
                       <span>
                         생성일:{' '}
@@ -337,13 +337,13 @@ export function Teams() {
 
                   {/* 초대 코드 */}
                   {team.userRole === 'leader' && (
-                    <div className="bg-gray-50 rounded-lg p-2.5 md:p-3 mb-3 md:mb-4">
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-2.5 md:p-3 mb-3 md:mb-4">
                       <div className="flex items-center justify-between gap-2">
                         <div className="min-w-0 flex-1">
-                          <p className="text-xs text-gray-500 mb-1">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
                             초대 코드
                           </p>
-                          <p className="font-mono text-xs md:text-sm font-medium truncate">
+                          <p className="font-mono text-xs md:text-sm font-medium dark:text-white truncate">
                             {team.invite_code}
                           </p>
                         </div>
@@ -398,11 +398,11 @@ export function Teams() {
 
         {/* 하단 안내 */}
         <div className="mt-8 md:mt-12 text-center px-4">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 md:p-6 max-w-3xl mx-auto">
-            <h3 className="font-medium text-blue-900 mb-2 md:mb-3 text-sm md:text-base">
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 md:p-6 max-w-3xl mx-auto">
+            <h3 className="font-medium text-blue-900 dark:text-blue-300 mb-2 md:mb-3 text-sm md:text-base">
               💡 팀 사용 안내
             </h3>
-            <div className="text-xs md:text-sm text-blue-800 space-y-1.5 md:space-y-2 text-left">
+            <div className="text-xs md:text-sm text-blue-800 dark:text-blue-300 space-y-1.5 md:space-y-2 text-left">
               <p>
                 • <strong>팀장</strong>: 팀 일정 생성, 수정, 삭제 및 팀원 관리
                 권한

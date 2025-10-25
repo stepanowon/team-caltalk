@@ -241,11 +241,11 @@ export function ScheduleModal({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
+          <DialogTitle className="flex items-center gap-2 dark:text-white">
             <Calendar className="w-5 h-5" />
             {initialData ? '일정 수정' : '새 일정 추가'}
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="dark:text-gray-400">
             {initialData
               ? '일정 정보를 수정하세요'
               : '새로운 일정을 추가하세요'}
@@ -255,9 +255,9 @@ export function ScheduleModal({
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             {error && (
-              <Alert className="border-red-200 bg-red-50">
-                <AlertCircle className="h-4 w-4" />
-                <AlertDescription className="text-red-800">
+              <Alert className="border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20">
+                <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                <AlertDescription className="text-red-800 dark:text-red-300">
                   {error}
                 </AlertDescription>
               </Alert>
@@ -265,7 +265,7 @@ export function ScheduleModal({
 
             {/* Title */}
             <div className="space-y-2">
-              <Label htmlFor="title">일정 제목 *</Label>
+              <Label htmlFor="title" className="dark:text-white">일정 제목 *</Label>
               <Input
                 id="title"
                 value={title}
@@ -278,7 +278,7 @@ export function ScheduleModal({
 
             {/* Description */}
             <div className="space-y-2">
-              <Label htmlFor="description">설명</Label>
+              <Label htmlFor="description" className="dark:text-white">설명</Label>
               <Textarea
                 id="description"
                 value={description}
@@ -292,7 +292,7 @@ export function ScheduleModal({
             {/* Start Date & Time */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="startDate" className="flex items-center gap-1">
+                <Label htmlFor="startDate" className="flex items-center gap-1 dark:text-white">
                   <Calendar className="w-3 h-3" />
                   시작 날짜 *
                 </Label>
@@ -305,7 +305,7 @@ export function ScheduleModal({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="startTime" className="flex items-center gap-1">
+                <Label htmlFor="startTime" className="flex items-center gap-1 dark:text-white">
                   <Clock className="w-3 h-3" />
                   시작 시간 *
                 </Label>
@@ -322,7 +322,7 @@ export function ScheduleModal({
             {/* End Date & Time */}
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="endDate" className="flex items-center gap-1">
+                <Label htmlFor="endDate" className="flex items-center gap-1 dark:text-white">
                   <Calendar className="w-3 h-3" />
                   종료 날짜 *
                 </Label>
@@ -335,7 +335,7 @@ export function ScheduleModal({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="endTime" className="flex items-center gap-1">
+                <Label htmlFor="endTime" className="flex items-center gap-1 dark:text-white">
                   <Clock className="w-3 h-3" />
                   종료 시간 *
                 </Label>
@@ -351,31 +351,32 @@ export function ScheduleModal({
 
             {/* Participants */}
             <div className="space-y-2">
-              <Label className="flex items-center gap-1">
+              <Label className="flex items-center gap-1 dark:text-white">
                 <Users className="w-3 h-3" />
                 참가자 선택 (선택사항)
               </Label>
               {teamMembers.length > 0 ? (
                 <>
-                  <div className="border rounded-md p-3 max-h-40 overflow-y-auto">
+                  <div className="border dark:border-gray-700 rounded-md p-3 max-h-40 overflow-y-auto bg-white dark:bg-gray-800">
                     <div className="space-y-2">
                       {teamMembers.map((member: any) => {
                         const userId = Number(member.user_id)
+                        const memberName = member.user?.name || member.name || member.username || `사용자 ${userId}`
                         return (
                           <label
                             key={userId}
-                            className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 p-2 rounded"
+                            className="flex items-center gap-2 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded"
                           >
                             <input
                               type="checkbox"
                               checked={selectedParticipants.includes(userId)}
                               onChange={() => handleParticipantToggle(userId)}
-                              className="rounded border-gray-300"
+                              className="rounded border-gray-300 dark:border-gray-600"
                             />
-                            <span className="text-sm">
-                              {member.name || member.user?.name || '이름 없음'}
+                            <span className="text-sm text-gray-900 dark:text-gray-100">
+                              {memberName}
                               {member.role === 'leader' && (
-                                <span className="ml-1 text-xs text-blue-600">
+                                <span className="ml-1 text-xs text-blue-600 dark:text-blue-400">
                                   (팀장)
                                 </span>
                               )}
@@ -385,12 +386,12 @@ export function ScheduleModal({
                       })}
                     </div>
                   </div>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     선택된 참가자: {selectedParticipants.length}명
                   </p>
                 </>
               ) : (
-                <div className="border rounded-md p-3 text-center text-sm text-gray-500">
+                <div className="border dark:border-gray-700 rounded-md p-3 text-center text-sm text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800">
                   팀원 정보를 불러오는 중입니다...
                 </div>
               )}

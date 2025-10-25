@@ -69,32 +69,32 @@ export const Register = () => {
   }
 
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center">
+    <div className="container flex h-screen w-screen flex-col items-center justify-center bg-gray-50 dark:bg-gray-900">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px]">
         <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">회원가입</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">회원가입</h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             Team CalTalk에 가입하여 팀 협업을 시작하세요
           </p>
         </div>
 
         <Card>
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">계정 생성</CardTitle>
-            <CardDescription className="text-center">
+            <CardTitle className="text-2xl text-center dark:text-white">계정 생성</CardTitle>
+            <CardDescription className="text-center dark:text-gray-400">
               아래 정보를 입력하여 새 계정을 만드세요
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             {error && (
-              <div className="rounded-md bg-destructive/15 px-3 py-2 text-sm text-destructive">
+              <div className="rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 px-3 py-2 text-sm text-red-800 dark:text-red-300">
                 {error}
               </div>
             )}
             <form onSubmit={handleSubmit} className="grid gap-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="username">사용자명</Label>
+                  <Label htmlFor="username" className="dark:text-white">사용자명</Label>
                   <Input
                     id="username"
                     name="username"
@@ -107,7 +107,7 @@ export const Register = () => {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="fullName">전체 이름</Label>
+                  <Label htmlFor="fullName" className="dark:text-white">전체 이름</Label>
                   <Input
                     id="fullName"
                     name="fullName"
@@ -121,7 +121,7 @@ export const Register = () => {
                 </div>
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="email">이메일</Label>
+                <Label htmlFor="email" className="dark:text-white">이메일</Label>
                 <Input
                   id="email"
                   name="email"
@@ -134,7 +134,7 @@ export const Register = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="password">비밀번호</Label>
+                <Label htmlFor="password" className="dark:text-white">비밀번호</Label>
                 <Input
                   id="password"
                   name="password"
@@ -146,7 +146,7 @@ export const Register = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="confirmPassword">비밀번호 확인</Label>
+                <Label htmlFor="confirmPassword" className="dark:text-white">비밀번호 확인</Label>
                 <Input
                   id="confirmPassword"
                   name="confirmPassword"
@@ -163,11 +163,11 @@ export const Register = () => {
             </form>
           </CardContent>
           <CardFooter>
-            <div className="text-center text-sm text-muted-foreground w-full">
+            <div className="text-center text-sm text-gray-600 dark:text-gray-400 w-full">
               이미 계정이 있으신가요?{' '}
               <Link
                 to={ROUTES.LOGIN}
-                className="font-medium text-primary hover:underline"
+                className="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline"
               >
                 로그인
               </Link>

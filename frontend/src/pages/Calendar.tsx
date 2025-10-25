@@ -279,11 +279,11 @@ export function Calendar() {
       <div className="flex items-center justify-center min-h-[400px]">
         <Card className="w-96">
           <CardHeader className="text-center">
-            <CalendarIcon className="w-12 h-12 mx-auto text-gray-400 mb-4" />
-            <CardTitle>팀을 선택해주세요</CardTitle>
+            <CalendarIcon className="w-12 h-12 mx-auto text-gray-400 dark:text-gray-600 mb-4" />
+            <CardTitle className="dark:text-white">팀을 선택해주세요</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-center text-gray-600 mb-4">
+            <p className="text-center text-gray-600 dark:text-gray-400 mb-4">
               캘린더를 사용하려면 먼저 팀을 선택해야 합니다.
             </p>
             <div className="text-center">
@@ -298,14 +298,14 @@ export function Calendar() {
   }
 
   return (
-    <div className="h-[94vh] flex flex-col bg-gray-50">
+    <div className="h-[94vh] flex flex-col bg-gray-50 dark:bg-gray-900">
       {/* Top Header */}
-      <div className="bg-white border-b border-gray-200 px-4 py-3">
+      <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2">
-              <span className="text-gray-500">|</span>
-              <h2 className="font-semibold">{currentTeam.name}</h2>
+              <span className="text-gray-500 dark:text-gray-400">|</span>
+              <h2 className="font-semibold dark:text-white">{currentTeam.name}</h2>
               <Badge variant="secondary" className="flex items-center gap-1">
                 <Users className="w-3 h-3" />
                 {teamMembers.length}
@@ -345,14 +345,14 @@ export function Calendar() {
       <div className="flex-1 flex overflow-hidden pb-12 relative">
         {/* Left Side - Calendar Area */}
         <div
-          className={`flex flex-col bg-white transition-all duration-300 ${
+          className={`flex flex-col bg-white dark:bg-gray-900 transition-all duration-300 ${
             isChatOpen ? 'hidden md:flex md:flex-[7]' : 'flex-1 md:flex-[7]'
           }`}
         >
           {error && (
-            <Alert className="m-4 border-red-200 bg-red-50">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription className="text-red-800">{error}</AlertDescription>
+            <Alert className="m-4 border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20">
+              <AlertCircle className="h-4 w-4 dark:text-red-400" />
+              <AlertDescription className="text-red-800 dark:text-red-300">{error}</AlertDescription>
             </Alert>
           )}
 
@@ -362,6 +362,7 @@ export function Calendar() {
               onSelectEvent={handleSelectEvent}
               onSelectSlot={handleSelectSlot}
               onNavigate={handleNavigate}
+              onView={(view) => setCurrentView(view)}
               defaultView={currentView}
               views={['month', 'week', 'day']}
               teamMembers={teamMembers}
@@ -371,19 +372,19 @@ export function Calendar() {
 
         {/* Right Side - Chat Area */}
         <div
-          className={`flex flex-col bg-white transition-all duration-300 ${
+          className={`flex flex-col bg-white dark:bg-gray-900 transition-all duration-300 ${
             isChatOpen
-              ? 'absolute inset-0 z-20 md:relative md:flex-[3] md:border-l md:border-gray-200'
-              : 'hidden md:flex md:flex-[3] md:border-l md:border-gray-200'
+              ? 'absolute inset-0 z-20 md:relative md:flex-[3] md:border-l md:border-gray-200 dark:md:border-gray-700'
+              : 'hidden md:flex md:flex-[3] md:border-l md:border-gray-200 dark:md:border-gray-700'
           }`}
         >
           {/* Chat Header */}
-          <div className="flex items-center justify-between p-3 border-b border-gray-200">
+          <div className="flex items-center justify-between p-3 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-blue-600" />
-              <h3 className="font-semibold">팀 채팅</h3>
+              <MessageSquare className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <h3 className="font-semibold dark:text-white">팀 채팅</h3>
               {selectedDate && (
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-500 dark:text-gray-400">
                   -{' '}
                   {selectedDate.toLocaleDateString('ko-KR', {
                     timeZone: 'Asia/Seoul',
@@ -395,7 +396,7 @@ export function Calendar() {
               )}
             </div>
             <div className="flex items-center gap-2">
-              <div className="hidden md:flex items-center gap-1 text-sm text-gray-500">
+              <div className="hidden md:flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
                 <Users className="w-4 h-4" />
                 <span>팀원 {teamMembers.length}명</span>
               </div>
@@ -431,17 +432,17 @@ export function Calendar() {
       </div>
 
       {/* Bottom Status Bar - Fixed at bottom */}
-      <div className="fixed bottom-0 left-0 right-0 bg-blue-50 border-t border-blue-200 px-4 py-2 z-10">
+      <div className="fixed bottom-0 left-0 right-0 bg-blue-50 dark:bg-blue-900/20 border-t border-blue-200 dark:border-blue-800 px-4 py-2 z-10">
         <div className="flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
-            <span className="text-blue-700">
+            <span className="text-blue-700 dark:text-blue-300">
               📋 이번 달 일정: {Array.isArray(schedules) ? schedules.length : 0}개
             </span>
-            <span className="text-blue-600">
+            <span className="text-blue-600 dark:text-blue-400">
               📅 보기: {currentView === 'month' ? '월' : currentView === 'week' ? '주' : '일'}
             </span>
           </div>
-          <div className="text-blue-600">
+          <div className="text-blue-600 dark:text-blue-400">
             {(() => {
               const today = new Date();
               const year = today.getFullYear();

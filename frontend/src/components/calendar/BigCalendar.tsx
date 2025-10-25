@@ -55,6 +55,7 @@ interface BigCalendarProps {
   onSelectEvent?: (event: CalendarEvent) => void;
   onSelectSlot?: (slotInfo: { start: Date; end: Date; slots: Date[] }) => void;
   onNavigate?: (date: Date) => void;
+  onView?: (view: View) => void;
   defaultView?: View;
   views?: View[];
   teamMembers?: TeamMember[];
@@ -65,6 +66,7 @@ export default function BigCalendar({
   onSelectEvent,
   onSelectSlot,
   onNavigate,
+  onView,
   defaultView = 'month',
   views = ['month', 'week', 'day'],
   teamMembers = [],
@@ -130,6 +132,7 @@ export default function BigCalendar({
         onSelectEvent={onSelectEvent}
         onSelectSlot={onSelectSlot}
         onNavigate={onNavigate}
+        onView={onView}
         selectable
         popup
         style={{ height: 'calc(100vh - 200px)', minHeight: '600px' }}

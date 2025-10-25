@@ -16,12 +16,12 @@ export const Home = () => {
 
   if (isAuthenticated) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[80vh] space-y-8">
+      <div className="flex flex-col items-center justify-center min-h-[80vh] space-y-8 bg-gray-50 dark:bg-gray-900">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
             Team CalTalk에 오신 것을 환영합니다!
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
             팀 기반 일정 관리 및 실시간 커뮤니케이션 플랫폼으로 효율적인 팀
             협업을 경험하세요
           </p>
@@ -37,228 +37,75 @@ export const Home = () => {
   }
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <div
-        className="container"
-        style={{ padding: '0 1rem', maxWidth: '1200px', margin: '0 auto' }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '2rem',
-            textAlign: 'center',
-          }}
-        >
-          <div
-            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
-          >
-            <h1
-              style={{
-                fontSize: '3rem',
-                fontWeight: 'bold',
-                color: '#1f2937',
-                lineHeight: '1.1',
-              }}
-            >
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 flex flex-col items-center justify-center">
+      <div className="container px-4 max-w-[1200px] mx-auto">
+        <div className="flex flex-col items-center gap-8 text-center">
+          <div className="flex flex-col gap-4">
+            <h1 className="text-5xl font-bold text-gray-900 dark:text-white leading-tight">
               Team CalTalk
             </h1>
-            <p
-              style={{
-                fontSize: '1.25rem',
-                color: '#6b7280',
-                maxWidth: '42rem',
-                margin: '0 auto',
-              }}
-            >
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               팀 기반 일정 관리 및 실시간 커뮤니케이션 플랫폼으로 더 스마트한 팀
               협업을 시작하세요
             </p>
           </div>
-          <div
-            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
-            className="sm:flex-row"
-          >
+          <div className="flex flex-col sm:flex-row gap-4">
             <Link
               to={ROUTES.REGISTER}
-              style={{
-                backgroundColor: '#2563eb',
-                color: 'white',
-                padding: '0.75rem 2rem',
-                borderRadius: '0.5rem',
-                textDecoration: 'none',
-                fontWeight: '600',
-                display: 'inline-block',
-                transition: 'background-color 0.2s',
-              }}
-              onMouseEnter={(e) => (e.target.style.backgroundColor = '#1d4ed8')}
-              onMouseLeave={(e) => (e.target.style.backgroundColor = '#2563eb')}
+              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
             >
               시작하기
             </Link>
             <Link
               to={ROUTES.LOGIN}
-              style={{
-                border: '2px solid #2563eb',
-                color: '#2563eb',
-                padding: '0.75rem 2rem',
-                borderRadius: '0.5rem',
-                textDecoration: 'none',
-                fontWeight: '600',
-                display: 'inline-block',
-                backgroundColor: 'transparent',
-                transition: 'background-color 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = '#eff6ff'
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'transparent'
-              }}
+              className="border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-8 py-3 rounded-lg font-semibold transition-colors"
             >
               로그인
             </Link>
           </div>
         </div>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '1.5rem',
-            maxWidth: '80rem',
-            margin: '3rem auto 0',
-            padding: '0 1rem',
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '0.75rem',
-              padding: '1.5rem',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-              border: '1px solid #e5e7eb',
-            }}
-          >
-            <div style={{ marginBottom: '1rem' }}>
-              <h3
-                style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  color: '#1f2937',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mt-12 px-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex items-center gap-2">
                 📅 일정 관리
-                <span
-                  style={{
-                    backgroundColor: '#f3f4f6',
-                    color: '#374151',
-                    padding: '0.25rem 0.5rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.75rem',
-                    fontWeight: '500',
-                  }}
-                >
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-full text-xs font-medium">
                   핵심
                 </span>
               </h3>
             </div>
-            <p style={{ color: '#6b7280', lineHeight: '1.6' }}>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               팀원들과 함께 일정을 공유하고 관리하세요. 실시간 동기화로 모든
               팀원이 최신 일정을 확인할 수 있습니다.
             </p>
           </div>
 
-          <div
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '0.75rem',
-              padding: '1.5rem',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-              border: '1px solid #e5e7eb',
-            }}
-          >
-            <div style={{ marginBottom: '1rem' }}>
-              <h3
-                style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  color: '#1f2937',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex items-center gap-2">
                 💬 실시간 채팅
-                <span
-                  style={{
-                    backgroundColor: '#f3f4f6',
-                    color: '#374151',
-                    padding: '0.25rem 0.5rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.75rem',
-                    fontWeight: '500',
-                  }}
-                >
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-full text-xs font-medium">
                   소통
                 </span>
               </h3>
             </div>
-            <p style={{ color: '#6b7280', lineHeight: '1.6' }}>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               일정별 채팅방으로 효율적인 소통을 하세요. 중요한 대화 내용을
               놓치지 않고 팀워크를 강화할 수 있습니다.
             </p>
           </div>
 
-          <div
-            style={{
-              backgroundColor: 'white',
-              borderRadius: '0.75rem',
-              padding: '1.5rem',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-              border: '1px solid #e5e7eb',
-            }}
-          >
-            <div style={{ marginBottom: '1rem' }}>
-              <h3
-                style={{
-                  fontSize: '1.25rem',
-                  fontWeight: '600',
-                  color: '#1f2937',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white flex items-center gap-2">
                 👥 팀 관리
-                <span
-                  style={{
-                    backgroundColor: '#f3f4f6',
-                    color: '#374151',
-                    padding: '0.25rem 0.5rem',
-                    borderRadius: '9999px',
-                    fontSize: '0.75rem',
-                    fontWeight: '500',
-                  }}
-                >
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-full text-xs font-medium">
                   협업
                 </span>
               </h3>
             </div>
-            <p style={{ color: '#6b7280', lineHeight: '1.6' }}>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               팀장과 팀원 역할로 체계적인 팀 관리를 하세요. 권한 기반으로
               안전하고 효율적인 협업이 가능합니다.
             </p>

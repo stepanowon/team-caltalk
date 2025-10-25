@@ -57,31 +57,31 @@ export const Login = () => {
   }
 
   return (
-    <div className="container flex h-screen w-screen flex-col items-center justify-center">
+    <div className="container flex h-screen w-screen flex-col items-center justify-center bg-gray-50 dark:bg-gray-900">
       <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
         <div className="flex flex-col space-y-2 text-center">
-          <h1 className="text-2xl font-semibold tracking-tight">로그인</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">로그인</h1>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             이메일과 비밀번호를 입력하여 로그인하세요
           </p>
         </div>
 
         <Card>
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-center">Team CalTalk</CardTitle>
-            <CardDescription className="text-center">
+            <CardTitle className="text-2xl text-center dark:text-white">Team CalTalk</CardTitle>
+            <CardDescription className="text-center dark:text-gray-400">
               팀 기반 일정 관리 및 실시간 커뮤니케이션 플랫폼
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             {error && (
-              <div className="rounded-md bg-destructive/15 px-3 py-2 text-sm text-destructive">
+              <div className="rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 px-3 py-2 text-sm text-red-800 dark:text-red-300">
                 {error}
               </div>
             )}
             <form onSubmit={handleSubmit} className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="email">이메일</Label>
+                <Label htmlFor="email" className="dark:text-white">이메일</Label>
                 <Input
                   id="email"
                   type="email"
@@ -93,7 +93,7 @@ export const Login = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="password">비밀번호</Label>
+                <Label htmlFor="password" className="dark:text-white">비밀번호</Label>
                 <Input
                   id="password"
                   type="password"
@@ -109,11 +109,11 @@ export const Login = () => {
             </form>
           </CardContent>
           <CardFooter>
-            <div className="text-center text-sm text-muted-foreground w-full">
+            <div className="text-center text-sm text-gray-600 dark:text-gray-400 w-full">
               계정이 없으신가요?{' '}
               <Link
                 to={ROUTES.REGISTER}
-                className="font-medium text-primary hover:underline"
+                className="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 hover:underline"
               >
                 회원가입
               </Link>

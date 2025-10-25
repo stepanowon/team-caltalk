@@ -7,6 +7,7 @@ import { ROUTES } from '@/utils/constants'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Menu, X } from 'lucide-react'
+import { ThemeToggle } from './ThemeToggle'
 
 export const Header = () => {
   const { user, isAuthenticated, logout } = useAuthStore()
@@ -28,7 +29,7 @@ export const Header = () => {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm">
       <div className="flex items-center h-14 max-w-7xl mx-auto px-4">
         {/* 로고 */}
         <div className="flex-shrink-0">
@@ -37,7 +38,7 @@ export const Header = () => {
             className="flex items-center gap-2 text-decoration-none"
             onClick={closeMobileMenu}
           >
-            <span className="font-bold text-xl text-gray-900">팀캘톡</span>
+            <span className="font-bold text-xl text-gray-900 dark:text-white">팀캘톡</span>
           </Link>
         </div>
 
@@ -48,20 +49,20 @@ export const Header = () => {
               <>
                 <Link
                   to={ROUTES.DASHBOARD}
-                  className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                  className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors no-underline"
                 >
                   대시보드
                 </Link>
                 <Link
                   to={ROUTES.TEAMS}
-                  className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                  className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors no-underline"
                 >
                   팀
                 </Link>
                 {currentTeam && (
                   <Link
                     to={ROUTES.CALENDAR}
-                    className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                    className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors no-underline"
                   >
                     캘린더
                   </Link>
@@ -71,20 +72,24 @@ export const Header = () => {
                 {currentTeam && (
                   <Badge
                     variant="secondary"
-                    className="bg-blue-100 text-blue-800"
+                    className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"
                   >
                     {currentTeam.name}
                   </Badge>
                 )}
 
-                <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">
+                <span className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-xs font-medium">
                   {user?.name}님
                 </span>
+
+                {/* 다크 모드 토글 */}
+                <ThemeToggle />
+
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={handleLogout}
-                  className="text-gray-700"
+                  className="text-gray-700 dark:text-gray-300"
                 >
                   로그아웃
                 </Button>
@@ -93,7 +98,7 @@ export const Header = () => {
               <>
                 <Link
                   to={ROUTES.LOGIN}
-                  className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                  className="px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors no-underline"
                 >
                   로그인
                 </Link>
@@ -103,13 +108,17 @@ export const Header = () => {
                 >
                   회원등록
                 </Link>
+
+                {/* 다크 모드 토글 */}
+                <ThemeToggle />
               </>
             )}
           </nav>
         </div>
 
         {/* 모바일 햄버거 버튼 */}
-        <div className="flex md:hidden ml-auto">
+        <div className="flex md:hidden ml-auto items-center gap-2">
+          <ThemeToggle />
           <Button
             variant="ghost"
             size="sm"
@@ -127,20 +136,20 @@ export const Header = () => {
 
       {/* 모바일 메뉴 */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg">
           <nav className="px-4 py-4 space-y-2">
             {isAuthenticated ? (
               <>
                 <Link
                   to={ROUTES.DASHBOARD}
-                  className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                  className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors no-underline"
                   onClick={closeMobileMenu}
                 >
                   대시보드
                 </Link>
                 <Link
                   to={ROUTES.TEAMS}
-                  className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                  className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors no-underline"
                   onClick={closeMobileMenu}
                 >
                   팀
@@ -148,7 +157,7 @@ export const Header = () => {
                 {currentTeam && (
                   <Link
                     to={ROUTES.CALENDAR}
-                    className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                    className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors no-underline"
                     onClick={closeMobileMenu}
                   >
                     캘린더
@@ -156,22 +165,22 @@ export const Header = () => {
                 )}
 
                 {/* 모바일 사용자 정보 */}
-                <div className="border-t border-gray-200 pt-4 mt-4">
+                <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
                   {currentTeam && (
                     <div className="px-4 py-2 text-sm">
-                      <span className="text-gray-500">현재 팀: </span>
-                      <span className="font-medium text-blue-600">
+                      <span className="text-gray-500 dark:text-gray-400">현재 팀: </span>
+                      <span className="font-medium text-blue-600 dark:text-blue-400">
                         {currentTeam.name}
                       </span>
                     </div>
                   )}
                   <div className="px-4 py-2 text-sm">
-                    <span className="text-gray-500">사용자: </span>
-                    <span className="font-medium">{user?.name}님</span>
+                    <span className="text-gray-500 dark:text-gray-400">사용자: </span>
+                    <span className="font-medium text-gray-900 dark:text-white">{user?.name}님</span>
                   </div>
                   <button
                     onClick={handleLogout}
-                    className="w-full text-left px-4 py-3 text-red-600 hover:bg-red-50 rounded-md transition-colors"
+                    className="w-full text-left px-4 py-3 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-md transition-colors"
                   >
                     로그아웃
                   </button>
@@ -181,7 +190,7 @@ export const Header = () => {
               <>
                 <Link
                   to={ROUTES.LOGIN}
-                  className="block px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-md transition-colors no-underline"
+                  className="block px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors no-underline"
                   onClick={closeMobileMenu}
                 >
                   로그인

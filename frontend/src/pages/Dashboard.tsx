@@ -65,23 +65,23 @@ export function Dashboard() {
   const currentTime = format(now, 'HH:mm')
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* 헤더 */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
                 안녕하세요, {user?.name}님! 👋
               </h1>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 오늘은 {currentDate}이고, 현재 시각은 {currentTime}입니다
               </p>
             </div>
 
             <div className="text-right">
-              <p className="text-sm text-gray-500">현재 시각</p>
-              <p className="text-2xl font-semibold text-blue-600">
+              <p className="text-sm text-gray-500 dark:text-gray-400">현재 시각</p>
+              <p className="text-2xl font-semibold text-blue-600 dark:text-blue-400">
                 {currentTime}
               </p>
             </div>
@@ -90,9 +90,9 @@ export function Dashboard() {
 
         {/* 성공 메시지 */}
         {message && (
-          <Alert className="mb-6 border-green-200 bg-green-50">
-            <CheckCircle className="h-4 w-4 text-green-600" />
-            <AlertDescription className="text-green-800">
+          <Alert className="mb-6 border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20">
+            <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+            <AlertDescription className="text-green-800 dark:text-green-300">
               {message}
             </AlertDescription>
           </Alert>
@@ -330,11 +330,11 @@ export function Dashboard() {
 
         {/* 안내 메시지 */}
         <div className="text-center">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-2xl mx-auto">
-            <h3 className="font-medium text-blue-900 mb-3">
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6 max-w-2xl mx-auto">
+            <h3 className="font-medium text-blue-900 dark:text-blue-300 mb-3">
               🎯 Team CalTalk 사용법
             </h3>
-            <div className="text-sm text-blue-800 space-y-2">
+            <div className="text-sm text-blue-800 dark:text-blue-300 space-y-2">
               <p>
                 1. <strong>팀 생성 또는 참여</strong>: 새로운 팀을 만들거나 기존
                 팀에 참여하세요

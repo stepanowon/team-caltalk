@@ -41,6 +41,37 @@
 
     --radius: 0.5rem;
   }
+
+  .dark {
+    /* 다크모드 테마 변수 */
+    --background: 222 47% 11%; /* gray-900 */
+    --foreground: 243 244 246; /* gray-100 */
+
+    --card: 31 41 55; /* gray-800 */
+    --card-foreground: 243 244 246;
+
+    --popover: 31 41 55; /* gray-800 */
+    --popover-foreground: 243 244 246;
+
+    --primary: var(--naver-green);
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 55 65 81; /* gray-700 */
+    --secondary-foreground: 243 244 246;
+
+    --muted: 55 65 81; /* gray-700 */
+    --muted-foreground: 156 163 175; /* gray-400 */
+
+    --accent: var(--naver-blue);
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: var(--naver-red);
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 55 65 81; /* gray-700 */
+    --input: 55 65 81; /* gray-700 */
+    --ring: var(--naver-green);
+  }
 }
 
 @layer base {

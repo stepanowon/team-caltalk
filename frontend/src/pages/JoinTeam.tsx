@@ -129,26 +129,26 @@ export function JoinTeam() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="max-w-2xl mx-auto px-4">
         {/* 헤더 */}
         <div className="mb-8">
           <Button
             variant="ghost"
             onClick={handleCancel}
-            className="mb-4 text-gray-600 hover:text-gray-900"
+            className="mb-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />팀 목록으로 돌아가기
           </Button>
 
           <div className="text-center">
-            <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-              <UserPlus className="h-8 w-8 text-green-600" />
+            <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4">
+              <UserPlus className="h-8 w-8 text-green-600 dark:text-green-400" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
               팀 참여하기
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-400">
               초대 코드를 입력하여 기존 팀에 참여해보세요
             </p>
           </div>
@@ -165,9 +165,9 @@ export function JoinTeam() {
           <CardContent>
             {/* 성공 메시지 */}
             {success && (
-              <Alert className="mb-6 border-green-200 bg-green-50">
-                <CheckCircle className="h-4 w-4 text-green-600" />
-                <AlertDescription className="text-green-800">
+              <Alert className="mb-6 border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20">
+                <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+                <AlertDescription className="text-green-800 dark:text-green-300">
                   {success}
                   <div className="mt-2 text-sm">
                     잠시 후 자동으로 대시보드로 이동됩니다...
@@ -178,19 +178,19 @@ export function JoinTeam() {
 
             {/* 에러 메시지 */}
             {error && (
-              <Alert className="mb-6">
-                <AlertCircle className="h-4 w-4" />
-                <AlertDescription>{error}</AlertDescription>
+              <Alert className="mb-6 border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20">
+                <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                <AlertDescription className="text-red-800 dark:text-red-300">{error}</AlertDescription>
               </Alert>
             )}
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* 초대 코드 입력 */}
               <div>
-                <Label htmlFor="inviteCode" className="text-base font-medium">
+                <Label htmlFor="inviteCode" className="text-base font-medium dark:text-white">
                   초대 코드 *
                 </Label>
-                <p className="text-sm text-gray-500 mt-1 mb-3">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-3">
                   팀장으로부터 받은 초대 코드를 입력해주세요
                 </p>
                 <Input
@@ -207,22 +207,22 @@ export function JoinTeam() {
                   maxLength={6} // 6자리 초대 코드
                 />
                 {errors.inviteCode && (
-                  <p className="text-sm text-red-600 mt-1">
+                  <p className="text-sm text-red-600 dark:text-red-400 mt-1">
                     {errors.inviteCode.message}
                   </p>
                 )}
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
                   * 초대 코드는 6자리 영문 대문자와 숫자로 구성됩니다 (예:
                   JJD3XD)
                 </p>
               </div>
 
               {/* 안내 정보 */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <h3 className="font-medium text-blue-900 mb-2">
+              <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
+                <h3 className="font-medium text-blue-900 dark:text-blue-300 mb-2">
                   📋 팀 참여 안내사항
                 </h3>
-                <ul className="text-sm text-blue-800 space-y-1">
+                <ul className="text-sm text-blue-800 dark:text-blue-300 space-y-1">
                   <li>
                     • 초대 코드는 팀장이 팀 생성 시 자동으로 발급받는 6자리 고유
                     코드입니다
@@ -281,11 +281,11 @@ export function JoinTeam() {
           <Card>
             <CardContent className="py-6">
               <div className="text-center">
-                <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="font-medium text-gray-900 mb-2">
+                <Users className="h-12 w-12 text-gray-400 dark:text-gray-600 mx-auto mb-4" />
+                <h3 className="font-medium text-gray-900 dark:text-white mb-2">
                   초대 코드가 없으신가요?
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
                   새로운 팀을 직접 생성하여 팀장이 되어보세요
                 </p>
                 <Button
@@ -302,11 +302,11 @@ export function JoinTeam() {
 
         {/* 도움말 */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             팀 참여에 문제가 있거나 궁금한 점이 있으시면{' '}
             <a
               href="/help"
-              className="text-blue-600 hover:text-blue-800 underline"
+              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
             >
               도움말
             </a>
