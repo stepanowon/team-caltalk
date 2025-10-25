@@ -52195,3 +52195,510 @@ SyntaxError: Bad escaped character in JSON at position 51 (line 1 column 52)
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
   "userId": "anonymous"
 }
+2025-10-17 17:50:06.632 [ERROR]: 데이터베이스 연결 풀 초기화 실패: ����� "team_caltalk_user"�� password ������ �����߽��ϴ� {
+  "length": 116,
+  "name": "error",
+  "severity": "ġ��������",
+  "code": "28P01",
+  "file": "auth.c",
+  "line": "332",
+  "routine": "auth_failed"
+}
+error: ����� "team_caltalk_user"�� password ������ �����߽��ϴ�
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async DatabaseConfig.testConnection (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:74:20)
+    at async DatabaseConfig.initialize (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:54:7)
+    at async initializeApp (D:\dev\workspace_test\team-caltalk\backend\src\app.js:183:5)
+    at async startServer (D:\dev\workspace_test\team-caltalk\backend\src\server.js:19:17)
+2025-10-17 18:03:57.885 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "1",
+  "data": {
+    "email": "stepanowon@hotmail.com",
+    "name": "원형섭",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-10-17 18:03:57.886 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "1",
+  "email": "stepanowon@hotmail.com",
+  "name": "원형섭"
+}
+2025-10-17 18:03:57.892 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "1",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-17 18:04:09.085 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "1",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-17 18:04:09.086 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "1",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-17 18:04:33.700 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-17 18:04:33.701 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0"
+}
+2025-10-17 18:04:33.702 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "4ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0",
+  "userId": "anonymous"
+}
+2025-10-17 18:04:33.703 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-17 18:04:57.754 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "users",
+  "id": "2",
+  "data": {
+    "email": "gdhong@test.com",
+    "name": "홍길동",
+    "password_hash": "[MASKED]"
+  }
+}
+2025-10-17 18:04:57.755 [WARN]: AUDIT {
+  "action": "USER_CREATED",
+  "userId": "2",
+  "email": "gdhong@test.com",
+  "name": "홍길동"
+}
+2025-10-17 18:04:57.756 [WARN]: AUDIT {
+  "action": "USER_REGISTER",
+  "userId": "2",
+  "email": "gdhong@test.com"
+}
+2025-10-17 18:05:04.930 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "2",
+  "email": "gdhong@test.com"
+}
+2025-10-17 18:05:04.931 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "2",
+  "email": "gdhong@test.com"
+}
+2025-10-17 18:05:23.273 [WARN]: AUDIT {
+  "action": "TEAM_CREATED",
+  "teamId": "1",
+  "teamName": "프로젝트A팀",
+  "creatorId": "1",
+  "inviteCode": "00777P"
+}
+2025-10-17 18:05:33.302 [WARN]: AUDIT {
+  "action": "TEAM_MEMBER_ADDED",
+  "teamId": "1",
+  "userId": "2",
+  "role": "member",
+  "addedBy": "system"
+}
+2025-10-17 18:05:43.321 [WARN]: 느린 쿼리 감지: {
+  "duration": "118ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-17 18:05:43.341 [WARN]: 느린 쿼리 감지: {
+  "duration": "128ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-17 18:05:43.416 [WARN]: 느린 쿼리 감지: {
+  "duration": "204ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-17 18:05:49.501 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "1",
+  "data": {
+    "team_id": 1,
+    "sender_id": 2,
+    "content": "aaaa",
+    "target_date": "2025-10-17T00:00:00.000Z",
+    "related_schedule_id": null,
+    "message_type": "normal",
+    "sent_at": "2025-10-17T09:05:49.496Z"
+  }
+}
+2025-10-17 18:05:49.502 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "1",
+  "teamId": 1,
+  "senderId": 2,
+  "targetDate": "2025-10-17T00:00:00.000Z",
+  "messageType": "normal",
+  "contentLength": 4
+}
+2025-10-17 18:05:53.744 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "2",
+  "data": {
+    "team_id": 1,
+    "sender_id": 1,
+    "content": "ㄴㄴㄴㄴ",
+    "target_date": "2025-10-17T00:00:00.000Z",
+    "related_schedule_id": null,
+    "message_type": "normal",
+    "sent_at": "2025-10-17T09:05:53.740Z"
+  }
+}
+2025-10-17 18:05:53.745 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "2",
+  "teamId": 1,
+  "senderId": 1,
+  "targetDate": "2025-10-17T00:00:00.000Z",
+  "messageType": "normal",
+  "contentLength": 4
+}
+2025-10-17 18:05:57.442 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "3",
+  "data": {
+    "team_id": 1,
+    "sender_id": 1,
+    "content": "dsdsd",
+    "target_date": "2025-10-17T00:00:00.000Z",
+    "related_schedule_id": null,
+    "message_type": "normal",
+    "sent_at": "2025-10-17T09:05:57.439Z"
+  }
+}
+2025-10-17 18:05:57.443 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "3",
+  "teamId": 1,
+  "senderId": 1,
+  "targetDate": "2025-10-17T00:00:00.000Z",
+  "messageType": "normal",
+  "contentLength": 5
+}
+2025-10-25 14:28:34.744 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-25 14:28:34.745 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+}
+2025-10-25 14:28:34.748 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "7ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+  "userId": "anonymous"
+}
+2025-10-25 14:28:34.749 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-25 14:28:42.859 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "1",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-25 14:28:42.862 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "1",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-25 14:35:04.358 [WARN]: 느린 쿼리 감지: {
+  "duration": "173ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-25 15:02:30.655 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "1",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-25 15:02:30.657 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "1",
+  "email": "stepanowon@hotmail.com"
+}
+2025-10-25 15:02:43.658 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "6",
+  "data": {
+    "team_id": 1,
+    "sender_id": 1,
+    "content": "ssss",
+    "target_date": "2025-10-25T00:00:00.000Z",
+    "related_schedule_id": null,
+    "message_type": "normal",
+    "sent_at": "2025-10-25T06:02:43.647Z"
+  }
+}
+2025-10-25 15:02:43.659 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "6",
+  "teamId": 1,
+  "senderId": 1,
+  "targetDate": "2025-10-25T00:00:00.000Z",
+  "messageType": "normal",
+  "contentLength": 4
+}
+2025-10-25 15:02:46.203 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "7",
+  "data": {
+    "team_id": 1,
+    "sender_id": 1,
+    "content": "ddd",
+    "target_date": "2025-10-25T00:00:00.000Z",
+    "related_schedule_id": null,
+    "message_type": "normal",
+    "sent_at": "2025-10-25T06:02:46.200Z"
+  }
+}
+2025-10-25 15:02:46.204 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "7",
+  "teamId": 1,
+  "senderId": 1,
+  "targetDate": "2025-10-25T00:00:00.000Z",
+  "messageType": "normal",
+  "contentLength": 3
+}
+2025-10-25 15:03:57.381 [WARN]: 느린 쿼리 감지: {
+  "duration": "169ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-25 15:04:17.645 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-25 15:04:17.646 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0"
+}
+2025-10-25 15:04:17.646 [WARN]: API_REQUEST {
+  "method": "GET",
+  "url": "/api/activities?limit=5",
+  "status": 401,
+  "duration": "2ms",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0",
+  "userId": "anonymous"
+}
+2025-10-25 15:04:17.647 [WARN]: AUDIT {
+  "action": "SECURITY_EVENT",
+  "type": "UNAUTHORIZED_ACCESS",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0",
+  "path": "/",
+  "method": "GET"
+}
+2025-10-25 15:04:24.541 [WARN]: AUDIT {
+  "action": "AUTH_SUCCESS",
+  "userId": "2",
+  "email": "gdhong@test.com"
+}
+2025-10-25 15:04:24.542 [WARN]: AUDIT {
+  "action": "USER_LOGIN",
+  "userId": "2",
+  "email": "gdhong@test.com"
+}
+2025-10-25 15:04:30.739 [WARN]: 느린 쿼리 감지: {
+  "duration": "179ms",
+  "query": "SELECT * FROM users WHERE id = $1",
+  "rowCount": 1
+}
+2025-10-25 15:04:33.910 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "8",
+  "data": {
+    "team_id": 1,
+    "sender_id": 2,
+    "content": "dsdd",
+    "target_date": "2025-10-25T00:00:00.000Z",
+    "related_schedule_id": null,
+    "message_type": "normal",
+    "sent_at": "2025-10-25T06:04:33.904Z"
+  }
+}
+2025-10-25 15:04:33.911 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "8",
+  "teamId": 1,
+  "senderId": 2,
+  "targetDate": "2025-10-25T00:00:00.000Z",
+  "messageType": "normal",
+  "contentLength": 4
+}
+2025-10-25 15:04:43.880 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "9",
+  "data": {
+    "team_id": 1,
+    "sender_id": 2,
+    "content": "aaaa",
+    "target_date": "2025-10-25T00:00:00.000Z",
+    "related_schedule_id": null,
+    "message_type": "normal",
+    "sent_at": "2025-10-25T06:04:43.877Z"
+  }
+}
+2025-10-25 15:04:43.880 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "9",
+  "teamId": 1,
+  "senderId": 2,
+  "targetDate": "2025-10-25T00:00:00.000Z",
+  "messageType": "normal",
+  "contentLength": 4
+}
+2025-10-25 15:04:46.208 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "10",
+  "data": {
+    "team_id": 1,
+    "sender_id": 1,
+    "content": "dssdd",
+    "target_date": "2025-10-25T00:00:00.000Z",
+    "related_schedule_id": null,
+    "message_type": "normal",
+    "sent_at": "2025-10-25T06:04:46.205Z"
+  }
+}
+2025-10-25 15:04:46.209 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "10",
+  "teamId": 1,
+  "senderId": 1,
+  "targetDate": "2025-10-25T00:00:00.000Z",
+  "messageType": "normal",
+  "contentLength": 5
+}
+2025-10-25 15:12:10.806 [WARN]: AUDIT {
+  "action": "SCHEDULE_CREATED",
+  "scheduleId": "2",
+  "title": "111",
+  "creatorId": "1",
+  "scheduleType": "team",
+  "teamId": 1,
+  "startDatetime": "2025-10-25T00:00:00.000Z",
+  "endDatetime": "2025-10-27T01:00:00.000Z",
+  "participantIds": [
+    2
+  ]
+}
+2025-10-25 15:12:45.835 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "11",
+  "data": {
+    "team_id": "1",
+    "sender_id": "2",
+    "content": "일정 변경 하루씩 뒤로",
+    "target_date": "2025-10-25",
+    "related_schedule_id": "2",
+    "message_type": "schedule_request",
+    "sent_at": "2025-10-25T06:12:45.831Z"
+  }
+}
+2025-10-25 15:12:45.835 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "11",
+  "teamId": "1",
+  "senderId": "2",
+  "targetDate": "2025-10-25",
+  "messageType": "schedule_request",
+  "contentLength": 12
+}
+2025-10-25 15:12:45.837 [WARN]: AUDIT {
+  "action": "SCHEDULE_REQUEST_CREATED",
+  "messageId": "11",
+  "teamId": "1",
+  "scheduleId": "2",
+  "userId": "2"
+}
+2025-10-25 15:15:26.670 [WARN]: AUDIT {
+  "action": "RECORD_UPDATED",
+  "table": "schedules",
+  "id": 2,
+  "data": {
+    "title": "111",
+    "content": "1111",
+    "start_datetime": "2025-10-26T00:00:00.000Z",
+    "end_datetime": "2025-10-28T01:00:00.000Z"
+  }
+}
+2025-10-25 15:15:26.675 [WARN]: AUDIT {
+  "action": "SCHEDULE_UPDATED",
+  "scheduleId": 2,
+  "updateData": {
+    "title": "111",
+    "content": "1111",
+    "startDatetime": "2025-10-26T00:00:00.000Z",
+    "endDatetime": "2025-10-28T01:00:00.000Z",
+    "participantIds": 1
+  }
+}
+2025-10-25 15:15:34.001 [WARN]: AUDIT {
+  "action": "RECORD_CREATED",
+  "table": "messages",
+  "id": "12",
+  "data": {
+    "team_id": "1",
+    "sender_id": "1",
+    "content": "\"일정 변경 하루씩 뒤로\" 요청이 승인되었습니다.",
+    "target_date": "2025-10-26T00:00:00.000Z",
+    "related_schedule_id": "2",
+    "message_type": "schedule_approved",
+    "sent_at": "2025-10-25T06:15:33.999Z"
+  }
+}
+2025-10-25 15:15:34.002 [WARN]: AUDIT {
+  "action": "MESSAGE_SENT",
+  "messageId": "12",
+  "teamId": "1",
+  "senderId": "1",
+  "targetDate": "2025-10-26T00:00:00.000Z",
+  "messageType": "schedule_approved",
+  "contentLength": 27
+}
+2025-10-25 15:15:34.003 [WARN]: AUDIT {
+  "action": "SCHEDULE_REQUEST_APPROVED",
+  "originalMessageId": 11,
+  "approvalMessageId": "12",
+  "teamId": "1",
+  "scheduleId": "2",
+  "userId": "1"
+}

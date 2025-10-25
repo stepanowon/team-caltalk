@@ -5725,3 +5725,43 @@ SyntaxError: Bad escaped character in JSON at position 51 (line 1 column 52)
   "ip": "::1",
   "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:143.0) Gecko/20100101 Firefox/143.0"
 }
+2025-10-17 17:50:06.632 [ERROR]: 데이터베이스 연결 풀 초기화 실패: ����� "team_caltalk_user"�� password ������ �����߽��ϴ� {
+  "length": 116,
+  "name": "error",
+  "severity": "ġ��������",
+  "code": "28P01",
+  "file": "auth.c",
+  "line": "332",
+  "routine": "auth_failed"
+}
+error: ����� "team_caltalk_user"�� password ������ �����߽��ϴ�
+    at D:\dev\workspace_test\team-caltalk\backend\node_modules\pg-pool\index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async DatabaseConfig.testConnection (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:74:20)
+    at async DatabaseConfig.initialize (D:\dev\workspace_test\team-caltalk\backend\src\config\database.js:54:7)
+    at async initializeApp (D:\dev\workspace_test\team-caltalk\backend\src\app.js:183:5)
+    at async startServer (D:\dev\workspace_test\team-caltalk\backend\src\server.js:19:17)
+2025-10-17 18:04:33.700 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-17 18:04:33.701 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0"
+}
+2025-10-25 14:28:34.744 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-25 14:28:34.745 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+}
+2025-10-25 15:04:17.645 [ERROR]: AuthService.getUserFromToken 오류: {
+  "error": "토큰이 만료되었습니다"
+}
+2025-10-25 15:04:17.646 [ERROR]: 인증 미들웨어 오류: {
+  "error": "토큰이 만료되었습니다",
+  "ip": "::1",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:144.0) Gecko/20100101 Firefox/144.0"
+}
