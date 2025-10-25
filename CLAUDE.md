@@ -70,7 +70,7 @@ chmod +x scripts/create-github-issues.sh
 
 ## 개발 진행 상황
 
-현재 상태: **프로젝트 관리 체계 완성** (2025-09-25 기준)
+현재 상태: **프론트엔드 다크모드 구현 완료** (2025-10-25 기준)
 
 ### ✅ 1단계 완료 (데이터베이스 구성)
 - ✅ PostgreSQL 17.6 설치 및 최적화
@@ -83,6 +83,18 @@ chmod +x scripts/create-github-issues.sh
 - ✅ **4개 마일스톤**: Day 2~5 일정별 관리
 - ✅ **9개 핵심 Issues**: 실행 계획서 기반 체계적 작업 분해
 - ✅ **자동화 스크립트**: Windows/Linux 환경 지원
+
+### ✅ 프론트엔드 다크모드 구현
+- ✅ **테마 상태 관리**: Zustand 기반 theme-store
+- ✅ **테마 토글 UI**: ThemeToggle 컴포넌트 (헤더 우측)
+- ✅ **시스템 테마 감지**: prefers-color-scheme 자동 적용
+- ✅ **설정 유지**: localStorage 기반 테마 설정 저장
+- ✅ **전체 페이지 적용**: 모든 페이지 및 컴포넌트 다크모드 지원
+  - 페이지: Home, Login, Register, Dashboard, Teams, Calendar, CreateTeam, JoinTeam
+  - UI 컴포넌트: Dialog, Input, Textarea, Card, Button 등
+  - 캘린더: BigCalendar, ScheduleModal, ScheduleRequestMessage
+- ✅ **CSS 변수 시스템**: index.css에 다크모드 색상 변수 정의
+- ✅ **브라우저 네이티브 지원**: date/time picker 다크모드 지원
 
 ### 🔄 다음 단계: 2단계 (백엔드 기반 구조 및 인증 시스템)
 - 📋 GitHub Issues에서 진행 상황 추적: https://github.com/stepanowon/team-caltalk/issues
@@ -99,6 +111,11 @@ chmod +x scripts/create-github-issues.sh
 ### 🗄️ 데이터베이스
 - `database/schema.sql`: 주석이 포함된 완전한 PostgreSQL 스키마
 - `.env`: 데이터베이스 연결 설정
+
+### 🎨 프론트엔드 핵심 파일
+- `frontend/src/stores/theme-store.ts`: Zustand 기반 테마 상태 관리
+- `frontend/src/components/Layout/ThemeToggle.tsx`: 다크모드 토글 버튼
+- `frontend/src/index.css`: 다크모드 CSS 변수 시스템
 
 ### 🔧 개발 도구 및 스크립트
 - `scripts/create-github-issues.bat`: Windows용 GitHub Issues 자동 생성

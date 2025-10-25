@@ -65,6 +65,13 @@ Team CalTalk는 팀 중심의 일정 관리와 실시간 커뮤니케이션을 �
 - ✅ **팀 통계**: 팀원 수, 일정 수 등 요약 정보
 - ✅ **빠른 액세스**: 주요 기능 바로가기
 
+### 5. 다크모드
+- ✅ **테마 전환**: 라이트/다크 모드 토글 (헤더 우측 상단)
+- ✅ **자동 감지**: 시스템 테마 설정 자동 적용
+- ✅ **설정 유지**: localStorage 기반 테마 설정 저장
+- ✅ **전체 적용**: 모든 페이지 및 컴포넌트 다크모드 지원
+- ✅ **CSS 변수**: 일관된 색상 시스템 및 쉬운 커스터마이징
+
 ## 🛠 기술 스택
 
 ### 백엔드
@@ -81,11 +88,11 @@ Team CalTalk는 팀 중심의 일정 관리와 실시간 커뮤니케이션을 �
 - **프레임워크**: React 18.3 + TypeScript
 - **빌드 도구**: Vite 7.1
 - **상태 관리**:
-  - Zustand (클라이언트 상태)
+  - Zustand (클라이언트 상태, 테마 관리)
   - TanStack Query (서버 상태)
 - **라우팅**: React Router DOM 7.9
 - **UI**:
-  - Tailwind CSS
+  - Tailwind CSS (class 기반 다크모드)
   - Radix UI (Dialog, Toast, Avatar 등)
   - react-big-calendar (캘린더)
 - **폼 관리**: React Hook Form + Zod
@@ -133,7 +140,7 @@ team-caltalk/
 │   │   │   ├── Chat.tsx
 │   │   │   └── Dashboard.tsx
 │   │   ├── hooks/        # 커스텀 훅
-│   │   ├── stores/       # Zustand 스토어
+│   │   ├── stores/       # Zustand 스토어 (theme-store.ts 등)
 │   │   ├── services/     # API 서비스
 │   │   ├── types/        # TypeScript 타입
 │   │   ├── utils/        # 유틸리티 함수
