@@ -3,17 +3,9 @@ import { Header } from './Header'
 
 export const Layout = () => {
   return (
-    <div
-      style={{
-        position: 'relative',
-        display: 'flex',
-        minHeight: '100vh',
-        flexDirection: 'column',
-        backgroundColor: '#f9fafb',
-      }}
-    >
+    <div className="relative flex min-h-screen flex-col bg-gray-50 dark:bg-gray-900">
       <Header />
-      <main style={{ flex: 1 }}>
+      <main className="flex-1">
         <Outlet />
       </main>
     </div>
