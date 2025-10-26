@@ -104,7 +104,7 @@ export const Header = () => {
                 </Link>
                 <Link
                   to={ROUTES.REGISTER}
-                  className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-md transition-colors no-underline"
+                  className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors no-underline"
                 >
                   회원등록
                 </Link>
@@ -197,7 +197,7 @@ export const Header = () => {
                 </Link>
                 <Link
                   to={ROUTES.REGISTER}
-                  className="block px-4 py-3 bg-blue-600 text-white hover:bg-blue-700 rounded-md transition-colors no-underline text-center"
+                  className="block px-4 py-3 bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors no-underline text-center"
                   onClick={closeMobileMenu}
                 >
                   회원가입

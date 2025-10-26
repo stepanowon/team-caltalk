@@ -251,7 +251,7 @@ export function ScheduleDetailModal({
                 onRequestChange(schedule)
                 onClose()
               }}
-              className="flex items-center gap-1 border-blue-300 text-blue-700 hover:bg-blue-50"
+              className="flex items-center gap-1 border-blue-300 text-blue-700 hover:bg-blue-50 dark:border-blue-600 dark:text-blue-400 dark:hover:bg-blue-900/20"
             >
               <MessageSquare className="w-4 h-4" />
               일정 변경 요청
