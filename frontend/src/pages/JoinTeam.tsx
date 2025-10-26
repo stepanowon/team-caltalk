@@ -72,6 +72,7 @@ export function JoinTeam() {
   const onSubmit = async (data: JoinTeamFormData) => {
     if (!token) {
       setError('로그인이 필요합니다.')
+      navigate(ROUTES.LOGIN, { replace: true })
       return
     }
 

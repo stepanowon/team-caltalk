@@ -88,6 +88,7 @@ export function CreateTeam() {
 
     if (!authToken) {
       setError('로그인이 필요합니다.')
+      navigate(ROUTES.LOGIN, { replace: true })
       return
     }
 

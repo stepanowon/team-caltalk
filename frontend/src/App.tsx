@@ -21,18 +21,16 @@ import { ROUTES } from '@/utils/constants'
 import '@/styles/globals.css'
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const authStorage = localStorage.getItem('auth-storage')
+  const { token, isAuthenticated, user } = useAuthStore()
+  const accessToken = localStorage.getItem('access_token')
 
-  if (!authStorage) {
+  // 1. authStore의 인증 상태 확인
+  if (!isAuthenticated || !user) {
     return <Navigate to={ROUTES.LOGIN} replace />
   }
 
-  try {
-    const { state } = JSON.parse(authStorage)
-    if (!state.isAuthenticated || !state.user) {
-      return <Navigate to={ROUTES.LOGIN} replace />
-    }
-  } catch {
+  // 2. authStore의 토큰 또는 localStorage의 access_token 확인
+  if (!token && !accessToken) {
     return <Navigate to={ROUTES.LOGIN} replace />
   }
 
