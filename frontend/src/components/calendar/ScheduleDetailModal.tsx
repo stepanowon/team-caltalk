@@ -153,18 +153,18 @@ export function ScheduleDetailModal({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-xl">
+          <DialogTitle className="flex items-center gap-2 text-xl dark:text-white">
             <Calendar className="w-5 h-5" />
             {schedule.title}
           </DialogTitle>
-          <DialogDescription>일정 상세 정보를 확인하세요</DialogDescription>
+          <DialogDescription className="dark:text-gray-400">일정 상세 정보를 확인하세요</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
           {/* 일정 설명 */}
           {schedule.content && (
-            <div className="p-3 bg-gray-50 rounded-md">
-              <p className="text-sm text-gray-700 whitespace-pre-wrap">
+            <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-md">
+              <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
                 {schedule.content}
               </p>
             </div>
@@ -172,18 +172,18 @@ export function ScheduleDetailModal({
 
           {/* 일정 시간 정보 */}
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm">
-              <Calendar className="w-4 h-4 text-gray-500" />
+            <div className="flex items-center gap-2 text-sm dark:text-gray-300">
+              <Calendar className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               <span className="font-medium">시작:</span>
               <span>{startTime && formatDateTime(startTime)}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm">
-              <Calendar className="w-4 h-4 text-gray-500" />
+            <div className="flex items-center gap-2 text-sm dark:text-gray-300">
+              <Calendar className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               <span className="font-medium">종료:</span>
               <span>{endTime && formatDateTime(endTime)}</span>
             </div>
-            <div className="flex items-center gap-2 text-sm">
-              <Clock className="w-4 h-4 text-gray-500" />
+            <div className="flex items-center gap-2 text-sm dark:text-gray-300">
+              <Clock className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               <span className="font-medium">소요 시간:</span>
               <span>{getDuration()}</span>
             </div>
@@ -191,8 +191,8 @@ export function ScheduleDetailModal({
 
           {/* 생성자 정보 */}
           {schedule.creator_name && (
-            <div className="flex items-center gap-2 text-sm">
-              <User className="w-4 h-4 text-gray-500" />
+            <div className="flex items-center gap-2 text-sm dark:text-gray-300">
+              <User className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               <span className="font-medium">생성자:</span>
               <span>{schedule.creator_name}</span>
             </div>
@@ -200,8 +200,8 @@ export function ScheduleDetailModal({
 
           {/* 팀 정보 */}
           {schedule.team_name && (
-            <div className="flex items-center gap-2 text-sm">
-              <Users className="w-4 h-4 text-gray-500" />
+            <div className="flex items-center gap-2 text-sm dark:text-gray-300">
+              <Users className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               <span className="font-medium">팀:</span>
               <span>{schedule.team_name}</span>
             </div>
@@ -211,24 +211,24 @@ export function ScheduleDetailModal({
           {schedule.participants && schedule.participants.length > 0 && (
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-gray-500" />
-                <span className="font-medium text-sm">
+                <Users className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+                <span className="font-medium text-sm dark:text-gray-300">
                   참가자 ({schedule.participants.length}명)
                 </span>
               </div>
-              <div className="border rounded-md p-3 max-h-40 overflow-y-auto">
+              <div className="border dark:border-gray-700 rounded-md p-3 max-h-40 overflow-y-auto bg-white dark:bg-gray-800">
                 <div className="space-y-2">
                   {schedule.participants.map((participant) => (
                     <div
                       key={participant.id}
-                      className="flex items-center justify-between p-2 hover:bg-gray-50 rounded"
+                      className="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded"
                     >
                       <div className="flex flex-col">
-                        <span className="text-sm font-medium">
+                        <span className="text-sm font-medium dark:text-gray-100">
                           {participant.user_name || '이름 없음'}
                         </span>
                         {participant.user_email && (
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-500 dark:text-gray-400">
                             {participant.user_email}
                           </span>
                         )}
