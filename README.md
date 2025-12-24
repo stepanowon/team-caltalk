@@ -6,7 +6,7 @@
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
 [![React Version](https://img.shields.io/badge/react-18.3.1-blue)](https://reactjs.org/)
 
-## 📋 목차
+## 📋 목 차
 
 - [프로젝트 개요](#-프로젝트-개요)
 - [주요 기능](#-주요-기능)
